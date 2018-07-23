@@ -1,0 +1,186 @@
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.site-header-content {
+    background-color: #044D6E;
+    width: 100%;
+    padding: 15px 0 25px 0.5%;
+}
+.site-header {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr 2.2fr 1fr;
+    grid-template-rows: 50px;
+}
+.site-header-logo {
+    text-align: right;
+    padding: 5px 20px 0 0;
+}
+#logo {
+    text-decoration: none;
+    color: #ffffff;
+}
+#logo-font {
+    font-size: 25px;
+}
+.site-header-searchbar {
+    width: 100%
+}
+
+#searchbar {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('/images/searchicon.png') !important;
+    background-position: 10px 8px;
+    padding: 10px 20px 10px 50px;
+    background-repeat: no-repeat;
+}
+/*header browse category dropdown button*/
+::selection {
+    background: transparent;
+}
+
+::-moz-selection {
+    background: transparent;
+}
+.categories-dropdown-button {
+    position: relative;
+    height: 50px;
+    width: 170px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 7px;
+    border: 1px solid #044D6E;
+    box-shadow: 0 1px 1px rgba(50,50,50,0.1);
+    cursor: pointer;
+    outline: none;
+    background-color: #044D6E;
+    color: white;
+}
+.categories-dropdown-button:hover{
+    background-color: #033349;
+}
+.categories-dropdown-button:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    margin-top: -3px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: white transparent;
+}
+.categories-dropdown-button .dropdown {
+    z-index:2;
+    position: absolute;
+    top: 140%;
+    left: 0;
+    right: 0;
+    border-radius: inherit;
+    border: 1px solid #044462;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    font-weight: normal;
+    -webkit-transition: all 0.5s ease-in;
+    -moz-transition: all 0.5s ease-in;
+    -ms-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    list-style: none;
+    opacity: 0;
+    pointer-events: none;
+}
+.categories-dropdown-button .dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 15px;
+    border-width: 0 9px 12px 9px;
+    border-style: solid;
+    border-color: #044462 transparent;
+}
+.categories-dropdown-button .dropdown:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    bottom: 100%;
+    right: 13px;
+    border-width: 0 10px 13px 10px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.1) transparent;
+}
+.categories-dropdown-button .dropdown li a {
+    display: block;
+    padding: 5px 5px 5px 10px;
+    text-decoration: none;
+    background-color: #044462;
+    color: white;
+    /*border-bottom: 1px solid white;*/
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.categories-dropdown-button .dropdown li:last-of-type a{
+    text-align:center;
+    padding-right:15px;
+}
+.categories-dropdown-button .dropdown li i {
+    float: right;
+    color: inherit;
+}
+.categories-dropdown-button .dropdown li:first-of-type a {
+    border-radius: 7px 7px 0 0;
+}
+.categories-dropdown-button .dropdown li:last-of-type a {
+    border: none;
+    border-radius: 0 0 7px 7px;
+}
+.categories-dropdown-button .dropdown li:hover a {
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+    transform: scale(1.1);
+}
+.categories-dropdown-button.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}
+.no-opacity .categories-dropdown-button .dropdown,
+.no-pointerevents .categories-dropdown-button .dropdown {
+    display: none;
+    opacity: 1; /* If opacity support but no pointer-events support */
+    pointer-events: auto; /* If pointer-events support but no pointer-events support */
+}
+.no-opacity .categories-dropdown-button.active .dropdown,
+.no-pointerevents .categories-dropdown-button.active .dropdown {
+    display: block;
+}
+@media only screen and (max-width: 819px) {
+    .site-header{
+        display: grid;
+        grid-template-rows: 50px;
+        grid-template-columns: 3fr;
+        grid-gap: 10px;
+        margin: 0 10px 0 10px;
+    }
+    .site-header-category-container{
+        display: none;
+    }
+    .site-header-logo{
+        display: none;
+    }
+}
