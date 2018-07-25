@@ -1,5 +1,7 @@
 @extends('layouts.app_layout')
 
+@section('title','Home Page')
+
 @section('content')
 <div class="slider" id="slider1">
         <!-- Slides -->
@@ -15,8 +17,7 @@
     
     <br>
     
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="{{asset('js/imageslider.js')}}"></script>
+    
     <script>
     $(document).ready(function() {  
       $("#slider1").sliderResponsive({

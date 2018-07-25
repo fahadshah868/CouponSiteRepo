@@ -1,6 +1,10 @@
 
-// Bootstrap
+//Bootstrap
 @import '~bootstrap/scss/bootstrap';
+//font awesome
+$fa-font-path: "../../../node_modules/font-awesome/fonts" !default;
+
+@import 'node_modules/font-awesome/scss/font-awesome.scss';
 //base styles
 @import 'base';
 //header
@@ -9,4 +13,3 @@
 @import 'footer';
 //carousel image slider
 @import 'imageslider';
-
