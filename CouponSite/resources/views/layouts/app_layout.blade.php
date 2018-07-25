@@ -7,9 +7,9 @@
     <title>@yield('title')</title>
     <!--stylesheet section-->
     @section('stylesheet')
-        <link rel="stylesheet" href="{{asset('css/home.css')}}"/>
-        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
-          integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous"> --}}
+    <link rel="stylesheet" href="{{asset('css/app.css')}}"/>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
+          integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     @show
     @section('javascript')
         <script src="{{asset('js/jquery-3.3.1.slim.min.js')}}"></script>
@@ -18,7 +18,7 @@
     @show
 </head>
 <body>
-    <div class="main-content">
+    <div class="body-content">
         <!--header content-->
         @section('app-header')
             @include('layouts.header')

@@ -38,7 +38,7 @@
         </div>
         <div class="site-header-searchbar">
             <form>
-                <input type="text" id="searchbar" placeholder="Search on...." />
+                <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url('<?= asset("images/searchicon.png")?>');"
             </form>
         </div>
         <div class="site-header-category-container">

@@ -8,7 +8,7 @@
     margin: 0;
 }
 .site-header-content {
-    background-color: #044D6E;
+    background-color: $theme-color;
     width: 100%;
     padding: 15px 0 25px 0.5%;
 }
@@ -35,11 +35,10 @@
 
 #searchbar {
     width: 100%;
-    border: 2px solid #ccc;
+    border: 2px solid $topsearchbar-bordercolor;
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
-    background-image: url('/images/searchicon.png') !important;
     background-position: 10px 8px;
     padding: 10px 20px 10px 50px;
     background-repeat: no-repeat;
@@ -59,15 +58,15 @@
     padding: 10px;
     background: #fff;
     border-radius: 7px;
-    border: 1px solid #044D6E;
+    border: 1px solid $theme-color;
     box-shadow: 0 1px 1px rgba(50,50,50,0.1);
     cursor: pointer;
     outline: none;
-    background-color: #044D6E;
-    color: white;
+    background-color: $theme-color;
+    color: #ffffff;
 }
 .categories-dropdown-button:hover{
-    background-color: #033349;
+    background-color: $dropdownbutton-onhover-backgroundcolor;
 }
 .categories-dropdown-button:after {
     content: "";
@@ -88,7 +87,7 @@
     left: 0;
     right: 0;
     border-radius: inherit;
-    border: 1px solid #044462;
+    border: 1px solid $dropdownlist-backgroundcolor;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     font-weight: normal;
     -webkit-transition: all 0.5s ease-in;
@@ -109,7 +108,7 @@
     right: 15px;
     border-width: 0 9px 12px 9px;
     border-style: solid;
-    border-color: #044462 transparent;
+    border-color: $dropdownlist-backgroundcolor transparent;
 }
 .categories-dropdown-button .dropdown:before {
     content: "";
@@ -126,7 +125,7 @@
     display: block;
     padding: 5px 5px 5px 10px;
     text-decoration: none;
-    background-color: #044462;
+    background-color: $dropdownlist-backgroundcolor;
     color: white;
     /*border-bottom: 1px solid white;*/
     -webkit-transition: all 0.3s ease-out;

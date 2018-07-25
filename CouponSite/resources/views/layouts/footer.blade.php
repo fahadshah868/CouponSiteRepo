@@ -40,6 +40,6 @@
         <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
     </div>
     <div class="footer-copyright">
-        <p>© 2016 Copyright Text </p>
+        <p>© 2018 Copyright Text </p>
     </div>
 </footer>
