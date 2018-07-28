@@ -66,14 +66,14 @@
           <font><b>Top Offers</b></font>
         </div>
         <div class="top-offers-products">
-            <div style="background-color:red;">a</div>
-            <div style="background-color:blue;">as</div>
-            <div style="background-color:green;">asd</div>
-            <div style="background-color:yellow;">fdf</div>
-            <div style="background-color:orange;">wer</div>
-            <div style="background-color:grey;">sdgf</div>
-            <div style="background-color:pink;">qwer</div>
-            <div style="background-color:navy;">hhj</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
   </div>
