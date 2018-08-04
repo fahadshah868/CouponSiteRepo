@@ -10700,6 +10700,10 @@ body {
   width: 100%;
 }
 
+.footer-columns .column h5 {
+  margin-bottom: 25px;
+}
+
 .footer-content .footer-copyright {
   background-color: #262537;
   padding-top: 3px;
@@ -10707,12 +10711,8 @@ body {
   text-align: right;
 }
 
-.column:hover h5 {
-  color: #00aced;
-}
-
 .column {
-  text-align: center;
+  text-align: left;
 }
 
 .footer-content .footer-copyright p {
@@ -10745,62 +10745,6 @@ body {
   color: white;
 }
 
-.footer-content .myCols {
-  text-align: center;
-}
-
-.footer-content .social-networks {
-  text-align: center;
-  padding-top: 30px;
-  padding-bottom: 38px;
-}
-
-.footer-content .social-networks a {
-  font-size: 32px;
-  margin-right: 5px;
-  margin-left: 5px;
-  color: #f9f9f9;
-  padding: 10px;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-}
-
-.footer-content .social-networks a:hover {
-  text-decoration: none;
-}
-
-.footer-content .facebook:hover {
-  color: #0077e2;
-}
-
-.footer-content .google:hover {
-  color: #ef1a1a;
-}
-
-.footer-content .twitter:hover {
-  color: #00aced;
-}
-
-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  display: -webkit-flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100%;
-}
-
-.body-content {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-  -webkit-flex: 1 0 auto;
-  min-height: 200px;
-}
-
 .footer-content {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
@@ -10808,28 +10752,86 @@ body {
   -webkit-flex: 0 0 auto;
 }
 
-@media only screen and (max-width: 820px) {
+.social-networks [class*="fa fa-"] {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  border: 1.5px solid #ddd;
+  /* add border to the buttons */
+  padding: 0px;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 2em;
+  border-radius: 27px;
+  -moz-border-radius: 27px;
+  -webkit-border-radius: 27px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+
+.social-networks a {
+  padding: 3px;
+}
+
+.social-networks .twitter .fa-twitter:hover {
+  background-color: white;
+  border-color: #00aced;
+  color: #00aced;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.social-networks .facebook .fa-facebook:hover {
+  background-color: white;
+  border-color: #0077e2;
+  color: #0077e2;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.social-networks .google .fa-google:hover {
+  background-color: white;
+  border-color: #ef1a1a;
+  color: #ef1a1a;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.social-networks .instagram .fa-instagram:hover {
+  background-color: white;
+  border-color: #e4405f;
+  color: #e4405f;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 911px) {
   .footer-columns {
     width: 80%;
     margin-left: 10%;
     margin-top: 1%;
     display: grid;
-    grid-template-rows: 150px 150px;
+    grid-template-rows: 250px 200px;
     grid-template-columns: 1.1fr 1.1fr;
     grid-column-gap: 40px;
     grid-row-gap: 10px;
   }
 }
 
-@media only screen and (min-width: 819px) {
+@media only screen and (min-width: 910px) {
   .footer-columns {
     width: 80%;
     margin-left: 10%;
     margin-top: 2%;
     display: grid;
-    grid-template-rows: 160px;
-    grid-template-columns: 1.1fr 1.1fr 1.1fr 1.1fr;
-    grid-gap: 40px;
+    grid-template-rows: 300px;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    grid-gap: 50px;
   }
 }
 
@@ -11102,6 +11104,8 @@ body {
 
 .today-deals-products-content {
   overflow: auto;
+  overflow-y: hidden;
+  -ms-overflow-y: hidden;
   white-space: nowrap;
   display: grid;
   grid-column-gap: 20px;

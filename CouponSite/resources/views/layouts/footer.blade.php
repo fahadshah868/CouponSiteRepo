@@ -1,13 +1,15 @@
 
-<footer class="footer-content">
+<footer class="footer footer-content">
     <div class="footer-columns">
         <div class="column">
-            <h5>Get started</h5>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sign up</a></li>
-                <li><a href="#">Downloads</a></li>
-            </ul>
+            <h5>Web Site</h5>
+            <p>In the service business space, we are in, we believe in assured product delivery. Since our inception, we have a track record of 100% delivery of our assignments.</p>
+            <div class="social-networks">
+                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="google"><i class="fa fa-google"></i></a>
+            </div>        
         </div>
         <div class="column">
             <h5>About us</h5>
@@ -34,11 +36,7 @@
             </ul>
         </div>
     </div>
-    <div class="social-networks">
-        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-        <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
-        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-    </div>
+    
     <div class="footer-copyright">
         <p>© 2018 Copyright Text </p>
     </div>
