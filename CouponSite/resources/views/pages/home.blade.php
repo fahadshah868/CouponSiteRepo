@@ -24,37 +24,40 @@
       <div class="today-deals-products-content">
           <div class="today-deals-product">
             <img src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
-            <div class="today-deals-product-description">
+            <div class="today-deals-product-description-content">
               <div class="today-deals-product-description-brandlogo-content">
-                <img class="today-deals-product-description-brandlogo" src="https://www.spellbrand.com/images/blog/images/PacSun-teen-clothing-logo-design.jpg" />
+                <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
               </div>
-              <div>
-                <h6>Upto 40% Off</h6>
-                <p>Pacsun Sale</p>
+              <div class="today-deals-product-detail">
+                <font class="today-deals-product-offer">Up to 40% Off</font>
+                <br>
+                <font class="today-deals-product-brand">Pacsun Sale</font>
               </div>
             </div>
           </div>
           <div class="today-deals-product">
             <img src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
-            <div class="today-deals-product-description">
+            <div class="today-deals-product-description-content">
               <div class="today-deals-product-description-brandlogo-content">
-                  <img class="today-deals-product-description-brandlogo" src="https://www.spellbrand.com/images/blog/images/PacSun-teen-clothing-logo-design.jpg" />
+                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
                 </div>
-                <div>
-                  <h6>Upto 40% Off</h6>
-                  <p>Pacsun Sale</p>
+                <div class="today-deals-product-detail">
+                  <font class="today-deals-product-offer">Up to 40% Off</font>
+                  <br>
+                  <font class="today-deals-product-brand">Pacsun Sale</font>
                 </div>
               </div>
           </div>
           <div class="today-deals-product">
             <img style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
-            <div class="today-deals-product-description">
+            <div class="today-deals-product-description-content">
                 <div class="today-deals-product-description-brandlogo-content">
-                  <img class="today-deals-product-description-brandlogo" src="https://www.spellbrand.com/images/blog/images/PacSun-teen-clothing-logo-design.jpg" />
+                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
                 </div>
-                <div>
-                  <h6>Upto 40% Off</h6>
-                  <p>Pacsun Sale</p>
+                <div class="today-deals-product-detail">
+                  <font class="today-deals-product-offer">Up to 40% Off</font>
+                  <br>
+                  <font class="today-deals-product-brand">Pacsun Sale</font>
                 </div>
               </div>
           </div>
@@ -62,17 +65,32 @@
     </div>
     <div class="top-offers-main-content">
       <div class="top-offers-heading">
-        <font><b>Top Offers</b></font>
+        <font>Top Offers</font>
       </div>
       <div class="top-offers-products">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        @for($i=1; $i<=8; $i++)
+        <div class="top-offers-product">
+          <div class="top-offer-product-img" style="margin:10px auto 0 auto; width:150px; height:150px;">
+            <img src="https://i.pinimg.com/236x/bd/24/af/bd24afe038f5767224797820cff74caa.jpg" style="width:100%; height:100%;"/>
+          </div>
+          <div class="top-offer-product-title" style="width:240px; height: 55px; margin: 10px auto 0 auto; text-align:center;">
+            <font style="font-size:18px; font-weight:bold;">Famous Product title</font>
+          </div>
+          <hr style="border-top: 1px dotted #D5D1D1;">
+          <div class="top-offer-product-detail" style="text-align:center; margin:0 20px 0 20px;">
+            <font class="top-offer-product-offer" style="font-size:18px; font-weight:bold; color:#F45336;">
+              Up to 30% Off
+            </font>
+            <br>
+            <font class="top-offer-product-offer-type" style="font-size:16px; font-weight:bold; color:grey;">
+              sale
+            </font>
+          </div>
+          <div class="top-offer-product-button" style="text-align:center; margin: 10px 20px 0 20px;">
+            <button id="product-button" style="width:100%; height: 35px; background-color:#F45336; color: #ffffff; border: 1px solid #F45336; border-radius: 4px; font-weight:bold; cursor:pointer; transition: 0.5s;">VIEW CODE</button>
+          </div>
+        </div>
+        @endfor
       </div>
     </div>
   </div>

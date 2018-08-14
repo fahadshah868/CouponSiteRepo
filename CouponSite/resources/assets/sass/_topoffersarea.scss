@@ -1,25 +1,33 @@
 
 .top-offers-heading font{
     font-size:28px;
+    font-weight: bold;
 }
-.top-offers-products div{
+.top-offers-products .top-offers-product{
     background-color: white;
-    border: 1px solid #DFDCDC;
+    border-radius: 2px;
+    border: 1px solid #D5D1D1;
     cursor: pointer;
 }
-.top-offers-products div:hover{
+.top-offers-products .top-offers-product:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.10);
+    transition: 0.3s;
+}
+#product-button:hover{
+    background-color: white !important;
+    color: #F45336 !important;
+    transition: 0.5s;
 }
 @media only screen and (min-width: 1156px){
     .top-offers-main-content{
-        margin: 10px auto 30px auto;
+        margin: auto;
         width: 1140px;
     }
     .top-offers-products{
-        margin-top: 20px;
+        margin: 20px 0 20px 0;
         display: grid;
         grid-template-columns: repeat(auto-fit , minmax(270px,270px));
-        grid-auto-rows: 300px;
+        grid-auto-rows: 375px;
         grid-column-gap: 20px;
         grid-row-gap: 20px;
     }

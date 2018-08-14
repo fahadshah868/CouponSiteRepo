@@ -58,9 +58,11 @@
     outline: none;
     background-color: $theme-color;
     color: #ffffff;
+    transition: 0.6s;
 }
 .categories-dropdown-button:hover{
     background-color: $dropdownbutton-onhover-backgroundcolor;
+    transition: 0.6s;
 }
 .categories-dropdown-button:after {
     content: "";
