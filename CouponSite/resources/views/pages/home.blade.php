@@ -85,15 +85,15 @@
       @for($i=1; $i<=10; $i++)
       <div class="item">
           <div class="store-img">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdlPu_vsozLvKbGGP3Wv2_kl4d2q8wEt65c69JcTZgHLfvEBZO" >
+              <img src="https://igx.4sqi.net/img/general/200x200/38757329_V6X_cPjnJ2QsS2w-P7Ret6Lfm8T7J-i4dMRtGBbf-B4.jpg" >
           </div>
       </div>
       @endfor
     </div>
     <!--Arrows-->
     <div class="MS-controls">
-      <button class="MS-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+      <button type="button" class="MS-left"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
+      <button type="button" class="MS-right"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
     </div>
 </div>
 
@@ -125,7 +125,7 @@
             </font>
           </div>
           <div class="top-offer-product-button">
-            <button id="product-button">VIEW CODE</button>
+            <button type="button" id="product-button">VIEW CODE</button>
           </div>
         </div>
       @endfor
@@ -147,9 +147,9 @@
       });  
     });
     $('#top-stores-main-content').multislider({
-        interval: 6000,
+        interval: 5000,
         slideAll: false,
-        duration: 1500
+        duration: 700
     }); 
   </script>
 @endsection

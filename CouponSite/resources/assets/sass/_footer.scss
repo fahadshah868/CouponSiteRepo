@@ -2,7 +2,7 @@
 .footer-content {
     margin-top:-27px;
     background-color: $theme-color;
-    color: white;
+    color: $whitecolor;
     width: 100%;
 }
 .footer-columns .column h5{
@@ -20,7 +20,7 @@
 .footer-content .footer-copyright p {
     margin: 10px;
     margin-right: 10%;
-    color: #ccc;
+    color: $silvercolor;
 }
 .footer-content ul {
     list-style-type: none;
@@ -29,17 +29,17 @@
 }
 .footer-content h5 {
     font-size: 18px;
-    color: white;
+    color: $whitecolor;;
     font-weight: bold;
     margin-top: 30px;
 }
 .footer-content a {
-    color: #d2d1d1;
+    color: $silvercolor;
     text-decoration: none;
 }
 .footer-content a:hover, .footer-content a:focus {
     text-decoration: none;
-    color: white;
+    color: $whitecolor;;
 }
 .footer-content {
     flex: 0 0 auto;
@@ -51,11 +51,11 @@
     cursor: pointer;
     width: 35px;
     height: 35px;
-    border:1.5px solid #ddd; /* add border to the buttons */
+    border:1.5px solid $whitecolor; /* add border to the buttons */
     padding: 0px;
     text-decoration: none;
     text-align: center;
-    color: #fff;
+    color: $whitecolor;;
     font-size: 16px;
     font-weight: normal;
     line-height: 2em;
@@ -68,25 +68,25 @@
     padding: 3px;
 }
 .social-networks .twitter .fa-twitter:hover{
-    background-color: white;
+    background-color: $whitecolor;
     border-color: $footertwittericon-onhover-color;
     color: $footertwittericon-onhover-color;
     transition: 0.5s;
 }
 .social-networks .facebook .fa-facebook:hover{
-    background-color: white;
+    background-color: $whitecolor;
     border-color: $footerfacebookicon-onhover-color;
     color: $footerfacebookicon-onhover-color;
     transition: 0.5s;
 }
 .social-networks .google .fa-google:hover{
-    background-color: white;
+    background-color: $whitecolor;
     border-color: $footergoogleicon-onhover-color;
     color: $footergoogleicon-onhover-color;
     transition: 0.5s;
 }
 .social-networks .instagram .fa-instagram:hover{
-    background-color: white;
+    background-color: $whitecolor;
     border-color: $footerinstagramicon-onhover-color;
     color: $footerinstagramicon-onhover-color;
     transition: 0.5s;

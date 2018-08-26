@@ -11,8 +11,8 @@
     text-align: center;
   }
   .top-stores-heading font{
-    font-size:28px;
-    font-weight: bold;
+    font-size:25px;
+    color: $topstores-heading-textcolor;
   }
   .top-stores-main-content .stores-content .item {
     display: inline-block;
@@ -46,9 +46,15 @@
     font-size: 30px;
     outline: 0;
     top: 120px;
+    color: $silvercolor;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
   }
   .top-stores-main-content .MS-controls button:hover {
+    color: $blackcolor;
     cursor: pointer;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
   }
   .top-stores-main-content .MS-controls .MS-left {
     left: 25px;

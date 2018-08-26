@@ -4,7 +4,7 @@
     font-weight: bold;
 }
 .top-offers-products .top-offers-product{
-    background-color: white;
+    background-color: $whitecolor;
     border-radius: 2px;
     border: 1px solid $border-color;
     cursor: pointer;
@@ -58,8 +58,8 @@
     width:100%; 
     height: 35px; 
     background-color: $productoffer-textcolor; 
-    color: #ffffff; 
-    border: 1px solid $productoffer-textcolor; 
+    color: $whitecolor; 
+    border: 2px solid $productoffer-textcolor; 
     border-radius: 4px; 
     font-weight:bold; 
     cursor:pointer; 
@@ -67,8 +67,9 @@
     -webkit-transition: 0.5s;
 }
 .top-offer-product-button #product-button:hover{
-    background-color: white !important;
+    background-color: $whitecolor !important;
     color: $productoffer-textcolor !important;
+    border: 2px solid $productoffer-textcolor;
     transition: 0.5s;
     -webkit-transition: 0.5s;
 }

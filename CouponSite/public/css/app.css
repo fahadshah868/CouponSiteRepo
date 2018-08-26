@@ -10514,7 +10514,7 @@ body {
   border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  background-color: white;
+  background-color: #ffffff;
   background-position: 10px 8px;
   padding: 10px 20px 10px 50px;
   background-repeat: no-repeat;
@@ -10539,7 +10539,7 @@ body {
   height: 50px;
   width: 170px;
   padding: 10px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 7px;
   border: 1px solid #044D6E;
   -webkit-box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
@@ -10568,7 +10568,7 @@ body {
   margin-top: -3px;
   border-width: 6px 6px 0 6px;
   border-style: solid;
-  border-color: white transparent;
+  border-color: #ffffff transparent;
 }
 
 .categories-dropdown-button .dropdown {
@@ -10618,7 +10618,7 @@ body {
   padding: 5px 5px 5px 10px;
   text-decoration: none;
   background-color: #033349;
-  color: white;
+  color: #ffffff;
   /*border-bottom: 1px solid white;*/
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -10711,7 +10711,7 @@ body {
 .footer-content {
   margin-top: -27px;
   background-color: #044D6E;
-  color: white;
+  color: #ffffff;
   width: 100%;
 }
 
@@ -10733,7 +10733,7 @@ body {
 .footer-content .footer-copyright p {
   margin: 10px;
   margin-right: 10%;
-  color: #ccc;
+  color: silver;
 }
 
 .footer-content ul {
@@ -10744,20 +10744,20 @@ body {
 
 .footer-content h5 {
   font-size: 18px;
-  color: white;
+  color: #ffffff;
   font-weight: bold;
   margin-top: 30px;
 }
 
 .footer-content a {
-  color: #d2d1d1;
+  color: silver;
   text-decoration: none;
 }
 
 .footer-content a:hover,
 .footer-content a:focus {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
 }
 
 .footer-content {
@@ -10773,12 +10773,12 @@ body {
   cursor: pointer;
   width: 35px;
   height: 35px;
-  border: 1.5px solid #ddd;
+  border: 1.5px solid #ffffff;
   /* add border to the buttons */
   padding: 0px;
   text-decoration: none;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   font-weight: normal;
   line-height: 2em;
@@ -10794,7 +10794,7 @@ body {
 }
 
 .social-networks .twitter .fa-twitter:hover {
-  background-color: white;
+  background-color: #ffffff;
   border-color: #00aced;
   color: #00aced;
   -webkit-transition: 0.5s;
@@ -10802,7 +10802,7 @@ body {
 }
 
 .social-networks .facebook .fa-facebook:hover {
-  background-color: white;
+  background-color: #ffffff;
   border-color: #0077e2;
   color: #0077e2;
   -webkit-transition: 0.5s;
@@ -10810,7 +10810,7 @@ body {
 }
 
 .social-networks .google .fa-google:hover {
-  background-color: white;
+  background-color: #ffffff;
   border-color: #ef1a1a;
   color: #ef1a1a;
   -webkit-transition: 0.5s;
@@ -10818,7 +10818,7 @@ body {
 }
 
 .social-networks .instagram .fa-instagram:hover {
-  background-color: white;
+  background-color: #ffffff;
   border-color: #e4405f;
   color: #e4405f;
   -webkit-transition: 0.5s;
@@ -10886,7 +10886,7 @@ body {
   transition: .3s;
   width: 30px;
   padding: 10px 13px;
-  background: #fff;
+  background: #ffffff;
   background: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   line-height: 0;
@@ -10917,8 +10917,8 @@ body {
 }
 
 .slider > i:hover {
-  background: #fff;
-  background: rgba(255, 255, 255, 0.8);
+  background: #ffffff;
+  background: #ffffff;
   -webkit-transform: translateX(-2px);
           transform: translateX(-2px);
 }
@@ -10964,7 +10964,7 @@ body {
   float: left;
   margin: 10px 10px 0;
   cursor: pointer;
-  border: 1px solid #fff;
+  border: 1px solid #ffffff;
   -webkit-transition: .3s;
   transition: .3s;
 }
@@ -11007,7 +11007,7 @@ body {
   padding: 20px 30px;
   -webkit-transition: .3s;
   transition: .3s;
-  color: #fff;
+  color: #ffffff;
 }
 
 .titleBar * {
@@ -11042,7 +11042,7 @@ body {
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
   bottom: 0;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   padding: 0;
   width: 100%;
@@ -11135,7 +11135,7 @@ body {
   position: absolute;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
-  color: #f1f1f1;
+  color: #ffffff;
   width: 100%;
   height: 76px;
   cursor: pointer;
@@ -11196,7 +11196,7 @@ body {
 }
 
 .top-offers-products .top-offers-product {
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 2px;
   border: 1px solid #CFCFCF;
   cursor: pointer;
@@ -11262,7 +11262,7 @@ body {
   height: 35px;
   background-color: #F45336;
   color: #ffffff;
-  border: 1px solid #F45336;
+  border: 2px solid #F45336;
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
@@ -11271,8 +11271,9 @@ body {
 }
 
 .top-offer-product-button #product-button:hover {
-  background-color: white !important;
+  background-color: #ffffff !important;
   color: #F45336 !important;
+  border: 2px solid #F45336;
   transition: 0.5s;
   -webkit-transition: 0.5s;
 }
@@ -11329,8 +11330,8 @@ body {
 }
 
 .top-stores-heading font {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 25px;
+  color: #5A5858;
 }
 
 .top-stores-main-content .stores-content .item {
@@ -11370,10 +11371,16 @@ body {
   font-size: 30px;
   outline: 0;
   top: 120px;
+  color: silver;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 
 .top-stores-main-content .MS-controls button:hover {
+  color: #000000;
   cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
 }
 
 .top-stores-main-content .MS-controls .MS-left {
