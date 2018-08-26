@@ -41,11 +41,10 @@
 @media only screen and (min-width: 1164px) {
     .today-deals-main-content{
         width: 1090px;
-        margin: auto;
-        padding: 35px 0 35px 0;
+        margin: 40px auto;
     }
     .today-deals-products-content{
-        margin-top: 30px; 
+        margin: 35px 0 35px 0;
         display: grid;
         grid-column-gap: 20px;
         grid-template-columns: 350px 350px 350px;
