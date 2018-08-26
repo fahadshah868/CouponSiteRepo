@@ -6,7 +6,7 @@
 
 <div class="body-main-content">
 
-  <!--Main Image Slider-------------------------------------------------------------------------------------------------------------------->
+  <!--Main Image Slider---------------------------------------------------------------------------------------------->
   <div class="slider" id="slider">
     <!--Slides-->
     <div style="background-image:url(https://unsplash.it/1920/1200?image=839)"></div>
@@ -20,7 +20,7 @@
   </div>
 
 
-  <!--Todays New Hot Deals----------------------------------------------------------------------------------------------------------------->
+  <!--Todays New Hot Deals---------------------------------------------------------------------------------------->
   <div class="today-deals-main-content">
     <!--Heading-->
     <div class="today-deals-heading">
@@ -73,8 +73,32 @@
     </div>
   </div>
 
+
+  <!--Top Stores-------------------------------------------------------------------------------------------------->
+  <div class="top-stores-main-content" id="top-stores-main-content">
+    <!--Heading-->
+    <div class="top-stores-heading">
+      <font>Top Stores</font>
+    </div>
+    <!--Stores Slides-->
+    <div class="stores-content">
+      @for($i=1; $i<=10; $i++)
+      <div class="item">
+          <div class="store-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdlPu_vsozLvKbGGP3Wv2_kl4d2q8wEt65c69JcTZgHLfvEBZO" >
+          </div>
+      </div>
+      @endfor
+    </div>
+    <!--Arrows-->
+    <div class="MS-controls">
+      <button class="MS-left"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+      <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+</div>
+
   
-  <!--Top Offers Deals Products------------------------------------------------------------------------------------------------------------>
+  <!--Top Offers Deals Products----------------------------------------------------------------------------------->
   <div class="top-offers-main-content">
     <!--Heading-->
     <div class="top-offers-heading">
@@ -121,6 +145,11 @@
         // hoverZoom: "on", 
         // titleBarTop: "off"
       });  
+    });
+    $('#top-stores-main-content').multislider({
+        interval: 6000,
+        slideAll: false,
+        duration: 1500
     }); 
   </script>
 @endsection
