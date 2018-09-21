@@ -1,12 +1,26 @@
-.today-deals-heading{
+.today-deals-main-content{
+    width: 100%;
+    margin: 40px auto;
     text-align: center;
+    overflow: auto;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden;
+    white-space: nowrap;
 }
 .today-deals-heading h2{
     font-size: 25px;
     color: $todayhotdeals-heading-textcolor;
 }
+.today-deals-products-content{
+    width: 1120px;
+    margin: 0 auto;
+}
 .today-deals-product{
     position: relative;
+    display: inline-block;
+    width: 350px;
+    height: 300px;
+    margin: 20px 5px 0 5px;
 }
 .today-deals-product img{
     width: 100%;
@@ -15,16 +29,16 @@
 }
 .today-deals-product-description-content{
     width: 100%;
-    display: grid;
-    grid-template-columns: 70px 260px;
-    grid-template-rows: 60px;
-    padding: 8px;
+    padding: 2%;
+    cursor: pointer;
     position: absolute; 
     bottom: 0; 
     background: rgba(0, 0, 0, 0.8);
     color: $whitecolor;
-    height: 76px;
-    cursor: pointer;
+    text-align: left;
+}
+.today-deals-product-description-content div{
+    display: inline-block;
 }
 .today-deals-product-description-brandlogo-content{
     width: 60px;
@@ -34,43 +48,22 @@
     width: 100%;
     height: 100%;
 }
+.today-deals-product-detail{
+    vertical-align: middle;
+    margin-left: 10px;
+    width: 77%;
+    height: 60px;
+}
 .today-deals-product-offer{
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
 }
-@media only screen and (min-width: 1164px) {
-    .today-deals-main-content{
-        width: 1090px;
-        margin: 40px auto;
-    }
+@media only screen and (max-width: 760px){
     .today-deals-products-content{
-        margin: 35px 0 35px 0;
-        display: -ms-grid;
-        display: grid;
-        grid-column-gap: 20px;
-        grid-template-columns: 350px 350px 350px;
-        grid-template-rows: 300px;
-        -ms-grid-columns: 350px 350px 350px;
-        -ms-grid-rows: 300px;
+        width: 960px;
     }
-}
-@media only screen and (max-width: 1165px) {
-    .today-deals-main-content{
-        width: 100%;
-        margin: 35px 0 35px 0;
-    }
-    .today-deals-products-content{
-        margin: 30px 30px 0 30px;
-        display: grid;
-        grid-column-gap: 20px;
-        grid-template-columns: 350px 350px 350px;
-        grid-template-rows: 300px;
-        overflow: auto;
-        overflow-y: hidden;
-        -ms-overflow-y: hidden;
-        white-space: nowrap;
-        display: -ms-grid;
-        -ms-grid-columns: 350px 350px 350px;
-        -ms-grid-rows: 300px;
+    .today-deals-product{
+        width: 300px;
+        height: 257.2px;
     }
 }
