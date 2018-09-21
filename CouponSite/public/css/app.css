@@ -11112,7 +11112,7 @@ body {
   text-align: center;
 }
 
-.today-deals-heading font {
+.today-deals-heading h2 {
   font-size: 25px;
   color: #5A5858;
 }
@@ -11128,15 +11128,15 @@ body {
 }
 
 .today-deals-product-description-content {
+  width: 100%;
   display: grid;
-  grid-template-columns: 70px 100%;
+  grid-template-columns: 70px 260px;
   grid-template-rows: 60px;
-  padding: 7.5px 5px 7.5px 8px;
+  padding: 8px;
   position: absolute;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   color: #ffffff;
-  width: 100%;
   height: 76px;
   cursor: pointer;
 }
@@ -11164,10 +11164,13 @@ body {
 
   .today-deals-products-content {
     margin: 35px 0 35px 0;
+    display: -ms-grid;
     display: grid;
     grid-column-gap: 20px;
     grid-template-columns: 350px 350px 350px;
     grid-template-rows: 300px;
+    -ms-grid-columns: 350px 350px 350px;
+    -ms-grid-rows: 300px;
   }
 }
 
@@ -11187,10 +11190,13 @@ body {
     overflow-y: hidden;
     -ms-overflow-y: hidden;
     white-space: nowrap;
+    display: -ms-grid;
+    -ms-grid-columns: 350px 350px 350px;
+    -ms-grid-rows: 300px;
   }
 }
 
-.top-offers-heading font {
+.top-offers-heading h2 {
   font-size: 28px;
   font-weight: bold;
 }
@@ -11224,12 +11230,12 @@ body {
 
 .top-offer-product-title {
   width: 240px;
-  height: 55px;
-  margin: 10px auto 0 auto;
+  height: 45px;
+  margin: 20px auto 0 auto;
   text-align: center;
 }
 
-.top-offer-product-title font {
+.top-offer-product-title h2 {
   font-size: 18px;
   font-weight: bold;
   color: #000000;
@@ -11253,8 +11259,7 @@ body {
 }
 
 .top-offer-product-button {
-  text-align: center;
-  margin: 10px 20px 0 20px;
+  margin: -10px 20px 0 20px;
 }
 
 .top-offer-product-button #product-button {
@@ -11289,8 +11294,10 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 270px));
     grid-auto-rows: 375px;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-gap: 20px;
+    display: -ms-grid;
+    -ms-grid-columns: repeat(auto-fit, mixmax(270px, 270px));
+    -ms-grid-rows: 375px;
   }
 }
 
@@ -11307,6 +11314,9 @@ body {
     grid-auto-rows: 375px;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
+    display: -ms-grid;
+    -ms-grid-columns: repeat(auto-fit, mixmax(270px, 270px));
+    -ms-grid-rows: 375px;
   }
 
   .top-offers-heading {
@@ -11329,7 +11339,7 @@ body {
   text-align: center;
 }
 
-.top-stores-heading font {
+.top-stores-heading h2 {
   font-size: 25px;
   color: #5A5858;
 }

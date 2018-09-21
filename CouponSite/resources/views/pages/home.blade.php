@@ -19,12 +19,11 @@
     <i class="right" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path></svg></i>
   </div>
 
-
   <!--Todays New Hot Deals---------------------------------------------------------------------------------------->
   <div class="today-deals-main-content">
     <!--Heading-->
     <div class="today-deals-heading">
-      <font>Today's Hot Deals</font>
+      <h2>Today's Hot Deals</h2>
     </div>
     <!--Products-->
     <div class="today-deals-products-content">
@@ -36,9 +35,8 @@
               <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
             </div>
             <div class="today-deals-product-detail">
-              <font class="today-deals-product-offer">Up to 40% Off</font>
-              <br>
-              <font class="today-deals-product-brand">Pacsun Sale</font>
+              <h2 class="today-deals-product-offer">Up to 40% Off</h2>
+              <p class="today-deals-product-brand">Pacsun Sale</p>
             </div>
           </div>
         </div>
@@ -50,9 +48,8 @@
               <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
             </div>
             <div class="today-deals-product-detail">
-              <font class="today-deals-product-offer">Up to 40% Off</font>
-              <br>
-              <font class="today-deals-product-brand">Pacsun Sale</font>
+              <h2 class="today-deals-product-offer">Up to 40% Off</h2>
+              <p class="today-deals-product-brand">Pacsun Sale</p>
             </div>
           </div>
         </div>
@@ -64,9 +61,8 @@
                 <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
               </div>
               <div class="today-deals-product-detail">
-                <font class="today-deals-product-offer">Up to 40% Off</font>
-                <br>
-                <font class="today-deals-product-brand">Pacsun Sale</font>
+                <h2 class="today-deals-product-offer">Up to 40% Off</h2>
+                <p class="today-deals-product-brand">Pacsun Sale</p>
               </div>
             </div>
         </div>
@@ -78,7 +74,7 @@
   <div class="top-stores-main-content" id="top-stores-main-content">
     <!--Heading-->
     <div class="top-stores-heading">
-      <font>Top Stores</font>
+      <h2>Top Stores</h2>
     </div>
     <!--Stores Slides-->
     <div class="stores-content">
@@ -102,7 +98,7 @@
   <div class="top-offers-main-content">
     <!--Heading-->
     <div class="top-offers-heading">
-      <font>Top Offers</font>
+      <h2>Top Offers</h2>
     </div>
     <!--Products-->
     <div class="top-offers-products">
@@ -112,17 +108,16 @@
             <img src="https://i.pinimg.com/236x/bd/24/af/bd24afe038f5767224797820cff74caa.jpg"/>
           </div>
           <div class="top-offer-product-title">
-            <font>Famous Product title</font>
+            <h2>Famous Product title</h2>
           </div>
           <hr style="border-top: 1px dotted #D5D1D1;">
           <div class="top-offer-product-detail">
-            <font class="top-offer-product-offer">
+            <h2 class="top-offer-product-offer">
               Up to 30% Off
-            </font>
-            <br>
-            <font class="top-offer-product-offer-type">
+            </h2>
+            <p class="top-offer-product-offer-type">
               sale
-            </font>
+            </p>
           </div>
           <div class="top-offer-product-button">
             <button type="button" id="product-button">VIEW CODE</button>

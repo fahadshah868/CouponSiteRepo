@@ -1,5 +1,5 @@
 
-.top-offers-heading font{
+.top-offers-heading h2{
     font-size:28px;
     font-weight: bold;
 }
@@ -27,11 +27,11 @@
 }
 .top-offer-product-title{
     width: 240px; 
-    height: 55px; 
-    margin: 10px auto 0 auto; 
+    height: 45px; 
+    margin: 20px auto 0 auto; 
     text-align:center;
 }
-.top-offer-product-title font{
+.top-offer-product-title h2{
     font-size:18px; 
     font-weight:bold;
     color: $producttitle-textcolor;
@@ -51,8 +51,7 @@
     color: $productoffer-typecolor;
 }
 .top-offer-product-button{
-    text-align:center; 
-    margin: 10px 20px 0 20px;
+    margin: -10px 20px 0 20px;
 }
 .top-offer-product-button #product-button{
     width:100%; 
@@ -83,8 +82,10 @@
         display: grid;
         grid-template-columns: repeat(auto-fit , minmax(270px,270px));
         grid-auto-rows: 375px;
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
+        grid-gap: 20px;
+        display: -ms-grid;
+        -ms-grid-columns: repeat(auto-fit , mixmax(270px,270px));
+        -ms-grid-rows: 375px;
     }
 }
 @media only screen and (max-width: 1157px){
@@ -99,6 +100,9 @@
         grid-auto-rows: 375px;
         grid-column-gap: 20px;
         grid-row-gap: 20px;
+        display: -ms-grid;
+        -ms-grid-columns: repeat(auto-fit , mixmax(270px,270px));
+        -ms-grid-rows: 375px;
     }
     .top-offers-heading{
         margin-left: 30px;
