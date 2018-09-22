@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="body-main-content">
+<div class="body-main-container">
 
   <!--Main Image Slider---------------------------------------------------------------------------------------------->
   <div class="slider" id="slider">
@@ -20,18 +20,18 @@
   </div>
 
   <!--Todays New Hot Deals---------------------------------------------------------------------------------------->
-  <div class="today-deals-main-content">
+  <div class="today-deals-main-container">
     <!--Heading-->
     <div class="today-deals-heading">
       <h2>Today's Hot Deals</h2>
     </div>
     <!--Products-->
-    <div class="today-deals-products-content">
+    <div class="today-deals-products-container">
         <!--Product (1)-->
         <div class="today-deals-product">
           <img src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
-          <div class="today-deals-product-description-content">
-            <div class="today-deals-product-description-brandlogo-content">
+          <div class="today-deals-product-description-container">
+            <div class="today-deals-product-description-brandlogo-container">
               <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
             </div>
             <div class="today-deals-product-detail">
@@ -43,8 +43,8 @@
         <!--Product (2)-->
         <div class="today-deals-product">
           <img src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
-          <div class="today-deals-product-description-content">
-            <div class="today-deals-product-description-brandlogo-content">
+          <div class="today-deals-product-description-container">
+            <div class="today-deals-product-description-brandlogo-container">
               <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
             </div>
             <div class="today-deals-product-detail">
@@ -56,8 +56,8 @@
         <!--Product (3)-->
         <div class="today-deals-product">
           <img style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
-          <div class="today-deals-product-description-content">
-              <div class="today-deals-product-description-brandlogo-content">
+          <div class="today-deals-product-description-container">
+              <div class="today-deals-product-description-brandlogo-container">
                 <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
               </div>
               <div class="today-deals-product-detail">
@@ -71,13 +71,13 @@
 
 
   <!--Top Stores-------------------------------------------------------------------------------------------------->
-  <div class="top-stores-main-content" id="top-stores-main-content">
+  <div class="top-stores-main-container" id="top-stores-main-container">
     <!--Heading-->
     <div class="top-stores-heading">
       <h2>Top Stores</h2>
     </div>
     <!--Stores Slides-->
-    <div class="stores-content">
+    <div class="stores-container">
       @for($i=1; $i<=10; $i++)
       <div class="item">
           <div class="store-img">
@@ -95,7 +95,7 @@
 
   
   <!--Top Offers Deals Products----------------------------------------------------------------------------------->
-  <div class="top-offers-main-content">
+  <div class="top-offers-main-container">
     <!--Heading-->
     <div class="top-offers-heading">
       <h2>Top Offers</h2>
@@ -110,7 +110,7 @@
           <div class="top-offer-product-title">
             <h2>Famous Product title</h2>
           </div>
-          <hr style="border-top: 1px dotted #D5D1D1;">
+          <hr style="border-top: 1px dotted #D5D1D1; margin-top: 2px;">
           <div class="top-offer-product-detail">
             <h2 class="top-offer-product-offer">
               Up to 30% Off
@@ -141,7 +141,7 @@
         // titleBarTop: "off"
       });  
     });
-    $('#top-stores-main-content').multislider({
+    $('#top-stores-main-container').multislider({
         interval: 5000,
         slideAll: false,
         duration: 700

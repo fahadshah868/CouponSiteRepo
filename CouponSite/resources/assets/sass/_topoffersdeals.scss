@@ -1,11 +1,13 @@
-.top-offers-main-content{
+.top-offers-main-container{
     width: 100%;
     margin: 30px auto;
     text-align: center;
 }
 .top-offers-heading h2{
     font-size:28px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
+    color: $topoffers-heading-textcolor;
 }
 .top-offers-products{
     width: 1150px;
@@ -15,14 +17,14 @@
 }
 .top-offers-products .top-offers-product:nth-child(n){
     width: calc(25% - 12px);
-    height: 370px;
+    height: 350px;
     margin: 0 16px 16px 0;
     background-color: $whitecolor;
     border-radius: 2px;
     border: 1px solid $border-color;
     cursor: pointer;
-    transition: 0.3s;
-    -webkit-transition: 0.3s;
+    transition: 0.7s;
+    -webkit-transition: 0.7s;
 }
 .top-offers-products .top-offers-product:nth-child(4n){
     margin: 0;
@@ -34,8 +36,8 @@
 }
 .top-offer-product-img{
     margin:10px auto 0 auto; 
-    width:150px; 
-    height:150px;
+    width:130px; 
+    height:130px;
 }
 .top-offer-product-img img{
     width: 100%;
@@ -43,13 +45,14 @@
 }
 .top-offer-product-title{
     width: 92%;
-    height: 45px; 
+    height: 50px; 
     margin: 20px 10px 0 10px; 
     text-align:center;
 }
 .top-offer-product-title h2{
     font-size:18px; 
     font-weight:bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: $producttitle-textcolor;
 }
 .top-offer-product-detail{
@@ -59,12 +62,14 @@
 }
 .top-offer-product-offer{
     font-size:18px; 
-    font-weight:bold; 
+    font-weight:bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: $productoffer-textcolor;
 }
 .top-offer-product-offer-type{
     font-size:16px; 
-    font-weight:bold; 
+    font-weight:bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: $productoffer-typecolor;
 }
 .top-offer-product-button{
@@ -76,7 +81,8 @@
     background-color: $productoffer-textcolor; 
     color: $whitecolor; 
     border: 2px solid $productoffer-textcolor; 
-    border-radius: 4px; 
+    border-radius: 4px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight:bold; 
     cursor:pointer; 
     transition: 0.5s;
@@ -97,14 +103,12 @@
     }
     .top-offers-products .top-offers-product{
         width: calc(25% - 12px);
-        height: 370px;
+        height: 350px;
         margin: 0 16px 16px 0;
         background-color: $whitecolor;
         border-radius: 2px;
         border: 1px solid $border-color;
         cursor: pointer;
-        transition: 0.3s;
-        -webkit-transition: 0.3s;
     }    
 }
 @media only screen and (max-width: 1050px){
@@ -114,14 +118,12 @@
     }
     .top-offers-products .top-offers-product:nth-child(n){
         width: calc(33% - 8.4px);
-        height: 370px;
+        height: 350px;
         margin: 0 16px 16px 0;
         background-color: $whitecolor;
         border-radius: 2px;
         border: 1px solid $border-color;
         cursor: pointer;
-        transition: 0.3s;
-        -webkit-transition: 0.3s;
     }
     .top-offers-products .top-offers-product:nth-child(3n){
         margin: 0;
@@ -134,14 +136,12 @@
     }
     .top-offers-products .top-offers-product:nth-child(n){
         width: calc(50% - 8px);
-        height: 370px;
+        height: 350px;
         margin: 0 16px 16px 0;
         background-color: $whitecolor;
         border-radius: 2px;
         border: 1px solid $border-color;
         cursor: pointer;
-        transition: 0.3s;
-        -webkit-transition: 0.3s;
     }
     .top-offers-products .top-offers-product:nth-child(2n){
         margin: 0;
@@ -154,13 +154,11 @@
     }
     .top-offers-products .top-offers-product:nth-child(n){
         width: 100%;
-        height: 370px;
+        height: 350px;
         margin: 0 0 16px 0;
         background-color: $whitecolor;
         border-radius: 2px;
         border: 1px solid $border-color;
         cursor: pointer;
-        transition: 0.3s;
-        -webkit-transition: 0.3s;
     }
 }

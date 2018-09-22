@@ -1,5 +1,5 @@
 
-<footer class="footer footer-content">
+<footer class="footer footer-container">
     <div class="footer-columns">
         <div class="column">
             <h5>Web Site</h5>
