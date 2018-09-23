@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('pages.home');
 });
+
+Route::get('/popularstores', function() {
+    return View::make('./views.layouts.popularstores');
+});

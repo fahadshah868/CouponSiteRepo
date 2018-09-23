@@ -1,63 +1,79 @@
 
-<script type="text/javascript">
-    function DropDown(el) {
-        this.dd = el;
-        this.placeholder = this.dd.children('span');
-        this.opts = this.dd.find('ul.dropdown > li');
-        this.val = '';
-        this.index = -1;
-        this.initEvents();
-    }
-    DropDown.prototype = {
-        initEvents : function() {
-            var obj = this;
-            obj.dd.on('click', function (event) {
-                $(this).toggleClass('active');
-                return false;
-            });
-        },
-        getValue: function () {
-            return this.val;
-        },
-        getIndex: function () {
-            return this.index;
+<script type="text/javascript">    
+$(document).ready(function() {
+    //Default Action
+    $(".dropdown-sidebar-container ul li:first").addClass("active") //Activate first tab
+    $(".dropdown-sidebar-container ul li a:first").addClass("activelink") //Activate first tab
+    $(".dropdown-detail-container").load("./popularstores");
+
+    //On Click Event
+    $(".dropdown-sidebar-container ul li").click(function() {
+        if($(this).attr('id') == "popularstores"){
+            $(".dropdown-detail-container").load("/popularstores");
         }
-    }
-    $(function () {
-        var dd = new DropDown($('#categories-dropdown-button'));
-        $(document).click(function () {
-            $('.categories-dropdown-button').removeClass('active');
-        });
+        else if($(this).attr('id') == "popularcategories"){
+            $(".dropdown-detail-container").load("./PopularCategories");
+        }
+        else if($(this).attr('id') == "popularcodes"){
+            $(".dropdown-detail-container").load("./PopularCode");
+        }
+        else if($(this).attr('id') == "specialevents"){
+            $(".dropdown-detail-container").load("./SpecialEvents");
+        }
+        $(".dropdown-sidebar-container ul li").removeClass("active"); //Remove any "active" class
+        $(".dropdown-sidebar-container ul li a").removeClass("activelink"); //Remove any "active" class
+        $(this).addClass("active"); //Add "active" class to selected tab
+        $(this).find('a').addClass("activelink"); //Add "active" class to selected tab
     });
+    
+    $(document).on("click",function(event){
+        if($(event.target).hasClass("site-header-explorebutton") || $(event.target).hasClass("fa-angle-down") || $(event.target).hasClass("button-heading") ){
+            $(".dropdown").addClass("show");
+            $(".dropdown").find('*').addClass("show");
+            $(".dropdown").removeClass("hide");
+            $(".dropdown > div").find('*').removeClass("hide");
+            $(".dropdown").fadeToggle("slow");
+        }
+        else if(!$(event.target).hasClass("show")){
+            if($(".dropdown").hasClass("show") && $(".dropdown").css("display") == "block"){
+                $(".dropdown").removeClass("show");
+                $(".dropdown").find('*').removeClass("show");
+                $(".dropdown").addClass("hide");
+                $(".dropdown").find('*').addClass("hide");
+                $(".dropdown").fadeToggle("slow");
+                $(".site-header-explorebutton div:first").removeClass("arrow");
+            }
+        }
+    });
+});
 </script>
 
 <header class="site-header-container">
     <div class="site-header">
         <div class="site-header-logo">
-            <a href="/BusinessWebProject/BusinessWeb/Pages/mainpage.html" id="logo"><font id="logo-font">WebSite</font></a>
+            <a href="/BusinessWebProject/BusinessWeb/Pages/mainpage.html" id="logo">WebSite</a>
         </div>
         <div class="site-header-searchbar">
             <form>
-                <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url('<?= asset("images/searchicon.png")?>');"
+                <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url('<?= asset("images/searchicon.png")?>');" />
             </form>
         </div>
-        <div class="site-header-category-container">
-            <div class="site-header-categories-button">
-                <div id="categories-dropdown-button" class="categories-dropdown-button" tabindex="1">
-                    <span>Popular Categories</span>
-                    <ul class="dropdown">
-                        <li><a href="#">Men Clothing</a></li>
-                        <li><a href="#">Women Clothing</a></li>
-                        <li><a href="#">Men Shoes</a></li>
-                        <li><a href="#">Women Shoes</a></li>
-                        <li><a href="#">HandBags</a></li>
-                        <li><a href="#">Babies Clothing</a></li>
-                        <li><a href="#">Men Pants</a></li>
-                        <li><a href="#">Sports Clothing</a></li>
-                        <li><a href="#">Plus Size Clothing</a></li>
-                        <li><a href="#">Jewelery</a></li>
-                        <li><a href="#">See All</a></li>
-                    </ul>
+        <div class="site-header-explorebutton-container">
+            <div class="site-header-explorebutton" tabindex="1">
+                <span class="button-heading">Explore<i style="padding-left: 10px;" class="fa fa-angle-down"></i></span>
+                <div class="dropdown">
+                    <div class="dropdown-body-container">
+                        <div class="dropdown-sidebar-container">
+                            <h2>Explore to Save Big</h2>
+                            <ul>
+                                <li id="popularstores"><a href="#">Popular Stores<i class="fa fa-angle-right"></i></a></li>
+                                <li id="popularcategories"><a href="#">Popular Categories<i class="fa fa-angle-right"></i></a></li>
+                                <li id="popularcodes"><a href="#">Popular Online Codes<i class="fa fa-angle-right"></i></a></li>
+                                <li id="specialevents"><a href="#">Special Events<i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown-detail-container"></div>
+                    </div>
                 </div>
             </div>
         </div>
