@@ -10596,13 +10596,14 @@ body {
 
 .dropdown .dropdown-body-container {
   width: 100%;
-  height: 350px;
+  height: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   cursor: auto;
+  z-index: 99.99;
 }
 
 /* drop down side bar
@@ -10679,6 +10680,47 @@ body {
   .site-header {
     padding: 0 30px;
     width: 100%;
+  }
+
+  .dropdown .dropdown-body-container .dropdown-sidebar-container {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 250px;
+            flex: 0 0 250px;
+  }
+
+  .dropdown-detail-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .site-header-explorebutton .dropdown:after,
+  .site-header-explorebutton .dropdown:before {
+    bottom: 100.5%;
+    right: 95px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .site-header-explorebutton .dropdown:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: #ffffff;
+    border-width: 10px;
+    margin-left: -10px;
+  }
+
+  .site-header-explorebutton .dropdown:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #ffffff;
+    border-width: 10px;
+    margin-left: -10px;
+  }
+
+  .dropdown .dropdown-body-container {
+    padding: 0 20px;
   }
 }
 
@@ -10833,7 +10875,7 @@ body {
   transition: 0.5s;
 }
 
-@media only screen and (max-width: 1115px) {
+@media only screen and (max-width: 1116px) {
   .footer-columns {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -10898,11 +10940,10 @@ body {
   }
 }
 
-.slider,
-.slider > div {
+.cover-img {
+  background-image: url("https://unsplash.it/1920/1200?image=822");
   /* Images default to Center Center. Maybe try 'center top'? */
   background-position: center center;
-  display: block;
   width: 100%;
   height: 400px;
   /* height: 100vh; */
@@ -10917,237 +10958,6 @@ body {
   transition: -webkit-transform .4s;
   transition: transform .4s;
   transition: transform .4s, -webkit-transform .4s;
-}
-
-.slider > div {
-  position: absolute;
-}
-
-.slider > i {
-  color: #5bbd72;
-  position: absolute;
-  font-size: 60px;
-  margin: 20px;
-  top: 40%;
-  text-shadow: 0 10px 2px #223422;
-  -webkit-transition: .3s;
-  transition: .3s;
-  width: 30px;
-  padding: 10px 13px;
-  background: #ffffff;
-  background: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  line-height: 0;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  border-radius: 3px;
-  z-index: 4;
-}
-
-.slider > i svg {
-  margin-top: 3px;
-}
-
-.slider > .left {
-  left: -100px;
-}
-
-.slider > .right {
-  right: -100px;
-}
-
-.slider:hover > .left {
-  left: 0;
-}
-
-.slider:hover > .right {
-  right: 0;
-}
-
-.slider > i:hover {
-  background: #ffffff;
-  background: #ffffff;
-  -webkit-transform: translateX(-2px);
-          transform: translateX(-2px);
-}
-
-.slider > i.right:hover {
-  -webkit-transform: translateX(2px);
-          transform: translateX(2px);
-}
-
-.slider > i.right:active,
-.slider > i.left:active {
-  -webkit-transform: translateY(1px);
-          transform: translateY(1px);
-}
-
-.slider:hover > div {
-  -webkit-transform: scale(1.01);
-          transform: scale(1.01);
-}
-
-.hoverZoomOff:hover > div {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-
-.slider > ul {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  z-index: 4;
-  padding: 0;
-  margin: 0;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-
-.slider > ul > li {
-  padding: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  list-style: none;
-  float: left;
-  margin: 10px 10px 0;
-  cursor: pointer;
-  border: 1px solid #ffffff;
-  -webkit-transition: .3s;
-  transition: .3s;
-}
-
-.slider > ul > .showli {
-  background-color: #7EC03D;
-  -webkit-animation: boing .5s forwards;
-  animation: boing .5s forwards;
-}
-
-.slider > ul > li:hover {
-  background-color: #7EC03D;
-}
-
-.slider > .show {
-  z-index: 1;
-}
-
-.hideDots > ul {
-  display: none;
-}
-
-.showArrows > .left {
-  left: 0;
-}
-
-.showArrows > .right {
-  right: 0;
-}
-
-.titleBar {
-  z-index: 2;
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  padding: 20px 30px;
-  -webkit-transition: .3s;
-  transition: .3s;
-  color: #ffffff;
-}
-
-.titleBar * {
-  -webkit-transform: translate(-20px, 30px);
-          transform: translate(-20px, 30px);
-  -webkit-transition: all 700ms cubic-bezier(0.37, 0.31, 0.2, 0.85) 200ms;
-  transition: all 700ms cubic-bezier(0.37, 0.31, 0.2, 0.85) 200ms;
-  opacity: 0;
-}
-
-.titleBarTop .titleBar * {
-  -webkit-transform: translate(-20px, -30px);
-          transform: translate(-20px, -30px);
-}
-
-.slider:hover .titleBar,
-.slider:hover .titleBar * {
-  -webkit-transform: translate(0);
-          transform: translate(0);
-  opacity: 1;
-}
-
-.titleBarTop .titleBar {
-  top: 0;
-  bottom: initial;
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-}
-
-.slider > div span {
-  display: block;
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  bottom: 0;
-  color: #ffffff;
-  text-align: center;
-  padding: 0;
-  width: 100%;
-}
-
-@-webkit-keyframes boing {
-  0% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-
-  40% {
-    -webkit-transform: scale(0.6);
-            transform: scale(0.6);
-  }
-
-  60% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-
-  80% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-
-@keyframes boing {
-  0% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-
-  40% {
-    -webkit-transform: scale(0.6);
-            transform: scale(0.6);
-  }
-
-  60% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-
-  80% {
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
 }
 
 .body-main-container {

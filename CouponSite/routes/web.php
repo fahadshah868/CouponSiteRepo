@@ -10,11 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('pages.home');
 });
-
-Route::get('/popularstores', function() {
-    return View::make('./views.layouts.popularstores');
+Route::any('/popularstores',function(){
+    return view('layouts.popularstores');
+});
+Route::any('/popularcategories',function(){
+    return view('layouts.popularcategories');
+});
+Route::any('/specialevents',function(){
+    return view('layouts.specialevents');
 });

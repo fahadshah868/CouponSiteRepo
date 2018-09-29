@@ -4,7 +4,7 @@ $(document).ready(function() {
     //Default Action
     $(".dropdown-sidebar-container ul li:first").addClass("active") //Activate first tab
     $(".dropdown-sidebar-container ul li a:first").addClass("activelink") //Activate first tab
-    $(".dropdown-detail-container").load("./popularstores");
+    $(".dropdown-detail-container").load("/popularstores");
 
     //On Click Event
     $(".dropdown-sidebar-container ul li").click(function() {
@@ -12,13 +12,10 @@ $(document).ready(function() {
             $(".dropdown-detail-container").load("/popularstores");
         }
         else if($(this).attr('id') == "popularcategories"){
-            $(".dropdown-detail-container").load("./PopularCategories");
-        }
-        else if($(this).attr('id') == "popularcodes"){
-            $(".dropdown-detail-container").load("./PopularCode");
+            $(".dropdown-detail-container").load("/popularcategories");
         }
         else if($(this).attr('id') == "specialevents"){
-            $(".dropdown-detail-container").load("./SpecialEvents");
+            $(".dropdown-detail-container").load("/specialevents");
         }
         $(".dropdown-sidebar-container ul li").removeClass("active"); //Remove any "active" class
         $(".dropdown-sidebar-container ul li a").removeClass("activelink"); //Remove any "active" class
@@ -55,7 +52,7 @@ $(document).ready(function() {
         </div>
         <div class="site-header-searchbar">
             <form>
-                <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url('<?= asset("images/searchicon.png")?>');" />
+                <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url(images/searchicon.png)" />
             </form>
         </div>
         <div class="site-header-explorebutton-container">
@@ -68,7 +65,6 @@ $(document).ready(function() {
                             <ul>
                                 <li id="popularstores"><a href="#">Popular Stores<i class="fa fa-angle-right"></i></a></li>
                                 <li id="popularcategories"><a href="#">Popular Categories<i class="fa fa-angle-right"></i></a></li>
-                                <li id="popularcodes"><a href="#">Popular Online Codes<i class="fa fa-angle-right"></i></a></li>
                                 <li id="specialevents"><a href="#">Special Events<i class="fa fa-angle-right"></i></a></li>
                             </ul>
                         </div>
