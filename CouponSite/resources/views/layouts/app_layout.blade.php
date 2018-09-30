@@ -16,6 +16,7 @@
         <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
         <script src="{{asset('js/imageslider.js')}}"></script>
         <script src="{{asset('js/topstoresms.min.js')}}"></script>
+        <script src="{{asset('js/header.js')}}"></script>
     @show
 </head>
 <body>

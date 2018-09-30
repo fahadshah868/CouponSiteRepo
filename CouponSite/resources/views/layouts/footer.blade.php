@@ -12,27 +12,27 @@
             </div>        
         </div>
         <div class="column">
-            <h5>About us</h5>
+            <h5>Browse Pages</h5>
             <ul>
-                <li><a href="#">Company Information</a></li>
+                <li><a href="#">Popular Stores</a></li>
+                <li><a href="#">Popular Categories</a></li>
+                <li><a href="#">Instore Coupons</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h5>Special Events</h5>
+            <ul>
+                <li><a href="#">Black Friday</a></li>
+                <li><a href="#">Cyber Monday</a></li>
+                <li><a href="#">Chrismas</a></li>
+            </ul>
+        </div>
+        <div class="column">
+            <h5>General</h5>
+            <ul>
+                <li><a href="#">About us</a></li>
                 <li><a href="#">Contact us</a></li>
-                <li><a href="#">Reviews</a></li>
-            </ul>
-        </div>
-        <div class="column">
-            <h5>Support</h5>
-            <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Help desk</a></li>
-                <li><a href="#">Forums</a></li>
-            </ul>
-        </div>
-        <div class="column">
-            <h5>Legal</h5>
-            <ul>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Blog</a></li>
             </ul>
         </div>
     </div>
