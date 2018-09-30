@@ -22,9 +22,9 @@
         <div class="column">
             <h5>Special Events</h5>
             <ul>
-                <li><a href="#">Black Friday</a></li>
-                <li><a href="#">Cyber Monday</a></li>
-                <li><a href="#">Chrismas</a></li>
+                <li><a href="#">Black Friday Deals</a></li>
+                <li><a href="#">Cyber Monday Deals</a></li>
+                <li><a href="#">Christmas Deals</a></li>
             </ul>
         </div>
         <div class="column">
