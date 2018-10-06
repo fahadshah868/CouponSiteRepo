@@ -26,9 +26,8 @@
 }
 .site-header-searchbar {
     width: 100%;
-    margin-right: 30px;
+    margin-right: 20px;
 }
-
 #searchbar {
     width: 100%;
     border: 2px solid $topsearchbar-bordercolor;
@@ -78,13 +77,13 @@
 
 .site-header-explorebutton .dropdown:after {
 	border-color: rgba(136, 183, 213, 0);
-	border-bottom-color: #ffffff;
+	border-bottom-color: $whitecolor;
 	border-width: 10px;
 	margin-left: -10px;
 }
 .site-header-explorebutton .dropdown:before {
 	border-color: rgba(194, 225, 245, 0);
-	border-bottom-color: #ffffff;
+	border-bottom-color: $whitecolor;
 	border-width: 10px;
 	margin-left: -10px;
 }
@@ -127,7 +126,7 @@
     position: relative;
 }
 
-.active{
+.active-sidebar-li{
     background-color: #D1D1D1;
 }
 
@@ -164,7 +163,7 @@
 .dropdown-detail-container{
     width: 850px;
     height: 100%;
-    background-color: #ffffff;
+    background-color: $whitecolor;
 }
 
 /* popular stores in drop down detail container
@@ -310,6 +309,111 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: $dropdownmenu-links-color;
 }
+
+/*toggle button and list
+--------------------------------------------------------------*/
+.menu-toggle-container{
+    display: none;
+}
+.menu-toggle{
+	flex:0 0 auto;
+	max-width:45px;
+    min-width: 45px;
+	height:45px;
+	border:2px solid $whitecolor;
+    border-radius: 3px;
+	cursor:pointer;
+	position:relative;
+}
+.hamburger,.cross{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.hamburger span{
+	display:block;
+	width:20px;
+	height:3px;
+	margin-bottom:3px;
+	overflow:hidden;
+	position:relative;
+}
+.hamburger span:last-child{
+	margin:0;
+}
+.hamburger span:before,.hamburger span:after{
+	content:"";
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-color: $whitecolor;
+	transform:translateX(-200%);
+	transition:transform ease 300ms;
+}
+.hamburger span:after{
+	transform:translateX(0);
+}
+.hamburger span:nth-child(2):before,.hamburger span:nth-child(2):after{
+	transition-delay:75ms;
+}
+.hamburger span:last-child:before,.hamburger span:last-child:after{
+	transition-delay:150ms;
+}
+.menu-toggle.active .hamburger span:before{
+	transform:translateX(100%);
+}
+.menu-toggle.active .hamburger span:after{
+	transform:translateX(200%);
+}
+.cross span{
+	display:block;
+	width:20px;
+	height:3px;
+	background-color:$whitecolor;
+	transform:translateY(50%) rotate(45deg) scaleX(0);
+	transition:transform ease 200ms;
+}
+.cross span:last-child{
+	transform:translateY(-50%) rotate(-45deg) scaleX(0);
+}
+.menu-toggle.active .cross span{
+	transition-delay:450ms;
+	transform:translateY(50%) rotate(45deg) scaleX(1);
+}
+.menu-toggle.active .cross span:last-child{
+	transform:translateY(-50%) rotate(-45deg) scaleX(1);
+}
+.menu-toggle-list li{
+  list-style: none;
+  width: 100%;
+  background-color: $togglebutton-list-backgroundcolor;
+}
+.menu-toggle-list li a{
+  display: block;
+  text-decoration: none;
+  padding: 14px 30px;
+  color: $whitecolor;
+}
+.menu-toggle-list li a:hover{
+  background-color: $togglebutton-list-hover-backgroundcolor;
+}
+.menu-toggle-list-container{
+  display: none;
+}
+.menu-toggle-list li ul{
+  display: none;
+}
+.menu-toggle-list ul li{
+  background-color: $togglebutton-sublist-backgroundcolor;
+}
+.menu-toggle-list ul li a{
+  padding: 14px 50px;
+}
+.menu-toggle-list ul li a:hover{
+  background-color: $togglebutton-sublist-hover-backgroundcolor;
+}
+
 @media only screen and (max-width: 1117px){
     .site-header {
         padding: 0 30px;
@@ -334,13 +438,13 @@
     }
     .site-header-explorebutton .dropdown:after {
         border-color: rgba(136, 183, 213, 0);
-        border-bottom-color: #ffffff;
+        border-bottom-color: $whitecolor;
         border-width: 10px;
         margin-left: -10px;
     }
     .site-header-explorebutton .dropdown:before {
         border-color: rgba(194, 225, 245, 0);
-        border-bottom-color: #ffffff;
+        border-bottom-color: $whitecolor;
         border-width: 10px;
         margin-left: -10px;
     }
@@ -358,6 +462,9 @@
     }
     .site-header-searchbar {
         width: 100%;
-        margin: 0;
+        margin-right: 20px;
+    }
+    .menu-toggle-container{
+        display: block;
     }
 }

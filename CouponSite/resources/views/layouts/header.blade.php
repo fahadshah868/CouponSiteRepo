@@ -9,6 +9,41 @@
                 <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url(images/searchicon.png)" />
             </form>
         </div>
+
+        {{-- toggle button to browse list --}}
+        <div class="menu-toggle-container">
+            <div class="menu-toggle-button">
+                <div class="menu-toggle" id="menu-toggle">
+                    <div class="hamburger">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="cross">
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+            </div>
+            <div id="menu-toggle-list-container" class="menu-toggle-list-container" style="position: absolute; top: 80px; left: 0; right: 0; min-height: 100vh; background-color: rgba(0, 0, 0, 0.4); z-index: 2;">
+              <ul class="show menu-toggle-list">
+                  <li><a href="#">Browse Stores</a></li>
+                  <li><a href="#">Browse Categories</a></li>
+                  <li class="parentli"><a href="#">Browse Events<i style="float: right; padding-right: 10px;" class="fa fa-angle-down"></i></a>
+                    <ul id="events-list">
+                        <li><a href="#">Black Friday</a></li>
+                        <li><a href="#">Cyber Monday</a></li>
+                        <li><a href="#">Christmas</a></li>
+                        <li><a href="#">Valentines Day</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Browse Instore Coupons</a></li>
+              </ul>
+            </div>          
+          </div>
+
+          {{-- explore button to explore list --}}
+
         <div class="site-header-explorebutton-container">
             <div class="site-header-explorebutton" tabindex="1">
                 <span class="button-heading">Explore<i style="padding-left: 10px;" class="fa fa-angle-down"></i></span>
