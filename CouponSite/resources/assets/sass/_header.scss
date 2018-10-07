@@ -55,7 +55,7 @@
     background-color: $dropdownbutton-onhover-backgroundcolor;
     transition: 0.6s;
 }
-.site-header-explorebutton .dropdown {
+.site-header-explorebutton .site-header-dropdown {
     left:0;
     padding:0;
     margin: 0;
@@ -64,7 +64,7 @@
     top:80px;
     z-index: 2;
 }
-.site-header-explorebutton .dropdown:after, .site-header-explorebutton .dropdown:before {
+.site-header-explorebutton .site-header-dropdown:after, .site-header-explorebutton .site-header-dropdown:before {
 	bottom: 100.5%;
 	right: 65px;
 	border: solid transparent;
@@ -75,13 +75,13 @@
 	pointer-events: none;
 }
 
-.site-header-explorebutton .dropdown:after {
+.site-header-explorebutton .site-header-dropdown:after {
 	border-color: rgba(136, 183, 213, 0);
 	border-bottom-color: $whitecolor;
 	border-width: 10px;
 	margin-left: -10px;
 }
-.site-header-explorebutton .dropdown:before {
+.site-header-explorebutton .site-header-dropdown:before {
 	border-color: rgba(194, 225, 245, 0);
 	border-bottom-color: $whitecolor;
 	border-width: 10px;
@@ -89,7 +89,7 @@
 }
 
 
-.dropdown .dropdown-body-container{
+.site-header-dropdown .site-header-dropdown-body-container{
     width: 100%;
     height: 400px;
     display: flex;
@@ -101,23 +101,23 @@
 /* drop down side bar
 ------------------------------------*/
 
-.dropdown .dropdown-body-container .dropdown-sidebar-container{
+.site-header-dropdown .site-header-dropdown-body-container .site-header-dropdown-sidebar-container{
     width: 250px;
     height: 100%;
     background-color: #F1F1F1;
 }
-.dropdown-sidebar-container h2{
+.site-header-dropdown-sidebar-container h2{
     font-size: 23px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: gray;
     margin: 20px 0 30px 0;
 }
-.dropdown .dropdown-body-container .dropdown-sidebar-container ul{
+.site-header-dropdown .site-header-dropdown-body-container .site-header-dropdown-sidebar-container ul{
     max-width: 220px;
     margin: auto;
 }
 
-.dropdown .dropdown-body-container .dropdown-sidebar-container ul li{
+.site-header-dropdown .site-header-dropdown-body-container .site-header-dropdown-sidebar-container ul li{
     list-style: none;
     text-align: left;
     border-radius: 2px;
@@ -134,12 +134,12 @@
     color: #205081 !important;
 }
 
-.dropdown .dropdown-body-container .dropdown-sidebar-container ul li:hover{
+.site-header-dropdown .site-header-dropdown-body-container .site-header-dropdown-sidebar-container ul li:hover{
     background-color: #D1D1D1;
     text-decoration: none;
 }
 
-.dropdown .dropdown-body-container .dropdown-sidebar-container ul li a{
+.site-header-dropdown .site-header-dropdown-body-container .site-header-dropdown-sidebar-container ul li a{
     display: block;
     color: #000000;
     margin-left: 10px;
@@ -147,7 +147,7 @@
     font-size: 14px;
 }
 
-.dropdown .dropdown-body-container .dropdown-sidebar-container ul li a:hover{
+.site-header-dropdown .site-header-dropdown-body-container .site-header-dropdown-sidebar-container ul li a:hover{
     text-decoration: none;
 }
 
@@ -160,7 +160,7 @@
 /* drop down detail container
 --------------------------------------*/
 
-.dropdown-detail-container{
+.site-header-dropdown-detail-container{
     width: 850px;
     height: 100%;
     background-color: $whitecolor;
@@ -312,7 +312,7 @@
 
 /*toggle button and list
 --------------------------------------------------------------*/
-.menu-toggle-container{
+.site-header-menu-toggle-container{
     display: none;
 }
 .menu-toggle{
@@ -419,14 +419,14 @@
         padding: 0 30px;
         width: 100%;
     }
-    .dropdown .dropdown-body-container .dropdown-sidebar-container{
+    .site-header-dropdown .site-header-dropdown-body-container .site-header-dropdown-sidebar-container{
         flex: 0 0 250px;
     }
-    .dropdown-detail-container{
+    .site-header-dropdown-detail-container{
         width: 100%;
         height: 100%;
     }
-    .site-header-explorebutton .dropdown:after, .site-header-explorebutton .dropdown:before {
+    .site-header-explorebutton .site-header-dropdown:after, .site-header-explorebutton .site-header-dropdown:before {
         bottom: 100.5%;
         right: 95px;
         border: solid transparent;
@@ -436,20 +436,20 @@
         position: absolute;
         pointer-events: none;
     }
-    .site-header-explorebutton .dropdown:after {
+    .site-header-explorebutton .site-header-dropdown:after {
         border-color: rgba(136, 183, 213, 0);
         border-bottom-color: $whitecolor;
         border-width: 10px;
         margin-left: -10px;
     }
-    .site-header-explorebutton .dropdown:before {
+    .site-header-explorebutton .site-header-dropdown:before {
         border-color: rgba(194, 225, 245, 0);
         border-bottom-color: $whitecolor;
         border-width: 10px;
         margin-left: -10px;
     }
     
-    .dropdown .dropdown-body-container{
+    .site-header-dropdown .site-header-dropdown-body-container{
         padding: 0 20px;
     }
 }
@@ -464,7 +464,7 @@
         width: 100%;
         margin-right: 20px;
     }
-    .menu-toggle-container{
+    .site-header-menu-toggle-container{
         display: block;
     }
 }

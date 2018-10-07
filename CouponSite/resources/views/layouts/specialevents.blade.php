@@ -7,7 +7,6 @@
     <title>Special Events</title>
     </head>
     <body>
-        <script src="{{asset('js/dropdownmenudetailcontainer.js')}}" type="text/javascript"></script>
         <div class="dropdownmenu-specialevents-body-container">
             <div class="dropdownmenu-specialevents-header-container">
                 <div class="dropdownmenu-specialevents-main-heading">Special Events</div>

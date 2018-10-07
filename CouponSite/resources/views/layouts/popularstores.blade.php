@@ -7,7 +7,6 @@
     <title>Popular Stores</title>
 </head>
 <body>
-    <script src="{{asset('js/dropdownmenudetailcontainer.js')}}" type="text/javascript"></script>
     <div class="dropdownmenu-popularstore-body-container">
         <div class="dropdownmenu-popularstores-header-container">
             <div class="dropdownmenu-popularstores-main-heading">Popular Stores</div>
