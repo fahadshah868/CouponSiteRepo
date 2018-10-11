@@ -10661,7 +10661,7 @@ body {
   text-decoration: none;
 }
 
-.fa-angle-right {
+.site-header-dropdown-sidebar-container .fa-angle-right {
   position: absolute;
   top: calc(50% - 8.5px);
   right: 20px;
@@ -11038,6 +11038,10 @@ body {
 
 .menu-toggle-list ul li a {
   padding: 14px 50px;
+}
+
+.menu-toggle-list ul li a .fa-angle-right {
+  float: right;
 }
 
 .menu-toggle-list ul li a:hover {

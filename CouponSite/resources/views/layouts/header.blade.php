@@ -31,10 +31,10 @@
                     <li><a href="#">Browse Categories</a></li>
                     <li class="parentli"><a href="#">Browse Events<i style="float: right; padding-right: 10px;" class="fa fa-angle-down"></i></a>
                       <ul id="events-list">
-                          <li><a href="#">Black Friday</a></li>
-                          <li><a href="#">Cyber Monday</a></li>
-                          <li><a href="#">Christmas</a></li>
-                          <li><a href="#">Valentines Day</a></li>
+                          <li><a href="#">Black Friday<i class="fa fa-angle-right"></i></a></li>
+                          <li><a href="#">Cyber Monday<i class="fa fa-angle-right"></i></a></li>
+                          <li><a href="#">Christmas<i class="fa fa-angle-right"></i></a></li>
+                          <li><a href="#">Valentines Day<i class="fa fa-angle-right"></i></a></li>
                       </ul>
                     </li>
                     <li><a href="#">Browse Instore Coupons</a></li>
