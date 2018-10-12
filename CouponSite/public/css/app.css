@@ -10559,12 +10559,13 @@ body {
 }
 
 .site-header-explorebutton .site-header-dropdown {
+  top: 80px;
   left: 0;
+  right: 0;
   padding: 0;
   margin: 0;
   display: none;
   position: absolute;
-  top: 80px;
   z-index: 2;
 }
 

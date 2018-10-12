@@ -35,7 +35,7 @@ $(document).ready(function() {
             $('#events-list').slideUp();
             $("#site-header-dropdown").toggle();
         }
-        else if($(event.target).parents().hasClass('parentli')){
+        else if($(event.target).parent().hasClass('parentli') || $(event.target).parent().parent().hasClass('parentli')){
             $('#events-list').slideToggle();
         }
     });

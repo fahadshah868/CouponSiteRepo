@@ -31,10 +31,14 @@
                     <li><a href="#">Browse Categories</a></li>
                     <li class="parentli"><a href="#">Browse Events<i style="float: right; padding-right: 10px;" class="fa fa-angle-down"></i></a>
                       <ul id="events-list">
-                          <li><a href="#">Black Friday<i class="fa fa-angle-right"></i></a></li>
-                          <li><a href="#">Cyber Monday<i class="fa fa-angle-right"></i></a></li>
-                          <li><a href="#">Christmas<i class="fa fa-angle-right"></i></a></li>
-                          <li><a href="#">Valentines Day<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Black Friday Deals<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Cyber Monday Deals<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Christmas Deals<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Valentines Day Deals<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">New Year Deals<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Labour Day Deals<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Fathers Day Deals<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Mothers Day Deals<i class="fa fa-angle-right"></i></a></li>
                       </ul>
                     </li>
                     <li><a href="#">Browse Instore Coupons</a></li>
