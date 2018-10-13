@@ -393,6 +393,9 @@
 .menu-toggle.active .cross span:last-child{
 	transform:translateY(-50%) rotate(-45deg) scaleX(1);
 }
+.hamburger-mega-menu-list .fa-angle-down{
+    padding-top: 4px;
+}
 .hamburger-mega-menu-list li{
   list-style: none;
   width: 100%;
@@ -426,6 +429,7 @@
   padding: 14px 50px;
 }
 .hamburger-mega-menu-list ul li a .fa-angle-right{
+  padding-top: 4px;
   float: right;
 }
 .hamburger-mega-menu-list ul li a:hover{

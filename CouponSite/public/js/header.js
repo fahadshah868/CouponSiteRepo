@@ -46,5 +46,7 @@ $(document).ready(function() {
     $(window).resize(function() {
         $("#hamburgerbutton-mega-menu-overlay-container").css('height', '0');
         $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
+        $("#explorebutton-mega-menu-overlay-container").css('height', '0');
+        $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
     });
 });
