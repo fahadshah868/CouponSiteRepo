@@ -29,7 +29,7 @@
                 <ul class="show hamburger-mega-menu-list">
                     <li><a href="#">Browse Stores</a></li>
                     <li><a href="#">Browse Categories</a></li>
-                    <li class="parentli"><a href="#">Browse Events<i style="float: right; padding-right: 10px;" class="fa fa-angle-down"></i></a>
+                    <li class="parentli"><a href="#">Browse Events<i class="fa fa-angle-down"></i></a>
                       <ul id="events-list">
                         <li><a href="#">Black Friday Deals<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Cyber Monday Deals<i class="fa fa-angle-right"></i></a></li>
@@ -64,7 +64,9 @@
                             </ul>
                         </div>
                         <div class="site-header-explorebutton-mega-dropdown-detail-container" id="site-header-explorebutton-mega-dropdown-detail-container">
-                            
+                            <div class="loader-overlay-container">
+                                <div class="loader"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

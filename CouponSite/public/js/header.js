@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    var dropdowndetailcontainer = $("#site-header-explorebutton-mega-dropdown-detail-container");
+    dropdowndetailcontainer.html("<div class='loader-overlay-container'><div class='loader'></div></div>");
+    
     $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
     $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
 
@@ -66,7 +69,6 @@ $(document).ready(function() {
       
     //On click dropdown sidebar link
     $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li").click(function() {
-        var dropdowndetailcontainer = $("#site-header-explorebutton-mega-dropdown-detail-container");
         $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li").removeClass("active-sidebar-li"); //Remove any "active" class
         $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a").removeClass("activelink"); //Remove any "active" class
         $(this).addClass("active-sidebar-li"); //Add "active" class to selected tab
@@ -74,6 +76,7 @@ $(document).ready(function() {
 
         // load popular stores into dropdown detail container
         if($(this).attr('id') == "popularstores"){
+            dropdowndetailcontainer.html("<div class='loader-overlay-container'><div class='loader'></div></div>");
             $.ajax({
                 type:'GET',
                 url:'/getpopularstores',
@@ -106,6 +109,7 @@ $(document).ready(function() {
         }
         // load popular categories into dropdown detail container
         else if($(this).attr('id') == "popularcategories"){
+            dropdowndetailcontainer.html("<div class='loader-overlay-container'><div class='loader'></div></div>");
             $.ajax({
                 type:'GET',
                 url:'/getpopularcategories',
@@ -139,6 +143,7 @@ $(document).ready(function() {
         }
         // load special events into dropdown detail container
         else if($(this).attr('id') == "specialevents"){
+            dropdowndetailcontainer.html("<div class='loader-overlay-container'><div class='loader'></div></div>");
             $.ajax({
                 type:'GET',
                 url:'/getspecialevents',
