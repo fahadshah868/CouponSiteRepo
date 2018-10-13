@@ -25,7 +25,7 @@
                     </div>
                   </div>
             </div>
-            <div id="mega-menu-overlay-container" class="mega-menu-overlay-container" style="position: absolute; top: 80px; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.4); z-index: 2;">
+            <div id="hamburgerbutton-mega-menu-overlay-container" class="hamburgerbutton-mega-menu-overlay-container">
                 <ul class="show hamburger-mega-menu-list">
                     <li><a href="#">Browse Stores</a></li>
                     <li><a href="#">Browse Categories</a></li>
@@ -51,10 +51,8 @@
         <div class="site-header-explorebutton-mega-menu-container">
             <div class="site-header-explorebutton" tabindex="1">
                 <span class="button-heading">Explore<i style="padding-left: 10px;" class="fa fa-angle-down"></i></span>
-                
-                {{-- <div id="mega-menu-overlay-container" class="mega-menu-overlay-container" style="position: absolute; top: 80px; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.4); z-index: 2;">
-                </div> --}}
-                
+            </div>
+            <div id="explorebutton-mega-menu-overlay-container" class="explorebutton-mega-menu-overlay-container">
                 <div class="site-header-explorebutton-mega-dropdown" id="site-header-explorebutton-mega-dropdown">
                     <div class="show site-header-explorebutton-mega-dropdown-body-container">
                         <div class="site-header-explorebutton-mega-dropdown-sidebar-container" id="site-header-explorebutton-mega-dropdown-sidebar-container">
