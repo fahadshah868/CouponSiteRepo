@@ -400,6 +400,7 @@
   background-color: $togglebutton-list-hover-backgroundcolor;
 }
 .menu-toggle-list-container{
+  overflow: auto;
   display: none;
 }
 .menu-toggle-list li ul{

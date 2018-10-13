@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $("#menu-toggle-list-container").css('height', $(document).height() - 80 + 'px');
+
     //Default Action
     $("#site-header-dropdown-sidebar-container ul li:first").addClass("active-sidebar-li") //Activate first tab
     $("#site-header-dropdown-sidebar-container ul li a:first").addClass("activelink") //Activate first tab
@@ -38,5 +40,10 @@ $(document).ready(function() {
         else if($(event.target).parent().hasClass('parentli') || $(event.target).parent().parent().hasClass('parentli')){
             $('#events-list').slideToggle();
         }
+    });
+
+    $(window).resize(function() {
+        $("#menu-toggle-list-container").css('height', '0');
+        $("#menu-toggle-list-container").css('height', $(document).height() - 80 + 'px');
     });
 });

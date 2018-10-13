@@ -10480,7 +10480,7 @@ a.text-dark:focus {
 
 body {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -11026,6 +11026,7 @@ body {
 }
 
 .menu-toggle-list-container {
+  overflow: auto;
   display: none;
 }
 

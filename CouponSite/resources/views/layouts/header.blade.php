@@ -25,7 +25,7 @@
                     </div>
                   </div>
             </div>
-            <div id="menu-toggle-list-container" class="menu-toggle-list-container" style="position: absolute; top: 80px; left: 0; right: 0; min-height: 100vh; background-color: rgba(0, 0, 0, 0.4); z-index: 2;">
+            <div id="menu-toggle-list-container" class="menu-toggle-list-container" style="position: absolute; top: 80px; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.4); z-index: 2;">
                 <ul class="show menu-toggle-list">
                     <li><a href="#">Browse Stores</a></li>
                     <li><a href="#">Browse Categories</a></li>
