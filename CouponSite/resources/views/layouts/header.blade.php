@@ -63,7 +63,9 @@
                                 <li id="specialevents"><a href="#">Special Events<i class="fa fa-angle-right"></i></a></li>
                             </ul>
                         </div>
-                        <div class="site-header-explorebutton-mega-dropdown-detail-container" id="site-header-explorebutton-mega-dropdown-detail-container"></div>
+                        <div class="site-header-explorebutton-mega-dropdown-detail-container" id="site-header-explorebutton-mega-dropdown-detail-container">
+                            
+                        </div>
                     </div>
                 </div>
             </div>

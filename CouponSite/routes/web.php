@@ -11,4 +11,12 @@
 |
 */
 Route::get('/' , 'HomeController@home');
+
+// routes for StoreController
 Route::get('/getpopularstores' , 'StoreController@getPopularStoresList');
+
+// routes for CategoryController
+Route::get('/getpopularcategories' , 'CategoryController@getPopularCategoriesList');
+
+// routes for SpecialEventsController
+Route::get('/getspecialevents' , 'SpecialEventsController@getSpecialEventsList'); 
