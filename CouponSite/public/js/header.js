@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var dropdowndetailcontainer = $("#site-header-explorebutton-mega-dropdown-detail-container");
     dropdowndetailcontainer.html("<div class='loader-overlay-container'><div class='loader'></div></div>");
-    
+
     $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
     $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
 
@@ -10,7 +10,6 @@ $(document).ready(function() {
     $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a:first").addClass("activelink") //Activate first tab
 
     //load popular stores on page load
-    var dropdowndetailcontainer = $("#site-header-explorebutton-mega-dropdown-detail-container");
     $.ajax({
         type:'GET',
         url:'/getpopularstores',
@@ -19,7 +18,7 @@ $(document).ready(function() {
             if(data.status == true){
                 var popularstore = "<div class='dropdownmenu-popularstore-body-container'>"+
                     "<div class='dropdownmenu-popularstores-header-container'>"+
-                        "<div class='dropdownmenu-popularstores-main-heading'>Popular Stores</div>"+
+                        "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Stores</div>"+
                         "<a id='all-stores-link' href='#'>See All Stores</a>"+
                     "</div>"+
                     "<div class='dropdownmenu-popularstores-list-container'>"
@@ -85,7 +84,7 @@ $(document).ready(function() {
                     if(data.status == true){
                         var popularstore = "<div class='dropdownmenu-popularstore-body-container'>"+
                             "<div class='dropdownmenu-popularstores-header-container'>"+
-                                "<div class='dropdownmenu-popularstores-main-heading'>Popular Stores</div>"+
+                                "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Stores</div>"+
                                 "<a id='all-stores-link' href='#'>See All Stores</a>"+
                             "</div>"+
                             "<div class='dropdownmenu-popularstores-list-container'>"
@@ -118,7 +117,7 @@ $(document).ready(function() {
                     if(data.status == true){
                         var popularcategories = "<div class='dropdownmenu-popularcategories-body-container'>"+
                             "<div class='dropdownmenu-popularcategories-header-container'>"+
-                                "<div class='dopdownmenu-popularcategories-main-heading'>Popular Categories</div>"+
+                                "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Categories</div>"+
                                 "<a id='dropdownmenu-all-categories-link' href='#'>See All Categories</a>"+
                             "</div>"+
                             "<div class='dropdownmenu-popularcategories-list-container'>"
@@ -141,6 +140,74 @@ $(document).ready(function() {
                 }
             });
         }
+        // load online codes into dropdown detail container
+        else if($(this).attr('id') == "onlinecodes"){
+            dropdowndetailcontainer.load('/abc');
+            
+            // $.ajax({
+            //     type:'GET',
+            //     url:'/getspecialevents',
+            //     data: '',
+            //     success:function(data){
+            //         if(data.status == true){
+            //             var specialevents = "<div class='dropdownmenu-specialevents-body-container'>"+
+            //                 "<div class='dropdownmenu-specialevents-header-container'>"+
+            //                     "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Special Events</div>"+
+            //                 "</div>"+
+            //                 "<div class='dropdownmenu-specialevents-list-container'>"
+            //                     for(var i=1; i<=8; i++){
+            //                         specialevents = specialevents + 
+            //                         "<div class='dropdownmenu-specialevents-material-container'>"+
+            //                             "<a href='#'>"+
+            //                                 "<div class='dropdownmenu-event-logo'>"+
+            //                                     "<img src='images/specialevents/blackfriday.jpg' />"+
+            //                                 "</div>"+
+            //                                 "<div class='dropdownmenu-event-title'>Black Friday<br>Deals</div>"+
+            //                             "</a>"+
+            //                         "</div>"
+            //                     }
+            //                 specialevents = specialevents + 
+            //                 "</div>"+
+            //             "</div>"
+            //             dropdowndetailcontainer.html(specialevents);
+            //         }
+            //     }
+            // });
+        }
+        // load instore offers into dropdown detail container
+        else if($(this).attr('id') == "instoreoffers"){
+            dropdowndetailcontainer.html("<div class='loader-overlay-container'><div class='loader'></div></div>");
+            $.ajax({
+                type:'GET',
+                url:'/gettopinstoreoffers',
+                data: '',
+                success:function(data){
+                    if(data.status == true){
+                        var topinstoreoffers = "<div class='dropdownmenu-instoreoffers-body-container'>"+
+                        "<div class='dropdownmenu-instoreoffers-header-container'>"+
+                            "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Instore Offers</div>"+
+                            "<a id='dropdownmenu-all-categories-link' href='#'>See All Instore Offers</a>"+
+                        "</div>"+
+                        "<div class='dropdownmenu-instoreoffers-list-container'>"
+                            for(var i=1; i<=8; i++){
+                                topinstoreoffers = topinstoreoffers + 
+                                "<div class='dropdownmenu-instoreoffers-material-container'>"+
+                                    "<a href='#'>"+
+                                        "<div class='dropdownmenu-instoreoffer-store-logo'>"+
+                                            "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpECATf3zT10yaX61taR_QOYF2d2lOvqCS3XKiM-Xdlei9Xj0H' />"+
+                                        "</div>"+
+                                        "<div class='dropdownmenu-instoreoffer-title'>50 Instore Offers<br>Available</div>"+
+                                    "</a>"+
+                                "</div>"
+                            }
+                        topinstoreoffers = topinstoreoffers +    
+                        "</div>"+
+                    "</div>"
+                    dropdowndetailcontainer.html(topinstoreoffers);
+                    }
+                }
+            });
+        }
         // load special events into dropdown detail container
         else if($(this).attr('id') == "specialevents"){
             dropdowndetailcontainer.html("<div class='loader-overlay-container'><div class='loader'></div></div>");
@@ -152,7 +219,7 @@ $(document).ready(function() {
                     if(data.status == true){
                         var specialevents = "<div class='dropdownmenu-specialevents-body-container'>"+
                             "<div class='dropdownmenu-specialevents-header-container'>"+
-                                "<div class='dropdownmenu-specialevents-main-heading'>Special Events</div>"+
+                                "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Special Events</div>"+
                             "</div>"+
                             "<div class='dropdownmenu-specialevents-list-container'>"
                                 for(var i=1; i<=8; i++){

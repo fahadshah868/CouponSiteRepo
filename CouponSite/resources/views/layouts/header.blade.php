@@ -60,13 +60,13 @@
                             <ul>
                                 <li id="popularstores"><a href="#">Popular Stores<i class="fa fa-angle-right"></i></a></li>
                                 <li id="popularcategories"><a href="#">Popular Categories<i class="fa fa-angle-right"></i></a></li>
+                                <li id="onlinecodes"><a href="#">Online Codes<i class="fa fa-angle-right"></i></a></li>
+                                <li id="instoreoffers"><a href="#">In Store Offers<i class="fa fa-angle-right"></i></a></li>
                                 <li id="specialevents"><a href="#">Special Events<i class="fa fa-angle-right"></i></a></li>
                             </ul>
                         </div>
                         <div class="site-header-explorebutton-mega-dropdown-detail-container" id="site-header-explorebutton-mega-dropdown-detail-container">
-                            <div class="loader-overlay-container">
-                                <div class="loader"></div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

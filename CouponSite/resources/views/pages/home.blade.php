@@ -75,7 +75,7 @@
   <div class="top-stores-main-container" id="top-stores-main-container">
     <!--Heading-->
     <div class="top-stores-heading">
-      <h2>Top Stores</h2>
+      <h2>Top Featured Stores</h2>
     </div>
     <!--Stores Slides-->
     <div class="stores-container">
@@ -99,11 +99,11 @@
   <div class="top-offers-main-container">
     <!--Heading-->
     <div class="top-offers-heading">
-      <h2>Top Offers</h2>
+      <h2>Top Offers, Deals & Coupon Codes</h2>
     </div>
     <!--Products-->
     <div class="top-offers-products">
-      @for($i=1; $i<=8; $i++)
+      @for($i=1; $i<=12; $i++)
         <div class="top-offers-product">
           <div class="top-offer-product-img">
             <img src="https://i.pinimg.com/236x/bd/24/af/bd24afe038f5767224797820cff74caa.jpg"/>

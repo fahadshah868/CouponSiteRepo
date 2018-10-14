@@ -10497,7 +10497,6 @@ body {
           align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .loader {
@@ -10657,7 +10656,7 @@ body {
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container {
   width: 100%;
-  height: 400px;
+  height: 450px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10994,14 +10993,14 @@ body {
   margin-bottom: 20px;
 }
 
-.dropdownmenu-popularstores-header-container .dropdownmenu-popularstores-main-heading {
+.dropdownmenu-popularstores-header-container .dopdownmenu-detailcontainer-main-heading {
   color: gray;
   font-size: 18px;
   font-family: 'Calibri';
 }
 
 .dropdownmenu-popularstores-header-container #all-stores-link {
-  color: #044D6E;
+  color: #0061ff;
   font-size: 15px;
 }
 
@@ -11045,7 +11044,7 @@ body {
   text-align: center;
   font-size: 13px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #044D6E;
+  color: #0061ff;
 }
 
 .dropdownmenu-popularcategories-body-container {
@@ -11066,14 +11065,14 @@ body {
   margin-bottom: 20px;
 }
 
-.dropdownmenu-popularcategories-header-container .dopdownmenu-popularcategories-main-heading {
+.dropdownmenu-popularcategories-header-container .dopdownmenu-detailcontainer-main-heading {
   color: gray;
   font-size: 18px;
   font-family: 'Calibri';
 }
 
 .dropdownmenu-popularcategories-header-container #dropdownmenu-all-categories-link {
-  color: #044D6E;
+  color: #0061ff;
   font-size: 15px;
 }
 
@@ -11117,7 +11116,7 @@ body {
   text-align: center;
   font-size: 13px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #044D6E;
+  color: #0061ff;
 }
 
 .dropdownmenu-specialevents-body-container {
@@ -11138,7 +11137,7 @@ body {
   margin-bottom: 20px;
 }
 
-.dropdownmenu-specialevents-header-container .dropdownmenu-specialevents-main-heading {
+.dropdownmenu-specialevents-header-container .dopdownmenu-detailcontainer-main-heading {
   color: gray;
   font-size: 18px;
   font-family: 'Calibri';
@@ -11155,7 +11154,7 @@ body {
 
 .dropdownmenu-specialevents-material-container {
   width: 25%;
-  height: 150px;
+  height: 180px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11169,8 +11168,8 @@ body {
 }
 
 .dropdownmenu-specialevents-material-container .dropdownmenu-event-logo {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 5px;
 }
 
@@ -11184,7 +11183,74 @@ body {
   text-align: center;
   font-size: 13px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  color: #044D6E;
+  color: #0061ff;
+}
+
+.dropdownmenu-instoreoffers-body-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px 30px;
+}
+
+.dropdownmenu-instoreoffers-header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dropdownmenu-instoreoffers-header-container .dopdownmenu-detailcontainer-main-heading {
+  color: gray;
+  font-size: 18px;
+  font-family: 'Calibri';
+}
+
+.dropdownmenu-instoreoffers-list-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.dropdownmenu-instoreoffers-material-container {
+  width: 25%;
+  height: 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dropdownmenu-instoreoffers-material-container .dropdownmenu-instoreoffer-store-logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 5px;
+}
+
+.dropdownmenu-instoreoffers-material-container .dropdownmenu-instoreoffer-store-logo img {
+  border: 1px solid #f1f1f1;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdownmenu-instoreoffers-material-container .dropdownmenu-instoreoffer-title {
+  text-align: center;
+  font-size: 13px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #0061ff;
 }
 
 .footer-container {

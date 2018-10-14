@@ -20,3 +20,9 @@ Route::get('/getpopularcategories' , 'CategoryController@getPopularCategoriesLis
 
 // routes for SpecialEventsController
 Route::get('/getspecialevents' , 'SpecialEventsController@getSpecialEventsList'); 
+
+// routes for OnlineCodeController
+Route::get('/gettoponlinecodes', 'OnlineCodeController@getTopOnlineCodesList');
+
+// route for InstoreOffersController
+Route::get('/gettopinstoreoffers','InstoreOffersController@getTopInstoreOffersList');
