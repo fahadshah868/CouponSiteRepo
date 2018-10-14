@@ -102,27 +102,22 @@
       <h2>Top Offers, Deals & Coupon Codes</h2>
     </div>
     <!--Products-->
-    <div class="top-offers-products">
+    <div class="top-offers-container">
       @for($i=1; $i<=12; $i++)
-        <div class="top-offers-product">
-          <div class="top-offer-product-img">
-            <img src="https://i.pinimg.com/236x/bd/24/af/bd24afe038f5767224797820cff74caa.jpg"/>
+        <div class="top-offer-container">
+          <div class="top-offer-store-logo">
+            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
           </div>
-          <div class="top-offer-product-title">
-            <h2>Famous Product title</h2>
-          </div>
-          <hr style="border-top: 1px dotted #D5D1D1; margin-top: 2px;">
-          <div class="top-offer-product-detail">
-            <h2 class="top-offer-product-offertitle">
+          <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
+          <div class="top-offer-offerdetailcontainer">
+            <div class="top-offer-offertitle">
               Up to 30% Off
-            </h2>
-            <p class="top-offer-product-offerlabel">
-              sale
-            </p>
+            </div>
+            <div class="top-offer-offerlabel">
+              code
+            </div>
           </div>
-          <div class="top-offer-product-button">
-            <button type="button" id="product-button">VIEW CODE</button>
-          </div>
+          <button type="button" id="top-offer-button">VIEW CODE</button>
         </div>
       @endfor
     </div>
