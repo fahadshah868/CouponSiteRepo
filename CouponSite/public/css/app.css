@@ -11210,6 +11210,11 @@ body {
   font-family: 'Calibri';
 }
 
+.dropdownmenu-instoreoffers-header-container #dropdownmenu-all-instoreoffers-link {
+  color: #0061ff;
+  font-size: 15px;
+}
+
 .dropdownmenu-instoreoffers-list-container {
   width: 100%;
   display: -webkit-box;
@@ -11251,6 +11256,108 @@ body {
   font-size: 13px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #0061ff;
+}
+
+.dropdownmenu-onlinecodes-body-container {
+  width: 100%;
+  height: 100%;
+  padding: 20px 30px;
+}
+
+.dropdownmenu-onlinecodes-header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dropdownmenu-onlinecodes-header-container .dopdownmenu-detailcontainer-main-heading {
+  color: gray;
+  font-size: 18px;
+  font-family: 'Calibri';
+}
+
+.dropdownmenu-onlinecodes-header-container #dropdownmenu-all-onlinecodes-link {
+  color: #0061ff;
+  font-size: 15px;
+}
+
+.dropdownmenu-onlinecodes-list-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.dropdownmenu-onlinecodes-list-container a {
+  width: 48%;
+  border: 1px solid #f1f1f1;
+  margin-bottom: 13px;
+  text-decoration: none;
+}
+
+.dropdownmenu-onlinecodes-list-container a:hover {
+  border: 1px solid #bebebe;
+}
+
+.dropdownmenu-onlinecodes-list-container a:nth-of-type(odd) {
+  margin-right: 13px;
+}
+
+.dropdownmenu-onlinecode-material-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  padding: 8px 8px;
+}
+
+.dropdownmenu-onlinecode-material-container .dropdownmenu-onlinecode-store-logo {
+  width: 80px;
+  height: 80px;
+}
+
+.dropdownmenu-onlinecode-material-container .dropdownmenu-onlinecode-store-logo img {
+  border: 1px solid #f1f1f1;
+  width: 100%;
+  height: 100%;
+}
+
+.dropdownmenu-onlinecode-material-container .dropdownmenu-onlinecode-offer-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: calc(100% - 80px);
+  height: auto;
+  padding-left: 10px;
+}
+
+.dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-title {
+  font-size: 17px;
+  font-family: 'Calibri';
+  color: #000000;
+}
+
+.dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-label {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #F45336;
 }
 
 .footer-container {
@@ -11654,14 +11761,14 @@ body {
   margin: 0 10px 0 10px;
 }
 
-.top-offer-product-offer {
+.top-offer-product-offertitle {
   font-size: 18px;
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: #F45336;
 }
 
-.top-offer-product-offer-type {
+.top-offer-product-offerlabel {
   font-size: 16px;
   font-weight: bold;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

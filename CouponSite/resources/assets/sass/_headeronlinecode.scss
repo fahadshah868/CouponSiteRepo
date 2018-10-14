@@ -1,0 +1,70 @@
+.dropdownmenu-onlinecodes-body-container{
+    width: 100%;
+    height: 100%;
+    padding: 20px 30px;
+}
+.dropdownmenu-onlinecodes-header-container{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.dropdownmenu-onlinecodes-header-container .dopdownmenu-detailcontainer-main-heading{
+    color: gray;
+    font-size: 18px;
+    font-family: 'Calibri';
+}
+.dropdownmenu-onlinecodes-header-container #dropdownmenu-all-onlinecodes-link{
+    color: $dropdownmenu-links-color;
+    font-size: 15px;
+}
+.dropdownmenu-onlinecodes-list-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.dropdownmenu-onlinecodes-list-container a{
+    width: 48%;
+    border: 1px solid $onlinecodeoffer-bordercolor;
+    margin-bottom: 13px;
+    text-decoration: none;
+}
+.dropdownmenu-onlinecodes-list-container a:hover{
+    border: 1px solid $onlinecodeoffer-bordercolor-hover;
+}
+.dropdownmenu-onlinecodes-list-container a:nth-of-type(odd){
+    margin-right: 13px;
+}
+.dropdownmenu-onlinecode-material-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 8px 8px;
+}
+.dropdownmenu-onlinecode-material-container .dropdownmenu-onlinecode-store-logo{
+    width: 80px;
+    height: 80px;
+}
+.dropdownmenu-onlinecode-material-container .dropdownmenu-onlinecode-store-logo img{
+    border: 1px solid #f1f1f1;
+    width: 100%;
+    height: 100%;
+}
+.dropdownmenu-onlinecode-material-container .dropdownmenu-onlinecode-offer-container{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 80px);
+    height: auto;
+    padding-left: 10px;
+}
+.dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-title{
+    font-size: 17px;
+    font-family: 'Calibri';
+    color: $onlinecodeoffertitle-textcolor;
+}
+.dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-label{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: $onlinecodeofferlabel-textcolor;
+}

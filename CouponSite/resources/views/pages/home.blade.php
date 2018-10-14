@@ -113,10 +113,10 @@
           </div>
           <hr style="border-top: 1px dotted #D5D1D1; margin-top: 2px;">
           <div class="top-offer-product-detail">
-            <h2 class="top-offer-product-offer">
+            <h2 class="top-offer-product-offertitle">
               Up to 30% Off
             </h2>
-            <p class="top-offer-product-offer-type">
+            <p class="top-offer-product-offerlabel">
               sale
             </p>
           </div>

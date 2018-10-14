@@ -142,37 +142,40 @@ $(document).ready(function() {
         }
         // load online codes into dropdown detail container
         else if($(this).attr('id') == "onlinecodes"){
-            dropdowndetailcontainer.load('/abc');
-            
-            // $.ajax({
-            //     type:'GET',
-            //     url:'/getspecialevents',
-            //     data: '',
-            //     success:function(data){
-            //         if(data.status == true){
-            //             var specialevents = "<div class='dropdownmenu-specialevents-body-container'>"+
-            //                 "<div class='dropdownmenu-specialevents-header-container'>"+
-            //                     "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Special Events</div>"+
-            //                 "</div>"+
-            //                 "<div class='dropdownmenu-specialevents-list-container'>"
-            //                     for(var i=1; i<=8; i++){
-            //                         specialevents = specialevents + 
-            //                         "<div class='dropdownmenu-specialevents-material-container'>"+
-            //                             "<a href='#'>"+
-            //                                 "<div class='dropdownmenu-event-logo'>"+
-            //                                     "<img src='images/specialevents/blackfriday.jpg' />"+
-            //                                 "</div>"+
-            //                                 "<div class='dropdownmenu-event-title'>Black Friday<br>Deals</div>"+
-            //                             "</a>"+
-            //                         "</div>"
-            //                     }
-            //                 specialevents = specialevents + 
-            //                 "</div>"+
-            //             "</div>"
-            //             dropdowndetailcontainer.html(specialevents);
-            //         }
-            //     }
-            // });
+            dropdowndetailcontainer.html("<div class='loader-overlay-container'><div class='loader'></div></div>");
+            $.ajax({
+                type:'GET',
+                url:'/gettoponlinecodes',
+                data: '',
+                success:function(data){
+                    if(data.status == true){
+                        var onlinecodes = "<div class='dropdownmenu-onlinecodes-body-container'>"+
+                        "<div class='dropdownmenu-onlinecodes-header-container'>"+
+                            "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Online Codes</div>"+
+                            "<a id='dropdownmenu-all-onlinecodes-link' href='#'>See All Online Codes</a>"+
+                        "</div>"+
+                        "<div class='dropdownmenu-onlinecodes-list-container'>"
+                            for(var i=1; i<=6; i++){
+                                onlinecodes = onlinecodes +
+                                "<a href= '#'>"+
+                                    "<div class='dropdownmenu-onlinecode-material-container'>"+
+                                        "<div class='dropdownmenu-onlinecode-store-logo'>"+
+                                            "<img src='https://img.grouponcdn.com/coupons/a9w8VPXA1BTbYJHiMA6jSA/hiresJCPENNYpt2-500x500' />"+
+                                        "</div>"+
+                                        "<div class='dropdownmenu-onlinecode-offer-container'>"+
+                                            "<div class='dropdownmenu-onlinecode-offer-title'>upto 20% off regular menu price order</div>"+
+                                            "<div class='dropdownmenu-onlinecode-offer-label'>code</div>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</a>"
+                            }
+                        onlinecodes = onlinecodes +
+                        "</div>"+
+                        "</div>"
+                        dropdowndetailcontainer.html(onlinecodes);
+                    }
+                }
+            });
         }
         // load instore offers into dropdown detail container
         else if($(this).attr('id') == "instoreoffers"){
@@ -186,7 +189,7 @@ $(document).ready(function() {
                         var topinstoreoffers = "<div class='dropdownmenu-instoreoffers-body-container'>"+
                         "<div class='dropdownmenu-instoreoffers-header-container'>"+
                             "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Instore Offers</div>"+
-                            "<a id='dropdownmenu-all-categories-link' href='#'>See All Instore Offers</a>"+
+                            "<a id='dropdownmenu-all-instoreoffers-link' href='#'>See All Instore Offers</a>"+
                         "</div>"+
                         "<div class='dropdownmenu-instoreoffers-list-container'>"
                             for(var i=1; i<=8; i++){
