@@ -47,7 +47,6 @@
     height: 100%;
 }
 .top-offer-offerdetailcontainer{
-    // background-color: red;
     width: 100%;
     height: 70px;
     text-align:center;
@@ -60,7 +59,7 @@
 }
 .top-offer-offerlabel{
     margin: 0;
-    font-size:16px; 
+    font-size:15px; 
     font-weight:bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: $productofferlabel-textcolor;
@@ -95,13 +94,16 @@
     .top-offers-container .top-offer-container{
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: calc(25% - 12px);
-        // height: 350px;
         margin: 0 16px 16px 0;
+        padding: 20px;
         background-color: $whitecolor;
         border-radius: 2px;
         border: 1px solid $border-color;
         cursor: pointer;
+        transition: 0.7s;
+        -webkit-transition: 0.7s;
     }    
 }
 @media only screen and (max-width: 1050px){
@@ -112,16 +114,19 @@
     .top-offers-container .top-offer-container:nth-child(n){
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: calc(33% - 8.4px);
-        // height: 350px;
         margin: 0 16px 16px 0;
+        padding: 20px;
         background-color: $whitecolor;
         border-radius: 2px;
         border: 1px solid $border-color;
         cursor: pointer;
+        transition: 0.7s;
+        -webkit-transition: 0.7s;
     }
     .top-offers-container .top-offer-container:nth-child(3n){
-        margin: 0;
+        margin: 0 0 16px 0;
     }
 }
 @media only screen and (max-width: 800px){
@@ -132,19 +137,22 @@
     .top-offers-container .top-offer-container:nth-child(n){
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: calc(50% - 8px);
-        // height: 350px;
         margin: 0 16px 16px 0;
+        padding: 20px;
         background-color: $whitecolor;
         border-radius: 2px;
         border: 1px solid $border-color;
         cursor: pointer;
+        transition: 0.7s;
+        -webkit-transition: 0.7s;
     }
     .top-offers-container .top-offer-container:nth-child(2n){
-        margin: 0;
+        margin: 0 0 16px 0;
     }
 }
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 600px){
     .top-offers-container{
         width: 100%;
         padding: 0 30px;
@@ -152,12 +160,15 @@
     .top-offers-container .top-offer-container:nth-child(n){
         display: flex;
         flex-direction: column;
+        align-items: center;
         width: 100%;
-        // height: 350px;
         margin: 0 0 16px 0;
+        padding: 20px;
         background-color: $whitecolor;
         border-radius: 2px;
         border: 1px solid $border-color;
         cursor: pointer;
+        transition: 0.7s;
+        -webkit-transition: 0.7s;
     }
 }
