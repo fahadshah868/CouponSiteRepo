@@ -10953,6 +10953,15 @@ body {
   .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container {
     padding: 0 20px;
   }
+
+  .dropdownmenu-popularstore-body-container,
+  .dropdownmenu-popularcategories-body-container,
+  .dropdownmenu-onlinecodes-body-container,
+  .dropdownmenu-instoreoffers-body-container,
+  .dropdownmenu-specialevents-body-container,
+  .loader-overlay-container {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 850px) {

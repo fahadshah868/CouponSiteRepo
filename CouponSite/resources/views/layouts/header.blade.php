@@ -67,6 +67,12 @@
                             </ul>
                         </div>
                         <div class="site-header-explorebutton-mega-dropdown-detail-container" id="site-header-explorebutton-mega-dropdown-detail-container">
+                            <div class="loader-overlay-container" id="loader-overlay-container"><div class='loader'></div></div>
+                            <div class="dropdownmenu-popularstore-body-container" id="dropdownmenu-popularstore-body-container"></div>
+                            <div class="dropdownmenu-popularcategories-body-container" id="dropdownmenu-popularcategories-body-container"></div>
+                            <div class="dropdownmenu-onlinecodes-body-container" id="dropdownmenu-onlinecodes-body-container"></div>
+                            <div class="dropdownmenu-instoreoffers-body-container" id="dropdownmenu-instoreoffers-body-container"></div>
+                            <div class="dropdownmenu-specialevents-body-container" id="dropdownmenu-specialevents-body-container"></div>
                             
                         </div>
                     </div>
