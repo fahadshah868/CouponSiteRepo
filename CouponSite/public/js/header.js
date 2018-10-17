@@ -65,12 +65,14 @@ $(document).ready(function() {
             $('#hamburgerbutton-mega-menu-overlay-container').toggle();
             $('#explorebutton-mega-menu-overlay-container').toggle();
             $('#events-list').slideUp();
+            $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
         }
         else if(!($(event.target).parents().hasClass('show')) && ($('#hamburgerbutton-mega-menu-overlay-container').css('display') == 'block' || $('#explorebutton-mega-menu-overlay-container').css('display') == 'block')){
             $('#menu-toggle').toggleClass('active');
             $('#hamburgerbutton-mega-menu-overlay-container').toggle();
             $('#explorebutton-mega-menu-overlay-container').toggle();
             $('#events-list').slideUp();
+            $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
         }
         else if($(event.target).parent().hasClass('parentli') || $(event.target).parent().parent().hasClass('parentli')){
             $('#events-list').slideToggle();

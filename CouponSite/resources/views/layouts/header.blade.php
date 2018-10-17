@@ -50,7 +50,7 @@
           {{-- explore button to explore list --}}
 
         <div class="site-header-explorebutton-mega-menu-container">
-            <div class="site-header-explorebutton" tabindex="1">
+            <div class="site-header-explorebutton" id="site-header-explorebutton" tabindex="1">
                 <span class="button-heading">Explore<i style="padding-left: 10px;" class="fa fa-angle-down"></i></span>
             </div>
             <div id="explorebutton-mega-menu-overlay-container" class="explorebutton-mega-menu-overlay-container">

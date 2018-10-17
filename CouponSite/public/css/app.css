@@ -10607,6 +10607,10 @@ body {
   transition: 0.6s;
 }
 
+.active-site-header-explorebutton {
+  background-color: #033349;
+}
+
 .site-header-explorebutton-mega-dropdown-sidebar-container {
   text-align: center;
 }
