@@ -1,7 +1,6 @@
 $(document).ready(function() {
     var dropdowndetailcontainerelements = $("#site-header-explorebutton-mega-dropdown-detail-container").children();
     
-    
     $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
     $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
 

@@ -70,7 +70,6 @@
     </div>
   </div>
 
-
   <!--Top Stores-------------------------------------------------------------------------------------------------->
   <div class="top-stores-main-container" id="top-stores-main-container">
     <!--Heading-->
@@ -92,8 +91,7 @@
       <button type="button" class="MS-left"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
       <button type="button" class="MS-right"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
     </div>
-</div>
-
+  </div>
   
   <!--Top Offers Deals Products----------------------------------------------------------------------------------->
   <div class="top-offers-main-container">
@@ -120,6 +118,19 @@
           <button type="button" id="top-offer-button">VIEW CODE</button>
         </div>
       @endfor
+    </div>
+  </div>
+
+  <!--tab for popular stores and categories-->
+  <div style="width: 100%; margin: 30px 0;">
+    <div style="width: 1150px; height:400px; margin: auto; border: 1px solid #cfcfcf; border-top-left-radius:5px; border-top-right-radius: 5px;">
+      <div class="tabs-header-container" id="tabs-header-container">
+        <div class="tab1" id="tab1">popular stores<i class="fa fa-angle-down" style="font-size: 24px;padding-left:10px;"></i></div>
+        <div class="tab2" id="tab2">popular categories<i class="fa fa-angle-down" style="font-size: 24px; margin-left:10px;"></i></div>
+      </div>
+      <div class="tabs-detail-container" style="background-color: #ffffff; width:100%; height: calc(100% - 62px);">
+
+      </div>
     </div>
   </div>
   

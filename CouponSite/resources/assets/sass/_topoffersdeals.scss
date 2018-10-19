@@ -11,7 +11,7 @@
 }
 .top-offers-container{
     width: 1150px;
-    margin: 30px auto;
+    margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
 }
@@ -71,8 +71,8 @@
     color: $whitecolor; 
     border: 2px solid $offerbutton-backgroundcolor; 
     border-radius: 4px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight:bold; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:bold;
     cursor:pointer;
     outline: none;
     transition: 0.5s;
@@ -89,6 +89,9 @@
 @media only screen and (max-width: 1165px){
     .top-offers-container{
         width: 100%;
+        padding: 0 30px;
+    }
+    .top-offers-heading{
         padding: 0 30px;
     }
     .top-offers-container .top-offer-container{

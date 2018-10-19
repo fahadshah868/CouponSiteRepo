@@ -11373,7 +11373,6 @@ body {
 }
 
 .footer-container {
-  margin-top: -30px;
   background-color: #044D6E;
   color: #ffffff;
   width: 100%;
@@ -11704,7 +11703,7 @@ body {
 
 .top-offers-container {
   width: 1150px;
-  margin: 30px auto;
+  margin: 20px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11783,7 +11782,7 @@ body {
   color: #ffffff;
   border: 2px solid #F45336;
   border-radius: 4px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
   cursor: pointer;
   outline: none;
@@ -11802,6 +11801,10 @@ body {
 @media only screen and (max-width: 1165px) {
   .top-offers-container {
     width: 100%;
+    padding: 0 30px;
+  }
+
+  .top-offers-heading {
     padding: 0 30px;
   }
 
@@ -12070,5 +12073,52 @@ body {
   .top-stores-main-container .MS-controls .MS-right {
     right: -8px;
   }
+}
+
+.tabs-header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.active-tab {
+  background-color: #033349;
+}
+
+.tabs-header-container div:hover {
+  background-color: #033349;
+  border: 1px solid #033349;
+}
+
+.tab1 {
+  background-color: #044D6E;
+  color: #ffffff;
+  width: 50%;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #044D6E;
+  border-top-left-radius: 5px;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
+}
+
+.tab2 {
+  background-color: #044D6E;
+  color: #ffffff;
+  width: 50%;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #044D6E;
+  border-top-right-radius: 5px;
+  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  cursor: pointer;
 }
 

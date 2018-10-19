@@ -1,0 +1,36 @@
+.tabs-header-container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+}
+.active-tab{
+    background-color: #033349;
+}
+.tabs-header-container div:hover{
+    background-color: #033349;
+    border: 1px solid #033349;
+}
+.tab1{
+    background-color: #044D6E;
+    color: #ffffff;
+    width:50%;
+    padding: 15px;
+    text-align:center;
+    border: 1px solid #044D6E;
+    border-top-left-radius:5px;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+}
+.tab2{
+    background-color: #044D6E;
+    color: #ffffff;
+    width:50%;
+    padding: 15px;
+    text-align:center;
+    border: 1px solid #044D6E;
+    border-top-right-radius: 5px;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+}
