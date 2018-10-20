@@ -11602,10 +11602,6 @@ body {
   width: 100%;
   margin: 40px auto;
   text-align: center;
-  overflow: auto;
-  overflow-y: hidden;
-  -ms-overflow-y: hidden;
-  white-space: nowrap;
 }
 
 .today-deals-heading h2 {
@@ -11615,9 +11611,17 @@ body {
   color: #5A5858;
 }
 
-.today-deals-products-container {
+.today-deals-products {
   width: 1120px;
   margin: 0 auto;
+}
+
+.today-deals-products-container {
+  width: 100% !important;
+  overflow: auto;
+  overflow-y: hidden;
+  -ms-overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .today-deals-product {
@@ -11678,7 +11682,7 @@ body {
 }
 
 @media only screen and (max-width: 760px) {
-  .today-deals-products-container {
+  .today-deals-products {
     width: 960px;
   }
 
@@ -11756,7 +11760,6 @@ body {
 
 .top-offer-offerdetailcontainer {
   width: 100%;
-  height: 70px;
   text-align: center;
 }
 
@@ -11785,6 +11788,7 @@ body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 10px;
   outline: none;
   transition: 0.5s;
   -webkit-transition: 0.5s;
@@ -11900,17 +11904,21 @@ body {
 @media only screen and (max-width: 600px) {
   .top-offers-container {
     width: 100%;
-    padding: 0 30px;
+    padding: 0 15px;
+  }
+
+  hr {
+    display: none;
   }
 
   .top-offers-container .top-offer-container:nth-child(n) {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+        -ms-flex-direction: row;
+            flex-direction: row;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -11923,6 +11931,28 @@ body {
     cursor: pointer;
     transition: 0.7s;
     -webkit-transition: 0.7s;
+  }
+
+  .top-offer-offerdetailcontainer {
+    width: calc(100% - 90px);
+    margin-left: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .top-offer-store-logo {
+    width: 75px;
+    height: 75px;
+  }
+
+  #top-offer-button {
+    width: 100%;
+    height: 30px;
   }
 }
 

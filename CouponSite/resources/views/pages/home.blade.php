@@ -28,36 +28,11 @@
     </div>
     <!--Products-->
     <div class="today-deals-products-container">
-        <!--Product (1)-->
-        <div class="today-deals-product">
-          <img src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
-          <div class="today-deals-product-description-container">
-            <div class="today-deals-product-description-brandlogo-container">
-              <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
-            </div>
-            <div class="today-deals-product-detail">
-              <h2 class="today-deals-product-offer">Up to 40% Off</h2>
-              <p class="today-deals-product-brand">Pacsun Sale</p>
-            </div>
-          </div>
-        </div>
-        <!--Product (2)-->
-        <div class="today-deals-product">
-          <img src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
-          <div class="today-deals-product-description-container">
-            <div class="today-deals-product-description-brandlogo-container">
-              <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
-            </div>
-            <div class="today-deals-product-detail">
-              <h2 class="today-deals-product-offer">Up to 40% Off</h2>
-              <p class="today-deals-product-brand">Pacsun Sale</p>
-            </div>
-          </div>
-        </div>
-        <!--Product (3)-->
-        <div class="today-deals-product">
-          <img style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
-          <div class="today-deals-product-description-container">
+      <div class="today-deals-products">
+          <!--Product (1)-->
+          <div class="today-deals-product">
+            <img src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
+            <div class="today-deals-product-description-container">
               <div class="today-deals-product-description-brandlogo-container">
                 <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
               </div>
@@ -66,7 +41,34 @@
                 <p class="today-deals-product-brand">Pacsun Sale</p>
               </div>
             </div>
-        </div>
+          </div>
+          <!--Product (2)-->
+          <div class="today-deals-product">
+            <img src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
+            <div class="today-deals-product-description-container">
+              <div class="today-deals-product-description-brandlogo-container">
+                <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
+              </div>
+              <div class="today-deals-product-detail">
+                <h2 class="today-deals-product-offer">Up to 40% Off</h2>
+                <p class="today-deals-product-brand">Pacsun Sale</p>
+              </div>
+            </div>
+          </div>
+          <!--Product (3)-->
+          <div class="today-deals-product">
+            <img style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
+            <div class="today-deals-product-description-container">
+                <div class="today-deals-product-description-brandlogo-container">
+                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
+                </div>
+                <div class="today-deals-product-detail">
+                  <h2 class="today-deals-product-offer">Up to 40% Off</h2>
+                  <p class="today-deals-product-brand">Pacsun Sale</p>
+                </div>
+              </div>
+          </div>
+      </div>
     </div>
   </div>
 
@@ -114,8 +116,8 @@
             <div class="top-offer-offerlabel">
               code
             </div>
+            <button type="button" id="top-offer-button">VIEW CODE</button>
           </div>
-          <button type="button" id="top-offer-button">VIEW CODE</button>
         </div>
       @endfor
     </div>
