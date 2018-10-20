@@ -122,14 +122,27 @@
   </div>
 
   <!--tab for popular stores and categories-->
-  <div style="width: 100%; margin: 30px 0;">
-    <div style="width: 1150px; height:400px; margin: auto; border: 1px solid #cfcfcf; border-top-left-radius:5px; border-top-right-radius: 5px;">
+  <div class="main-tabs-main-container-area">
+    <div class="main-tabs-main-container">
       <div class="tabs-header-container" id="tabs-header-container">
-        <div class="tab1" id="tab1">popular stores<i class="fa fa-angle-down" style="font-size: 24px;padding-left:10px;"></i></div>
-        <div class="tab2" id="tab2">popular categories<i class="fa fa-angle-down" style="font-size: 24px; margin-left:10px;"></i></div>
+        <div class="popularstores-tab" id="popularstores-tab">popular stores<i class="fa fa-angle-down"></i></div>
+        <div class="popularcategories-tab" id="popularcategories-tab">popular categories<i class="fa fa-angle-down"></i></div>
       </div>
-      <div class="tabs-detail-container" style="background-color: #ffffff; width:100%; height: calc(100% - 62px);">
-
+      <div class="tabs-detail-container">
+        <div class="popularstores-tab-detail-container" id="popularstores-tab-detail-container">
+          <ul>
+            @for($i=1; $i<= 32; $i++)
+              <li><a href="#">Kohl's</a></li>
+            @endfor 
+          </ul>
+        </div>
+        <div class="popularcategories-tab-detail-container" id="popularcategories-tab-detail-container">
+            <ul>
+              @for($i=1; $i<= 32; $i++)
+                <li><a href="#">Baby</a></li>
+              @endfor 
+            </ul>
+          </div>
       </div>
     </div>
   </div>

@@ -17,7 +17,7 @@
         <script src="{{asset('js/imageslider.js')}}"></script>
         <script src="{{asset('js/topstoresms.min.js')}}"></script>
         <script src="{{asset('js/header.js')}}"></script>
-        <script src="{{asset('js/homepagetabs.js')}}"></script>
+        <script src="{{asset('js/maintabs.js')}}"></script>
     @show
 </head>
 <body>
