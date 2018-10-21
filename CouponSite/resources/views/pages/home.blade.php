@@ -104,21 +104,19 @@
     <!--Products-->
     <div class="top-offers-container">
       @for($i=1; $i<=12; $i++)
-        <div class="top-offer-container">
-          <div class="top-offer-store-logo">
-            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
-          </div>
-          <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
-          <div class="top-offer-offerdetailcontainer">
-            <div class="top-offer-offertitle">
-              Up to 30% Off
-            </div>
-            <div class="top-offer-offerlabel">
-              code
-            </div>
-            <button type="button" id="top-offer-button">VIEW CODE</button>
-          </div>
+      <div class="top-offer-container">
+        <div class="top-offer-store-logo">
+          <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
         </div>
+        <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
+        <div class="top-offer-offertitle">
+          Up to 30%
+        </div>
+        <div class="top-offer-offerlabel">
+          code
+        </div>
+        <button type="button" id="top-offer-button">VIEW CODE</button>
+      </div>
       @endfor
     </div>
   </div>

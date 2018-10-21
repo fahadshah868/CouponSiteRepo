@@ -46,10 +46,6 @@
     width: 100%;
     height: 100%;
 }
-.top-offer-offerdetailcontainer{
-    width: 100%;
-    text-align:center;
-}
 .top-offer-offertitle{
     margin: 0;
     font-size:17px;
@@ -57,13 +53,14 @@
     color: $productoffertitle-textcolor;
 }
 .top-offer-offerlabel{
-    margin: 0;
-    font-size:15px; 
+    flex-grow: 1;
+    font-size:15px;
     font-weight:bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: $productofferlabel-textcolor;
 }
 #top-offer-button{
+    margin-top: 5px;
     width:100%; 
     height: 35px; 
     background-color: $offerbutton-backgroundcolor; 
@@ -73,7 +70,6 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight:bold;
     cursor:pointer;
-    margin-top: 10px;
     outline: none;
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -160,12 +156,15 @@
         width: 100%;
         padding: 0 15px;
     }
-    hr{
-        display: none;
+}
+@media only screen and (max-width: 500px){
+    .top-offers-container{
+        width: 100%;
+        padding: 0 15px;
     }
     .top-offers-container .top-offer-container:nth-child(n){
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         width: 100%;
         margin: 0 0 16px 0;
@@ -176,19 +175,5 @@
         cursor: pointer;
         transition: 0.7s;
         -webkit-transition: 0.7s;
-    }
-    .top-offer-offerdetailcontainer{
-        width: calc(100% - 90px);
-        margin-left: 15px;
-        display: flex;
-        flex-direction: column;
-    }
-    .top-offer-store-logo{ 
-        width:75px; 
-        height:75px;
-    }
-    #top-offer-button{
-        width: 100%;
-        height: 30px;
     }
 }
