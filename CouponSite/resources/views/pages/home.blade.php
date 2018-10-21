@@ -4,9 +4,7 @@
 
 @section('content')
 
-<div class="body-main-container">
-
-    <div class="cover-img" ></div>
+  <div class="cover-img" ></div>
   <!--Main Image Slider---------------------------------------------------------------------------------------------->
   {{-- <div class="slider" id="slider">
     <!--Slides-->
@@ -31,42 +29,48 @@
       <div class="today-deals-products">
           <!--Product (1)-->
           <div class="today-deals-product">
-            <img src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
-            <div class="today-deals-product-description-container">
-              <div class="today-deals-product-description-brandlogo-container">
-                <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
+            <a href="#">
+              <img src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
+              <div class="today-deals-product-description-container">
+                <div class="today-deals-product-description-brandlogo-container">
+                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
+                </div>
+                <div class="today-deals-product-detail">
+                  <div class="today-deals-product-offer">Up to 40% Off</div>
+                  <p class="today-deals-product-brand">Pacsun Sale</p>
+                </div>
               </div>
-              <div class="today-deals-product-detail">
-                <div class="today-deals-product-offer">Up to 40% Off</div>
-                <p class="today-deals-product-brand">Pacsun Sale</p>
-              </div>
-            </div>
+            </a>
           </div>
           <!--Product (2)-->
           <div class="today-deals-product">
-            <img src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
-            <div class="today-deals-product-description-container">
-              <div class="today-deals-product-description-brandlogo-container">
-                <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
+            <a href="#">
+              <img src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
+              <div class="today-deals-product-description-container">
+                <div class="today-deals-product-description-brandlogo-container">
+                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
+                </div>
+                <div class="today-deals-product-detail">
+                  <div class="today-deals-product-offer">Up to 40% Off</div>
+                  <p class="today-deals-product-brand">Pacsun Sale</p>
+                </div>
               </div>
-              <div class="today-deals-product-detail">
-                <div class="today-deals-product-offer">Up to 40% Off</div>
-                <p class="today-deals-product-brand">Pacsun Sale</p>
-              </div>
-            </div>
+            </a>
           </div>
           <!--Product (3)-->
           <div class="today-deals-product">
-            <img style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
-            <div class="today-deals-product-description-container">
-              <div class="today-deals-product-description-brandlogo-container">
-                <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
+            <a href="#">
+              <img style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
+              <div class="today-deals-product-description-container">
+                <div class="today-deals-product-description-brandlogo-container">
+                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
+                </div>
+                <div class="today-deals-product-detail">
+                  <div class="today-deals-product-offer">Up to 40% Off</div>
+                  <p class="today-deals-product-brand">Pacsun Sale</p>
+                </div>
               </div>
-              <div class="today-deals-product-detail">
-                <div class="today-deals-product-offer">Up to 40% Off</div>
-                <p class="today-deals-product-brand">Pacsun Sale</p>
-              </div>
-            </div>
+            </a>
           </div>
       </div>
     </div>
@@ -147,8 +151,7 @@
     </div>
   </div>
   
-</div>
-  <script>
+<script>
     $(document).ready(function() {  
       $("#slider").sliderResponsive({
       // Using default everything

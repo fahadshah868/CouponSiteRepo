@@ -14,6 +14,7 @@ Route::get('/' , 'HomeController@home');
 
 // routes for StoreController
 Route::get('/getpopularstores' , 'StoreController@getPopularStoresList');
+Route::get('/stores/allstores','StoreController@getAllStoresList');
 
 // routes for CategoryController
 Route::get('/getpopularcategories' , 'CategoryController@getPopularCategoriesList');

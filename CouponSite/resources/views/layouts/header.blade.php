@@ -6,7 +6,7 @@
         </div>
         <div class="site-header-searchbar">
             <form>
-                <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url(images/searchicon.png)" />
+                <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url(/images/searchicon.png)" />
             </form>
         </div>
 

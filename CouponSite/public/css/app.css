@@ -11395,7 +11395,7 @@ a:hover {
 }
 
 .footer-container .footer-copyright {
-  background-color: #262537;
+  background-color: #033349;
   padding-top: 3px;
   padding-bottom: 3px;
   text-align: right;
@@ -11630,13 +11630,11 @@ a:hover {
 .today-deals-product img {
   width: 100%;
   height: 100%;
-  cursor: pointer;
 }
 
 .today-deals-product-description-container {
   width: 100%;
   padding: 10px;
-  cursor: pointer;
   position: absolute;
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
@@ -11728,7 +11726,7 @@ a:hover {
   padding: 20px;
   background-color: #ffffff;
   border-radius: 2px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #CFCFCF;
   cursor: pointer;
   transition: 0.7s;
   -webkit-transition: 0.7s;
@@ -11822,7 +11820,7 @@ a:hover {
     padding: 20px;
     background-color: #ffffff;
     border-radius: 2px;
-    border: 1px solid #f1f1f1;
+    border: 1px solid #CFCFCF;
     cursor: pointer;
     transition: 0.7s;
     -webkit-transition: 0.7s;
@@ -11851,7 +11849,7 @@ a:hover {
     padding: 20px;
     background-color: #ffffff;
     border-radius: 2px;
-    border: 1px solid #f1f1f1;
+    border: 1px solid #CFCFCF;
     cursor: pointer;
     transition: 0.7s;
     -webkit-transition: 0.7s;
@@ -11884,7 +11882,7 @@ a:hover {
     padding: 20px;
     background-color: #ffffff;
     border-radius: 2px;
-    border: 1px solid #f1f1f1;
+    border: 1px solid #CFCFCF;
     cursor: pointer;
     transition: 0.7s;
     -webkit-transition: 0.7s;
@@ -11924,7 +11922,7 @@ a:hover {
     padding: 20px;
     background-color: #ffffff;
     border-radius: 2px;
-    border: 1px solid #f1f1f1;
+    border: 1px solid #CFCFCF;
     cursor: pointer;
     transition: 0.7s;
     -webkit-transition: 0.7s;

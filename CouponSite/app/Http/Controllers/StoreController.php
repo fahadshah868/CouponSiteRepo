@@ -10,4 +10,7 @@ class StoreController extends Controller
         $data['status'] = true;
         return response($data);
     }
+    public function getAllStoresList(){
+        return view('pages.store.AllStores');
+    }
 }
