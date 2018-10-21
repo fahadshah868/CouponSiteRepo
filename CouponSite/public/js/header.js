@@ -330,7 +330,7 @@ $(document).ready(function() {
                                         "<div class='dropdownmenu-specialevents-material-container'>"+
                                             "<a href='#'>"+
                                                 "<div class='dropdownmenu-event-logo'>"+
-                                                    "<img src='images/specialevents/blackfriday.jpg' />"+
+                                                    "<img src='/images/specialevents/blackfriday.jpg' />"+
                                                 "</div>"+
                                                 "<div class='dropdownmenu-event-title'>Black Friday<br>Deals</div>"+
                                             "</a>"+
