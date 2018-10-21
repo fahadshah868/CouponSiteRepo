@@ -11648,7 +11648,7 @@ a:hover {
 
 .today-deals-product-description-container {
   width: 100%;
-  padding: 2%;
+  padding: 10px;
   cursor: pointer;
   position: absolute;
   bottom: 0;
@@ -11674,17 +11674,19 @@ a:hover {
 .today-deals-product-detail {
   vertical-align: middle;
   margin-left: 10px;
-  width: 77%;
+  width: calc(100% - 75px);
   height: 60px;
 }
 
 .today-deals-product-offer {
+  margin: 0;
   font-size: 18px;
   font-family: 'Calibri Light';
   font-weight: bold;
 }
 
 .today-deals-product-brand {
+  margin: 0;
   font-size: 18px;
   font-family: 'Calibri';
 }

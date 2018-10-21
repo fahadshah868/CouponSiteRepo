@@ -37,7 +37,7 @@
                 <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
               </div>
               <div class="today-deals-product-detail">
-                <h2 class="today-deals-product-offer">Up to 40% Off</h2>
+                <div class="today-deals-product-offer">Up to 40% Off</div>
                 <p class="today-deals-product-brand">Pacsun Sale</p>
               </div>
             </div>
@@ -50,7 +50,7 @@
                 <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
               </div>
               <div class="today-deals-product-detail">
-                <h2 class="today-deals-product-offer">Up to 40% Off</h2>
+                <div class="today-deals-product-offer">Up to 40% Off</div>
                 <p class="today-deals-product-brand">Pacsun Sale</p>
               </div>
             </div>
@@ -59,14 +59,14 @@
           <div class="today-deals-product">
             <img style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
             <div class="today-deals-product-description-container">
-                <div class="today-deals-product-description-brandlogo-container">
-                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
-                </div>
-                <div class="today-deals-product-detail">
-                  <h2 class="today-deals-product-offer">Up to 40% Off</h2>
-                  <p class="today-deals-product-brand">Pacsun Sale</p>
-                </div>
+              <div class="today-deals-product-description-brandlogo-container">
+                <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
               </div>
+              <div class="today-deals-product-detail">
+                <div class="today-deals-product-offer">Up to 40% Off</div>
+                <p class="today-deals-product-brand">Pacsun Sale</p>
+              </div>
+            </div>
           </div>
       </div>
     </div>
