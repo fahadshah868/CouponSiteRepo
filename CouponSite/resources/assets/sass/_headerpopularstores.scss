@@ -10,12 +10,11 @@
     margin-bottom: 20px;
 }
 .dropdownmenu-popularstores-header-container .dopdownmenu-detailcontainer-main-heading{
-    color: gray;
+    color: $detailcontainer-heading-color;
     font-size: 18px;
     font-family: 'Calibri';
 }
 .dropdownmenu-popularstores-header-container #all-stores-link{
-    color: $dropdownmenu-links-color;
     font-size: 15px;
 }
 .dropdownmenu-popularstores-list-container{
@@ -36,7 +35,7 @@
     margin-bottom: 5px;
 }
 .dropdownmenu-store-material-container .dropdownmenu-store-logo img{
-    border: 1px solid #f1f1f1;
+    border: 1px solid $border-color-onwhite;
     width: 100%;
     height: 100%;
 }
@@ -44,5 +43,4 @@
     text-align: center;
     font-size: 13px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: $dropdownmenu-links-color;
 }

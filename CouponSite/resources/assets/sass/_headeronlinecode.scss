@@ -10,12 +10,11 @@
     margin-bottom: 20px;
 }
 .dropdownmenu-onlinecodes-header-container .dopdownmenu-detailcontainer-main-heading{
-    color: gray;
+    color: $detailcontainer-heading-color;
     font-size: 18px;
     font-family: 'Calibri';
 }
 .dropdownmenu-onlinecodes-header-container #dropdownmenu-all-onlinecodes-link{
-    color: $dropdownmenu-links-color;
     font-size: 15px;
 }
 .dropdownmenu-onlinecodes-list-container{
@@ -25,12 +24,12 @@
 }
 .dropdownmenu-onlinecodes-list-container a{
     width: 48%;
-    border: 1px solid $onlinecodeoffer-bordercolor;
+    border: 1px solid $border-color-onwhite;
     margin-bottom: 13px;
     text-decoration: none;
 }
 .dropdownmenu-onlinecodes-list-container a:hover{
-    border: 1px solid $onlinecodeoffer-bordercolor-hover;
+    border: 1px solid $border-color-ongrey;
 }
 .dropdownmenu-onlinecodes-list-container a:nth-of-type(odd){
     margin-right: 13px;
@@ -46,7 +45,7 @@
     height: 80px;
 }
 .dropdownmenu-onlinecode-material-container .dropdownmenu-onlinecode-store-logo img{
-    border: 1px solid #f1f1f1;
+    border: 1px solid $border-color-onwhite;
     width: 100%;
     height: 100%;
 }
@@ -60,11 +59,11 @@
 .dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-title{
     font-size: 17px;
     font-family: 'Calibri';
-    color: $onlinecodeoffertitle-textcolor;
+    color: $offer-color;
 }
 .dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-label{
     font-size: 15px;
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: $onlinecodeofferlabel-textcolor;
+    color: $offer-label;
 }

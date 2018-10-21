@@ -5,7 +5,7 @@
 .main-tabs-main-container{
     width: 1150px;
     margin: auto;
-    border: 1px solid #cfcfcf;
+    border: 1px solid $border-color-ongrey;
     border-top-left-radius:5px;
     border-top-right-radius: 5px;
 }
@@ -15,42 +15,42 @@
     flex-wrap:nowrap;
 }
 .active-tab{
-    background-color: #033349 !important;
+    background-color: $tab-bg-color-onactive !important;
 }
 .tabs-header-container div:hover{
-    background-color: #033349;
-    border: 1px solid #033349;
+    background-color: $tab-bg-color-onhover;
+    border: 1px solid $tab-bg-color-onhover;
 }
 .tabs-header-container div i{
     font-size: 24px;
     padding-left:10px;
 }
 .popularstores-tab{
-    background-color: #044D6E;
+    background-color: $theme-color;
     color: #ffffff;
     width:50%;
     padding: 15px;
     text-align:center;
-    border: 1px solid #044D6E;
+    border: 1px solid $theme-color;
     border-top-left-radius:5px;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     cursor: pointer;
 }
 .popularcategories-tab{
-    background-color: #044D6E;
-    color: #ffffff;
+    background-color: $theme-color;
+    color: $whitecolor;
     width:50%;
     padding: 15px;
     text-align:center;
-    border: 1px solid #044D6E;
+    border: 1px solid $theme-color;
     border-top-right-radius: 5px;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     cursor: pointer;
 }
 .tabs-detail-container{
-    background-color: #ffffff;
+    background-color: $whitecolor;
     width:100%;
     height: calc(100% - 62px);
 }
@@ -70,7 +70,6 @@
 .popularstores-tab-detail-container ul li{
     margin-bottom: 3px;
     font-size:14px;
-    color: #0061ff;
 }
 .popularcategories-tab-detail-container{
     width:90%;
@@ -88,7 +87,6 @@
 .popularcategories-tab-detail-container ul li{
     margin-bottom: 3px;
     font-size:14px;
-    color: #0061ff;
 }
 @media only screen and (max-width: 1165px){
     .main-tabs-main-container-area{
