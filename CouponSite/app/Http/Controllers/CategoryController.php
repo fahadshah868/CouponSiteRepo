@@ -10,4 +10,7 @@ class CategoryController extends Controller
         $data['status'] = true;
         return response($data);
     }
+    public function getAllCategoriesList(){
+        return view('pages.category.allcategories');
+    }
 }

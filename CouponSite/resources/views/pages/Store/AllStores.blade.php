@@ -31,7 +31,13 @@
         <div class="all-stores-list">
             <ul>
                 @for($i=1; $i<= 100; $i++)
-                    <li><span class="all-stores-list-bullets">&#9654;</span><a href="#">Kohl's</a></li>
+                    <li>
+                        <div class="all-stores-names-container">
+                            <div class="all-stores-list-bullets">&#9654</div>
+                            <div class="all-stores-names"><a href="#">Kohl's</a></div>
+                        </div>
+                    </li>
+                        {{-- <span class="all-stores-list-bullets">&#9654;</span><a href="#">Kohl's asd as dasd asd asd asd asd asda sd asda s</a></li> --}}
                 @endfor
             </ul>
         </div>

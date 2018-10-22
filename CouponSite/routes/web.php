@@ -14,10 +14,11 @@ Route::get('/' , 'HomeController@home');
 
 // routes for StoreController
 Route::get('/getpopularstores' , 'StoreController@getPopularStoresList');
-Route::get('/stores/allstores','StoreController@getAllStoresList');
+Route::get('/store/allstores','StoreController@getAllStoresList');
 
 // routes for CategoryController
 Route::get('/getpopularcategories' , 'CategoryController@getPopularCategoriesList');
+Route::get('/category/allcategories' , 'CategoryController@getAllCategoriesList');
 
 // routes for SpecialEventsController
 Route::get('/getspecialevents' , 'SpecialEventsController@getSpecialEventsList'); 

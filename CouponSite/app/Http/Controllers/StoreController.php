@@ -11,6 +11,6 @@ class StoreController extends Controller
         return response($data);
     }
     public function getAllStoresList(){
-        return view('pages.store.AllStores');
+        return view('pages.store.allstores');
     }
 }

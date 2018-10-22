@@ -27,6 +27,8 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items:center;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
 }
 .as-popular-store-logo{
     width: 90px;
@@ -36,8 +38,12 @@
     width: 100%;
     height: 100%;
     border: 1px solid $border-color-ongrey;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
 }
 .as-popular-store-logo img:hover{
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
     box-shadow: 0 0 10px $boxshadow-color;
 }
 .all-stores-list-container{
@@ -46,6 +52,7 @@
     border: 1px solid $border-color-ongrey;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    box-shadow: 0 0 5px $boxshadow-color;
 }
 .all-stores-list-heading{
     width: 100%;
@@ -67,12 +74,16 @@
     column-count: 4;
     list-style:none;
 }
-.all-stores-list ul li a{
-margin-left: 10px;
+.all-stores-names-container{
+    display:flex;
+    flex-direction: row;
 }
 .all-stores-list-bullets{
     color: $theme-color;
     font-size:13px;
+}
+.all-stores-names{
+    margin-left: 10px;
 }
 @media only screen and (max-width: 1165px){
     .all-stores-main-container{

@@ -31,7 +31,7 @@ $(document).ready(function() {
             if(data.status == true){
                 popularstore = "<div class='dropdownmenu-popularstores-header-container'>"+
                         "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Stores</div>"+
-                        "<a id='all-stores-link' href='/stores/allstores'>See All Stores</a>"+
+                        "<a id='all-stores-link' href='/store/allstores'>See All Stores</a>"+
                     "</div>"+
                     "<div class='dropdownmenu-popularstores-list-container'>"
                         for(var i=1; i<=10; i++){
@@ -116,7 +116,7 @@ $(document).ready(function() {
                         if(data.status == true){
                             popularstore = "<div class='dropdownmenu-popularstores-header-container'>"+
                                     "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Stores</div>"+
-                                    "<a id='all-stores-link' href='#'>See All Stores</a>"+
+                                    "<a id='all-stores-link' href='/store/allstores'>See All Stores</a>"+
                                 "</div>"+
                                 "<div class='dropdownmenu-popularstores-list-container'>"
                                     for(var i=1; i<=10; i++){
@@ -167,7 +167,7 @@ $(document).ready(function() {
                         if(data.status == true){
                             popularcategories = "<div class='dropdownmenu-popularcategories-header-container'>"+
                                     "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Categories</div>"+
-                                    "<a id='dropdownmenu-all-categories-link' href='#'>See All Categories</a>"+
+                                    "<a id='dropdownmenu-all-categories-link' href='/category/allcategories'>See All Categories</a>"+
                                 "</div>"+
                                 "<div class='dropdownmenu-popularcategories-list-container'>"
                                     for(var i=1; i<=10; i++){

@@ -11728,8 +11728,8 @@ a:hover {
   border-radius: 2px;
   border: 1px solid #CFCFCF;
   cursor: pointer;
-  transition: 0.7s;
-  -webkit-transition: 0.7s;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 .top-offers-container .top-offer-container:nth-child(4n) {
@@ -11739,8 +11739,8 @@ a:hover {
 .top-offers-container .top-offer-container:hover {
   -webkit-box-shadow: 0 0 10px #838383;
           box-shadow: 0 0 10px #838383;
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 .top-offer-store-logo {
@@ -11782,16 +11782,16 @@ a:hover {
   font-weight: bold;
   cursor: pointer;
   outline: none;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 #top-offer-button:hover {
   background-color: #ffffff !important;
   color: #F45336 !important;
   border: 2px solid #F45336;
-  transition: 0.5s;
-  -webkit-transition: 0.5s;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 @media only screen and (max-width: 1165px) {
@@ -11822,8 +11822,8 @@ a:hover {
     border-radius: 2px;
     border: 1px solid #CFCFCF;
     cursor: pointer;
-    transition: 0.7s;
-    -webkit-transition: 0.7s;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
   }
 }
 
@@ -11851,8 +11851,8 @@ a:hover {
     border-radius: 2px;
     border: 1px solid #CFCFCF;
     cursor: pointer;
-    transition: 0.7s;
-    -webkit-transition: 0.7s;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
   }
 
   .top-offers-container .top-offer-container:nth-child(3n) {
@@ -11884,8 +11884,8 @@ a:hover {
     border-radius: 2px;
     border: 1px solid #CFCFCF;
     cursor: pointer;
-    transition: 0.7s;
-    -webkit-transition: 0.7s;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
   }
 
   .top-offers-container .top-offer-container:nth-child(2n) {
@@ -11924,8 +11924,8 @@ a:hover {
     border-radius: 2px;
     border: 1px solid #CFCFCF;
     cursor: pointer;
-    transition: 0.7s;
-    -webkit-transition: 0.7s;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
   }
 }
 
@@ -11966,14 +11966,16 @@ a:hover {
   height: 130px;
   margin: 20px auto;
   border: 1px solid #dee2e6;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 .top-stores-main-container .stores-container .item .store-img:hover {
   cursor: pointer;
   -webkit-box-shadow: 0 0 10px #838383;
           box-shadow: 0 0 10px #838383;
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 .top-stores-main-container .stores-container .item .store-img img {
@@ -12287,6 +12289,8 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 .as-popular-store-logo {
@@ -12298,9 +12302,13 @@ a:hover {
   width: 100%;
   height: 100%;
   border: 1px solid #CFCFCF;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
 }
 
 .as-popular-store-logo img:hover {
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
   -webkit-box-shadow: 0 0 10px #838383;
           box-shadow: 0 0 10px #838383;
 }
@@ -12311,6 +12319,8 @@ a:hover {
   border: 1px solid #CFCFCF;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  -webkit-box-shadow: 0 0 5px #838383;
+          box-shadow: 0 0 5px #838383;
 }
 
 .all-stores-list-heading {
@@ -12335,13 +12345,23 @@ a:hover {
   list-style: none;
 }
 
-.all-stores-list ul li a {
-  margin-left: 10px;
+.all-stores-names-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .all-stores-list-bullets {
   color: #044D6E;
   font-size: 13px;
+}
+
+.all-stores-names {
+  margin-left: 10px;
 }
 
 @media only screen and (max-width: 1165px) {

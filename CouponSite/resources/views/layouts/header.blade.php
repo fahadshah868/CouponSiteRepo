@@ -2,7 +2,7 @@
 <header class="site-header-container">
     <div class="site-header">
         <div class="site-header-logo">
-            <a href="localhost" id="logo">WebSite</a>
+            <a href="/" id="logo">WebSite</a>
         </div>
         <div class="site-header-searchbar">
             <form>
