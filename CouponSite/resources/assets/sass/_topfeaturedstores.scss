@@ -30,14 +30,14 @@
     height: 130px;
     margin: 20px auto;
     border: 1px solid $border-color;
-    transition: 0.4s;
-    -webkit-transition: 0.4s;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
   }
   .top-stores-main-container .stores-container .item .store-img:hover{
     cursor: pointer;
     box-shadow: 0 0 10px $boxshadow-color;
-    transition: 0.4s;
-    -webkit-transition: 0.4s;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
   }
   .top-stores-main-container .stores-container .item .store-img img{
     width: 100%;

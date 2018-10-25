@@ -13,12 +13,13 @@
             Popular Stores
         </div>
         <div class="as-popular-stores-list-container">
-            @for($i=1; $i<=10; $i++)
+            @for($i=1; $i<=12; $i++)
             <div class="as-popular-store-container">
-                <a href="#">
+                <a href="#" class="as-popular-store-link">
                     <div class="as-popular-store-logo">
                         <img src="https://igx.4sqi.net/img/general/200x200/38757329_V6X_cPjnJ2QsS2w-P7Ret6Lfm8T7J-i4dMRtGBbf-B4.jpg"/>
                     </div>
+                    <div class="as-popular-store-name">Kohl's</div>
                 </a>
             </div>
             @endfor
@@ -37,7 +38,6 @@
                             <div class="all-stores-names"><a href="#">Kohl's</a></div>
                         </div>
                     </li>
-                        {{-- <span class="all-stores-list-bullets">&#9654;</span><a href="#">Kohl's asd as dasd asd asd asd asd asda sd asda s</a></li> --}}
                 @endfor
             </ul>
         </div>
