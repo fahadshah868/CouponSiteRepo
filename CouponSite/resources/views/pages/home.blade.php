@@ -29,8 +29,8 @@
       <div class="today-deals-products">
           <!--Product (1)-->
           <div class="today-deals-product">
-            <a href="#">
-              <img src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
+            <a href="#" class="today-deals-product-link">
+              <img class="today-deals-product-img" src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
               <div class="today-deals-product-description-container">
                 <div class="today-deals-product-description-brandlogo-container">
                   <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
@@ -44,8 +44,8 @@
           </div>
           <!--Product (2)-->
           <div class="today-deals-product">
-            <a href="#">
-              <img src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
+            <a href="#" class="today-deals-product-link">
+              <img class="today-deals-product-img" src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
               <div class="today-deals-product-description-container">
                 <div class="today-deals-product-description-brandlogo-container">
                   <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
@@ -59,8 +59,8 @@
           </div>
           <!--Product (3)-->
           <div class="today-deals-product">
-            <a href="#">
-              <img style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
+            <a href="#" class="today-deals-product-link">
+              <img class="today-deals-product-img" style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
               <div class="today-deals-product-description-container">
                 <div class="today-deals-product-description-brandlogo-container">
                   <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
@@ -107,7 +107,7 @@
     </div>
     <!--Products-->
     <div class="top-offers-container">
-      @for($i=1; $i<=12; $i++)
+      @for($i=1; $i<=16; $i++)
       <div class="top-offer-container">
         <div class="top-offer-store-logo">
           <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
@@ -123,34 +123,7 @@
       </div>
       @endfor
     </div>
-  </div>
-
-  <!--tab for popular stores and categories-->
-  <div class="main-tabs-main-container-area">
-    <div class="main-tabs-main-container">
-      <div class="tabs-header-container" id="tabs-header-container">
-        <div class="popularstores-tab" id="popularstores-tab">popular stores<i class="fa fa-angle-down"></i></div>
-        <div class="popularcategories-tab" id="popularcategories-tab">popular categories<i class="fa fa-angle-down"></i></div>
-      </div>
-      <div class="tabs-detail-container">
-        <div class="popularstores-tab-detail-container" id="popularstores-tab-detail-container">
-          <ul>
-            @for($i=1; $i<= 32; $i++)
-              <li><a href="#">Kohl's</a></li>
-            @endfor 
-          </ul>
-        </div>
-        <div class="popularcategories-tab-detail-container" id="popularcategories-tab-detail-container">
-            <ul>
-              @for($i=1; $i<= 32; $i++)
-                <li><a href="#">Baby</a></li>
-              @endfor 
-            </ul>
-          </div>
-      </div>
-    </div>
-  </div>
-  
+  </div>  
 <script>
     $(document).ready(function() {  
       $("#slider").sliderResponsive({
