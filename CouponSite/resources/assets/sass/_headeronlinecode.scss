@@ -57,13 +57,11 @@
     padding-left: 10px;
 }
 .dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-title{
-    font-size: 17px;
-    font-family: 'Calibri';
+    font-size: $offer-title-font;
     color: $offer-color;
 }
 .dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-label{
-    font-size: 15px;
+    font-size: $offer-label-font;
     font-weight: bold;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: $offer-label;
+    color: $offer-label-color;
 }

@@ -76,8 +76,8 @@
 }
 .today-deals-product-brand{
     margin: 0;
-    font-size: 18px;
-    font-family: 'Calibri';
+    font-size: $title-font;
+    font-weight: $title-font-weight;
 }
 @media only screen and (max-width: 760px){
     .today-deals-products{

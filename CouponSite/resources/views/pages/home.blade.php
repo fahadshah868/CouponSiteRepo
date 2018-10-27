@@ -107,7 +107,7 @@
     </div>
     <!--Products-->
     <div class="top-offers-container">
-      @for($i=1; $i<=16; $i++)
+      @for($i=1; $i<=12; $i++)
       <div class="top-offer-container">
         <div class="top-offer-store-logo">
           <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
@@ -123,7 +123,34 @@
       </div>
       @endfor
     </div>
-  </div>  
+  </div>
+  <!--top instore coupons-->
+  <div class="top-instore-offers-main-container">
+    <!--Heading-->
+    <div class="top-instore-offers-heading">
+      <h2>Top In-Store Coupon Codes</h2>
+    </div>
+    <!--Products-->
+    <div class="top-instore-offers-container">
+      @for($i=1; $i<=8; $i++)
+      <div class="top-instore-offer-container">
+        <div class="top-instore-offer-store-logo">
+          <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
+        </div>
+        <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
+        <div class="top-instore-offer-offertitle">
+          Up to 30%
+        </div>
+        <div class="top-instore-offer-offerlabel">
+          In-Store coupon
+        </div>
+        <button type="button" id="top-instore-offer-button">VIEW CODE</button>
+      </div>
+      @endfor
+    </div>
+  </div>
+
+
 <script>
     $(document).ready(function() {  
       $("#slider").sliderResponsive({
