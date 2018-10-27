@@ -9,16 +9,16 @@
     font-family: 'Calibri Light';
     color: $todayhotdeals-heading-textcolor;
 }
-.today-deals-products{
-    width: 1120px;
-    margin: 0 auto;
-}
 .today-deals-products-container{
     width: 100% !important;
     overflow: auto;
     overflow-y: hidden;
     -ms-overflow-y: hidden;
     white-space: nowrap;
+}
+.today-deals-products{
+    width: 1120px;
+    margin: 0 auto;
 }
 .today-deals-product{
     position: relative;
@@ -28,7 +28,7 @@
     margin: 20px 5px 0 5px;
     overflow: hidden;
 }
-.today-deals-product .today-deals-product-link{
+.today-deals-product a.today-deals-product-link{
     width: 100%;
     height: 100%;
 }

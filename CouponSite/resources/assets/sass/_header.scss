@@ -103,7 +103,7 @@
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container{
     width: 100%;
-    height: 450px;
+    height: 480px;
     display: flex;
     flex-wrap: nowrap;
     cursor: auto;
@@ -339,7 +339,7 @@
         display: none;
     }
 }
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 900px){
     .site-header-logo{
         display: none;
     }

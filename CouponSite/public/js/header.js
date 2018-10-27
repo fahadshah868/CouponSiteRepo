@@ -8,48 +8,6 @@ $(document).ready(function() {
     $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li:first").addClass("active-sidebar-li") //Activate first tab
     $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a:first").addClass("activelink") //Activate first tab
 
-    //load popular stores on page load
-    var popularstore
-    $.ajax({
-        type:'GET',
-        url:'/getpopularstores',
-        data: '',
-        beforeSend: function(){
-            for(var i=0; i< dropdowndetailcontainerelements.length; i++){
-                dropdowndetailcontainerelements[i].style.display = "none";
-            }
-            $("#loader-overlay-container").css('display','flex');
-        },
-        complete: function(){
-            for(var i=0; i< dropdowndetailcontainerelements.length; i++){
-                dropdowndetailcontainerelements[i].style.display = "none";
-            }
-            $("#dropdownmenu-popularstore-body-container").html(popularstore);
-            $("#dropdownmenu-popularstore-body-container").css('display','block');
-        },
-        success:function(data){
-            if(data.status == true){
-                popularstore = "<div class='dropdownmenu-popularstores-header-container'>"+
-                        "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Stores</div>"+
-                        "<a id='all-stores-link' href='/store/allstores'>See All Stores</a>"+
-                    "</div>"+
-                    "<div class='dropdownmenu-popularstores-list-container'>"
-                        for(var i=1; i<=10; i++){
-                            popularstore = popularstore + 
-                            "<div class='dropdownmenu-store-material-container'>"+
-                                "<a href='#'>"+
-                                    "<div class='dropdownmenu-store-logo'>"+
-                                        "<img src='https://img.grouponcdn.com/coupons/2MB1FyJzVmZc2SQn6UM5y6GPXyik/2M-500x500' />"+
-                                    "</div>"+
-                                    "<div class='dropdownmenu-store-title'>Tillys</div>"+
-                                "</a>"+
-                            "</div>"
-                        }
-                    popularstore = popularstore + "</div>"
-            }
-        }
-    });
-
     $(window).resize(function() {
         $("#hamburgerbutton-mega-menu-overlay-container").css('height', '0');
         $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
@@ -65,6 +23,54 @@ $(document).ready(function() {
             $('#explorebutton-mega-menu-overlay-container').toggle();
             $('#events-list').slideUp();
             $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
+            if($("#dropdownmenu-popularstore-body-container").html().length > 0){
+                for(var i=0; i< dropdowndetailcontainerelements.length; i++){
+                    dropdowndetailcontainerelements[i].style.display = "none";
+                }
+                $("#dropdownmenu-popularstore-body-container").css("display","block");
+            }
+            else{
+                var popularstore
+                $.ajax({
+                    type:'GET',
+                    url:'/getpopularstores',
+                    data: '',
+                    beforeSend: function(){
+                        for(var i=0; i< dropdowndetailcontainerelements.length; i++){
+                            dropdowndetailcontainerelements[i].style.display = "none";
+                        }
+                        $("#loader-overlay-container").css('display','flex');
+                    },
+                    complete: function(){
+                        for(var i=0; i< dropdowndetailcontainerelements.length; i++){
+                            dropdowndetailcontainerelements[i].style.display = "none";
+                        }
+                        $("#dropdownmenu-popularstore-body-container").html(popularstore);
+                        $("#dropdownmenu-popularstore-body-container").css('display','block');
+                    },
+                    success:function(data){
+                        if(data.status == true){
+                            popularstore = "<div class='dropdownmenu-popularstores-header-container'>"+
+                                    "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Stores</div>"+
+                                    "<a id='all-stores-link' href='/store/allstores'>See All Stores</a>"+
+                                "</div>"+
+                                "<div class='dropdownmenu-popularstores-list-container'>"
+                                    for(var i=1; i<=12; i++){
+                                        popularstore = popularstore + 
+                                        "<div class='dropdownmenu-store-material-container'>"+
+                                            "<a href='#' class='dropdown-store-link'>"+
+                                                "<div class='dropdownmenu-store-logo'>"+
+                                                    "<img src='https://img.grouponcdn.com/coupons/2MB1FyJzVmZc2SQn6UM5y6GPXyik/2M-500x500' />"+
+                                                "</div>"+
+                                                "<div class='dropdownmenu-store-title'>Tillys</div>"+
+                                            "</a>"+
+                                        "</div>"
+                                    }
+                                popularstore = popularstore + "</div>"
+                        }
+                    }
+                });
+            }
         }
         else if(!($(event.target).parents().hasClass('show')) && ($('#hamburgerbutton-mega-menu-overlay-container').css('display') == 'block' || $('#explorebutton-mega-menu-overlay-container').css('display') == 'block')){
             $('#menu-toggle').toggleClass('active');
@@ -119,10 +125,10 @@ $(document).ready(function() {
                                     "<a id='all-stores-link' href='/store/allstores'>See All Stores</a>"+
                                 "</div>"+
                                 "<div class='dropdownmenu-popularstores-list-container'>"
-                                    for(var i=1; i<=10; i++){
+                                    for(var i=1; i<=12; i++){
                                         popularstore = popularstore + 
                                         "<div class='dropdownmenu-store-material-container'>"+
-                                            "<a href='#'>"+
+                                            "<a href='#' class='dropdown-store-link'>"+
                                                 "<div class='dropdownmenu-store-logo'>"+
                                                     "<img src='https://img.grouponcdn.com/coupons/2MB1FyJzVmZc2SQn6UM5y6GPXyik/2M-500x500' />"+
                                                 "</div>"+
@@ -170,10 +176,10 @@ $(document).ready(function() {
                                     "<a id='dropdownmenu-all-categories-link' href='/category/allcategories'>See All Categories</a>"+
                                 "</div>"+
                                 "<div class='dropdownmenu-popularcategories-list-container'>"
-                                    for(var i=1; i<=10; i++){
+                                    for(var i=1; i<=12; i++){
                                         popularcategories = popularcategories + 
                                         "<div class='dropdownmenu-category-material-container'>"+
-                                            "<a href='#'>"+
+                                            "<a href='#' class='dropdown-category-link'>"+
                                                 "<div class='dropdownmenu-category-logo'>"+
                                                     "<img src='https://cdn2.iconfinder.com/data/icons/men-s-accessories-flat-colorful/2048/7768_-_Casual_Shirt-512.png' />"+
                                                 "</div>"+
@@ -278,11 +284,11 @@ $(document).ready(function() {
                                 for(var i=1; i<=8; i++){
                                     topinstoreoffers = topinstoreoffers + 
                                     "<div class='dropdownmenu-instoreoffers-material-container'>"+
-                                        "<a href='#'>"+
+                                        "<a href='#' class='dropdown-instore-code-link'>"+
                                             "<div class='dropdownmenu-instoreoffer-store-logo'>"+
                                                 "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpECATf3zT10yaX61taR_QOYF2d2lOvqCS3XKiM-Xdlei9Xj0H' />"+
                                             "</div>"+
-                                            "<div class='dropdownmenu-instoreoffer-title'>50 Instore Offers<br>Available</div>"+
+                                            "<div class='dropdownmenu-instoreoffer-title'>50 Instore Offers Available</div>"+
                                         "</a>"+
                                     "</div>"
                                 }
@@ -328,11 +334,11 @@ $(document).ready(function() {
                                     for(var i=1; i<=8; i++){
                                         specialevents = specialevents + 
                                         "<div class='dropdownmenu-specialevents-material-container'>"+
-                                            "<a href='#'>"+
+                                            "<a href='#' class='dropdown-specialevents-link'>"+
                                                 "<div class='dropdownmenu-event-logo'>"+
                                                     "<img src='/images/specialevents/blackfriday.jpg' />"+
                                                 "</div>"+
-                                                "<div class='dropdownmenu-event-title'>Black Friday<br>Deals</div>"+
+                                                "<div class='dropdownmenu-event-title'>Black Friday Deals</div>"+
                                             "</a>"+
                                         "</div>"
                                     }
