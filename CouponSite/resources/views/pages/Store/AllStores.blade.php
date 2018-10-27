@@ -15,7 +15,7 @@
         <div class="as-popular-stores-list-container">
             @for($i=1; $i<=12; $i++)
             <div class="as-popular-store-container">
-                <a href="#" class="as-popular-store-link">
+                <a href="/store/storecoupons" class="as-popular-store-link">
                     <div class="as-popular-store-logo">
                         <img src="https://igx.4sqi.net/img/general/200x200/38757329_V6X_cPjnJ2QsS2w-P7Ret6Lfm8T7J-i4dMRtGBbf-B4.jpg"/>
                     </div>
