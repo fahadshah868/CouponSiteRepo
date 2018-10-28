@@ -57,7 +57,7 @@
                     <div class="store-coupons-detailbar-offer-container">
                         <div style="font-size: 13px; color: #044D6E;"><i style="margin-right: 5px; font-size: 15px;" class="fa fa-check-circle"></i>Verfied</div>
                         <div class="store-coupons-detailbar-offertitle">40% off total purchase with discout</div>
-                        <div class="store-coupons-detailbar-offerlabel">Code</div>
+                        <div class="store-coupons-detailbar-offerlabel"><span>code</span></div>
                         <div class="store-coupons-detailbar-coupon-expires"><i style="margin-right: 5px;" class="fa fa-clock-o"></i>Expires: 30/10/18</div>
                     </div>
                     <div class="store-coupons-detailbar-offer-button-container">

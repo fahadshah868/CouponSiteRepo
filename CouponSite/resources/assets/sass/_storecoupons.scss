@@ -105,10 +105,18 @@
     font-weight: 500;
 }
 .store-coupons-detailbar-offerlabel{
-    color: $offer-label-color;
+    // color: $offer-label-color;
+    // font-size: $offer-label-font;
+    // font-weight: $offer-label-font-weight;
+    flex-grow: 1;
+}
+.store-coupons-detailbar-offerlabel span{
+    color: #fff;
     font-size: $offer-label-font;
     font-weight: $offer-label-font-weight;
-    flex-grow: 1;
+    // flex-grow: 1;
+    background-color: $theme-color;
+    padding: 1px 3px;
 }
 .store-coupons-detailbar-coupon-expires{
     color: grey;
