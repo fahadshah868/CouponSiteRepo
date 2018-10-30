@@ -3,10 +3,9 @@
     margin: 30px auto;
     text-align: center;
 }
-.top-instore-offers-heading h2{
-    font-size:28px;
-    font-weight: bold;
-    color: $topoffers-heading-textcolor;
+.top-instore-offers-heading{
+    font-size:25px;
+    font-weight: 700;
 }
 .top-instore-offers-container{
     width: 1150px;
@@ -21,7 +20,7 @@
     width: calc(25% - 12px);
     margin: 0 16px 16px 0;
     padding: 20px;
-    background-color: $whitecolor;
+    background-color: #fff;
     border-radius: 2px;
     border: 1px solid $border-color-ongrey;
     cursor: pointer;
@@ -47,15 +46,16 @@
 }
 .top-instore-offer-offertitle{
     margin: 0;
-    font-size: $offer-title-font;
-    color: $offer-title-color;
-    font-weight: $offer-title-font-weight;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.top-instore-offer-offerlabel{
+.top-instore-offer-offertype{
+    font-size: 14px;
+    font-weight: 700;
+    color: #228B22;
     flex-grow: 1;
-    font-size: $offer-label-font;
-    font-weight: $offer-label-font-weight;
-    color: $offer-label-color;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 #top-instore-offer-button{
     margin-top: 5px;
@@ -65,15 +65,14 @@
     color: $whitecolor; 
     border: 2px solid $theme-color; 
     border-radius: 4px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight:bold;
+    font-weight: 500;
     cursor:pointer;
     outline: none;
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
 #top-instore-offer-button:hover{
-    background-color: $whitecolor !important;
+    background-color: #fff !important;
     color: $theme-color !important;
     border: 2px solid $theme-color;
     transition: 0.3s;
@@ -95,7 +94,7 @@
         width: calc(25% - 12px);
         margin: 0 16px 16px 0;
         padding: 20px;
-        background-color: $whitecolor;
+        background-color: #fff;
         border-radius: 2px;
         border: 1px solid $border-color-ongrey;
         cursor: pointer;
@@ -115,7 +114,7 @@
         width: calc(33% - 8.4px);
         margin: 0 16px 16px 0;
         padding: 20px;
-        background-color: $whitecolor;
+        background-color: #fff;
         border-radius: 2px;
         border: 1px solid $border-color-ongrey;
         cursor: pointer;
@@ -138,7 +137,7 @@
         width: calc(50% - 8px);
         margin: 0 16px 16px 0;
         padding: 20px;
-        background-color: $whitecolor;
+        background-color: #fff;
         border-radius: 2px;
         border: 1px solid $border-color-ongrey;
         cursor: pointer;
@@ -167,7 +166,7 @@
         width: 100%;
         margin: 0 0 16px 0;
         padding: 20px;
-        background-color: $whitecolor;
+        background-color: #fff;
         border-radius: 2px;
         border: 1px solid $border-color-ongrey;
         cursor: pointer;

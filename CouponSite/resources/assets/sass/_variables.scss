@@ -1,5 +1,6 @@
 //base app theme
 $theme-color: #044D6E;
+$theme-color-tonext: #033349;
 $link-color: #044D6E;
 $link-color-onhover: #0061ff;
 $body-backgroundcolor: #F2F2F2;
@@ -24,18 +25,9 @@ $whitecolor: #ffffff;
 $loadercolor: #044D6E;
 
 //header
-$topsearchbar-bordercolor: #ffffff;
-$dropdownbutton-onhover-backgroundcolor: #033349;
-$dropdownbutton-onactive-backgroundcolor: #033349;
 //mega dropdown menu
-$sidebar-heading-color: #7D7D7D;
-$sidebar-list-items-background-color: #D1D1D1;
 $detailcontainer-heading-color: #7D7D7D;
-//mega dropdown list
-$togglebutton-list-backgroundcolor: #044D6E;
-$togglebutton-list-hover-backgroundcolor: #0b78aa;
-$togglebutton-sublist-backgroundcolor: #033349;
-$togglebutton-sublist-hover-backgroundcolor: #0b78aa;
+
 //end header
 
 //footer
@@ -46,22 +38,3 @@ $footerfacebookicon-onhover-color: #0077e2;
 $footergoogleicon-onhover-color: #ef1a1a;
 $footertwittericon-onhover-color: #00aced;
 $footerinstagramicon-onhover-color: #e4405f;
-
-//todays hot deals content
-$todayhotdeals-heading-textcolor: #5A5858;
-
-//main tabs
-$tab-bg-color-onhover: #033349;
-$tab-bg-color-onactive: #033349;
-
-//top stores content
-$topstores-control-buttons-bg-color: #7D7D7D;
-$topstores-heading-textcolor: #5A5858;
-
-//top offers deals products content
-$topoffers-heading-textcolor: #000000;
-$producttitle-textcolor: #000000;
-$productoffertitle-textcolor : #000000;
-$offerbutton-backgroundcolor: #F45336;
-$offerbutton-textcolor: #F45336;
-$productofferlabel-textcolor: #F45336;

@@ -21,9 +21,7 @@
   <!--Todays New Hot Deals---------------------------------------------------------------------------------------->
   <div class="today-deals-main-container">
     <!--Heading-->
-    <div class="today-deals-heading">
-      <h2>Today's Hot Deals</h2>
-    </div>
+    <div class="today-deals-heading">Today's Hot Deals</div>
     <!--Products-->
     <div class="today-deals-products-container">
       <div class="today-deals-products">
@@ -79,9 +77,7 @@
   <!--Top Stores-------------------------------------------------------------------------------------------------->
   <div class="top-stores-main-container" id="top-stores-main-container">
     <!--Heading-->
-    <div class="top-stores-heading">
-      <h2>Top Featured Stores</h2>
-    </div>
+    <div class="top-stores-heading">Top Featured Stores</div>
     <!--Stores Slides-->
     <div class="stores-container">
       @for($i=1; $i<=10; $i++)
@@ -102,9 +98,7 @@
   <!--Top Offers Deals Products----------------------------------------------------------------------------------->
   <div class="top-offers-main-container">
     <!--Heading-->
-    <div class="top-offers-heading">
-      <h2>Top Offers, Deals & Coupon Codes</h2>
-    </div>
+    <div class="top-offers-heading">Top Offers, Deals & Coupon Codes</div>
     <!--Products-->
     <div class="top-offers-container">
       @for($i=1; $i<=12; $i++)
@@ -116,9 +110,7 @@
         <div class="top-offer-offertitle">
           Up to 30%
         </div>
-        <div class="top-offer-offerlabel">
-          code
-        </div>
+        <div class="top-offer-offertype">Code</div>
         <button type="button" id="top-offer-button">VIEW CODE</button>
       </div>
       @endfor
@@ -127,9 +119,7 @@
   <!--top instore coupons-->
   <div class="top-instore-offers-main-container">
     <!--Heading-->
-    <div class="top-instore-offers-heading">
-      <h2>Top In-Store Coupon Codes</h2>
-    </div>
+    <div class="top-instore-offers-heading">Top In-Store Coupon Codes</div>
     <!--Products-->
     <div class="top-instore-offers-container">
       @for($i=1; $i<=8; $i++)
@@ -141,7 +131,7 @@
         <div class="top-instore-offer-offertitle">
           Up to 30%
         </div>
-        <div class="top-instore-offer-offerlabel">
+        <div class="top-instore-offer-offertype">
           In-Store coupon
         </div>
         <button type="button" id="top-instore-offer-button">VIEW CODE</button>

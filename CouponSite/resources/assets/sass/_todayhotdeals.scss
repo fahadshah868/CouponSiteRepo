@@ -3,11 +3,10 @@
     margin: 40px auto;
     text-align: center;
 }
-.today-deals-heading h2{
+.today-deals-heading{
     font-size: 25px;
-    font-weight: bold;
-    font-family: 'Calibri Light';
-    color: $todayhotdeals-heading-textcolor;
+    font-weight: 400;
+    color: #5A5858;
 }
 .today-deals-products-container{
     width: 100% !important;
@@ -25,7 +24,7 @@
     display: inline-block;
     width: 350px;
     height: 300px;
-    margin: 20px 5px 0 5px;
+    margin: 25px 5px 0 5px;
     overflow: hidden;
 }
 .today-deals-product a.today-deals-product-link{
@@ -48,7 +47,7 @@
     position: absolute; 
     bottom: 0; 
     background: rgba(0, 0, 0, 0.8);
-    color: $whitecolor;
+    color: #fff;
     text-align: left;
 }
 .today-deals-product-description-container div{
@@ -70,14 +69,13 @@
 }
 .today-deals-product-offer{
     margin: 0;
-    font-size: 18px;
-    font-family: 'Calibri Light';
-    font-weight: bold;
+    font-size: 17px;
+    font-weight: 600;
 }
 .today-deals-product-brand{
     margin: 0;
-    font-size: $title-font;
-    font-weight: $title-font-weight;
+    font-size: 16px;
+    font-weight: 400;
 }
 @media only screen and (max-width: 760px){
     .today-deals-products{

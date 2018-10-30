@@ -19,7 +19,7 @@
 }
 .site-header-logo #logo {
     text-decoration: none;
-    color: $whitecolor;
+    color: #fff;
     margin: 0 50px 0 20px;
     font-size: 25px;
     font-weight: bold;
@@ -30,10 +30,10 @@
 }
 #searchbar {
     width: 100%;
-    border: 2px solid $topsearchbar-bordercolor;
+    border: 2px solid #fff;
     border-radius: 4px;
     font-size: 16px;
-    background-color: $whitecolor;
+    background-color: #fff;
     background-position: 10px 8px;
     padding: 10px 20px 10px 50px;
     background-repeat: no-repeat;
@@ -48,16 +48,16 @@
     cursor: pointer;
     outline: none;
     background-color: $theme-color;
-    color: $whitecolor;
+    color: #fff;
     text-align: center;
     transition: 0.6s;
 }
 .site-header-explorebutton:hover{
-    background-color: $dropdownbutton-onhover-backgroundcolor;
+    background-color: $theme-color-tonext;
     transition: 0.6s;
 }
 .active-site-header-explorebutton{
-    background-color: $dropdownbutton-onactive-backgroundcolor;
+    background-color: $theme-color-tonext;
 }
 .site-header-explorebutton-mega-dropdown-sidebar-container{
     text-align: center;
@@ -90,13 +90,13 @@
 
 .site-header-explorebutton-mega-dropdown:after {
 	border-color: rgba(136, 183, 213, 0);
-	border-bottom-color: $whitecolor;
+	border-bottom-color: #fff;
 	border-width: 10px;
 	margin-left: -10px;
 }
 .site-header-explorebutton-mega-dropdown:before {
 	border-color: rgba(194, 225, 245, 0);
-	border-bottom-color: $whitecolor;
+	border-bottom-color: #fff;
 	border-width: 10px;
 	margin-left: -10px;
 }
@@ -122,7 +122,7 @@
 .site-header-explorebutton-mega-dropdown-sidebar-container h2{
     font-size: 23px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: $sidebar-heading-color;
+    color: #7D7D7D;
     margin: 20px 0 30px 0;
 }
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul{
@@ -140,7 +140,7 @@
 }
 
 .active-sidebar-li{
-    background-color: $sidebar-list-items-background-color;
+    background-color: #D1D1D1;
 }
 
 .activelink{
@@ -148,13 +148,13 @@
 }
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li:hover{
-    background-color: $sidebar-list-items-background-color;
+    background-color: #D1D1D1;
     text-decoration: none;
 }
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li a{
     display: block;
-    color: $blackcolor;
+    color: #000;
     margin-left: 10px;
     text-decoration: none;
     font-size: 14px;
@@ -176,7 +176,7 @@
 .site-header-explorebutton-mega-dropdown-detail-container{
     width: 850px;
     height: 100%;
-    background-color: $whitecolor;
+    background-color: #fff;
 }
 /*toggle button and list
 --------------------------------------------------------------*/
@@ -188,7 +188,7 @@
 	max-width:45px;
     min-width: 45px;
 	height:45px;
-	border:2px solid $whitecolor;
+	border:2px solid #fff;
     border-radius: 3px;
 	cursor:pointer;
 	position:relative;
@@ -215,7 +215,7 @@
 	position:absolute;
 	width:100%;
 	height:100%;
-	background-color: $whitecolor;
+	background-color: #fff;
 	transform:translateX(-200%);
 	transition:transform ease 300ms;
 }
@@ -238,7 +238,7 @@
 	display:block;
 	width:20px;
 	height:3px;
-	background-color:$whitecolor;
+	background-color:#fff;
 	transform:translateY(50%) rotate(45deg) scaleX(0);
 	transition:transform ease 200ms;
 }
@@ -259,16 +259,16 @@
 .hamburger-mega-menu-list li{
   list-style: none;
   width: 100%;
-  background-color: $togglebutton-list-backgroundcolor;
+  background-color: $theme-color;
 }
 .hamburger-mega-menu-list li a{
   display: block;
   text-decoration: none;
   padding: 14px 30px;
-  color: $whitecolor;
+  color: #fff;
 }
 .hamburger-mega-menu-list li a:hover{
-  background-color: $togglebutton-list-hover-backgroundcolor;
+  background-color: #0b78aa;
 }
 .hamburgerbutton-mega-menu-overlay-container{
     position: absolute;
@@ -283,7 +283,7 @@
   display: none;
 }
 .hamburger-mega-menu-list ul li{
-  background-color: $togglebutton-sublist-backgroundcolor;
+  background-color: $theme-color-tonext;
 }
 .hamburger-mega-menu-list ul li a{
   padding: 14px 50px;
@@ -293,7 +293,7 @@
   float: right;
 }
 .hamburger-mega-menu-list ul li a:hover{
-  background-color: $togglebutton-sublist-hover-backgroundcolor;
+  background-color: #0b78aa;
 }
 
 @media only screen and (max-width: 1117px){
@@ -323,13 +323,13 @@
     }
     .site-header-explorebutton-mega-dropdown:after {
         border-color: rgba(136, 183, 213, 0);
-        border-bottom-color: $whitecolor;
+        border-bottom-color: #fff;
         border-width: 10px;
         margin-left: -10px;
     }
     .site-header-explorebutton-mega-dropdown:before {
         border-color: rgba(194, 225, 245, 0);
-        border-bottom-color: $whitecolor;
+        border-bottom-color: #fff;
         border-width: 10px;
         margin-left: -10px;
     }
