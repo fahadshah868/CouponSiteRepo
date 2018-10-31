@@ -25,7 +25,7 @@
 .dropdownmenu-category-material-container:nth-child(n){
     width: calc(16.666667% - 12.5px);
     margin: 0 15px 15px 0;
-    background-color: $whitecolor;
+    background-color: #fff;
     border: 1px solid $border-color-onwhite;
 }
 .dropdownmenu-category-material-container:nth-child(6n){
@@ -40,7 +40,6 @@
     padding: 10px;
     transition: 0.3s;
     -webkit-transition: 0.3s;
-    color: $theme-color;
     text-decoration: none;
 }
 .dropdownmenu-category-material-container .dropdown-category-link:hover{
@@ -57,5 +56,5 @@
 }
 .dropdownmenu-category-material-container .dropdown-category-link .dropdownmenu-category-title{
     text-align: center;
-    font-size: $title-font;
+    font-size: 13px;
 }

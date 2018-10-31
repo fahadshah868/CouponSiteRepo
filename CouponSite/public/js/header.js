@@ -229,14 +229,14 @@ $(document).ready(function() {
                             "<div class='dropdownmenu-onlinecodes-list-container'>"
                                 for(var i=1; i<=6; i++){
                                     onlinecodes = onlinecodes +
-                                    "<a href= '#'>"+
+                                    "<a href= '#' class='dropdownmenu-onlinecodes-link'>"+
                                         "<div class='dropdownmenu-onlinecode-material-container'>"+
                                             "<div class='dropdownmenu-onlinecode-store-logo'>"+
                                                 "<img src='https://img.grouponcdn.com/coupons/a9w8VPXA1BTbYJHiMA6jSA/hiresJCPENNYpt2-500x500' />"+
                                             "</div>"+
                                             "<div class='dropdownmenu-onlinecode-offer-container'>"+
                                                 "<div class='dropdownmenu-onlinecode-offer-title'>upto 20% off regular menu price order</div>"+
-                                                "<div class='dropdownmenu-onlinecode-offer-label'>code</div>"+
+                                                "<div class='dropdownmenu-onlinecode-offer-type'>code</div>"+
                                             "</div>"+
                                         "</div>"+
                                     "</a>"

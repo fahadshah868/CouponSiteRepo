@@ -57,11 +57,11 @@
     padding-left: 10px;
 }
 .dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-title{
-    font-size: $offer-title-font;
-    color: $offer-title-color;
+    font-size: 15px;
+    font-weight: 500;
 }
-.dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-label{
-    font-size: $offer-label-font;
-    font-weight: bold;
-    color: $offer-label-color;
+.dropdownmenu-onlinecode-offer-container .dropdownmenu-onlinecode-offer-type{
+    font-size: 13px;
+    font-weight: 700;
+    color: #DC002E;
 }

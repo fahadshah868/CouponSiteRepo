@@ -18,7 +18,7 @@
         <div class="store-coupons-sidebar-offers-availability">50 Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         <div class="store-coupons-sidebar-filterbyoffer-container" style="margin:30px 0;">
-            <div style="margin-bottom: 20px; font-size: 18px; font-weight: bold;">Filter By Offer</div>
+            <div style="margin-bottom: 20px; font-size: 18px; font-weight: 700;">Filter By Offer</div>
             <div>
                 @for($i=1; $i<=3; $i++)
                 <label class="checkbox-container">In Store Coupons
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="store-coupons-sidebar-filterbycategory-container" style="margin:30px 0;">
-            <div style="margin-bottom: 20px; font-size: 18px; font-weight: bold;">Filter By Category</div>
+            <div style="margin-bottom: 20px; font-size: 18px; font-weight: 700;">Filter By Category</div>
             <div>
                 @for($i=1; $i<=12; $i++)
                 <label class="checkbox-container">Clothing
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div style="width: 100%;">
-            <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">About Kohl's</div>
+            <div style="font-weight: 700; font-size: 18px; margin-bottom: 10px;">About Kohl's</div>
             <div>Kohl's Department Stores, Inc. operates department stores in the United States. The company offers apparel, footwear, accessories, and home products to middle-income customers.</div>
         </div>
     </div>
@@ -51,13 +51,13 @@
             <div class="store-coupons-detailbar-coupon-container">
                 <a href="#" class="store-coupons-detailbar-coupon-link">
                     <div class="store-coupons-detailbar-coupon-title">
-                        <span style="font-size: 25px; font-weight: bold;">40%</span>
-                        <span style="font-size: 18px;">Off</span>
+                        <span style="font-size: 27px; font-weight: 800;">40%</span>
+                        <span style="font-size: 20px; font-weight: 500;">Off</span>
                     </div>
                     <div class="store-coupons-detailbar-offer-container">
                         <div style="font-size: 13px; color: #044D6E;"><i style="margin-right: 5px; font-size: 15px;" class="fa fa-check-circle"></i>Verfied</div>
                         <div class="store-coupons-detailbar-offertitle">40% off total purchase with discout</div>
-                        <div class="store-coupons-detailbar-offerlabel"><span>code</span></div>
+                        <div class="store-coupons-detailbar-offertype">Code</div>
                         <div class="store-coupons-detailbar-coupon-expires"><i style="margin-right: 5px;" class="fa fa-clock-o"></i>Expires: 30/10/18</div>
                     </div>
                     <div class="store-coupons-detailbar-offer-button-container">
