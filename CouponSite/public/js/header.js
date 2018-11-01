@@ -4,10 +4,6 @@ $(document).ready(function() {
     $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
     $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
 
-    //Default Action
-    $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li:first").addClass("active-sidebar-li") //Activate first tab
-    $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a:first").addClass("activelink") //Activate first tab
-
     $(window).resize(function() {
         $("#hamburgerbutton-mega-menu-overlay-container").css('height', '0');
         $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
@@ -23,6 +19,12 @@ $(document).ready(function() {
             $('#explorebutton-mega-menu-overlay-container').toggle();
             $('#events-list').slideUp();
             $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
+            //active first tab when click on explore button
+            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li").removeClass("active-sidebar-li"); //Remove any "active" class
+            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a").removeClass("activelink"); //Remove any "active" class
+            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li:first").addClass("active-sidebar-li") //Activate first tab
+            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a:first").addClass("activelink") //Activate first tab
+            //send ajax request when dropdown detail container appears
             if($("#dropdownmenu-popularstore-body-container").html().length > 0){
                 for(var i=0; i< dropdowndetailcontainerelements.length; i++){
                     dropdowndetailcontainerelements[i].style.display = "none";
