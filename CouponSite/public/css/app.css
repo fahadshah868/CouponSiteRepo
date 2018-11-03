@@ -10510,11 +10510,11 @@ a:hover {
 }
 
 .loader {
-  border: 3px solid rgba(0, 0, 0, 0.5);
+  border: 5px solid rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-  border-top: 3px solid #044D6E;
-  width: 35px;
-  height: 35px;
+  border-top: 5px solid #044D6E;
+  width: 40px;
+  height: 40px;
   -webkit-animation: spin 0.5s linear infinite;
   /* Safari */
   animation: spin 0.5s linear infinite;
@@ -10583,9 +10583,10 @@ a:hover {
 .site-header-searchbar {
   width: 100%;
   margin-right: 20px;
+  position: relative;
 }
 
-#searchbar {
+.site-header-searchbar #searchbar {
   width: 100%;
   border: 2px solid #fff;
   border-radius: 4px;
@@ -10595,6 +10596,49 @@ a:hover {
   padding: 10px 20px 10px 45px;
   background-repeat: no-repeat;
   outline: none;
+}
+
+.site-header-search-results-container {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: #fff;
+  z-index: 2;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  display: none;
+}
+
+.site-header-search-results-container .site-header-before-search-results-items-container ul {
+  width: 100%;
+  margin: 0;
+}
+
+.site-header-search-results-container .site-header-before-search-results-items-container ul li {
+  list-style: none;
+  text-align: left;
+  line-height: 45px;
+  font-size: 14px;
+}
+
+.site-header-search-results-container .site-header-before-search-results-items-container ul li a {
+  display: block;
+  text-decoration: none;
+  border-radius: 2px;
+  padding-left: 20px;
+}
+
+.site-header-search-results-container .site-header-before-search-results-items-container ul li a:hover {
+  background-color: #D1D1D1;
+  color: #044D6E;
+}
+
+.site-header-before-search-results-items-heading {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
 .site-header-explorebutton {
@@ -10678,7 +10722,7 @@ a:hover {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   cursor: auto;
-  z-index: 99.99;
+  z-index: 2;
 }
 
 /* drop down side bar
@@ -10687,6 +10731,7 @@ a:hover {
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container {
   width: 250px;
   height: 100%;
+  padding: 20px;
   background-color: #F2F2F2;
 }
 
@@ -10694,12 +10739,12 @@ a:hover {
   font-size: 23px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: #7D7D7D;
-  margin: 20px 0 30px 0;
+  margin-bottom: 30px;
 }
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul {
-  max-width: 220px;
-  margin: auto;
+  width: 100%;
+  margin: 0;
 }
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li {
@@ -10726,14 +10771,14 @@ a:hover {
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li a {
   display: block;
-  color: #000;
-  margin-left: 10px;
+  padding-left: 10px;
   text-decoration: none;
   font-size: 14px;
 }
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li a:hover {
   text-decoration: none;
+  color: #044D6E;
 }
 
 .site-header-explorebutton-mega-dropdown-sidebar-container .fa-angle-right {

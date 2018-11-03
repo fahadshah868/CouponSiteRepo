@@ -121,7 +121,7 @@
   <!--top instore coupons-->
   <div class="top-instore-offers-main-container">
     <!--Heading-->
-    <div class="top-instore-offers-heading">Top In-Store Coupon Codes</div>
+    <div class="top-instore-offers-heading">Best In-Store Coupon Codes</div>
     <!--Products-->
     <div class="top-instore-offers-container">
       @for($i=1; $i<=8; $i++)

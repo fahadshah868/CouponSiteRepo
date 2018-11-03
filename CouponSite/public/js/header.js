@@ -11,6 +11,15 @@ $(document).ready(function() {
         $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
     });
 
+    $("#searchbar").focus(function(){
+        $("#site-header-search-results-container").css('display','block');
+    });
+    $("#searchbar").focusout(function(){
+        setTimeout(function(){
+            $("#site-header-search-results-container").css('display','none');
+        },1000);
+    });
+
     $(document).on("click",function(event){
         // click events for toggle button and browse list
         if($(event.target).parents().hasClass('site-header-hamburger-button-container') || $(event.target).parent().hasClass('site-header-explorebutton') || $(event.target).parent().parent().hasClass('site-header-explorebutton') || $(event.target).hasClass('site-header-explorebutton')){

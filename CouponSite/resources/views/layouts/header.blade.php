@@ -7,6 +7,18 @@
         <div class="site-header-searchbar">
             <form>
                 <input type="text" id="searchbar" autocomplete="off" placeholder="Search on...." style="background-image: url(/images/searchicon.png)" />
+                <div class="site-header-search-results-container" id="site-header-search-results-container" tabindex="1">
+                    <div class="site-header-search-results-items" id="site-header-search-results-items">
+
+                    </div>
+                    <div class="site-header-before-search-results-items-container" id="site-header-before-search-results-items-container">
+                        <div class="site-header-before-search-results-items-heading">Browse Coupons At WebSite</div>
+                        <ul>
+                            <li><a href="#">Browse Coupons By Store</a></li>
+                            <li><a href="#">Browse Coupons By Category</a></li>
+                        </ul>
+                    </div>                    
+                </div>
             </form>
         </div>
 
