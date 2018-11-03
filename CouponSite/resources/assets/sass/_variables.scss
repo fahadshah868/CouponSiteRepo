@@ -1,26 +1,16 @@
 //base app theme
 $theme-color: #044D6E;
 $theme-color-tonext: #033349;
-$link-color: #044D6E;
 $link-color-onhover: #0061ff;
 $body-backgroundcolor: #F2F2F2;
-//
-$offer-title-color: #000000;
-$offer-label-color: #F45336;
-$title-color: #044D6E;
-$offer-title-font: 20px;
-$offer-label-font: 15px;
-$title-font: 13px;
-$offer-title-font-weight: normal;
-$offer-label-font-weight: bold;
-$title-font-weight: normal;
-//
+
 $border-color-ongrey: #CFCFCF;
 $border-color-onwhite: #f1f1f1;
 $boxshadow-color: #838383;
-$blackcolor: #000000;
-$whitecolor: #ffffff;
 
+$offer-type-code-color: #DC002E;
+$offer-type-instorecoupon-color: #228B22;
+$offer-type-else-color: $theme-color;
 //loader color
 $loadercolor: #044D6E;
 

@@ -19,53 +19,53 @@
   </div> --}}
 
   <!--Todays New Hot Deals---------------------------------------------------------------------------------------->
-  <div class="today-deals-main-container">
+  <div class="today-hot-deals-main-container">
     <!--Heading-->
-    <div class="today-deals-heading">Today's Hot Deals</div>
+    <div class="today-hot-deals-heading">Today's Hot Deals</div>
     <!--Products-->
-    <div class="today-deals-products-container">
-      <div class="today-deals-products">
+    <div class="today-hot-deals-container">
+      <div class="today-hot-deals">
           <!--Product (1)-->
-          <div class="today-deals-product">
-            <a href="#" class="today-deals-product-link">
-              <img class="today-deals-product-img" src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
-              <div class="today-deals-product-description-container">
-                <div class="today-deals-product-description-brandlogo-container">
-                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
+          <div class="today-hot-deal">
+            <a href="#" class="today-hot-deal-link">
+              <img class="today-hot-deal-img" src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
+              <div class="today-hot-deal-description-container">
+                <div class="today-hot-deal-description-brandlogo-container">
+                  <img class="today-hot-deal-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
                 </div>
-                <div class="today-deals-product-detail">
-                  <div class="today-deals-product-offer">Up to 40% Off</div>
-                  <p class="today-deals-product-brand">Pacsun Sale</p>
+                <div class="today-hot-deal-detail">
+                  <div class="today-hot-deal-offer">Up to 40% Off</div>
+                  <p class="today-hot-deal-brand">Pacsun Sale</p>
                 </div>
               </div>
             </a>
           </div>
           <!--Product (2)-->
-          <div class="today-deals-product">
-            <a href="#" class="today-deals-product-link">
-              <img class="today-deals-product-img" src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
-              <div class="today-deals-product-description-container">
-                <div class="today-deals-product-description-brandlogo-container">
-                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
+          <div class="today-hot-deal">
+            <a href="#" class="today-hot-deal-link">
+              <img class="today-hot-deal-img" src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
+              <div class="today-hot-deal-description-container">
+                <div class="today-hot-deal-description-brandlogo-container">
+                  <img class="today-hot-deal-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
                 </div>
-                <div class="today-deals-product-detail">
-                  <div class="today-deals-product-offer">Up to 40% Off</div>
-                  <p class="today-deals-product-brand">Pacsun Sale</p>
+                <div class="today-hot-deal-detail">
+                  <div class="today-hot-deal-offer">Up to 40% Off</div>
+                  <p class="today-hot-deal-brand">Pacsun Sale</p>
                 </div>
               </div>
             </a>
           </div>
           <!--Product (3)-->
-          <div class="today-deals-product">
-            <a href="#" class="today-deals-product-link">
-              <img class="today-deals-product-img" style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
-              <div class="today-deals-product-description-container">
-                <div class="today-deals-product-description-brandlogo-container">
-                  <img class="today-deals-product-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
+          <div class="today-hot-deal">
+            <a href="#" class="today-hot-deal-link">
+              <img class="today-hot-deal-img" style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
+              <div class="today-hot-deal-description-container">
+                <div class="today-hot-deal-description-brandlogo-container">
+                  <img class="today-hot-deal-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
                 </div>
-                <div class="today-deals-product-detail">
-                  <div class="today-deals-product-offer">Up to 40% Off</div>
-                  <p class="today-deals-product-brand">Pacsun Sale</p>
+                <div class="today-hot-deal-detail">
+                  <div class="today-hot-deal-offer">Up to 40% Off</div>
+                  <p class="today-hot-deal-brand">Pacsun Sale</p>
                 </div>
               </div>
             </a>
@@ -103,15 +103,17 @@
     <div class="top-offers-container">
       @for($i=1; $i<=12; $i++)
       <div class="top-offer-container">
-        <div class="top-offer-store-logo">
-          <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
-        </div>
-        <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
-        <div class="top-offer-offertitle">
-          Up to 30%
-        </div>
-        <div class="top-offer-offertype">Code</div>
-        <button type="button" id="top-offer-button">VIEW CODE</button>
+        <a class="top-offer-link" href="#">
+          <div class="top-offer-store-logo">
+            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
+          </div>
+          <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
+          <div class="top-offer-offertitle">
+            Up to 30%
+          </div>
+          <div class="top-offer-offertype-code">Code</div>
+          <button type="button" id="top-offer-button">VIEW CODE</button>
+        </a>
       </div>
       @endfor
     </div>
@@ -124,17 +126,19 @@
     <div class="top-instore-offers-container">
       @for($i=1; $i<=8; $i++)
       <div class="top-instore-offer-container">
-        <div class="top-instore-offer-store-logo">
-          <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
-        </div>
-        <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
-        <div class="top-instore-offer-offertitle">
-          Up to 30%
-        </div>
-        <div class="top-instore-offer-offertype">
-          In-Store coupon
-        </div>
-        <button type="button" id="top-instore-offer-button">VIEW CODE</button>
+        <a class="top-instore-offer-link" href="#">
+          <div class="top-instore-offer-store-logo">
+            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
+          </div>
+          <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
+          <div class="top-instore-offer-offertitle">
+            Up to 30%
+          </div>
+          <div class="top-instore-offer-offertype-instorecoupon">
+            In-Store coupon
+          </div>
+          <button type="button" id="top-instore-offer-button">VIEW CODE</button>
+        </a>
       </div>
       @endfor
     </div>

@@ -6,7 +6,7 @@
         </div>
         <div class="site-header-searchbar">
             <form>
-                <input type="text" id="searchbar" placeholder="Search on...." style="background-image: url(/images/searchicon.png)" />
+                <input type="text" id="searchbar" autocomplete="off" placeholder="Search on...." style="background-image: url(/images/searchicon.png)" />
             </form>
         </div>
 
@@ -54,8 +54,8 @@
                 <span class="button-heading">Explore<i style="padding-left: 10px;" class="fa fa-angle-down"></i></span>
             </div>
             <div id="explorebutton-mega-menu-overlay-container" class="explorebutton-mega-menu-overlay-container">
-                <div class="site-header-explorebutton-mega-dropdown" id="site-header-explorebutton-mega-dropdown">
-                    <div class="show site-header-explorebutton-mega-dropdown-body-container">
+                <div class="show site-header-explorebutton-mega-dropdown" id="site-header-explorebutton-mega-dropdown">
+                    <div class="site-header-explorebutton-mega-dropdown-body-container">
                         <div class="site-header-explorebutton-mega-dropdown-sidebar-container" id="site-header-explorebutton-mega-dropdown-sidebar-container">
                             <h2>Explore to Save Big</h2>
                             <ul>
@@ -73,7 +73,6 @@
                             <div class="dropdownmenu-onlinecodes-body-container" id="dropdownmenu-onlinecodes-body-container"></div>
                             <div class="dropdownmenu-instoreoffers-body-container" id="dropdownmenu-instoreoffers-body-container"></div>
                             <div class="dropdownmenu-specialevents-body-container" id="dropdownmenu-specialevents-body-container"></div>
-                            
                         </div>
                     </div>
                 </div>

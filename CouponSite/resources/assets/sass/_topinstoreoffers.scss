@@ -14,12 +14,8 @@
     flex-wrap: wrap;
 }
 .top-instore-offers-container .top-instore-offer-container:nth-child(n){
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: calc(25% - 12px);
     margin: 0 16px 16px 0;
-    padding: 20px;
     background-color: #fff;
     border-radius: 2px;
     border: 1px solid $border-color-ongrey;
@@ -35,7 +31,14 @@
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-
+.top-instore-offers-container .top-instore-offer-container .top-instore-offer-link{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-decoration: none;
+}
 .top-instore-offer-store-logo{ 
     width:130px; 
     height:130px;
@@ -45,14 +48,30 @@
     height: 100%;
 }
 .top-instore-offer-offertitle{
+    width: 100%;
     margin: 0;
     font-size: 16px;
     font-weight: 500;
 }
-.top-instore-offer-offertype{
+.top-instore-offer-offertype-code{
+    width: 100%;
     font-size: 14px;
     font-weight: 700;
-    color: #228B22;
+    color: $offer-type-code-color;
+    flex-grow: 1;
+}
+.top-instore-offer-offertype-instorecoupon{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    color: $offer-type-instorecoupon-color;
+    flex-grow: 1;
+}
+.top-instore-offer-offertype-else{
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    color: $offer-type-else-color;
     flex-grow: 1;
 }
 #top-instore-offer-button{
@@ -60,7 +79,7 @@
     width:100%; 
     height: 35px; 
     background-color: $theme-color;
-    color: $whitecolor; 
+    color: #fff; 
     border: 2px solid $theme-color; 
     border-radius: 4px;
     font-weight: 500;
