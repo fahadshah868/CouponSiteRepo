@@ -7,12 +7,25 @@
         <div class="site-header-searchbar">
             <form>
                 <input type="text" id="searchbar" autocomplete="off" placeholder="Search on...." style="background-image: url(/images/searchicon.png)" />
-                <div class="site-header-search-results-container" id="site-header-search-results-container" tabindex="1">
-                    <div class="site-header-search-results-items" id="site-header-search-results-items">
-
+                <div class="site-header-search-items-container" id="site-header-search-items-container">
+                    <div class="site-header-search-items" id="site-header-search-items">
+                        <div class="site-header-default-items-heading">Stores</div>
+                        <ul>
+                            <li><a href="#">Kohl's</a></li>
+                            <li><a href="#">Target</a></li>
+                            <li><a href="#">Amazon</a></li>
+                        </ul>
+                        <hr>
+                        <div class="site-header-default-items-heading">Categories</div>
+                        <ul>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Baby</a></li>
+                            <li><a href="#">Jewelery</a></li>
+                            <li><a href="#">Clothing</a></li>
+                        </ul>
                     </div>
-                    <div class="site-header-before-search-results-items-container" id="site-header-before-search-results-items-container">
-                        <div class="site-header-before-search-results-items-heading">Browse Coupons At WebSite</div>
+                    <div class="site-header-default-items" id="site-header-default-items">
+                        <div class="site-header-default-items-heading">Browse Coupons At WebSite</div>
                         <ul>
                             <li><a href="#">Browse Coupons By Store</a></li>
                             <li><a href="#">Browse Coupons By Category</a></li>

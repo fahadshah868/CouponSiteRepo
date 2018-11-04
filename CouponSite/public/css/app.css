@@ -10598,7 +10598,7 @@ a:hover {
   outline: none;
 }
 
-.site-header-search-results-container {
+.site-header-search-items-container {
   position: absolute;
   top: 45px;
   left: 0;
@@ -10611,34 +10611,66 @@ a:hover {
   display: none;
 }
 
-.site-header-search-results-container .site-header-before-search-results-items-container ul {
+.site-header-search-items-container .site-header-search-items {
+  display: none;
+}
+
+.site-header-search-items-container .site-header-search-items .site-header-default-items-heading {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.site-header-search-items-container .site-header-search-items ul {
   width: 100%;
   margin: 0;
 }
 
-.site-header-search-results-container .site-header-before-search-results-items-container ul li {
+.site-header-search-items-container .site-header-search-items ul li {
   list-style: none;
   text-align: left;
-  line-height: 45px;
   font-size: 14px;
 }
 
-.site-header-search-results-container .site-header-before-search-results-items-container ul li a {
+.site-header-search-items-container .site-header-search-items ul li a {
   display: block;
   text-decoration: none;
   border-radius: 2px;
-  padding-left: 20px;
+  padding: 15px 15px 15px 20px;
 }
 
-.site-header-search-results-container .site-header-before-search-results-items-container ul li a:hover {
+.site-header-search-items-container .site-header-search-items ul li a:hover {
   background-color: #D1D1D1;
   color: #044D6E;
 }
 
-.site-header-before-search-results-items-heading {
+.site-header-search-items-container .site-header-default-items ul {
+  width: 100%;
+  margin: 0;
+}
+
+.site-header-search-items-container .site-header-default-items ul li {
+  list-style: none;
+  text-align: left;
   font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 5px;
+}
+
+.site-header-search-items-container .site-header-default-items ul li a {
+  display: block;
+  text-decoration: none;
+  border-radius: 2px;
+  padding: 15px 15px 15px 20px;
+}
+
+.site-header-search-items-container .site-header-default-items ul li a:hover {
+  background-color: #D1D1D1;
+  color: #044D6E;
+}
+
+.site-header-search-items-container .site-header-default-items .site-header-default-items-heading {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 10px 0;
 }
 
 .site-header-explorebutton {
@@ -10750,23 +10782,13 @@ a:hover {
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li {
   list-style: none;
   text-align: left;
-  border-radius: 2px;
-  line-height: 45px;
   margin-top: 5px;
   position: relative;
 }
 
 .active-sidebar-li {
   background-color: #D1D1D1;
-}
-
-.activelink {
   color: #044D6E !important;
-}
-
-.site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li:hover {
-  background-color: #D1D1D1;
-  text-decoration: none;
 }
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li a {
@@ -10774,10 +10796,12 @@ a:hover {
   padding-left: 10px;
   text-decoration: none;
   font-size: 14px;
+  border-radius: 2px;
+  padding: 12px 12px 12px 20px;
 }
 
 .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container ul li a:hover {
-  text-decoration: none;
+  background-color: #D1D1D1;
   color: #044D6E;
 }
 

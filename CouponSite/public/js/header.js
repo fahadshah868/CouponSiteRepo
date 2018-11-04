@@ -11,13 +11,25 @@ $(document).ready(function() {
         $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
     });
 
-    $("#searchbar").focus(function(){
-        $("#site-header-search-results-container").css('display','block');
+    $("#searchbar").focusin(function(){
+        $("#site-header-search-items-container").css('display','block');
     });
     $("#searchbar").focusout(function(){
         setTimeout(function(){
-            $("#site-header-search-results-container").css('display','none');
-        },1000);
+            $("#site-header-search-items-container").css('display','none');
+        },100);
+    });
+    $("#searchbar").keyup(function(event){
+        event.stopPropagation()
+        var inputvalue = $.trim($("#searchbar").val());
+        if(!inputvalue == ''){
+            $("#site-header-default-items").css('display','none');
+            $("#site-header-search-items").css('display','block');
+        }
+        else{
+            $("#site-header-default-items").css('display','block');
+            $("#site-header-search-items").css('display','none');
+        }
     });
 
     $(document).on("click",function(event){
@@ -29,10 +41,8 @@ $(document).ready(function() {
             $('#events-list').slideUp();
             $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
             //active first tab when click on explore button
-            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li").removeClass("active-sidebar-li"); //Remove any "active" class
-            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a").removeClass("activelink"); //Remove any "active" class
-            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li:first").addClass("active-sidebar-li") //Activate first tab
-            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a:first").addClass("activelink") //Activate first tab
+            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a").removeClass("active-sidebar-li"); //Remove any "active" class
+            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a:first").addClass("active-sidebar-li") //Activate first tab
             //send ajax request when dropdown detail container appears
             if($("#dropdownmenu-popularstore-body-container").html().length > 0){
                 for(var i=0; i< dropdowndetailcontainerelements.length; i++){
@@ -97,10 +107,8 @@ $(document).ready(function() {
       
     //On click dropdown sidebar link
     $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li").click(function() {
-        $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li").removeClass("active-sidebar-li"); //Remove any "active" class
-        $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a").removeClass("activelink"); //Remove any "active" class
-        $(this).addClass("active-sidebar-li"); //Add "active" class to selected tab
-        $(this).find('a').addClass("activelink"); //Add "active" class to selected tab
+        $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a").removeClass("active-sidebar-li"); //Remove any "active" class
+        $(this).find('a').addClass("active-sidebar-li"); //Add "active" class to selected tab
 
         // load popular stores into dropdown detail container
         if($(this).attr('id') == "popularstores"){
