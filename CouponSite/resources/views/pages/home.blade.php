@@ -103,7 +103,7 @@
     <div class="top-offers-container">
       @for($i=1; $i<=12; $i++)
       <div class="top-offer-container">
-        <a class="top-offer-link" href="#">
+        <a class="top-offer-link" id="offer-link" data-offertitle="Up to 30% OFF" data-offercode="HGF45ADF" data-offerexpires="10/12/2018" data-storesitelink="https://www.kohls.com" href="#">
           <div class="top-offer-store-logo">
             <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
           </div>

@@ -18,6 +18,7 @@
         <script src="{{asset('js/topstoresms.min.js')}}"></script>
         <script src="{{asset('js/header.js')}}"></script>
         <script src="{{asset('js/maintabs.js')}}"></script>
+        <script src="{{asset('js/offermodal.js')}}"></script>
     @show
 </head>
 <body>
@@ -34,6 +35,9 @@
         @section('app-footer')
             @include('layouts.footer')
         @show
+
+        <!--offer modal-->
+        @include('pages.modal.modal');
     </div>
 </body>
 </html>
