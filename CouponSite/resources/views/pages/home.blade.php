@@ -103,13 +103,13 @@
     <div class="top-offers-container">
       @for($i=1; $i<=12; $i++)
       <div class="top-offer-container">
-        <a class="top-offer-link" id="offer-link" data-offertitle="Up to 30% OFF" data-offercode="HGF45ADF" data-offerexpires="10/12/2018" data-storesitelink="https://www.kohls.com" href="#">
+        <a class="top-offer-link modal-offer-link" id="offer-link" data-offertitle="20% Off One Select Regular-Priced Item" data-offercode="HGF45ADF" data-offerexpires="10/12/2018" data-storesitelink="https://www.dominos.com" href="#">
           <div class="top-offer-store-logo">
             <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
           </div>
           <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
           <div class="top-offer-offertitle">
-            Up to 30%
+            20% Off One Select Regular-Priced Item
           </div>
           <div class="top-offer-offertype-code">Code</div>
           <button type="button" id="top-offer-button">VIEW CODE</button>
@@ -126,7 +126,7 @@
     <div class="top-instore-offers-container">
       @for($i=1; $i<=8; $i++)
       <div class="top-instore-offer-container">
-        <a class="top-instore-offer-link" href="#">
+        <a class="top-instore-offer-link modal-offer-link" href="#">
           <div class="top-instore-offer-store-logo">
             <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
           </div>

@@ -9,12 +9,14 @@
             </div>
             <div class="modal-body-offer-title" id="modal-body-offer-title"></div>
             <div class="modal-body-offer-action-taken"><i class="fa fa-check-circle"></i>Code Copied!</div>
+            <div class="modal-body-tip-container">Paste This Code At <span>domino.com</span></div>
             <div class="modal-body-offer-code" id="modal-body-offer-code"></div>
+            <div class="modal-body-loading-container" id="modal-body-loading-container"><img src="/images/loader.gif" /></div>
         </div>
-        <hr style="margin: 10px 0;">
+        <hr style="margin: 5px 0;">
         <div class="modal-footer-content">
             <div class="modal-footer-main-heading">Details</div>
-            <div class="modal-footer-expires" id="modal-footer-expires"></div>
+            <div class="modal-footer-expires" id="modal-footer-expires"><i class='fa fa-clock-o'></i><span>Expires</span> </div>
             <div class="modal-footer-offer-title" id="modal-footer-offer-title"></div>
         </div>
     </div>
