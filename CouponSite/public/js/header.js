@@ -101,6 +101,7 @@ $(document).ready(function() {
         else{
             setTimeout(function(){
                 $("#site-header-search-items-container").css('display','none');
+                clearTimeout(1);
             },1000);
         }
     });

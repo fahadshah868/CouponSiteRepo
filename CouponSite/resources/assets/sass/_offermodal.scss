@@ -68,12 +68,13 @@
     margin-bottom: 20px;
 }
 .modal-body-offer-action-taken{
-    font-size: 25px;
+    font-size: 28px;
     color: $theme-color;
     font-weight: 700;
     margin-bottom: 10px;
 }
 .modal-body-offer-action-taken .fa-check-circle{
+    font-weight: 1000;
     margin-right: 10px;
 }
 .modal-body-tip-container{
@@ -108,14 +109,11 @@
 }
 .modal-footer-expires{
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 7px;
 }
 .modal-footer-expires .fa-clock-o{
     margin-right: 5px;
-}
-.modal-footer-expires span{
-    font-weight: 500;
 }
 .modal-footer-offer-title{
     font-size: 13px;

@@ -37,7 +37,7 @@
         @show
 
         <!--offer modal-->
-        @include('pages.modal.modal');
+        @include('pages.modal.modal')
     </div>
 </body>
 </html>

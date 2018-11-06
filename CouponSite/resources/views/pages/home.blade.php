@@ -103,7 +103,7 @@
     <div class="top-offers-container">
       @for($i=1; $i<=12; $i++)
       <div class="top-offer-container">
-        <a class="top-offer-link modal-offer-link" id="offer-link" data-offertitle="20% Off One Select Regular-Priced Item" data-offercode="HGF45ADF" data-offerexpires="10/12/2018" data-storesitelink="https://www.dominos.com" href="#">
+        <a class="top-offer-link modal-offer-link" id="offer-link" data-offertitle="20% Off One Select Regular-Priced Item" data-offercode="ZSTG45H" data-offerexpires="10/12/2018" data-storesitelink="https://www.dominos.com" href="#">
           <div class="top-offer-store-logo">
             <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
           </div>

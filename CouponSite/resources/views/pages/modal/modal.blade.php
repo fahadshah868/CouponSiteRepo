@@ -16,7 +16,7 @@
         <hr style="margin: 5px 0;">
         <div class="modal-footer-content">
             <div class="modal-footer-main-heading">Details</div>
-            <div class="modal-footer-expires" id="modal-footer-expires"><i class='fa fa-clock-o'></i><span>Expires</span> </div>
+            <div class="modal-footer-expires" id="modal-footer-expires"><i class='fa fa-clock-o'></i></div>
             <div class="modal-footer-offer-title" id="modal-footer-offer-title"></div>
         </div>
     </div>
