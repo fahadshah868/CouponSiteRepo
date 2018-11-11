@@ -34,7 +34,7 @@
                 @for($i=1; $i<= 100; $i++)
                     <li>
                         <div class="as-store-title-container">
-                            <div class="all-stores-list-bullets">&#9654</div>
+                            <div class="all-stores-list-bullets"><i class="fa fa-angle-double-right"></i></div>
                             <div class="as-store-title"><a href="#">Kohl's</a></div>
                         </div>
                     </li>

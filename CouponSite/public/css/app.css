@@ -12615,6 +12615,11 @@ a:hover {
   font-size: 15px;
 }
 
+.fa-angle-double-right {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
 @media only screen and (max-width: 1165px) {
   .all-stores-main-container {
     width: 100%;
