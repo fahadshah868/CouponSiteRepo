@@ -55,9 +55,12 @@
                         <span>OFF</span>
                     </div>
                     <div class="store-coupons-detailbar-offer-container">
-                        <div class="store-coupon-verification-container"><i class="fa fa-check-circle"></i>Verfied</div>
+                        <div class="store-coupons-detailbar-type-and-verified-container">
+                            <div class="store-coupons-detailbar-offertype-code">Code</div>
+                            <div class="store-coupon-verification-container"><i class="fa fa-check-circle"></i>Verfied</div>
+                        </div>
                         <div class="store-coupons-detailbar-offertitle">40% off total purchase with discout</div>
-                        <div class="store-coupons-detailbar-offertype-code">Code</div>
+                        <div class="store-coupons-detailbar-offerdescription">40% off total purchase with discout</div>
                         <div class="store-coupons-detailbar-coupon-expires"><i class="fa fa-clock-o"></i>Expires: 30/10/18</div>
                     </div>
                     <div class="store-coupons-detailbar-offer-button-container">

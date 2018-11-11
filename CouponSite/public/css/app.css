@@ -12874,31 +12874,9 @@ a:hover {
   font-weight: 500;
 }
 
-.store-coupons-detailbar-offertype-code {
-  color: #DC002E;
-  font-size: 15px;
-  font-weight: 700;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-
-.store-coupons-detailbar-offertype-instorecoupon {
-  color: #228B22;
-  font-size: 15px;
-  font-weight: 700;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-
-.store-coupons-detailbar-offertype-else {
-  color: #044D6E;
-  font-size: 15px;
-  font-weight: 700;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+.store-coupons-detailbar-offerdescription {
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .store-coupons-detailbar-coupon-expires {
@@ -12976,14 +12954,41 @@ a:hover {
   margin-bottom: 10px;
 }
 
-.store-coupon-verification-container {
-  font-size: 13px;
+.store-coupons-detailbar-type-and-verified-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.store-coupons-detailbar-offertype-code {
+  color: #DC002E;
+}
+
+.store-coupons-detailbar-offertype-instorecoupon {
+  color: #228B22;
+}
+
+.store-coupons-detailbar-offertype-else {
   color: #044D6E;
 }
 
+.store-coupon-verification-container {
+  color: #044D6E;
+  font-weight: 500;
+}
+
 .store-coupon-verification-container .fa-check-circle {
-  margin-right: 5px;
-  font-size: 15px;
+  margin-right: 3px;
+  margin-left: 10px;
+  font-weight: 1000;
 }
 
 .checkbox-container {
@@ -13151,32 +13156,55 @@ a:hover {
     margin: 0 0 0 10px;
   }
 
-  .store-coupon-verification-container {
-    font-size: 11px;
-    color: #044D6E;
-  }
-
-  .store-coupon-verification-container .fa-check-circle {
-    margin-right: 5px;
-    font-size: 13px;
-  }
-
   .store-coupons-detailbar-offertitle {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 15px;
+    font-weight: 500;
   }
 
-  .store-coupons-detailbar-offertype {
-    color: #DC002E;
-    font-size: 12px;
-    font-weight: 500;
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
+  .store-coupons-detailbar-offerdescription {
+    font-size: 13px;
+    font-weight: 400;
   }
 
   .store-coupons-detailbar-coupon-expires {
     display: none;
+  }
+
+  .store-coupons-detailbar-type-and-verified-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .store-coupons-detailbar-offertype-code {
+    color: #DC002E;
+  }
+
+  .store-coupons-detailbar-offertype-instorecoupon {
+    color: #228B22;
+  }
+
+  .store-coupons-detailbar-offertype-else {
+    color: #044D6E;
+  }
+
+  .store-coupon-verification-container {
+    color: #044D6E;
+    font-weight: 500;
+  }
+
+  .store-coupon-verification-container .fa-check-circle {
+    margin-right: 3px;
+    margin-left: 10px;
+    font-weight: 1000;
   }
 }
 
