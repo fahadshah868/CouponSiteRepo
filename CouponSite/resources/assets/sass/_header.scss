@@ -1,15 +1,17 @@
 
-.site-header-container {
+.site-header-main-container {
     background-color: $theme-color;
     width: 100%;
-    height: 80px;
     position: relative;
 }
-.site-header {
+.site-header-container {
     width: 1100px;
-    height: 75px;
     margin: auto;
+}
+.site-header-wrapper{
+    padding: 15px 0;
     display: flex;
+    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
@@ -348,7 +350,39 @@
 .hamburger-mega-menu-list ul li a:hover{
   background-color: #0b78aa;
 }
-
+.site-header-nav-container{
+    width: 100%;
+}
+.site-header-nav-list{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    list-style-type: none;
+    justify-content: center;
+    align-items: center;
+}
+.site-header-nav-list-item{
+    float: left;
+    list-style: none;
+    text-align: center;
+    margin: 0 20px;
+    line-height: 20px;
+}
+.site-header-nav-list-item .fa-angle-down{
+    font-size: 15px;
+    margin-left: 5px;
+}
+.site-header-nav-list-item a{
+    text-decoration: none;
+    color: #FFFFFF;
+    display: block;
+    padding: 0 0 12px 0;
+    font-size: 13px;
+    border-bottom: 2px solid $theme-color;
+}
+.site-header-nav-list-item a:hover{
+    border-bottom: 2px solid #fff;
+}
 @media only screen and (max-width: 1117px){
     .site-header {
         padding: 0 30px;
