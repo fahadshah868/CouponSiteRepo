@@ -26,15 +26,15 @@ $(document).ready(function() {
 
     $(".site-header-nav-list-item").click(function(){
         $(".site-header-nav-list-item #site-header-nav-mega-dropdown-overlay-container").not($(this).find("#site-header-nav-mega-dropdown-overlay-container")).css("display","none");
-        $(".site-header-nav-list-item span").removeClass("active-nav-list-item");
+        $(".site-header-nav-list-item .site-header-nav-list-item-text").removeClass("active-nav-list-item");
         $(this).find("#site-header-nav-mega-dropdown-overlay-container").toggle();
         if($(this).find("#site-header-nav-mega-dropdown-overlay-container").css("display") == "block"){
-            $(this).find("span").addClass("active-nav-list-item");
-            var header_list_item_text = $(this).find("span").text();
+            $(this).find(".site-header-nav-list-item-text").addClass("active-nav-list-item");
+            var header_list_item_text = $(this).find(".site-header-nav-list-item-text").text();
             //todo ajax call for loading date into header divs
         }
         else{
-            $(this).find("span").removeClass("active-nav-list-item");
+            $(this).find(".site-header-nav-list-item-text").removeClass("active-nav-list-item");
         }
     });
 

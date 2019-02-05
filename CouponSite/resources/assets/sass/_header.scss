@@ -383,7 +383,7 @@
     font-size: 15px;
     margin-left: 5px;
 }
-.site-header-nav-list-item a, .site-header-nav-list-item span{
+.site-header-nav-list-item .site-header-nav-list-item-text{
     text-decoration: none;
     color: #FFFFFF;
     display: block;
@@ -395,23 +395,73 @@
 .active-nav-list-item{
     border-bottom: 3px solid #fff !important;
 }
-.site-header-nav-list-item a:hover, .site-header-nav-list-item span:hover{
+.site-header-nav-list-item .site-header-nav-list-item-text:hover{
     border-bottom: 3px solid #fff;
 }
 .site-header-nav-mega-dropdown-body-container{
     width: 1100px;
-    height: 500px;
     margin: auto;
     background-color: #fff;
     padding: 30px 60px;
 }
 .site-header-nav-mega-dropdown-topitems-container{
+    width: 100%;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-
-
+.site-header-nav-mega-dropdown-topitems-item-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    margin: 0 12px 12px 0;
+    text-decoration: none !important;
+}
+.site-header-nav-mega-dropdown-topitems-item-container:hover{
+    box-shadow: 0 0 10px $boxshadow-color;
+}
+.site-header-nav-mega-dropdown-topitems-item-container:last-child{
+    margin-right: 0;
+}
+.site-header-nav-mega-dropdown-topitems-item{
+    max-width: 65px;
+    min-width: 65px;
+}
+.site-header-nav-mega-dropdown-topitems-item img{
+    max-width: 65px;
+    max-height: 65px;
+}
+.site-header-nav-mega-dropdown-topitems-item .site-header-nav-mega-dropdown-topitems-item-text{
+    color: #000;
+    font-size: 11px;
+}
+.site-header-nav-mega-dropdown-popularitems-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.site-header-nav-mega-dropdown-popularitems-heading-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0 20px 0;
+}
+.site-header-nav-mega-dropdown-popularitems-heading-container span, 
+.site-header-nav-mega-dropdown-popularitems-heading-container a{
+    font-size: 13px;
+}
+.site-header-nav-mega-dropdown-popularitems ul{
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+    list-style:none;
+    text-align: left;
+}
+.site-header-nav-mega-dropdown-popularitems ul a{
+    font-size: 13px;
+}
 
 
 
