@@ -1,14 +1,14 @@
 $(document).ready(function() {
     var dropdowndetailcontainerelements = $("#site-header-explorebutton-mega-dropdown-detail-container").children();
     
-    $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
-    $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
+    $(".hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 122 + 'px');
+    $(".site-header-nav-mega-dropdown-overlay-container").css('height', $(document).height() - 122 + 'px');
 
     $(window).resize(function() {
-        $("#hamburgerbutton-mega-menu-overlay-container").css('height', '0');
-        $("#hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
-        $("#explorebutton-mega-menu-overlay-container").css('height', '0');
-        $("#explorebutton-mega-menu-overlay-container").css('height', $(document).height() - 80 + 'px');
+        $(".hamburgerbutton-mega-menu-overlay-container").css('height', '0');
+        $(".hamburgerbutton-mega-menu-overlay-container").css('height', $(document).height() - 122 + 'px');
+        $(".site-header-nav-mega-dropdown-overlay-container").css('height', '0');
+        $(".site-header-nav-mega-dropdown-overlay-container").css('height', $(document).height() - 122 + 'px');
     });
 
     $("#searchbar").keyup(function(event){
@@ -24,87 +24,109 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on("click",function(event){
-        // click events for toggle button and browse list
-        if($(event.target).parents().hasClass('site-header-hamburger-button-container') || $(event.target).parent().hasClass('site-header-explorebutton') || $(event.target).parent().parent().hasClass('site-header-explorebutton') || $(event.target).hasClass('site-header-explorebutton')){
-            $('#menu-toggle').toggleClass('active');
-            $('#hamburgerbutton-mega-menu-overlay-container').toggle();
-            $('#explorebutton-mega-menu-overlay-container').toggle();
-            $('#events-list').slideUp();
-            $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
-            //active first tab when click on explore button
-            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a").removeClass("active-sidebar-li"); //Remove any "active" class
-            $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a:first").addClass("active-sidebar-li") //Activate first tab
-            //send ajax request when dropdown detail container appears
-            if($("#dropdownmenu-popularstore-body-container").html().length > 0){
-                for(var i=0; i< dropdowndetailcontainerelements.length; i++){
-                    dropdowndetailcontainerelements[i].style.display = "none";
-                }
-                $("#dropdownmenu-popularstore-body-container").css("display","block");
-            }
-            else{
-                var popularstore
-                $.ajax({
-                    type:'GET',
-                    url:'/getpopularstores',
-                    data: '',
-                    beforeSend: function(){
-                        for(var i=0; i< dropdowndetailcontainerelements.length; i++){
-                            dropdowndetailcontainerelements[i].style.display = "none";
-                        }
-                        $("#loader-overlay-container").css('display','flex');
-                    },
-                    complete: function(){
-                        for(var i=0; i< dropdowndetailcontainerelements.length; i++){
-                            dropdowndetailcontainerelements[i].style.display = "none";
-                        }
-                        $("#dropdownmenu-popularstore-body-container").html(popularstore);
-                        $("#dropdownmenu-popularstore-body-container").css('display','block');
-                    },
-                    success:function(data){
-                        if(data.status == true){
-                            popularstore = "<div class='dropdownmenu-popularstores-header-container'>"+
-                                    "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Stores</div>"+
-                                    "<a id='all-stores-link' href='/store/allstores'>See All Stores</a>"+
-                                "</div>"+
-                                "<div class='dropdownmenu-popularstores-list-container'>"
-                                    for(var i=1; i<=12; i++){
-                                        popularstore = popularstore + 
-                                        "<div class='dropdownmenu-store-material-container'>"+
-                                            "<a href='#' class='dropdown-store-link'>"+
-                                                "<div class='dropdownmenu-store-logo'>"+
-                                                    "<img src='https://img.grouponcdn.com/coupons/2MB1FyJzVmZc2SQn6UM5y6GPXyik/2M-500x500' />"+
-                                                "</div>"+
-                                                "<div class='dropdownmenu-store-title'>Tillys</div>"+
-                                            "</a>"+
-                                        "</div>"
-                                    }
-                                popularstore = popularstore + "</div>"
-                        }
-                    }
-                });
-            }
-        }
-        else if(!($(event.target).parents().hasClass('show')) && ($('#hamburgerbutton-mega-menu-overlay-container').css('display') == 'block' || $('#explorebutton-mega-menu-overlay-container').css('display') == 'block')){
-            $('#menu-toggle').toggleClass('active');
-            $('#hamburgerbutton-mega-menu-overlay-container').toggle();
-            $('#explorebutton-mega-menu-overlay-container').toggle();
-            $('#events-list').slideUp();
-            $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
-        }
-        else if($(event.target).parent().hasClass('parentli') || $(event.target).parent().parent().hasClass('parentli')){
-            $('#events-list').slideToggle();
-        }
-        else if($(event.target).attr('id') == "searchbar"){
-            $("#site-header-search-items-container").css('display','block');
+    $(".site-header-nav-list-item").click(function(){
+        $(".site-header-nav-list-item #site-header-nav-mega-dropdown-overlay-container").not($(this).find("#site-header-nav-mega-dropdown-overlay-container")).css("display","none");
+        $(".site-header-nav-list-item span").removeClass("active-nav-list-item");
+        $(this).find("#site-header-nav-mega-dropdown-overlay-container").toggle();
+        if($(this).find("#site-header-nav-mega-dropdown-overlay-container").css("display") == "block"){
+            $(this).find("span").addClass("active-nav-list-item");
+            var header_list_item_text = $(this).find("span").text();
+            //todo ajax call for loading date into header divs
         }
         else{
-            setTimeout(function(){
-                $("#site-header-search-items-container").css('display','none');
-                clearTimeout(1);
-            },1000);
+            $(this).find("span").removeClass("active-nav-list-item");
         }
     });
+
+
+
+
+
+
+
+
+
+    // $(document).on("click",function(event){
+    //     // click events for toggle button and browse list
+    //     if($(event.target).parents().hasClass('site-header-hamburger-button-container') || $(event.target).parent().hasClass('site-header-explorebutton') || $(event.target).parent().parent().hasClass('site-header-explorebutton') || $(event.target).hasClass('site-header-explorebutton')){
+    //         $('#menu-toggle').toggleClass('active');
+    //         $('#hamburgerbutton-mega-menu-overlay-container').toggle();
+    //         $('#site-header-nav-mega-dropdown-overlay-container').toggle();
+    //         $('#events-list').slideUp();
+    //         $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
+    //         //active first tab when click on explore button
+    //         $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a").removeClass("active-sidebar-li"); //Remove any "active" class
+    //         $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li a:first").addClass("active-sidebar-li") //Activate first tab
+    //         //send ajax request when dropdown detail container appears
+    //         if($("#dropdownmenu-popularstore-body-container").html().length > 0){
+    //             for(var i=0; i< dropdowndetailcontainerelements.length; i++){
+    //                 dropdowndetailcontainerelements[i].style.display = "none";
+    //             }
+    //             $("#dropdownmenu-popularstore-body-container").css("display","block");
+    //         }
+    //         else{
+    //             var popularstore
+    //             $.ajax({
+    //                 type:'GET',
+    //                 url:'/getpopularstores',
+    //                 data: '',
+    //                 beforeSend: function(){
+    //                     for(var i=0; i< dropdowndetailcontainerelements.length; i++){
+    //                         dropdowndetailcontainerelements[i].style.display = "none";
+    //                     }
+    //                     $("#loader-overlay-container").css('display','flex');
+    //                 },
+    //                 complete: function(){
+    //                     for(var i=0; i< dropdowndetailcontainerelements.length; i++){
+    //                         dropdowndetailcontainerelements[i].style.display = "none";
+    //                     }
+    //                     $("#dropdownmenu-popularstore-body-container").html(popularstore);
+    //                     $("#dropdownmenu-popularstore-body-container").css('display','block');
+    //                 },
+    //                 success:function(data){
+    //                     if(data.status == true){
+    //                         popularstore = "<div class='dropdownmenu-popularstores-header-container'>"+
+    //                                 "<div class='dopdownmenu-detailcontainer-main-heading' id='dopdownmenu-detailcontainer-main-heading'>Popular Stores</div>"+
+    //                                 "<a id='all-stores-link' href='/store/allstores'>See All Stores</a>"+
+    //                             "</div>"+
+    //                             "<div class='dropdownmenu-popularstores-list-container'>"
+    //                                 for(var i=1; i<=12; i++){
+    //                                     popularstore = popularstore + 
+    //                                     "<div class='dropdownmenu-store-material-container'>"+
+    //                                         "<a href='#' class='dropdown-store-link'>"+
+    //                                             "<div class='dropdownmenu-store-logo'>"+
+    //                                                 "<img src='https://img.grouponcdn.com/coupons/2MB1FyJzVmZc2SQn6UM5y6GPXyik/2M-500x500' />"+
+    //                                             "</div>"+
+    //                                             "<div class='dropdownmenu-store-title'>Tillys</div>"+
+    //                                         "</a>"+
+    //                                     "</div>"
+    //                                 }
+    //                             popularstore = popularstore + "</div>"
+    //                     }
+    //                 }
+    //             });
+    //         }
+    //     }
+    //     else if(!($(event.target).parents().hasClass('show')) && ($('#hamburgerbutton-mega-menu-overlay-container').css('display') == 'block' || $('#site-header-nav-mega-dropdown-overlay-container').css('display') == 'block')){
+    //         $('#menu-toggle').toggleClass('active');
+    //         $('#hamburgerbutton-mega-menu-overlay-container').toggle();
+    //         $('#site-header-nav-mega-dropdown-overlay-container').toggle();
+    //         $('#events-list').slideUp();
+    //         $("#site-header-explorebutton").toggleClass("active-site-header-explorebutton");
+    //     }
+    //     else if($(event.target).parent().hasClass('parentli') || $(event.target).parent().parent().hasClass('parentli')){
+    //         $('#events-list').slideToggle();
+    //     }
+    //     else if($(event.target).attr('id') == "searchbar"){
+    //         $("#site-header-search-items-container").css('display','block');
+    //     }
+    //     else{
+    //         setTimeout(function(){
+    //             $("#site-header-search-items-container").css('display','none');
+    //             clearTimeout(1);
+    //         },1000);
+    //     }
+    // });
       
     //On click dropdown sidebar link
     $("#site-header-explorebutton-mega-dropdown-sidebar-container ul li").click(function() {

@@ -36,8 +36,8 @@
                 </form>
             </div>
     
-            toggle button to browse list
-            <div class="site-header-hamburger-mega-menu-container">
+            
+            {{-- <div class="site-header-hamburger-mega-menu-container">
                 <div class="site-header-hamburger-button-container">
                     <div class="menu-toggle" id="menu-toggle">
                         <div class="hamburger">
@@ -73,13 +73,12 @@
                     </div>
                 </div>
     
-                {{-- explore button to explore list --}}
     
             <div class="site-header-explorebutton-mega-menu-container">
                 <div class="site-header-explorebutton" id="site-header-explorebutton" tabindex="1">
                     <span class="button-heading">Explore<i style="padding-left: 10px;" class="fa fa-angle-down"></i></span>
                 </div>
-                <div id="explorebutton-mega-menu-overlay-container" class="explorebutton-mega-menu-overlay-container">
+                <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
                     <div class="show site-header-explorebutton-mega-dropdown" id="site-header-explorebutton-mega-dropdown">
                         <div class="site-header-explorebutton-mega-dropdown-body-container">
                             <div class="site-header-explorebutton-mega-dropdown-sidebar-container" id="site-header-explorebutton-mega-dropdown-sidebar-container">
@@ -103,16 +102,56 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <nav class="site-header-nav-container">
             <ul class="site-header-nav-list">
-                <li class="site-header-nav-list-item"><a href="#">Top Stores<i class="fa fa-angle-down"></i></a></li>
-                <li class="site-header-nav-list-item"><a href="#">Top Categories<i class="fa fa-angle-down"></i></a></li>
-                <li class="site-header-nav-list-item"><a href="#">Top Online Codes<i class="fa fa-angle-down"></i></a></li>
-                <li class="site-header-nav-list-item"><a href="#">Top Online Sales<i class="fa fa-angle-down"></i></a></li>
-                <li class="site-header-nav-list-item"><a href="#">Top Free Shipping Offers<i class="fa fa-angle-down"></i></a></li>
-                <li class="site-header-nav-list-item"><a href="#">Blog</a></li>
+                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
+                    <span>Top Stores<i class="fa fa-angle-down"></i></span>
+                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
+                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                            <div class="site-header-nav-mega-dropdown-topitems-container">
+                                
+                            </div>
+                            <div class="site-header-nav-mega-dropdown-popularitems-container">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
+                    <span>Top Categories<i class="fa fa-angle-down"></i></span>
+                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
+                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                            top categories
+                        </div>
+                    </div>
+                </li>
+                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
+                    <span>Top Online Codes<i class="fa fa-angle-down"></i></span>
+                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
+                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                            top online codes
+                        </div>
+                    </div>
+                </li>
+                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
+                    <span>Top Online Sales<i class="fa fa-angle-down"></i></span>
+                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
+                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                            top online sales
+                        </div>
+                    </div>
+                </li>
+                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
+                    <span>Top Free Shipping Offers<i class="fa fa-angle-down"></i></span>
+                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
+                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                            top free shipping offers
+                        </div>
+                    </div>
+                </li>
+                <li class="site-header-nav-list-item" id="site-header-nav-list-item"><a href="#">Blog</a></li>
             </ul>
         </nav>
         <div>
