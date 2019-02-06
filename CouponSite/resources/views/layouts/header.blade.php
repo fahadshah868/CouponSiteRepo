@@ -37,7 +37,7 @@
             </div>
     
             
-            {{-- <div class="site-header-hamburger-mega-menu-container">
+            <div class="site-header-hamburger-mega-menu-container">
                 <div class="site-header-hamburger-button-container">
                     <div class="menu-toggle" id="menu-toggle">
                         <div class="hamburger">
@@ -70,39 +70,8 @@
                             </ul>
                         </li>
                     </ul>
-                    </div>
                 </div>
-    
-    
-            <div class="site-header-explorebutton-mega-menu-container">
-                <div class="site-header-explorebutton" id="site-header-explorebutton" tabindex="1">
-                    <span class="button-heading">Explore<i style="padding-left: 10px;" class="fa fa-angle-down"></i></span>
-                </div>
-                <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
-                    <div class="show site-header-explorebutton-mega-dropdown" id="site-header-explorebutton-mega-dropdown">
-                        <div class="site-header-explorebutton-mega-dropdown-body-container">
-                            <div class="site-header-explorebutton-mega-dropdown-sidebar-container" id="site-header-explorebutton-mega-dropdown-sidebar-container">
-                                <h2>Explore to Save Big</h2>
-                                <ul>
-                                    <li id="popularstores"><a href="#">Popular Stores<i class="fa fa-angle-right"></i></a></li>
-                                    <li id="popularcategories"><a href="#">Popular Categories<i class="fa fa-angle-right"></i></a></li>
-                                    <li id="onlinecodes"><a href="#">Online Codes<i class="fa fa-angle-right"></i></a></li>
-                                    <li id="instoreoffers"><a href="#">In Store Offers<i class="fa fa-angle-right"></i></a></li>
-                                    <li id="specialevents"><a href="#">Special Events<i class="fa fa-angle-right"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="site-header-explorebutton-mega-dropdown-detail-container" id="site-header-explorebutton-mega-dropdown-detail-container">
-                                <div class="loader-overlay-container" id="loader-overlay-container"><div class='loader'></div></div>
-                                <div class="dropdownmenu-popularstore-body-container" id="dropdownmenu-popularstore-body-container"></div>
-                                <div class="dropdownmenu-popularcategories-body-container" id="dropdownmenu-popularcategories-body-container"></div>
-                                <div class="dropdownmenu-onlinecodes-body-container" id="dropdownmenu-onlinecodes-body-container"></div>
-                                <div class="dropdownmenu-instoreoffers-body-container" id="dropdownmenu-instoreoffers-body-container"></div>
-                                <div class="dropdownmenu-specialevents-body-container" id="dropdownmenu-specialevents-body-container"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+            </div>
         </div>
         <nav class="site-header-nav-container">
             <ul class="site-header-nav-list">
@@ -114,7 +83,7 @@
                                 @for($i=1; $i<=10; $i++)
                                 <a href="#" class="site-header-nav-mega-dropdown-topitems-item-container">
                                     <div class="site-header-nav-mega-dropdown-topitems-item">
-                                        <img src="{{asset('images/store.png')}}">
+                                        <img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg">
                                         <span class="site-header-nav-mega-dropdown-topitems-item-text">Store Name</span>
                                     </div>
                                 </a>
@@ -127,9 +96,14 @@
                                 </div>
                                 <div class="site-header-nav-mega-dropdown-popularitems">
                                     <ul>
-                                        @for($i=1; $i<= 50; $i++)
+                                        @for($i=1; $i<= 40; $i++)
                                         <li>
-                                            <a href="#">Kohl's</a>
+                                            <a href="#">
+                                                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                                    <span>Kohl's</span>
+                                                    <span>(20 coupons)</span>
+                                                </div>
+                                            </a>
                                         </li>
                                         @endfor
                                     </ul>
@@ -142,7 +116,36 @@
                     <span class="site-header-nav-list-item-text">Top Categories<i class="fa fa-angle-down"></i></span>
                     <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
                         <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
-                            top categories
+                            <div class="site-header-nav-mega-dropdown-topitems-container">
+                                @for($i=1; $i<=10; $i++)
+                                <a href="#" class="site-header-nav-mega-dropdown-topitems-item-container">
+                                    <div class="site-header-nav-mega-dropdown-topitems-item">
+                                        <img src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX26549973.jpg">
+                                        <span class="site-header-nav-mega-dropdown-topitems-item-text">Baby</span>
+                                    </div>
+                                </a>
+                                @endfor
+                            </div>
+                            <div class="site-header-nav-mega-dropdown-popularitems-container">
+                                <div class="site-header-nav-mega-dropdown-popularitems-heading-container">
+                                    <span>Popular Categories</span>
+                                    <a href="#">See All Categories</a>
+                                </div>
+                                <div class="site-header-nav-mega-dropdown-popularitems">
+                                    <ul>
+                                        @for($i=1; $i<= 40; $i++)
+                                        <li>
+                                            <a href="#">
+                                                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                                    <span>Jewelery</span>
+                                                    <span>(1300 coupons)</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        @endfor
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -150,7 +153,26 @@
                     <span class="site-header-nav-list-item-text">Top Online Codes<i class="fa fa-angle-down"></i></span>
                     <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
                         <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
-                            top online codes
+                            <div class="site-header-nav-mega-dropdown-topoffers-container">
+                                <div class="site-header-nav-mega-dropdown-topoffers-heading-container">
+                                    <span>Top Online codes</span>
+                                    <a href="#">See All Online Codes</a>
+                                </div>
+                                <div class="site-header-nav-mega-dropdown-top-offer-container">
+                                    @for($i=1; $i<=8; $i++)
+                                    <a href="#" class="site-header-nav-mega-dropdown-topoffer-details-container">
+                                        <img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg" class="site-header-nav-mega-dropdown-topoffer-storelogo"></img>
+                                        <div class="site-header-nav-mega-dropdown-topoffer-details">
+                                            <span class="site-header-nav-mega-dropdown-topoffer-title">20% off on your online order + free shipping</span>
+                                            <div class="site-header-nav-mega-dropdown-topoffer-type-container">
+                                                <span class="site-header-nav-mega-dropdown-topoffer-storetitle">Kohl's</span>
+                                                <span class="site-header-nav-mega-dropdown-topoffer-type">Code</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    @endfor
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -158,7 +180,26 @@
                     <span class="site-header-nav-list-item-text">Top Online Sales<i class="fa fa-angle-down"></i></span>
                     <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
                         <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
-                            top online sales
+                            <div class="site-header-nav-mega-dropdown-topoffers-container">
+                                <div class="site-header-nav-mega-dropdown-topoffers-heading-container">
+                                    <span>Top Online Sales</span>
+                                    <a href="#">See All Online Sales</a>
+                                </div>
+                                <div class="site-header-nav-mega-dropdown-top-offer-container">
+                                    @for($i=1; $i<=8; $i++)
+                                    <a href="#" class="site-header-nav-mega-dropdown-topoffer-details-container">
+                                        <img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg" class="site-header-nav-mega-dropdown-topoffer-storelogo"></img>
+                                        <div class="site-header-nav-mega-dropdown-topoffer-details">
+                                            <span class="site-header-nav-mega-dropdown-topoffer-title">20% off on your online order + free shipping</span>
+                                            <div class="site-header-nav-mega-dropdown-topoffer-type-container">
+                                                <span class="site-header-nav-mega-dropdown-topoffer-storetitle">Kohl's</span>
+                                                <span class="site-header-nav-mega-dropdown-topoffer-type">Sale</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    @endfor
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -166,7 +207,26 @@
                     <span class="site-header-nav-list-item-text">Top Free Shipping Offers<i class="fa fa-angle-down"></i></span>
                     <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
                         <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
-                            top free shipping offers
+                            <div class="site-header-nav-mega-dropdown-topoffers-container">
+                                <div class="site-header-nav-mega-dropdown-topoffers-heading-container">
+                                    <span>Top Free Shipping Offers</span>
+                                    <a href="#">See All Free Shipping Offers</a>
+                                </div>
+                                <div class="site-header-nav-mega-dropdown-top-offer-container">
+                                    @for($i=1; $i<=8; $i++)
+                                    <a href="#" class="site-header-nav-mega-dropdown-topoffer-details-container">
+                                        <img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg" class="site-header-nav-mega-dropdown-topoffer-storelogo"></img>
+                                        <div class="site-header-nav-mega-dropdown-topoffer-details">
+                                            <span class="site-header-nav-mega-dropdown-topoffer-title">20% off on your online order + free shipping</span>
+                                            <div class="site-header-nav-mega-dropdown-topoffer-type-container">
+                                                <span class="site-header-nav-mega-dropdown-topoffer-storetitle">Kohl's</span>
+                                                <span class="site-header-nav-mega-dropdown-topoffer-type">Code</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    @endfor
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>
