@@ -52,23 +52,13 @@
                         </div>
                 </div>
                 <div id="hamburgerbutton-mega-menu-overlay-container" class="hamburgerbutton-mega-menu-overlay-container">
-                    <ul class="show hamburger-mega-menu-list">
+                    <ul class="hamburger-mega-menu-list">
                         <li><a href="#">Browse Stores<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Browse Categories<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Browse Online Codes<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Browse Instore Offers<i class="fa fa-angle-right"></i></a></li>
-                        <li class="parentli"><a href="#">Browse Events<i class="fa fa-angle-down"></i></a>
-                            <ul id="events-list">
-                            <li><a href="#">Black Friday Deals<i class="fa fa-angle-right"></i></a></li>
-                            <li><a href="#">Cyber Monday Deals<i class="fa fa-angle-right"></i></a></li>
-                            <li><a href="#">Christmas Deals<i class="fa fa-angle-right"></i></a></li>
-                            <li><a href="#">Valentines Day Deals<i class="fa fa-angle-right"></i></a></li>
-                            <li><a href="#">New Year Deals<i class="fa fa-angle-right"></i></a></li>
-                            <li><a href="#">Labour Day Deals<i class="fa fa-angle-right"></i></a></li>
-                            <li><a href="#">Fathers Day Deals<i class="fa fa-angle-right"></i></a></li>
-                            <li><a href="#">Mothers Day Deals<i class="fa fa-angle-right"></i></a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#">Browse Online Sales<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Browse Free Shipping Offers<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Blog<i class="fa fa-angle-right"></i></a></li>
                     </ul>
                 </div>
             </div>

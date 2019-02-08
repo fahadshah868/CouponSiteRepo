@@ -23,16 +23,21 @@ $(document).ready(function() {
             $("#site-header-search-items").css('display','none');
         }
     });
-
+    $('.menu-toggle').on('click',function(){
+        $('.menu-toggle').toggleClass('active');
+        if($(this).hasClass("active")){
+            $("#hamburgerbutton-mega-menu-overlay-container").css("display","block");
+        }
+        else{
+            $("#hamburgerbutton-mega-menu-overlay-container").css("display","none");
+        }
+	});
     $(".site-header-nav-list-item-text, .site-header-nav-list-item-text.fa-angle-down").click(function(e){
         $(".site-header-nav-list-item #site-header-nav-mega-dropdown-overlay-container").not($(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container")).css("display","none");
         $(".site-header-nav-list-item .site-header-nav-list-item-text").removeClass("active-nav-list-item");
         $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container").toggle();
         if($(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container").css("display") == "block"){
-            
             $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-list-item-text").addClass("active-nav-list-item");
-            
-            
             var header_list_item_text = $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-list-item-text").text();
             if(header_list_item_text == "xyz"){
                 $.ajax({
@@ -56,10 +61,17 @@ $(document).ready(function() {
         }
     });
     $(document).click(function(e){
-        //if click on dropdown body inner element || on dropdown body element || on nav list text || fa-angle-down arrow
-        if(!$(e.target).hasClass("site-header-nav-mega-dropdown-body-container") && !$(e.target).parents(".site-header-nav-mega-dropdown-body-container").length > 0 && !$(e.target).hasClass("site-header-nav-list-item-text") && !$(e.target).hasClass("header-list-arrow")){
+        if(!$(e.target).hasClass("site-header-nav-mega-dropdown-body-container") &&                         //click on body container
+        !$(e.target).parents(".site-header-nav-mega-dropdown-body-container").length > 0 &&                 //click inside body container
+        !$(e.target).hasClass("site-header-nav-list-item-text") &&                                          //click on nav list item text
+        !$(e.target).hasClass("header-list-arrow") &&                                                       //click on nav list item arrow
+        !$(e.target).hasClass("menu-toggle") &&                                                             //click on hamburger menu
+        !$(e.target).parents(".menu-toggle").length > 0 &&                                                  //click on inside hamburger menu
+        !$(e.target).parents(".hamburger-mega-menu-list").length > 0){                                      //click on hamburger menu list items
             $(".site-header-nav-list-item .site-header-nav-list-item-text").removeClass("active-nav-list-item");
             $(".site-header-nav-mega-dropdown-overlay-container").css("display","none");
+            $("#hamburgerbutton-mega-menu-overlay-container").css("display","none");
+            $('.menu-toggle').removeClass('active');
         }
     });
 });

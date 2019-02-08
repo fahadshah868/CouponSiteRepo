@@ -25,6 +25,12 @@
             @endfor
         </div>
     </div>
+    <div class="as-refine-stores-container">
+        <div></div>
+        <div></div>
+    </div>
+
+
     <div class="all-stores-list-container">
         <div class="all-stores-list-heading">
             Stores List

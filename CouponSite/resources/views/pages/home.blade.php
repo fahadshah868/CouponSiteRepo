@@ -95,50 +95,50 @@
     </div>
   </div>
   
-  <!--Top Offers Deals Products----------------------------------------------------------------------------------->
-  <div class="top-offers-main-container">
+  <!-- Top Offers Deals Products--------------------------------------------------------------------------------- -->
+  <div class="home-offers-main-container">
     <!--Heading-->
-    <div class="top-offers-heading">Top Offers, Deals & Coupon Codes</div>
+    <div class="home-offers-heading">Top Offers, Deals & Coupon Codes</div>
     <!--Products-->
-    <div class="top-offers-container">
+    <div class="home-offers-container">
       @for($i=1; $i<=12; $i++)
-      <div class="top-offer-container">
-        <a class="top-offer-link modal-offer-link" id="offer-link" data-offertitle="20% Off One Select Regular-Priced Item" data-offercode="ZSTG45H" data-offerexpires="10/12/2018" data-storesitelink="https://www.dominos.com" href="#">
-          <div class="top-offer-store-logo">
-            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
-          </div>
-          <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
-          <div class="top-offer-offertitle">
-            20% Off One Select Regular-Priced Item
-          </div>
-          <div class="top-offer-offertype-code">Code</div>
-          <button type="button" id="top-offer-button">VIEW CODE</button>
-        </a>
+      <div class="home-offer-container">
+        <div class="home-offer-store-logo">
+          <a href="#">
+            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg" title="Store Name"/>
+          </a>
+        </div>
+        <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
+        <div class="home-offer-offertitle">
+          20% Off One Select Regular-Priced Item
+        </div>
+        <div class="home-offer-offertype-code">Code</div>
+        <a href="#" class="home-offer-button" id="home-offer-button" data-offertitle="20% Off One Select Regular-Priced Item" data-offercode="ZSTG45H" data-offerexpires="10/12/2018" data-storesitelink="https://www.dominos.com">VIEW CODE</a>
       </div>
       @endfor
     </div>
   </div>
   <!--top instore coupons-->
-  <div class="top-instore-offers-main-container">
+  <div class="home-offers-main-container">
     <!--Heading-->
-    <div class="top-instore-offers-heading">Best In-Store Coupon Codes</div>
+    <div class="home-offers-heading">Best In-Store Coupon Codes</div>
     <!--Products-->
-    <div class="top-instore-offers-container">
+    <div class="home-offers-container">
       @for($i=1; $i<=8; $i++)
-      <div class="top-instore-offer-container">
-        <a class="top-instore-offer-link modal-offer-link" href="#">
-          <div class="top-instore-offer-store-logo">
-            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg"/>
-          </div>
-          <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
-          <div class="top-instore-offer-offertitle">
-            Up to 30%
-          </div>
-          <div class="top-instore-offer-offertype-instorecoupon">
-            In-Store coupon
-          </div>
-          <button type="button" id="top-instore-offer-button">VIEW CODE</button>
-        </a>
+      <div class="home-offer-container">
+        <div class="home-offer-store-logo">
+          <a href="#">
+            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg" title="Store Name"/>
+          </a>
+        </div>
+        <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
+        <div class="home-offer-offertitle">
+          Up to 30%
+        </div>
+        <div class="home-offer-offertype-instorecoupon">
+          In-Store coupon
+        </div>
+        <a href="#" class="home-offer-button" id="home-offer-button">VIEW CODE</a>
       </div>
       @endfor
     </div>

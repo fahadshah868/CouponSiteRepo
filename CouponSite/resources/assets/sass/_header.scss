@@ -6,7 +6,7 @@
     position: relative;
 }
 .site-header-container {
-    width: 1100px;
+    width: 1150px;
     margin: auto;
 }
 .site-header-wrapper{
@@ -78,10 +78,14 @@
     text-decoration: none;
     border-radius: 2px;
     padding: 15px 15px 15px 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .site-header-search-items-container .site-header-search-items ul li a:hover{
     background-color: #D1D1D1;
     color: $theme-color;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 // default items before search items
 .site-header-search-items-container .site-header-default-items ul{
@@ -98,10 +102,14 @@
     text-decoration: none;
     border-radius: 2px;
     padding: 15px 15px 15px 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .site-header-search-items-container .site-header-default-items ul li a:hover{
     background-color: #D1D1D1;
     color: $theme-color;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .site-header-search-items-container .site-header-default-items .site-header-default-items-heading{
     font-size: 15px;
@@ -205,9 +213,13 @@
   text-decoration: none;
   padding: 14px 30px;
   color: #fff;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
 }
 .hamburger-mega-menu-list li a:hover{
   background-color: #0b78aa;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
 }
 .hamburgerbutton-mega-menu-overlay-container{
     position: absolute;
@@ -226,6 +238,8 @@
 }
 .hamburger-mega-menu-list ul li a{
   padding: 14px 50px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
 }
 .hamburger-mega-menu-list .fa-angle-right{
   padding-top: 4px;
@@ -233,6 +247,8 @@
 }
 .hamburger-mega-menu-list ul li a:hover{
   background-color: #0b78aa;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
 }
 // top nav bar container
 .site-header-nav-container{
@@ -269,15 +285,19 @@
     font-size: 13px;
     border-bottom: 3px solid $theme-color;
     cursor: pointer;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .active-nav-list-item{
     border-bottom: 3px solid #fff !important;
 }
 .site-header-nav-list-item .site-header-nav-list-item-text:hover{
     border-bottom: 3px solid #fff;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .site-header-nav-mega-dropdown-body-container{
-    width: 1100px;
+    width: 1150px;
     margin: auto;
     background-color: #fff;
     padding: 30px 60px;
@@ -290,13 +310,19 @@
     flex-wrap: wrap;
 }
 .site-header-nav-mega-dropdown-topitems-item-container{
-    padding: 10px;
+    width: calc(10% - 9px);
+    display: flex;
+    justify-content: center;
     border: 1px solid #d1d1d1;
-    margin: 0 12px 12px 0;
+    margin: 0 10px 10px 0;
     text-decoration: none !important;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .site-header-nav-mega-dropdown-topitems-item-container:hover{
     box-shadow: 0 0 10px $boxshadow-color;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .site-header-nav-mega-dropdown-topitems-item-container:last-child{
     margin-right: 0;
@@ -385,6 +411,9 @@
     border: 1px solid #d1d1d1;
     border-radius: 3px;
     text-decoration: none !important;
+    cursor: pointer;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .site-header-nav-mega-dropdown-topoffer-details-container:nth-child(odd){
     margin-right: 10px;
@@ -396,6 +425,8 @@
 }
 .site-header-nav-mega-dropdown-topoffer-details-container:hover{
     box-shadow: 0 0 10px $boxshadow-color;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
 }
 .site-header-nav-mega-dropdown-topoffer-storelogo{
     width: 60px;
@@ -456,12 +487,12 @@
 }
 .site-header-mega-dropdown-top-offers-loading{
     width: 100%;
-    height: 90px;
-    margin-bottom: 20px;
+    height: 95px;
+    margin-bottom: 10px;
 }
 // end loading container
 
-@media only screen and (max-width: 1117px){
+@media only screen and (max-width: 1165px){
     .site-header-container{
         width: 100%;
         padding: 0 20px;
@@ -478,7 +509,19 @@
         width: 100%;
     }
 }
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 980px){
+    .site-header-nav-mega-dropdown-topitems-item-container{
+        width: calc(20% - 10px);
+        display: flex;
+        justify-content: center;
+        border: 1px solid #d1d1d1;
+        margin: 0 10px 10px 0;
+        text-decoration: none !important;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+    }
+}
+@media only screen and (max-width: 890px){
     .site-header-nav-container{
         display: none;
     }
