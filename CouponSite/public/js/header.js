@@ -25,17 +25,14 @@ $(document).ready(function() {
     });
 
     $(".site-header-nav-list-item-text, .site-header-nav-list-item-text.fa-angle-down").click(function(e){
-
-        var header_list_item_text = $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-list-item-text").text();
-
-        alert(header_list_item_text);
-
-
         $(".site-header-nav-list-item #site-header-nav-mega-dropdown-overlay-container").not($(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container")).css("display","none");
         $(".site-header-nav-list-item .site-header-nav-list-item-text").removeClass("active-nav-list-item");
         $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container").toggle();
         if($(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container").css("display") == "block"){
+            
             $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-list-item-text").addClass("active-nav-list-item");
+            
+            
             var header_list_item_text = $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-list-item-text").text();
             if(header_list_item_text == "xyz"){
                 $.ajax({
@@ -59,7 +56,8 @@ $(document).ready(function() {
         }
     });
     $(document).click(function(e){
-        if(!$(e.target).hasClass("site-header-nav-mega-dropdown-body-container") && !$(e.target).parents(".site-header-nav-mega-dropdown-body-container").length > 0 && !$(e.target).hasClass("site-header-nav-list-item-text")){
+        //if click on dropdown body inner element || on dropdown body element || on nav list text || fa-angle-down arrow
+        if(!$(e.target).hasClass("site-header-nav-mega-dropdown-body-container") && !$(e.target).parents(".site-header-nav-mega-dropdown-body-container").length > 0 && !$(e.target).hasClass("site-header-nav-list-item-text") && !$(e.target).hasClass("header-list-arrow")){
             $(".site-header-nav-list-item .site-header-nav-list-item-text").removeClass("active-nav-list-item");
             $(".site-header-nav-mega-dropdown-overlay-container").css("display","none");
         }

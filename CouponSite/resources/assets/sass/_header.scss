@@ -237,6 +237,10 @@
 // top nav bar container
 .site-header-nav-container{
     width: 100%;
+    overflow: auto;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden;
+    white-space: nowrap;
 }
 .site-header-nav-list{
     display: flex;
@@ -284,11 +288,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
 }
 .site-header-nav-mega-dropdown-topitems-item-container{
-    display: flex;
-    flex-direction: column;
     padding: 10px;
     border: 1px solid #d1d1d1;
     margin: 0 12px 12px 0;
@@ -301,6 +302,8 @@
     margin-right: 0;
 }
 .site-header-nav-mega-dropdown-topitems-item{
+    display: flex;
+    flex-direction: column;
     max-width: 65px;
     min-width: 65px;
 }
@@ -332,9 +335,9 @@
     font-weight: 500;
 }
 .site-header-nav-mega-dropdown-popularitems ul{
-    -webkit-column-count: 4;
-    -moz-column-count: 4;
-    column-count: 4;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
     list-style:none;
     text-align: left;
 }
@@ -395,21 +398,23 @@
     box-shadow: 0 0 10px $boxshadow-color;
 }
 .site-header-nav-mega-dropdown-topoffer-storelogo{
-    max-width: 60px;
-    max-height: 60px;
+    width: 60px;
+    height: 60px;
     margin-right: 10px;
 }
 .site-header-nav-mega-dropdown-topoffer-details{
-    width: calc(100% - 80px);
+    width: calc(100% - 70px);
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     text-align: left;
     padding-left: 10px;
     border-left: 1px solid #d1d1d1;
+    white-space: normal !important;
 }
 .site-header-nav-mega-dropdown-topoffer-title{
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 400;
     color: #555;
 }
 .site-header-nav-mega-dropdown-topoffer-type-container{
@@ -457,54 +462,27 @@
 // end loading container
 
 @media only screen and (max-width: 1117px){
-    .site-header {
-        padding: 0 30px;
+    .site-header-container{
         width: 100%;
-    }
-    .site-header-explorebutton-mega-dropdown{
-        width: 100%;
-    }
-    .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container .site-header-explorebutton-mega-dropdown-sidebar-container{
-        flex: 0 0 250px;
-    }
-    .site-header-explorebutton-mega-dropdown-detail-container{
-        width: 100%;
-        height: 100%;
-    }
-    .site-header-explorebutton-mega-dropdown:after, .site-header-explorebutton-mega-dropdown:before {
-        bottom: 100.5%;
-        right: 95px;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-    }
-    .site-header-explorebutton-mega-dropdown:after {
-        border-color: rgba(136, 183, 213, 0);
-        border-bottom-color: #fff;
-        border-width: 10px;
-        margin-left: -10px;
-    }
-    .site-header-explorebutton-mega-dropdown:before {
-        border-color: rgba(194, 225, 245, 0);
-        border-bottom-color: #fff;
-        border-width: 10px;
-        margin-left: -10px;
-    }
-    .site-header-explorebutton-mega-dropdown .site-header-explorebutton-mega-dropdown-body-container{
         padding: 0 20px;
     }
-    .dropdownmenu-popularstore-body-container,.dropdownmenu-popularcategories-body-container,.dropdownmenu-onlinecodes-body-container,.dropdownmenu-instoreoffers-body-container,.dropdownmenu-specialevents-body-container{
-        display: none;
+    .site-header-nav-list{
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+    }
+    .site-header-nav-mega-dropdown-overlay-container{
+        padding: 0 20px;
+    }
+    .site-header-nav-mega-dropdown-body-container{
+        width: 100%;
     }
 }
 @media only screen and (max-width: 900px){
-    .site-header-logo{
+    .site-header-nav-container{
         display: none;
     }
-    .site-header-explorebutton-mega-menu-container{
+    .site-header-logo{
         display: none;
     }
     .site-header-searchbar {
