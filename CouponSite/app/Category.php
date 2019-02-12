@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Store extends Model
+class Category extends Model
 {
-    protected $table = "stores";
+    protected $table = "categories";
     protected $primaryKey = "id";
 
     // //has many
@@ -15,12 +15,5 @@ class Store extends Model
     // }
     // public function storecategorygroup(){
     //     return $this->hasMany('App\StoreCategoryGroup');
-    // }
-    // public function carouseloffer(){
-    //     return $this->hasMany('App\CarouselOffer');
-    // }
-    // //belongs to
-    // public function network(){
-    //     return $this->belongsTo('App\Network');
     // }
 }

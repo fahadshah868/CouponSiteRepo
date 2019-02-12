@@ -101,6 +101,218 @@ $(document).ready(function() {
                     });
                 }
             }
+            else if(header_list_item.find("#site-header-nav-list-item-text").text() == "Top Categories"){
+                if(header_list_item.find("#site-header-nav-mega-dropdown-items-container").children().length > 0){
+                    header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                    header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                }
+                else{
+                    $.ajax({
+                        type:'GET',
+                        url:'/getajaxrequest/2',
+                        data: '',
+                        beforeSend: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","block");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","none");
+                        },
+                        complete: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                        },
+                        success:function(data){
+                            var html = 
+                                "<div class='site-header-nav-mega-dropdown-topitems-container'>";
+                                    for(var i=1; i<=10; i++){
+                                        html = html + 
+                                        "<a href='#' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
+                                            "<div class='site-header-nav-mega-dropdown-topitems-item'>"+
+                                                "<img src='https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX26549973.jpg'>"+
+                                                "<span class='site-header-nav-mega-dropdown-topitems-item-text'>Store Name</span>"+
+                                            "</div>"+
+                                        "</a>"
+                                    }
+                                html = html +
+                                "</div>"+
+                                "<div class='site-header-nav-mega-dropdown-popularitems-container'>"+
+                                    "<div class='site-header-nav-mega-dropdown-popularitems-heading-container'>"+
+                                        "<span>Popular Categories</span>"+
+                                        "<a href='#'>See All Categories</a>"+
+                                    "</div>"+
+                                    "<div class='site-header-nav-mega-dropdown-popularitems'>"+
+                                        "<ul>"
+                                            for(var i=1; i<= 33; i++){
+                                                html = html +
+                                                "<li>"+
+                                                    "<a href='#'>"+
+                                                        "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
+                                                            "<span>Jewelery</span>"+
+                                                            "<span>(1130 coupons)</span>"+
+                                                        "</div>"+
+                                                    "</a>"+
+                                                "</li>"
+                                            }
+                                        html = html +
+                                        "</ul>"+
+                                    "</div>"+
+                                "</div>"
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").html(html);
+                        },
+                        error:function(){
+                            alert("Error! something went wrong");
+                        }
+                    });
+                }
+            }
+            else if(header_list_item.find("#site-header-nav-list-item-text").text() == "Top Online Codes"){
+                if(header_list_item.find("#site-header-nav-mega-dropdown-items-container").children().length > 0){
+                    header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                    header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                }
+                else{
+                    $.ajax({
+                        type:'GET',
+                        url:'/getajaxrequest/3',
+                        data: '',
+                        beforeSend: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","block");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","none");
+                        },
+                        complete: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                        },
+                        success:function(data){
+                            var html = 
+                            "<div class='site-header-nav-mega-dropdown-topoffers-container'>"+
+                                "<div class='site-header-nav-mega-dropdown-topoffers-heading-container'>"+
+                                    "<span>Top Online codes</span>"+
+                                    "<a href='#'>See All Online Codes</a>"+
+                                "</div>"+
+                                "<div class='site-header-nav-mega-dropdown-top-offer-container'>"
+                                    for(var i=1; i<=8; i++){
+                                        html = html +
+                                        "<div class='site-header-nav-mega-dropdown-topoffer-details-container'>"+
+                                            "<img src='https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg' class='site-header-nav-mega-dropdown-topoffer-storelogo'></img>"+
+                                            "<div class='site-header-nav-mega-dropdown-topoffer-details'>"+
+                                                "<span class='site-header-nav-mega-dropdown-topoffer-title'>20% off on your online order + free shipping</span>"+
+                                                "<div class='site-header-nav-mega-dropdown-topoffer-type-container'>"+
+                                                    "<span class='site-header-nav-mega-dropdown-topoffer-storetitle'>Kohl's</span>"+
+                                                    "<span class='site-header-nav-mega-dropdown-topoffer-type'>Code</span>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"
+                                    }
+                                html = html +
+                                "</div>"+
+                            "</div>"
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").html(html);
+                        },
+                        error:function(){
+                            alert("Error! something went wrong");
+                        }
+                    });
+                }
+            }
+            else if(header_list_item.find("#site-header-nav-list-item-text").text() == "Top Online Sales"){
+                if(header_list_item.find("#site-header-nav-mega-dropdown-items-container").children().length > 0){
+                    header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                    header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                }
+                else{
+                    $.ajax({
+                        type:'GET',
+                        url:'/getajaxrequest/4',
+                        data: '',
+                        beforeSend: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","block");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","none");
+                        },
+                        complete: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                        },
+                        success:function(data){
+                            var html = 
+                            "<div class='site-header-nav-mega-dropdown-topoffers-container'>"+
+                                "<div class='site-header-nav-mega-dropdown-topoffers-heading-container'>"+
+                                    "<span>Top Online Sales</span>"+
+                                    "<a href='#'>See All Online Sales</a>"+
+                                "</div>"+
+                                "<div class='site-header-nav-mega-dropdown-top-offer-container'>"
+                                    for(var i=1; i<=8; i++){
+                                        html = html +
+                                        "<div class='site-header-nav-mega-dropdown-topoffer-details-container'>"+
+                                            "<img src='https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg' class='site-header-nav-mega-dropdown-topoffer-storelogo'></img>"+
+                                            "<div class='site-header-nav-mega-dropdown-topoffer-details'>"+
+                                                "<span class='site-header-nav-mega-dropdown-topoffer-title'>20% off on your online order + free shipping</span>"+
+                                                "<div class='site-header-nav-mega-dropdown-topoffer-type-container'>"+
+                                                    "<span class='site-header-nav-mega-dropdown-topoffer-storetitle'>Kohl's</span>"+
+                                                    "<span class='site-header-nav-mega-dropdown-topoffer-type'>Sale</span>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"
+                                    }
+                                html = html +
+                                "</div>"+
+                            "</div>"
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").html(html);
+                        },
+                        error:function(){
+                            alert("Error! something went wrong");
+                        }
+                    });
+                }
+            }
+            else if(header_list_item.find("#site-header-nav-list-item-text").text() == "Top Free Shipping Offers"){
+                if(header_list_item.find("#site-header-nav-mega-dropdown-items-container").children().length > 0){
+                    header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                    header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                }
+                else{
+                    $.ajax({
+                        type:'GET',
+                        url:'/getajaxrequest/5',
+                        data: '',
+                        beforeSend: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","block");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","none");
+                        },
+                        complete: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                        },
+                        success:function(data){
+                            var html = 
+                            "<div class='site-header-nav-mega-dropdown-topoffers-container'>"+
+                                "<div class='site-header-nav-mega-dropdown-topoffers-heading-container'>"+
+                                    "<span>Top Free Shipping Offers</span>"+
+                                    "<a href='#'>See All Free Shipping Offers</a>"+
+                                "</div>"+
+                                "<div class='site-header-nav-mega-dropdown-top-offer-container'>"
+                                    for(var i=1; i<=8; i++){
+                                        html = html +
+                                        "<div class='site-header-nav-mega-dropdown-topoffer-details-container'>"+
+                                            "<img src='https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg' class='site-header-nav-mega-dropdown-topoffer-storelogo'></img>"+
+                                            "<div class='site-header-nav-mega-dropdown-topoffer-details'>"+
+                                                "<span class='site-header-nav-mega-dropdown-topoffer-title'>20% off on your online order + free shipping</span>"+
+                                                "<div class='site-header-nav-mega-dropdown-topoffer-type-container'>"+
+                                                    "<span class='site-header-nav-mega-dropdown-topoffer-storetitle'>Kohl's</span>"+
+                                                    "<span class='site-header-nav-mega-dropdown-topoffer-type'>Code</span>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"
+                                    }
+                                html = html +
+                                "</div>"+
+                            "</div>"
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").html(html);
+                        },
+                        error:function(){
+                            alert("Error! something went wrong");
+                        }
+                    });
+                }
+            }
         }
         else{
             header_list_item.find("#site-header-nav-list-item-text").removeClass("active-nav-list-item");
