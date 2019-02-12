@@ -33,31 +33,42 @@ $(document).ready(function() {
         }
 	});
     $(".site-header-nav-list-item-text, .site-header-nav-list-item-text.fa-angle-down").click(function(e){
-        $(".site-header-nav-list-item #site-header-nav-mega-dropdown-overlay-container").not($(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container")).css("display","none");
+        var header_list_item = $(this).parentsUntil(".site-header-nav-list");
+        $(".site-header-nav-list-item #site-header-nav-mega-dropdown-overlay-container").not(header_list_item.find("#site-header-nav-mega-dropdown-overlay-container")).css("display","none");
         $(".site-header-nav-list-item .site-header-nav-list-item-text").removeClass("active-nav-list-item");
-        $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container").toggle();
-        if($(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-mega-dropdown-overlay-container").css("display") == "block"){
-            $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-list-item-text").addClass("active-nav-list-item");
-            var header_list_item_text = $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-list-item-text").text();
-            if(header_list_item_text == "xyz"){
-                $.ajax({
-                    type:'GET',
-                    url:'/getpopularstores',
-                    data: '',
-                    beforeSend: function(){
-                        $(this).parentsUntil(".site-header-nav-list").find("#site-header-mega-dropdown-loading-overlay").css('display','flex');
-                    },
-                    complete: function(){
-
-                    },
-                    success:function(data){
-                        
-                    }
-                });
+        header_list_item.find("#site-header-nav-mega-dropdown-overlay-container").toggle();
+        if(header_list_item.find("#site-header-nav-mega-dropdown-overlay-container").css("display") == "block"){
+            header_list_item.find("#site-header-nav-list-item-text").addClass("active-nav-list-item");
+            if(header_list_item.find("#site-header-nav-list-item-text").text() == "Top Stores"){
+                if(header_list_item.find("#site-header-nav-mega-dropdown-items-container").children().length > 0){
+                    header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                    header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                }
+                else{
+                    $.ajax({
+                        type:'GET',
+                        url:'/getajaxrequest/1',
+                        data: '',
+                        beforeSend: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                        },
+                        complete: function(){
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                        },
+                        success:function(data){
+                            alert(data);
+                        },
+                        error:function(){
+                            alert("Error! something went wrong");
+                        }
+                    });
+                }
             }
         }
         else{
-            $(this).parentsUntil(".site-header-nav-list").find("#site-header-nav-list-item-text").removeClass("active-nav-list-item");
+            header_list_item.find("#site-header-nav-list-item-text").removeClass("active-nav-list-item");
         }
     });
     $(document).click(function(e){

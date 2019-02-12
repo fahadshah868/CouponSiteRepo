@@ -11062,6 +11062,11 @@ a:hover {
   position: relative;
 }
 
+.site-header-nav-mega-dropdown-items-container {
+  width: 100%;
+  display: none;
+}
+
 .site-header-nav-mega-dropdown-topitems-container {
   width: 100%;
   display: -webkit-box;

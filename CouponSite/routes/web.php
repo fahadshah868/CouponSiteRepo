@@ -12,6 +12,9 @@
 */
 Route::get('/' , 'HomeController@home');
 
+// routes for ajaxcontroller
+Route::get('/getajaxrequest/{action}','AjaxController@getAjaxRequest');
+
 // routes for StoreController
 Route::get('/getpopularstores' , 'StoreController@getPopularStoresList');
 Route::get('/store/allstores','StoreController@getAllStoresList');
