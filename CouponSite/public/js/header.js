@@ -50,15 +50,50 @@ $(document).ready(function() {
                         url:'/getajaxrequest/1',
                         data: '',
                         beforeSend: function(){
-                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
-                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
+                            header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","block");
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","none");
                         },
                         complete: function(){
                             header_list_item.find("#site-header-mega-dropdown-loading-container").css("display","none");
                             header_list_item.find("#site-header-nav-mega-dropdown-items-container").css("display","block");
                         },
                         success:function(data){
-                            alert(data);
+                            var html = 
+                                "<div class='site-header-nav-mega-dropdown-topitems-container'>";
+                                    for(var i=1; i<=10; i++){
+                                        html = html + 
+                                        "<a href='#' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
+                                            "<div class='site-header-nav-mega-dropdown-topitems-item'>"+
+                                                "<img src='https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg'>"+
+                                                "<span class='site-header-nav-mega-dropdown-topitems-item-text'>Store Name</span>"+
+                                            "</div>"+
+                                        "</a>"
+                                    }
+                                html = html +
+                                "</div>"+
+                                "<div class='site-header-nav-mega-dropdown-popularitems-container'>"+
+                                    "<div class='site-header-nav-mega-dropdown-popularitems-heading-container'>"+
+                                        "<span>Popular Stores</span>"+
+                                        "<a href='#'>See All Stores</a>"+
+                                    "</div>"+
+                                    "<div class='site-header-nav-mega-dropdown-popularitems'>"+
+                                        "<ul>"
+                                            for(var i=1; i<= 33; i++){
+                                                html = html +
+                                                "<li>"+
+                                                    "<a href='#'>"+
+                                                        "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
+                                                            "<span>Kohl's</span>"+
+                                                            "<span>(20 coupons)</span>"+
+                                                        "</div>"+
+                                                    "</a>"+
+                                                "</li>"
+                                            }
+                                        html = html +
+                                        "</ul>"+
+                                    "</div>"+
+                                "</div>"
+                            header_list_item.find("#site-header-nav-mega-dropdown-items-container").html(html);
                         },
                         error:function(){
                             alert("Error! something went wrong");

@@ -88,36 +88,7 @@
                                 
                                 
                                 
-                                <!-- <div class="site-header-nav-mega-dropdown-topitems-container">
-                                    @for($i=1; $i<=10; $i++)
-                                    <a href="#" class="site-header-nav-mega-dropdown-topitems-item-container">
-                                        <div class="site-header-nav-mega-dropdown-topitems-item">
-                                            <img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg">
-                                            <span class="site-header-nav-mega-dropdown-topitems-item-text">Store Name</span>
-                                        </div>
-                                    </a>
-                                    @endfor
-                                </div>
-                                <div class="site-header-nav-mega-dropdown-popularitems-container">
-                                    <div class="site-header-nav-mega-dropdown-popularitems-heading-container">
-                                        <span>Popular Stores</span>
-                                        <a href="#">See All Stores</a>
-                                    </div>
-                                    <div class="site-header-nav-mega-dropdown-popularitems">
-                                        <ul>
-                                            @for($i=1; $i<= 33; $i++)
-                                            <li>
-                                                <a href="#">
-                                                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                                                        <span>Kohl's</span>
-                                                        <span>(20 coupons)</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            @endfor
-                                        </ul>
-                                    </div>
-                                </div> -->
+                                
 
 
 
