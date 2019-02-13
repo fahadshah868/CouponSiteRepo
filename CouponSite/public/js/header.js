@@ -74,7 +74,7 @@ $(document).ready(function() {
                                 "<div class='site-header-nav-mega-dropdown-popularitems-container'>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems-heading-container'>"+
                                         "<span>Popular Stores</span>"+
-                                        "<a href='#'>See All Stores</a>"+
+                                        "<a href='/store/allstores'>See All Stores</a>"+
                                     "</div>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems'>"+
                                         "<ul>"
