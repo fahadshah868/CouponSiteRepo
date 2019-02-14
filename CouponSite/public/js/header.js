@@ -136,7 +136,7 @@ $(document).ready(function() {
                                 "<div class='site-header-nav-mega-dropdown-popularitems-container'>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems-heading-container'>"+
                                         "<span>Popular Categories</span>"+
-                                        "<a href='#'>See All Categories</a>"+
+                                        "<a href='/category/allcategories'>See All Categories</a>"+
                                     "</div>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems'>"+
                                         "<ul>"
