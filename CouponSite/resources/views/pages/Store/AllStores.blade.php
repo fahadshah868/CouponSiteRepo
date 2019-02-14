@@ -4,33 +4,6 @@
 
 @section('content')
 
-<script>
-    $(document).ready(function(){
-        var height_difference = $(this).scrollTop() - $('#as-allstores-container').position().top;
-        if(height_difference >= 0 && height_difference + 605 <= $("#as-allstores-container").height()){
-            $("#as-category-inner-container").css({position: "fixed", top: "10px", bottom: "auto", width: "320px"});
-        }
-        else if(height_difference + 605 >= $("#as-allstores-container").height()){
-            $("#as-category-inner-container").css({position: "absolute", top: "auto", bottom: "0", width: "320px"});
-        }
-        else{
-            $("#as-category-inner-container").css({position: "absolute", top: "0", bottom: "auto", width: "100%"});
-        }
-        $(document).on('scroll', function() {
-            height_difference = $(this).scrollTop() - $('#as-allstores-container').position().top;
-            if(height_difference >= 0 && height_difference + 605 <= $("#as-allstores-container").height()){
-                $("#as-category-inner-container").css({position: "fixed", top: "10px", bottom: "auto", width: "320px"});
-            }
-            else if(height_difference + 605 >= $("#as-allstores-container").height()){
-                $("#as-category-inner-container").css({position: "absolute", top: "auto", bottom: "0", width: "320px"});
-            }
-            else{
-                $("#as-category-inner-container").css({position: "absolute", top: "0", bottom: "auto", width: "100%"});
-            }
-        });
-    });
-</script>
-
 <div class="all-stores-main-container">
     <div class="all-stores-main-heading">
         Browse Coupons By Store
@@ -68,6 +41,42 @@
         <div class="as-filtered-stores-body-container" id="as-filtered-stores-body-container">
             <span class="as-filtered-stores-heading">All Stores</span>
             <div class="as-filtered-stores-container">
+                <div class="as-filtered-stores-dropdown">
+                    <div class="select">
+                        <span>ALL</span>
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li class="active">ALL</li>
+                        <li>A</li>
+                        <li>B</li>
+                        <li>C</li>
+                        <li>D</li>
+                        <li>E</li>
+                        <li>F</li>
+                        <li>G</li>
+                        <li>H</li>
+                        <li>I</li>
+                        <li>J</li>
+                        <li>K</li>
+                        <li>L</li>
+                        <li>M</li>
+                        <li>N</li>
+                        <li>O</li>
+                        <li>P</li>
+                        <li>Q</li>
+                        <li>R</li>
+                        <li>S</li>
+                        <li>T</li>
+                        <li>U</li>
+                        <li>V</li>
+                        <li>W</li>
+                        <li>X</li>
+                        <li>Y</li>
+                        <li>Z</li>
+                        <li>0-9</li>
+                    </ul>
+                </div>
                 <ul class="as-filtered-stores-navbar">
                     <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter active-filtered-store-letter" href="#">ALL</a></li>
                     <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">A</a></li>
@@ -99,7 +108,7 @@
                     <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">0-9</a></li>
                 </ul>
                 <ul class="as-filtered-stores-list">
-                    @for($i=1; $i<=5000; $i++)
+                    @for($i=1; $i<=500; $i++)
                     <li><a class="as-filtered-stores-list-item" href="#" title="Store Name"><span>Papa John's</span><span>30 Coupons Available</span></a></li>
                     @endfor
                 </ul>
@@ -107,5 +116,32 @@
         </div>
     </div>
 </div>
+<script src="{{asset('js/customdropdown.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        var height_difference = $(this).scrollTop() - $('#as-allstores-container').position().top;
+        if(height_difference >= 0 && height_difference + 605 < $("#as-allstores-container").height()){
+            $("#as-category-inner-container").css({position: "fixed", top: "10px", bottom: "auto", width: "320px"});
+        }
+        else if(height_difference + 605 >= $("#as-allstores-container").height()){
+            $("#as-category-inner-container").css({position: "absolute", top: "auto", bottom: "0", width: "320px"});
+        }
+        else{
+            $("#as-category-inner-container").css({position: "absolute", top: "0", bottom: "auto", width: "100%"});
+        }
+        $(document).on('scroll', function() {
+            height_difference = $(this).scrollTop() - $('#as-allstores-container').position().top;
+            if(height_difference >= 0 && height_difference + 605 < $("#as-allstores-container").height()){
+                $("#as-category-inner-container").css({position: "fixed", top: "10px", bottom: "auto", width: "320px"});
+            }
+            else if(height_difference + 605 >= $("#as-allstores-container").height()){
+                $("#as-category-inner-container").css({position: "absolute", top: "auto", bottom: "0", width: "320px"});
+            }
+            else{
+                $("#as-category-inner-container").css({position: "absolute", top: "0", bottom: "auto", width: "100%"});
+            }
+        });
+    });
+</script>
 
 @endsection
