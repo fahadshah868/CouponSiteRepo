@@ -50,7 +50,7 @@
             @for($i=1; $i<= 10; $i++)
             <div class="store-coupons-detailbar-coupon-container">
                 <a href="#" class="store-coupons-detailbar-coupon-link">
-                    <div class="store-coupons-detailbar-coupon-title">
+                    <div class="store-coupons-detailbar-anchor">
                         <span>40%</span>
                         <span>OFF</span>
                     </div>
@@ -59,8 +59,8 @@
                             <div class="store-coupons-detailbar-offertype-code">Code</div>
                             <div class="store-coupon-verification-container"><i class="fa fa-check-circle"></i>Verfied</div>
                         </div>
-                        <div class="store-coupons-detailbar-offertitle">40% off total purchase with discout</div>
-                        <div class="store-coupons-detailbar-offerdescription">40% off total purchase with discout</div>
+                        <div class="store-coupons-detailbar-offertitle">40% off total purchase with discount</div>
+                        <div class="store-coupons-detailbar-offerdetails">40% off total purchase with discount</div>
                         <div class="store-coupons-detailbar-coupon-expires"><i class="fa fa-clock-o"></i>Expires: 30/10/18</div>
                     </div>
                     <div class="store-coupons-detailbar-offer-button-container">

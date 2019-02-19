@@ -79,7 +79,7 @@
 .store-coupons-detailbar-coupon-link:hover{
     box-shadow: 0 0 10px $boxshadow-color;
 }
-.store-coupons-detailbar-coupon-title{
+.store-coupons-detailbar-anchor{
     width: 100px;
     display: flex;
     flex-direction: column;
@@ -87,7 +87,8 @@
     padding-top: 10px;
     border-right: 1px solid $border-color-ongrey;
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 800;
+    font-style: italic;
     color: #DC002E;
 }
 .store-coupons-detailbar-offer-container{
@@ -97,10 +98,10 @@
     margin: 0 10px;
 }
 .store-coupons-detailbar-offertitle{
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
 }
-.store-coupons-detailbar-offerdescription{
+.store-coupons-detailbar-offerdetails{
     font-size: 16px;
     font-weight: 400;
 }
@@ -126,7 +127,7 @@
     background-color: $theme-color;
     border: none;
     outline: none;
-    border-radius: 2px;
+    border-radius: 4px;
     color: #fff;
     font-weight: 500;
     cursor:pointer;
@@ -167,8 +168,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
+    font-style: italic;
 }
 .store-coupons-detailbar-offertype-code{
     color: $offer-type-code-color;
@@ -289,7 +291,7 @@
     }
 }
 @media only screen and (max-width: 500px){
-    .store-coupons-detailbar-coupon-title{
+    .store-coupons-detailbar-anchor{
         width: 60px;
         display: flex;
         flex-direction: column;
@@ -310,7 +312,7 @@
         font-size: 15px;
         font-weight: 500;
     }
-    .store-coupons-detailbar-offerdescription{
+    .store-coupons-detailbar-offerdetails{
         font-size: 13px;
         font-weight: 400;
     }
