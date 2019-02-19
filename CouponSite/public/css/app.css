@@ -13081,13 +13081,14 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 500;
   border: 1px solid #CFCFCF;
   border-radius: 2px;
   width: 100%;
   padding: 20px;
   background-color: #fff;
+  color: #555 !important;
   text-align: center;
   text-decoration: none !important;
   transition: 0.3s;
@@ -13120,7 +13121,7 @@ a:hover {
 .store-coupons-detailbar-heading {
   width: 100%;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
 }
 
@@ -13156,6 +13157,7 @@ a:hover {
   border-radius: 2px;
   padding: 20px;
   background-color: #fff;
+  color: #555 !important;
   transition: 0.3s;
   -webkit-transition: 0.3s;
 }
@@ -13233,9 +13235,10 @@ a:hover {
 
 .store-coupons-detailbar-offer-button-container #offer-button {
   width: 100%;
-  height: 45px;
+  padding: 10px;
+  text-align: center;
   background-color: #044D6E;
-  border: 2px solid #044D6E;
+  border: none;
   outline: none;
   border-radius: 2px;
   color: #fff;
@@ -13246,9 +13249,10 @@ a:hover {
 }
 
 .store-coupons-detailbar-offer-button-container #offer-button:hover {
-  background-color: #fff;
-  border: 2px solid #044D6E;
-  color: #044D6E;
+  background-color: #033349 !important;
+  color: #fff;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
 }
 
 .store-coupons-sidebar-filterbycoupontype-container {

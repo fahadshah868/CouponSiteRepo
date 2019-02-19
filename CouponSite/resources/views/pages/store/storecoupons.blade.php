@@ -64,7 +64,8 @@
                         <div class="store-coupons-detailbar-coupon-expires"><i class="fa fa-clock-o"></i>Expires: 30/10/18</div>
                     </div>
                     <div class="store-coupons-detailbar-offer-button-container">
-                        <button id="offer-button">View Code</button>
+                        <span class="offer-button" id="offer-button">View Code</span>
+                        <!-- <button id="offer-button">View Code</button> -->
                     </div>
                 </a>
             </div>
