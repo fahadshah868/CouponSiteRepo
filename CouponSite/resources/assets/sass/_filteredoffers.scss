@@ -1,18 +1,18 @@
-.so-main-container{
+.fo-main-container{
     display: flex;
     flex-direction: row;
     width: 1150px;
     margin: 30px auto;
 }
-.so-sidebar{
+.fo-sidebar{
     width: 250px;
     padding: 0 20px;
 }
-.so-sidebar-storelogo-container{
+.fo-sidebar-storelogo-container{
     width: 100%;
     margin-bottom: 30px;
 }
-.so-sidebar-store-link{
+.fo-sidebar-store-link{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -29,40 +29,46 @@
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.so-sidebar-store-link:hover{
+.fo-sidebar-store-link:hover{
     box-shadow: 0 0 10px $boxshadow-color;
 }
-.so-sidebar-storelogo{
+.fo-sidebar-storelogo{
     width: 150px;
     height: 150px;
     margin-bottom: 10px;
 }
-.so-sidebar-offers-availability{
+.fo-sidebar-offers-availability{
     width: 100%;
     text-align:center;
     font-weight: 600;
     font-size: 22px;
 }
-.so-detailbar{
+.fo-detailbar{
     width: 900px;
     padding: 0 20px;
 }
-.so-detailbar-heading{
+.fo-detailbar-heading{
     width: 100%;
-    margin-bottom: 20px;
-    font-size: 28px;
-    font-weight: 700;
+    margin-bottom: 10px;
+    padding: 15px 25px;
+    font-size: 25px;
+    font-weight: 500;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #fff;
+    background-color: $theme-color; /* For browsers that do not support gradients */
+    background-image: linear-gradient(90deg, $theme-color, $theme-color, #3e8eb2, #74c4e8, #d6f2ff);
 }
-.so-detailbar-offers-list-container{
+.fo-detailbar-offers-list-container{
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-.so-detailbar-offerbody-container{
+.fo-detailbar-offerbody-container{
     width:100%;
     margin-bottom: 10px;
 }
-.so-detailbar-offer-link{
+.fo-detailbar-offer-link{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -76,10 +82,10 @@
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.so-detailbar-offer-link:hover{
+.fo-detailbar-offer-link:hover{
     box-shadow: 0 0 10px $boxshadow-color;
 }
-.so-detailbar-anchor{
+.fo-detailbar-anchor{
     width: 100px;
     display: flex;
     flex-direction: column;
@@ -91,36 +97,36 @@
     font-style: italic;
     color: #DC002E;
 }
-.so-detailbar-offer-container{
+.fo-detailbar-offer-container{
     display: flex;
     flex-direction: column;
     width: calc(100% - 320px);
     margin: 0 10px;
 }
-.so-detailbar-offertitle{
+.fo-detailbar-offertitle{
     font-size: 20px;
     font-weight: 500;
 }
-.so-detailbar-offerdetails{
+.fo-detailbar-offerdetails{
     font-size: 16px;
     font-weight: 400;
 }
-.so-detailbar-offer-expires{
+.fo-detailbar-offer-expires{
     color: #929292;
     font-size: 14px;
     font-weight: 400;
     margin-top:5px;
 }
-.so-detailbar-offer-expires .fa-clock-o{
+.fo-detailbar-offer-expires .fa-clock-o{
     margin-right: 5px;
 }
-.so-detailbar-offer-button-container{
+.fo-detailbar-offer-button-container{
     width: 200px;
     display: flex;
     flex-direction: column;
     justify-content:center;
 }
-.so-detailbar-offer-button-container #offer-button{
+.fo-detailbar-offer-button-container #offer-button{
     width: 100%;
     padding: 10px;
     text-align: center;
@@ -134,25 +140,25 @@
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.so-detailbar-offer-button-container #offer-button:hover{
+.fo-detailbar-offer-button-container #offer-button:hover{
     background-color: $theme-color-tonext !important;
     color: #fff;
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.so-sidebar-content-container{
+.fo-sidebar-content-container{
     margin-bottom: 30px;
 }
-.so-sidebar-content-heading{
+.fo-sidebar-content-heading{
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
 }
-.so-store-details{
+.fo-store-details{
     font-size: 14px;
     font-weight: 400;
 }
-.so-detailbar-type-and-verified-container{
+.fo-detailbar-type-and-verified-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -160,13 +166,13 @@
     font-weight: 700;
     font-style: italic;
 }
-.so-detailbar-offertype-code{
+.fo-detailbar-offertype-code{
     color: $offer-type-code-color;
 }
-.so-detailbar-offertype-instoreoffer{
+.fo-detailbar-offertype-instoreoffer{
     color: $offer-type-instorecoupon-color;
 }
-.so-detailbar-offertype-else{
+.fo-detailbar-offertype-else{
     color: $offer-type-else-color;
 }
 .store-offer-verification-container{
@@ -277,11 +283,13 @@
   /* On mouse-over, add a grey background color */
   .radio-container:hover input ~ .checkmark {
     background-color: $theme-color;
+    border: 1px solid $theme-color;
   }
   
   /* When the radio button is checked, add a blue background */
   .radio-container input:checked ~ .checkmark {
     background-color: $theme-color;
+    border: 1px solid $theme-color;
   }
   
   /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -311,45 +319,45 @@
 
 
 @media only screen and (max-width: 1165px){
-    .so-main-container{
+    .fo-main-container{
         display: flex;
         flex-direction: row;
         width: 100%;
         padding: 0 10px;
         margin: 30px auto; 
     }
-    .so-sidebar{
+    .fo-sidebar{
         flex: 0 0 250px;
         padding: 0 20px;
     }
-    .so-detailbar{
+    .fo-detailbar{
         width: 100%;
         padding: 0 20px;
     }
 }
 @media only screen and (max-width: 1000px){
-    .so-sidebar{
+    .fo-sidebar{
         display: none;
     }
 }
 @media only screen and (max-width: 750px){
-    .so-detailbar-offer-container{
+    .fo-detailbar-offer-container{
         display: flex;
         flex-direction: column;
         width: calc(100% - 110px);
         margin: 0 0 0 10px;
     }
-    .so-detailbar-offer-button-container{
+    .fo-detailbar-offer-button-container{
         display: none;
     }
 }
 @media only screen and (max-width: 600px){
-    .so-detailbar{
+    .fo-detailbar{
         padding: 0;
     }
 }
 @media only screen and (max-width: 500px){
-    .so-detailbar-anchor{
+    .fo-detailbar-anchor{
         width: 60px;
         display: flex;
         flex-direction: column;
@@ -360,37 +368,37 @@
         font-weight: 700;
         color: #DC002E;
     }
-    .so-detailbar-offer-container{
+    .fo-detailbar-offer-container{
         display: flex;
         flex-direction: column;
         width: calc(100% - 70px);
         margin: 0 0 0 10px;
     }
-    .so-detailbar-offertitle{
+    .fo-detailbar-offertitle{
         font-size: 15px;
         font-weight: 500;
     }
-    .so-detailbar-offerdetails{
+    .fo-detailbar-offerdetails{
         font-size: 13px;
         font-weight: 400;
     }
-    .so-detailbar-offer-expires{
+    .fo-detailbar-offer-expires{
         display: none;
     }
-    .so-detailbar-type-and-verified-container{
+    .fo-detailbar-type-and-verified-container{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         font-size: 12px;
         font-weight: 700;
     }
-    .so-detailbar-offertype-code{
+    .fo-detailbar-offertype-code{
         color: $offer-type-code-color;
     }
-    .so-detailbar-offertype-instoreoffer{
+    .fo-detailbar-offertype-instoreoffer{
         color: $offer-type-instorecoupon-color;
     }
-    .so-detailbar-offertype-else{
+    .fo-detailbar-offertype-else{
         color: $offer-type-else-color;
     }
     .store-offer-verification-container{

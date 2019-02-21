@@ -16,19 +16,17 @@ Route::get('/' , 'HomeController@home');
 Route::get('/getajaxrequest/{action}','AjaxController@getAjaxRequest');
 
 // routes for StoreController
-Route::get('/getpopularstores' , 'StoreController@getPopularStoresList');
 Route::get('/store/allstores','StoreController@getAllStoresList');
-Route::get('/store/storeoffers','StoreController@getStoreOffers');
+Route::get('/store/{store}','StoreController@getStoreOffers');
 
 // routes for CategoryController
-Route::get('/getpopularcategories' , 'CategoryController@getPopularCategoriesList');
-Route::get('/category/allcategories' , 'CategoryController@getAllCategoriesList');
+Route::get('/category/allcategories','CategoryController@getAllCategoriesList');
 
-// routes for SpecialEventsController
-Route::get('/getspecialevents' , 'SpecialEventsController@getSpecialEventsList'); 
+//routes for FilteredController
+Route::get('/coupons/{filter}','FilteredOfferController@getFilteredOffers');
 
 // routes for OnlineCodeController
-Route::get('/gettoponlinecodes', 'OnlineCodeController@getTopOnlineCodesList');
+Route::get('/gettoponlinecodes','OnlineCodeController@getTopOnlineCodesList');
 
 // route for InstoreOffersController
 Route::get('/gettopinstoreoffers','InstoreOffersController@getTopInstoreOffersList');
