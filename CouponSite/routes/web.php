@@ -18,7 +18,7 @@ Route::get('/getajaxrequest/{action}','AjaxController@getAjaxRequest');
 // routes for StoreController
 Route::get('/getpopularstores' , 'StoreController@getPopularStoresList');
 Route::get('/store/allstores','StoreController@getAllStoresList');
-Route::get('/store/storecoupons','StoreController@getStoreCoupons');
+Route::get('/store/storeoffers','StoreController@getStoreOffers');
 
 // routes for CategoryController
 Route::get('/getpopularcategories' , 'CategoryController@getPopularCategoriesList');

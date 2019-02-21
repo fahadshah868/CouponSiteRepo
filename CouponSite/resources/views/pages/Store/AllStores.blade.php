@@ -15,7 +15,7 @@
         <div class="as-top-stores-list-container">
             @for($i=1; $i<=12; $i++)
             <div class="as-top-store-container">
-                <a href="/store/storecoupons" class="as-top-store-link">
+                <a href="/store/storeoffers" class="as-top-store-link">
                     <div class="as-top-store-logo">
                         <img src="https://igx.4sqi.net/img/general/200x200/38757329_V6X_cPjnJ2QsS2w-P7Ret6Lfm8T7J-i4dMRtGBbf-B4.jpg"/>
                     </div>

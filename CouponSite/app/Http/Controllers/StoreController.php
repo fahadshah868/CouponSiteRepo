@@ -13,7 +13,7 @@ class StoreController extends Controller
     public function getAllStoresList(){
         return view('pages.store.allstores');
     }
-    public function getStoreCoupons(){
-        return view('pages.store.storecoupons');
+    public function getStoreOffers(){
+        return view('pages.store.storeoffers');
     }
 }
