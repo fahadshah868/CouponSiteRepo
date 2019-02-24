@@ -10476,6 +10476,7 @@ a.text-dark:focus {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  white-space: normal;
 }
 
 body {
@@ -11082,6 +11083,7 @@ a:hover {
 
 .site-header-nav-mega-dropdown-topitems-item-container {
   width: calc(10% - 9px);
+  padding: 7px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11121,11 +11123,14 @@ a:hover {
 .site-header-nav-mega-dropdown-topitems-item img {
   max-width: 65px;
   max-height: 65px;
+  margin-bottom: 7px;
 }
 
 .site-header-nav-mega-dropdown-topitems-item .site-header-nav-mega-dropdown-topitems-item-text {
   color: #000;
+  line-height: 1.2;
   font-size: 11px;
+  font-weight: 500;
 }
 
 .site-header-nav-mega-dropdown-popularitems-container {
@@ -11375,7 +11380,7 @@ a:hover {
   }
 }
 
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 1100px) {
   .site-header-nav-mega-dropdown-topitems-item-container {
     width: calc(20% - 10px);
     display: -webkit-box;

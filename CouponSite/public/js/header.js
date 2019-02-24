@@ -60,15 +60,15 @@ $(document).ready(function() {
                         success:function(data){
                             var html = 
                                 "<div class='site-header-nav-mega-dropdown-topitems-container'>";
-                                    for(var i=1; i<=10; i++){
+                                    $.each(data.topstores, function (index, topstore) {
                                         html = html + 
                                         "<a href='#' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
                                             "<div class='site-header-nav-mega-dropdown-topitems-item'>"+
-                                                "<img src='https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg'>"+
-                                                "<span class='site-header-nav-mega-dropdown-topitems-item-text'>Store Name</span>"+
+                                                "<img src='"+data.panel_assets_url+topstore.logo_url+"'>"+
+                                                "<span class='site-header-nav-mega-dropdown-topitems-item-text'>"+topstore.title+"</span>"+
                                             "</div>"+
                                         "</a>"
-                                    }
+                                    });
                                 html = html +
                                 "</div>"+
                                 "<div class='site-header-nav-mega-dropdown-popularitems-container'>"+
@@ -78,17 +78,28 @@ $(document).ready(function() {
                                     "</div>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems'>"+
                                         "<ul>"
-                                            for(var i=1; i<= 33; i++){
+                                            $.each(data.popularstores, function (index, popularstore) {
                                                 html = html +
                                                 "<li>"+
                                                     "<a href='#'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
-                                                            "<span>Kohl's</span>"+
-                                                            "<span>(20 coupons)</span>"+
+                                                            "<span>"+popularstore.title+"</span>"+
+                                                            // "<span>"+popularstore.offer.length+"</span>"+
                                                         "</div>"+
                                                     "</a>"+
                                                 "</li>"
-                                            }
+                                            });
+                                            // for(var i=1; i<= 33; i++){
+                                            //     html = html +
+                                            //     "<li>"+
+                                            //         "<a href='#'>"+
+                                            //             "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
+                                            //                 "<span>Kohl's</span>"+
+                                            //                 "<span>(20 coupons)</span>"+
+                                            //             "</div>"+
+                                            //         "</a>"+
+                                            //     "</li>"
+                                            // }
                                         html = html +
                                         "</ul>"+
                                     "</div>"+
