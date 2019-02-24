@@ -84,22 +84,11 @@ $(document).ready(function() {
                                                     "<a href='#'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
                                                             "<span>"+popularstore.title+"</span>"+
-                                                            // "<span>"+popularstore.offer.length+"</span>"+
+                                                            "<span>("+popularstore.offer.length+" coupons)</span>"+
                                                         "</div>"+
                                                     "</a>"+
                                                 "</li>"
                                             });
-                                            // for(var i=1; i<= 33; i++){
-                                            //     html = html +
-                                            //     "<li>"+
-                                            //         "<a href='#'>"+
-                                            //             "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
-                                            //                 "<span>Kohl's</span>"+
-                                            //                 "<span>(20 coupons)</span>"+
-                                            //             "</div>"+
-                                            //         "</a>"+
-                                            //     "</li>"
-                                            // }
                                         html = html +
                                         "</ul>"+
                                     "</div>"+

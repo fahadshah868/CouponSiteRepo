@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Store;
 use App\Category;
+use App\Offer;
+use Carbon\Carbon;
 
 class AjaxController extends Controller
 {
     public function getAjaxRequest($action){
+        $datenow = Carbon::now();
+        $datenow = $datenow->toDateString();
         //get top and popular stores
         if($action == 1){
             $data['topstores'] = Store::where('is_topstore','yes')->limit(10)->get();
-            $data['popularstores'] = Store::where('is_popularstore','yes')->where('is_topstore','no')->limit(33)->get();
+            $data['popularstores'] = Store::where('is_popularstore','yes')->where('is_topstore','no')->limit(33)->with(['offer'=> function($q) use($datenow) {
+                $q->where('expiry_date', '>', $datenow);
+            }])->get();
             $data['panel_assets_url'] = env('PANEL_ASSETS_URL');
             return response()->json($data);
         }
