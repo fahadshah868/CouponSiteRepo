@@ -61,8 +61,9 @@ $(document).ready(function() {
                             var html = 
                                 "<div class='site-header-nav-mega-dropdown-topitems-container'>";
                                     $.each(data.topstores, function (index, topstore) {
+                                        console.log(topstore.secondary_url);
                                         html = html + 
-                                        "<a href='#' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
+                                        "<a href='/store/"+topstore.secondary_url+"' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
                                             "<div class='site-header-nav-mega-dropdown-topitems-item'>"+
                                                 "<img src='"+data.panel_assets_url+topstore.logo_url+"'>"+
                                                 "<span class='site-header-nav-mega-dropdown-topitems-item-text'>"+topstore.title+"</span>"+
@@ -74,14 +75,14 @@ $(document).ready(function() {
                                 "<div class='site-header-nav-mega-dropdown-popularitems-container'>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems-heading-container'>"+
                                         "<span>Popular Stores</span>"+
-                                        "<a href='/store/allstores'>See All Stores</a>"+
+                                        "<a href='/allstores'>See All Stores</a>"+
                                     "</div>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems'>"+
                                         "<ul>"
                                             $.each(data.popularstores, function (index, popularstore) {
                                                 html = html +
                                                 "<li>"+
-                                                    "<a href='#'>"+
+                                                    "<a href='/store/"+popularstore.secondary_url+"'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
                                                             "<span>"+popularstore.title+"</span>"+
                                                             "<span style='white-space: nowrap;'>("+popularstore.offer.length+" coupons)</span>"+
@@ -124,7 +125,7 @@ $(document).ready(function() {
                                 "<div class='site-header-nav-mega-dropdown-topitems-container'>";
                                     $.each(data.topcategories, function (index, topcategory) {
                                         html = html + 
-                                        "<a href='#' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
+                                        "<a href='/coupons/"+topcategory.title+"' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
                                             "<div class='site-header-nav-mega-dropdown-topitems-item'>"+
                                                 "<img src='"+data.panel_assets_url+topcategory.logo_url+"'>"+
                                                 "<span class='site-header-nav-mega-dropdown-topitems-item-text'>"+topcategory.title+"</span>"+
@@ -136,14 +137,14 @@ $(document).ready(function() {
                                 "<div class='site-header-nav-mega-dropdown-popularitems-container'>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems-heading-container'>"+
                                         "<span>Popular Categories</span>"+
-                                        "<a href='/category/allcategories'>See All Categories</a>"+
+                                        "<a href='/allcategories'>See All Categories</a>"+
                                     "</div>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems'>"+
                                         "<ul>"
                                             $.each(data.popularcategories, function (index, popularcategory) {
                                                 html = html +
                                                 "<li>"+
-                                                    "<a href='#'>"+
+                                                    "<a href='/coupons/"+popularcategory.title+"'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
                                                             "<span>"+popularcategory.title+"</span>"+
                                                             "<span style='white-space: nowrap;'>("+popularcategory.offer.length+" coupons)</span>"+
@@ -186,22 +187,22 @@ $(document).ready(function() {
                             "<div class='site-header-nav-mega-dropdown-topoffers-container'>"+
                                 "<div class='site-header-nav-mega-dropdown-topoffers-heading-container'>"+
                                     "<span>Top Online codes</span>"+
-                                    "<a href='#'>See All Online Codes</a>"+
+                                    "<a href='/coupons/onlinecodes'>See All Online Codes</a>"+
                                 "</div>"+
                                 "<div class='site-header-nav-mega-dropdown-top-offer-container'>"
-                                    for(var i=1; i<=8; i++){
+                                    $.each(data.toponlinecodes, function (index, toponlinecode) {
                                         html = html +
                                         "<div class='site-header-nav-mega-dropdown-topoffer-details-container'>"+
-                                            "<img src='https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg' class='site-header-nav-mega-dropdown-topoffer-storelogo'></img>"+
+                                            "<img src='"+data.panel_assets_url+toponlinecode.store.logo_url+"' class='site-header-nav-mega-dropdown-topoffer-storelogo'></img>"+
                                             "<div class='site-header-nav-mega-dropdown-topoffer-details'>"+
-                                                "<span class='site-header-nav-mega-dropdown-topoffer-title'>20% off on your online order + free shipping</span>"+
+                                                "<span class='site-header-nav-mega-dropdown-topoffer-title'>"+toponlinecode.title+"</span>"+
                                                 "<div class='site-header-nav-mega-dropdown-topoffer-type-container'>"+
-                                                    "<span class='site-header-nav-mega-dropdown-topoffer-storetitle'>Kohl's</span>"+
-                                                    "<span class='site-header-nav-mega-dropdown-topoffer-type'>Code</span>"+
+                                                    "<span class='site-header-nav-mega-dropdown-topoffer-storetitle'>"+toponlinecode.store.title+"</span>"+
+                                                    "<span class='site-header-nav-mega-dropdown-topoffer-type'>"+toponlinecode.type+"</span>"+
                                                 "</div>"+
                                             "</div>"+
                                         "</div>"
-                                    }
+                                    });
                                 html = html +
                                 "</div>"+
                             "</div>"

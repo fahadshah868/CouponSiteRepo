@@ -16,11 +16,11 @@ Route::get('/' , 'HomeController@home');
 Route::get('/getajaxrequest/{action}','AjaxController@getAjaxRequest');
 
 // routes for StoreController
-Route::get('/store/allstores','StoreController@getAllStoresList');
+Route::get('/allstores','StoreController@getAllStoresList');
 Route::get('/store/{store}','StoreController@getStoreOffers');
 
 // routes for CategoryController
-Route::get('/category/allcategories','CategoryController@getAllCategoriesList');
+Route::get('/allcategories','CategoryController@getAllCategoriesList');
 
 //routes for FilteredController
 Route::get('/coupons/{filter}','FilteredOfferController@getFilteredOffers');

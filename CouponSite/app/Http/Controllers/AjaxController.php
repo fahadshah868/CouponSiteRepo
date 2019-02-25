@@ -37,12 +37,9 @@ class AjaxController extends Controller
         }
         //get top online codes
         else if($action == 3){
-            $data['topstores'] = Category::where('is_topcategory','yes')->limit(5)->get();
-            $response = [
-                "status" => "true",
-                "success_message" => "success"
-            ];
-            return response()->json("3");
+            $data['toponlinecodes'] = Offer::where('location','online')->where('type','code')->where('is_popular','yes')->where('starting_date','<=',$datenow)->where('expiry_date','>=',$datenow)->where('status','active')->orderBy('id', 'DESC')->limit(8)->with('store')->get();
+            $data['panel_assets_url'] = env('PANEL_ASSETS_URL');
+            return response()->json($data);
         }
         //get top sales
         else if($action == 4){
