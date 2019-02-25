@@ -15,17 +15,24 @@ class AjaxController extends Controller
         $datenow = $datenow->toDateString();
         //get top and popular stores
         if($action == 1){
-            $data['topstores'] = Store::where('is_topstore','yes')->limit(10)->get();
-            $data['popularstores'] = Store::where('is_popularstore','yes')->where('is_topstore','no')->limit(33)->with(['offer'=> function($q) use($datenow) {
-                $q->where('expiry_date', '>', $datenow);
+            $data['topstores'] = Store::where('is_topstore','yes')->where('status','active')->limit(10)->get();
+            $data['popularstores'] = Store::where('is_popularstore','yes')->where('is_topstore','no')->where('status','active')->limit(30)->with(['offer'=> function($q) use($datenow) {
+                $q->where('starting_date', '<=', $datenow)
+                ->where('expiry_date', '>=', $datenow)
+                ->where('status','active');
             }])->get();
             $data['panel_assets_url'] = env('PANEL_ASSETS_URL');
             return response()->json($data);
         }
         //get top and popular categories
         else if($action == 2){
-            $data['topcategories'] = Category::where('is_topcategory','yes')->limit(10)->get();
-            $data['popularcategories'] = Category::where('is_popularcategory','yes')->limit(33)->get();
+            $data['topcategories'] = Category::where('is_topcategory','yes')->where('status','active')->limit(10)->get();
+            $data['popularcategories'] = Category::where('is_popularcategory','yes')->where('is_topcategory','no')->where('status','active')->limit(30)->with(['offer'=> function($q) use($datenow) {
+                $q->where('starting_date', '<=', $datenow)
+                ->where('expiry_date', '>=', $datenow)
+                ->where('status','active');
+            }])->get();
+            $data['panel_assets_url'] = env('PANEL_ASSETS_URL');
             return response()->json($data);
         }
         //get top online codes

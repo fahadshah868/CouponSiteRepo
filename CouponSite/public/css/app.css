@@ -11169,17 +11169,29 @@ a:hover {
 }
 
 .site-header-nav-mega-dropdown-popularitems ul {
-  -webkit-column-count: 3;
-  column-count: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   list-style: none;
   text-align: left;
 }
 
 .site-header-nav-mega-dropdown-popularitems ul li {
+  width: calc(33% - 4.5px);
   background-color: #044D6E;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   border: 1px solid #044D6E;
   border-radius: 5px;
+}
+
+.site-header-nav-mega-dropdown-popularitems ul li:nth-child(n) {
+  margin-right: 10px;
+}
+
+.site-header-nav-mega-dropdown-popularitems ul li:nth-child(3n) {
+  margin-right: 0;
 }
 
 .site-header-nav-mega-dropdown-popularitems ul a {

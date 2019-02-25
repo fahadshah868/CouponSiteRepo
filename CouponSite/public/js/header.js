@@ -84,7 +84,7 @@ $(document).ready(function() {
                                                     "<a href='#'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
                                                             "<span>"+popularstore.title+"</span>"+
-                                                            "<span>("+popularstore.offer.length+" coupons)</span>"+
+                                                            "<span style='white-space: nowrap;'>("+popularstore.offer.length+" coupons)</span>"+
                                                         "</div>"+
                                                     "</a>"+
                                                 "</li>"
@@ -122,15 +122,15 @@ $(document).ready(function() {
                         success:function(data){
                             var html = 
                                 "<div class='site-header-nav-mega-dropdown-topitems-container'>";
-                                    for(var i=1; i<=10; i++){
+                                    $.each(data.topcategories, function (index, topcategory) {
                                         html = html + 
                                         "<a href='#' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
                                             "<div class='site-header-nav-mega-dropdown-topitems-item'>"+
-                                                "<img src='https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX26549973.jpg'>"+
-                                                "<span class='site-header-nav-mega-dropdown-topitems-item-text'>Store Name</span>"+
+                                                "<img src='"+data.panel_assets_url+topcategory.logo_url+"'>"+
+                                                "<span class='site-header-nav-mega-dropdown-topitems-item-text'>"+topcategory.title+"</span>"+
                                             "</div>"+
                                         "</a>"
-                                    }
+                                    });
                                 html = html +
                                 "</div>"+
                                 "<div class='site-header-nav-mega-dropdown-popularitems-container'>"+
@@ -140,17 +140,17 @@ $(document).ready(function() {
                                     "</div>"+
                                     "<div class='site-header-nav-mega-dropdown-popularitems'>"+
                                         "<ul>"
-                                            for(var i=1; i<= 33; i++){
+                                            $.each(data.popularcategories, function (index, popularcategory) {
                                                 html = html +
                                                 "<li>"+
                                                     "<a href='#'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
-                                                            "<span>Jewelery</span>"+
-                                                            "<span>(1130 coupons)</span>"+
+                                                            "<span>"+popularcategory.title+"</span>"+
+                                                            "<span style='white-space: nowrap;'>("+popularcategory.offer.length+" coupons)</span>"+
                                                         "</div>"+
                                                     "</a>"+
                                                 "</li>"
-                                            }
+                                            });
                                         html = html +
                                         "</ul>"+
                                     "</div>"+
