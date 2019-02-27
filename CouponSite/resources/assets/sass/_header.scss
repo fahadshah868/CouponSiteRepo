@@ -375,22 +375,22 @@
     text-align: left;
 }
 .site-header-nav-mega-dropdown-popularitems ul li{
-    width: calc(33% - 4.5px);
+    width: calc(50% - 5px);
     background-color: $theme-color;
     margin-bottom: 5px;
     border: 1px solid $theme-color;
+    padding: 0 10px;
     border-radius: 5px;
 }
 .site-header-nav-mega-dropdown-popularitems ul li:nth-child(n){
     margin-right: 10px;
 }
-.site-header-nav-mega-dropdown-popularitems ul li:nth-child(3n){
+.site-header-nav-mega-dropdown-popularitems ul li:nth-child(2n){
     margin-right: 0;
 }
 .site-header-nav-mega-dropdown-popularitems ul a{
     font-size: 13px;
     display: block;
-    padding: 0 10px;
     color: #fff;
 }
 .site-header-nav-mega-dropdown-topoffers-container{

@@ -43,6 +43,7 @@
     transition: 0.3s;
     -webkit-transition: 0.3s;
     text-decoration: none;
+    color: #555;
 }
 .ac-top-category-container a.ac-top-category-link:hover{
     box-shadow: 0 0 10px $boxshadow-color;
@@ -58,7 +59,8 @@
 }
 .ac-top-category-container .ac-top-category-title{
     text-align: center;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 500;
 }
 .ac-all-categories-container{
     width: 100%;
@@ -103,7 +105,7 @@
     flex-direction: row;
     justify-content: space-between;
     border: 1px solid #f1f1f1;
-    border-bottom: none;
+    margin-top: -1px;
     padding: 10px 15px;
     text-decoration: none !important;
     color: #555 !important;

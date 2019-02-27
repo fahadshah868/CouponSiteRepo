@@ -13,16 +13,16 @@
             Top Stores
         </div>
         <div class="as-top-stores-list-container">
-            @for($i=1; $i<=12; $i++)
+            @foreach($topstores as $topstore)
             <div class="as-top-store-container">
-                <a href="/store/Kohl's" class="as-top-store-link">
+                <a href="/store/{{$topstore->secondary_url}}" class="as-top-store-link">
                     <div class="as-top-store-logo">
-                        <img src="https://igx.4sqi.net/img/general/200x200/38757329_V6X_cPjnJ2QsS2w-P7Ret6Lfm8T7J-i4dMRtGBbf-B4.jpg"/>
+                        <img src="{{$panel_assets_url}}{{$topstore->logo_url}}"/>
                     </div>
-                    <div class="as-top-store-title">Kohl's</div>
+                    <div class="as-top-store-title">{{$topstore->title}}</div>
                 </a>
             </div>
-            @endfor
+            @endforeach
         </div>
     </div>
     <div class="as-allstores-container" id="as-allstores-container">
@@ -31,9 +31,16 @@
                 <span class="as-category-heading">Filter Stores By Category</span>
                 <div class="as-categories-container">
                     <ul class="as-categories-list">
-                        @for($i=1; $i<=100; $i++)
-                        <li><a class="as-categories-list-item" href="#" title="Category Name">Assessories</a></li>
-                        @endfor
+                        <li class="as-categories-list-item active" title="All Stores">
+                            <span>All Stores</span>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        @foreach($allcategories as $category)
+                        <li class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
+                            <span>{{$category->title}}</span>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -108,9 +115,20 @@
                     <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">0-9</a></li>
                 </ul>
                 <ul class="as-filtered-stores-list">
-                    @for($i=1; $i<=500; $i++)
-                    <li><a class="as-filtered-stores-list-item" href="#" title="Store Name"><span>Papa John's</span><span>30 Coupons Available</span></a></li>
-                    @endfor
+                    @foreach($allstores as $store)
+                    <li>
+                        <a class="as-filtered-stores-list-item" href="/store/{{$store->secondary_url}}" title="{{$store->title}} Coupons">
+                            <span>{{$store->title}}</span>
+                            @if(count($store->offer) > 1) 
+                                <span>{{count($store->offer)}} Coupons Available</span>
+                            @elseif(count($store->offer) == 1)
+                                <span>{{count($store->offer)}} Coupon Available</span>
+                            @else
+                                <span>No Coupons Available</span>
+                            @endif
+                        </a>
+                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

@@ -85,7 +85,18 @@ $(document).ready(function() {
                                                     "<a href='/store/"+popularstore.secondary_url+"'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
                                                             "<span>"+popularstore.title+"</span>"+
-                                                            "<span style='white-space: nowrap;'>("+popularstore.offer.length+" coupons)</span>"+
+                                                            "<span style='white-space: nowrap;'>"
+                                                                if(popularstore.offer.length == 1){
+                                                                    html = html + popularstore.offer.length+" Coupon Available"
+                                                                }
+                                                                else if(popularstore.offer.length > 1){
+                                                                    html = html + popularstore.offer.length+" Coupons Available"
+                                                                }
+                                                                else{
+                                                                    html = html + "No Coupons Available"
+                                                                }
+                                                            html = html + 
+                                                            "</span>"+
                                                         "</div>"+
                                                     "</a>"+
                                                 "</li>"
@@ -147,7 +158,18 @@ $(document).ready(function() {
                                                     "<a href='/coupons/"+popularcategory.title+"'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
                                                             "<span>"+popularcategory.title+"</span>"+
-                                                            "<span style='white-space: nowrap;'>("+popularcategory.offer.length+" coupons)</span>"+
+                                                            "<span style='white-space: nowrap;'>"
+                                                            if(popularcategory.offer.length == 1){
+                                                                html = html + popularcategory.offer.length+" Coupon Available"
+                                                            }
+                                                            else if(popularcategory.offer.length > 1){
+                                                                html = html + popularcategory.offer.length+" Coupons Available"
+                                                            }
+                                                            else{
+                                                                html = html + "No Coupons Available"
+                                                            }
+                                                            html = html +
+                                                            "</span>"+
                                                         "</div>"+
                                                     "</a>"+
                                                 "</li>"
