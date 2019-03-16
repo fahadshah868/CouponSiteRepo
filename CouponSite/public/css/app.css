@@ -12382,6 +12382,7 @@ a:hover {
   padding: 0 3px 20px 3px;
   text-decoration: none !important;
   color: #555 !important;
+  cursor: pointer;
 }
 
 .as-filtered-stores-letter:hover {
@@ -12390,7 +12391,7 @@ a:hover {
   border-bottom: 3px solid #044D6E;
 }
 
-.active-filtered-store-letter {
+.active-filtered-stores-letter {
   color: #044D6E !important;
   font-weight: 700;
   border-bottom: 3px solid #044D6E;

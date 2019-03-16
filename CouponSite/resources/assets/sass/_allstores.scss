@@ -187,13 +187,14 @@
     padding: 0 3px 20px 3px;
     text-decoration: none !important;
     color: #555 !important;
+    cursor: pointer;
 }
 .as-filtered-stores-letter:hover{
     color: $theme-color !important;
     font-weight: 700;
     border-bottom: 3px solid $theme-color;
 }
-.active-filtered-store-letter{
+.active-filtered-stores-letter{
     color: $theme-color !important;
     font-weight: 700;
     border-bottom: 3px solid $theme-color;

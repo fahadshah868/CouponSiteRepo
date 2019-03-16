@@ -7,7 +7,8 @@ $date = Carbon::now();
 $date = $date->toDateString();
 
 return [
-    'today_date' => $date
+    'TODAY_DATE' => $date,
+    'PANEL_ASSETS_URL' => 'http://localhost/',
 ]
 
 ?>

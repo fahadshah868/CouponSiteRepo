@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="as-filtered-stores-body-container" id="as-filtered-stores-body-container">
+        <div class="as-filtered-stores-body-container">
             <span class="as-filtered-stores-heading">All Stores</span>
             <div class="as-filtered-stores-container">
                 <div class="as-filtered-stores-dropdown">
@@ -55,70 +55,22 @@
                     </div>
                     <ul class="dropdown-menu">
                         <li class="active">ALL</li>
-                        <li>A</li>
-                        <li>B</li>
-                        <li>C</li>
-                        <li>D</li>
-                        <li>E</li>
-                        <li>F</li>
-                        <li>G</li>
-                        <li>H</li>
-                        <li>I</li>
-                        <li>J</li>
-                        <li>K</li>
-                        <li>L</li>
-                        <li>M</li>
-                        <li>N</li>
-                        <li>O</li>
-                        <li>P</li>
-                        <li>Q</li>
-                        <li>R</li>
-                        <li>S</li>
-                        <li>T</li>
-                        <li>U</li>
-                        <li>V</li>
-                        <li>W</li>
-                        <li>X</li>
-                        <li>Y</li>
-                        <li>Z</li>
-                        <li>0-9</li>
+                        @foreach($filtered_letters as $filtered_letter => $val)
+                            <li>{{$filtered_letter}}</li>
+                        @endforeach
                     </ul>
                 </div>
-                <ul class="as-filtered-stores-navbar">
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter active-filtered-store-letter" href="#">ALL</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">A</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">B</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">C</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">D</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">E</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">F</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">G</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">H</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">I</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">J</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">K</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">L</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">M</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">N</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">O</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">P</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">Q</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">R</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">S</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">T</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">U</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">V</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">W</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">X</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">Y</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">Z</a></li>
-                    <li class="as-filtered-stores-navbar-item"><a class="as-filtered-stores-letter" href="#">0-9</a></li>
+                <ul class="as-filtered-stores-navbar" id="as-filtered-stores-navbar">
+                    <li class="as-filtered-stores-navbar-item"><span class="as-filtered-stores-letter active-filtered-stores-letter">ALL</span></li>
+                    @foreach($filtered_letters as $filtered_letter => $val)
+                        <li class="as-filtered-stores-navbar-item"><span class="as-filtered-stores-letter">{{$filtered_letter}}</span></li>
+                    @endforeach
                 </ul>
-                <ul class="as-filtered-stores-list">
+                <ul class="as-filtered-stores-list" id="as-filtered-stores-list">
                     @foreach($allstores as $store)
                     <li>
                         <a class="as-filtered-stores-list-item" href="/store/{{$store->secondary_url}}" title="{{$store->title}} Coupons">
-                            <span>{{$store->title}}</span>
+                            <span class="store_title">{{$store->title}}</span>
                             @if(count($store->offer) > 1) 
                                 <span>{{count($store->offer)}} Coupons Available</span>
                             @elseif(count($store->offer) == 1)
@@ -157,6 +109,34 @@
             }
             else{
                 $("#as-category-inner-container").css({position: "absolute", top: "0", bottom: "auto", width: "100%"});
+            }
+        });
+        $(".as-filtered-stores-letter").click(function(){
+            $(".as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
+            $(this).addClass("active-filtered-stores-letter");
+            var searched_character = $(this).text();
+            if(searched_character.toUpperCase() == "ALL"){
+                $("#as-filtered-stores-list li").show();
+            }
+            else if(searched_character == "0-9"){
+                $("#as-filtered-stores-list .store_title").each(function(index, value){
+                    var current_character = $(value).text().charAt(0);
+                    if($.isNumeric(current_character)) {
+                        $(this).parent().parent().show();
+                    } else {
+                        $(this).parent().parent().hide();
+                    }
+                });
+            }
+            else{
+                $("#as-filtered-stores-list .store_title").each(function(index, value){
+                    var current_character = $(value).text().charAt(0);
+                    if( current_character.toUpperCase().indexOf(searched_character.toUpperCase()) > -1) {
+                    $(this).parent().parent().show();
+                    } else {
+                        $(this).parent().parent().hide();
+                    }
+                });
             }
         });
     });

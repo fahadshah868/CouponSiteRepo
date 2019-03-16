@@ -13,30 +13,30 @@ class AjaxController extends Controller
     public function getAjaxRequest($action){
         //get top and popular stores
         if($action == 1){
-            $data['topstores'] = Store::where('is_topstore','yes')->where('status','active')->limit(10)->get();
+            $data['topstores'] = Store::where('is_topstore','yes')->where('status','active')->limit(10)->get(['title','logo_url','secondary_url']);
             $data['popularstores'] = Store::where('is_popularstore','yes')->where('is_topstore','no')->where('status','active')->limit(30)->with(['offer'=> function($q) {
-                $q->where('starting_date', '<=', config('constants.today_date'))
-                ->where('expiry_date', '>=', config('constants.today_date'))
+                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->where('status','active');
-            }])->get();
-            $data['panel_assets_url'] = env('PANEL_ASSETS_URL');
+            }])->get(['title','secondary_url']);
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return response()->json($data);
         }
         //get top and popular categories
         else if($action == 2){
-            $data['topcategories'] = Category::where('is_topcategory','yes')->where('status','active')->limit(10)->get();
+            $data['topcategories'] = Category::where('is_topcategory','yes')->where('status','active')->limit(10)->get(['title','logo_url']);
             $data['popularcategories'] = Category::where('is_popularcategory','yes')->where('is_topcategory','no')->where('status','active')->limit(30)->with(['offer'=> function($q) {
-                $q->where('starting_date', '<=', config('constants.today_date'))
-                ->where('expiry_date', '>=', config('constants.today_date'))
+                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->where('status','active');
-            }])->get();
-            $data['panel_assets_url'] = env('PANEL_ASSETS_URL');
+            }])->get(['title']);
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return response()->json($data);
         }
         //get top online codes
         else if($action == 3){
-            $data['toponlinecodes'] = Offer::where('location','online')->where('type','code')->where('is_popular','yes')->where('starting_date','<=',config('constants.today_date'))->where('expiry_date','>=',config('constants.today_date'))->where('status','active')->orderBy('id', 'DESC')->limit(8)->with('store')->get();
-            $data['panel_assets_url'] = env('PANEL_ASSETS_URL');
+            $data['toponlinecodes'] = Offer::where('location','online')->where('type','code')->where('is_popular','yes')->where('starting_date','<=',config('constants.TODAY_DATE'))->where('expiry_date','>=',config('constants.TODAY_DATE'))->where('status','active')->orderBy('id', 'DESC')->limit(8)->with('store')->get();
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return response()->json($data);
         }
         //get top sales
