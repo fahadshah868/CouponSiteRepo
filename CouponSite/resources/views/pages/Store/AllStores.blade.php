@@ -48,7 +48,7 @@
         <div class="as-filtered-stores-body-container">
             <span class="as-filtered-stores-heading">All Stores</span>
             <div class="as-filtered-stores-container">
-                <div class="as-filtered-stores-dropdown">
+                <div class="as-filtered-stores-letters-dropdown" id="as-filtered-stores-letters-dropdown">
                     <div class="select">
                         <span>ALL</span>
                         <i class="fa fa-chevron-down"></i>
@@ -111,10 +111,52 @@
                 $("#as-category-inner-container").css({position: "absolute", top: "0", bottom: "auto", width: "100%"});
             }
         });
+        //letters navbar
         $(".as-filtered-stores-letter").click(function(){
             $(".as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
             $(this).addClass("active-filtered-stores-letter");
             var searched_character = $(this).text();
+            // set dropdown selected option
+            $('#as-filtered-stores-letters-dropdown .select span').text($(this).text());
+            $('#as-filtered-stores-letters-dropdown .dropdown-menu li').removeClass('active');
+            $('#as-filtered-stores-letters-dropdown .dropdown-menu li').each(function(index, value){
+                if( $(value).text().toUpperCase() == searched_character.toUpperCase()) {
+                    $(this).addClass('active');
+                }
+            });
+            if(searched_character.toUpperCase() == "ALL"){
+                $("#as-filtered-stores-list li").show();
+            }
+            else if(searched_character == "0-9"){
+                $("#as-filtered-stores-list .store_title").each(function(index, value){
+                    var current_character = $(value).text().charAt(0);
+                    if($.isNumeric(current_character)) {
+                        $(this).parent().parent().show();
+                    } else {
+                        $(this).parent().parent().hide();
+                    }
+                });
+            }
+            else{
+                $("#as-filtered-stores-list .store_title").each(function(index, value){
+                    var current_character = $(value).text().charAt(0);
+                    if( current_character.toUpperCase().indexOf(searched_character.toUpperCase()) > -1) {
+                    $(this).parent().parent().show();
+                    } else {
+                        $(this).parent().parent().hide();
+                    }
+                });
+            }
+        });
+        //letters dropdown
+        $("#as-filtered-stores-letters-dropdown .dropdown-menu li").click(function(){
+            var searched_character = $(this).text();
+            $(".as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
+            $(".as-filtered-stores-letter").each(function(index, value){
+                if( $(value).text().toUpperCase() == searched_character.toUpperCase()) {
+                    $(this).addClass('active-filtered-stores-letter');
+                }
+            });
             if(searched_character.toUpperCase() == "ALL"){
                 $("#as-filtered-stores-list li").show();
             }
