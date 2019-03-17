@@ -17,6 +17,7 @@ Route::get('/getajaxrequest/{action}','AjaxController@getAjaxRequest');
 
 // routes for StoreController
 Route::get('/allstores','StoreController@getAllStoresList');
+Route::get('/{category}/stores','StoreController@getCategoryStores');
 Route::get('/store/{store}','StoreController@getStoreOffers');
 
 // routes for CategoryController

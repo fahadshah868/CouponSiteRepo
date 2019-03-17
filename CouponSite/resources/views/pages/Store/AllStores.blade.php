@@ -37,7 +37,7 @@
                         </li>
                         @foreach($allcategories as $category)
                         <li class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
-                            <span>{{$category->title}}</span>
+                            <a href="{{$category->id}}/stores">{{$category->title}}</a>
                             <i class="fa fa-angle-right"></i>
                         </li>
                         @endforeach
