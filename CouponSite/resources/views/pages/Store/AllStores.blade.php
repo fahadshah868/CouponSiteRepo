@@ -31,15 +31,22 @@
                 <span class="as-category-heading">Filter Stores By Category</span>
                 <div class="as-categories-container">
                     <ul class="as-categories-list">
-                        <li class="as-categories-list-item active" title="All Stores">
-                            <span>All Stores</span>
-                            <i class="fa fa-angle-right"></i>
-                        </li>
                         @foreach($allcategories as $category)
-                        <li class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
-                            <a href="{{$category->id}}/stores">{{$category->title}}</a>
-                            <i class="fa fa-angle-right"></i>
-                        </li>
+                            @if(strtolower($category->title) == strtolower($selected_item))
+                            <li>
+                                <div class="as-categories-list-item active">
+                                    <span>{{$category->title}}</span>
+                                    <i class="fa fa-angle-right"></i>
+                                </div>
+                            </li>
+                            @else
+                            <li>
+                                <a href="/{{strtolower($category->title)}}/stores" class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
+                                    <span>{{$category->title}}</span>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>

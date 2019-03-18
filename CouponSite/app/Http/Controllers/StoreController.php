@@ -16,7 +16,6 @@ class StoreController extends Controller
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
             ->orWhere('expiry_date', null)
             ->where('status','active')->get(['title']);
-            //todo
         }])->get(['title','secondary_url']);
         $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
@@ -27,21 +26,25 @@ class StoreController extends Controller
                 return $letter;
             }
         })->toArray();
-        $data['allcategories'] = Category::where('status','active')->orderBy('is_topcategory','ASC')->orderBy('is_popularcategory','ASC')->get(['id','title']);
+        $category = new Category;
+        $category->title = "All Stores";
+        $data['allcategories'] = Category::where('status','active')->orderBy('is_topcategory','ASC')->orderBy('is_popularcategory','ASC')->get(['title']);
+        $data['allcategories']->prepend($category);
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+        $data['selected_item'] = "All Stores";
         return view('pages.store.allstores',$data);
     }
-    public function getCategoryStores($category){
+    public function getCategoryStores($_category){
         $data['topstores'] = Store::where('is_topstore','yes')->where('status','active')->get(['title','logo_url','secondary_url']);
-
-        $data['allstores'] = StoreCategoryGroup::where('category_id',$category)->with(['store' => function($sq){
-            $sq->where('status','active')->get(['title','secondary_url'])
-            ->with(['offer' => function($oq){
-                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null)
-                ->where('status','active')->get(['title']);
-            }])->get(['title']);
+        $data['allstores'] = Category::where('title',$_category)->with(['storecategorygroup' => function($q){
+            $q->with(['store' => function($q1){
+                $q1->where('status','active')->with(['offer' => function($q2){
+                    $q2->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null)
+                    ->where('status','active')->get();
+                }])->get();
+            }])->get();
         }])->get();
         $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
@@ -52,7 +55,11 @@ class StoreController extends Controller
                 return $letter;
             }
         })->toArray();
+        $category = new Category;
+        $category->title = "All Stores";
         $data['allcategories'] = Category::where('status','active')->orderBy('is_topcategory','ASC')->orderBy('is_popularcategory','ASC')->get(['id','title']);
+        $data['allcategories']->prepend($category);
+        $data['selected_item'] = $_category;
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.store.allstores',$data);
     }
