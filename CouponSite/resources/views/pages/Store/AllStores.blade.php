@@ -40,12 +40,21 @@
                                 </div>
                             </li>
                             @else
-                            <li>
-                                <a href="/{{strtolower($category->title)}}/stores" class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
-                                    <span>{{$category->title}}</span>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
+                                @if($category->title == "All Stores")
+                                <li>
+                                    <a href="/allstores" class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
+                                        <span>{{$category->title}}</span>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                                @else
+                                <li>
+                                    <a href="/{{strtolower($category->title)}}/stores" class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
+                                        <span>{{$category->title}}</span>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                                @endif
                             @endif
                         @endforeach
                     </ul>

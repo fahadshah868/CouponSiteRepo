@@ -13,7 +13,7 @@ class Category extends Model
     public function offer(){
         return $this->hasMany('App\Offer');
     }
-    public function storecategorygroup(){
-        return $this->hasMany('App\StoreCategoryGroup');
+    public function storecategory(){
+        return $this->hasMany('App\StoreCategory');
     }
 }

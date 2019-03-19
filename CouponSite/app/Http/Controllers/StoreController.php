@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Store;
 use App\Category;
-use App\StoreCategoryGroup;
+use App\StoreCategory;
 
 class StoreController extends Controller
 {
@@ -36,7 +36,7 @@ class StoreController extends Controller
     }
     public function getCategoryStores($_category){
         $data['topstores'] = Store::where('is_topstore','yes')->where('status','active')->get(['title','logo_url','secondary_url']);
-        $data['allstores'] = Category::where('title',$_category)->with(['storecategorygroup' => function($q){
+        $data['filteredstores'] = Category::where('title',$_category)->with(['storecategory' => function($q){
             $q->with(['store' => function($q1){
                 $q1->where('status','active')->with(['offer' => function($q2){
                     $q2->where('starting_date', '<=', config('constants.TODAY_DATE'))
