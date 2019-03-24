@@ -136,7 +136,7 @@ $(document).ready(function() {
                                 "<div class='site-header-nav-mega-dropdown-topitems-container'>";
                                     $.each(data.topcategories, function (index, topcategory) {
                                         html = html + 
-                                        "<a href='/coupons/"+topcategory.title+"' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
+                                        "<a href='/coupons/"+topcategory.url+"' class='site-header-nav-mega-dropdown-topitems-item-container'>"+
                                             "<div class='site-header-nav-mega-dropdown-topitems-item'>"+
                                                 "<img src='"+data.panel_assets_url+topcategory.logo_url+"'>"+
                                                 "<span class='site-header-nav-mega-dropdown-topitems-item-text'>"+topcategory.title+"</span>"+
@@ -155,7 +155,7 @@ $(document).ready(function() {
                                             $.each(data.popularcategories, function (index, popularcategory) {
                                                 html = html +
                                                 "<li>"+
-                                                    "<a href='/coupons/"+popularcategory.title+"'>"+
+                                                    "<a href='/coupons/"+popularcategory.url+"'>"+
                                                         "<div style='display: flex; flex-direction: row; justify-content: space-between;'>"+
                                                             "<span>"+popularcategory.title+"</span>"+
                                                             "<span style='white-space: nowrap;'>"

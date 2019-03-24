@@ -10,41 +10,12 @@ use App\StoreCategory;
 class StoreController extends Controller
 {
     public function getAllStoresList(){
-        $data['topstores'] = Store::where('is_topstore','yes')->where('status','active')->get(['title','logo_url','secondary_url']);
-        $data['allstores'] = Store::where('status','active')->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')->with(['offer'=> function($q){
-            $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
+        $data['topstores'] = Store::select('title','logo_url','secondary_url')->where('is_topstore','yes')->where('status','active')->get();
+        $data['allstores'] = Store::select('id','title','logo_url','secondary_url')->where('status','active')->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')->with(['offer'=> function($q){
+            $q->select('store_id')->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
             ->orWhere('expiry_date', null)
-            ->where('status','active')->get(['title']);
-        }])->get(['title','secondary_url']);
-        $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
-            $letter = substr(strtoupper($item->title), 0, 1);
-            if(is_numeric($letter)){
-                return "0-9";
-            }
-            else{
-                return $letter;
-            }
-        })->toArray();
-        $category = new Category;
-        $category->title = "All Stores";
-        $data['allcategories'] = Category::where('status','active')->orderBy('is_topcategory','ASC')->orderBy('is_popularcategory','ASC')->get(['title']);
-        $data['allcategories']->prepend($category);
-        $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-        $data['selected_item'] = "All Stores";
-        return view('pages.store.allstores',$data);
-    }
-    public function getCategoryStores($_category){
-        $data['topstores'] = Store::where('is_topstore','yes')->where('status','active')->get(['title','logo_url','secondary_url']);
-        $data['filteredstores'] = Category::where('title',$_category)->with(['storecategory' => function($q){
-            $q->with(['store' => function($q1){
-                $q1->where('status','active')->with(['offer' => function($q2){
-                    $q2->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                    ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                    ->orWhere('expiry_date', null)
-                    ->where('status','active')->get();
-                }])->get();
-            }])->get();
+            ->where('status','active');
         }])->get();
         $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
@@ -55,13 +26,29 @@ class StoreController extends Controller
                 return $letter;
             }
         })->toArray();
-        $category = new Category;
-        $category->title = "All Stores";
-        $data['allcategories'] = Category::where('status','active')->orderBy('is_topcategory','ASC')->orderBy('is_popularcategory','ASC')->get(['id','title']);
-        $data['allcategories']->prepend($category);
-        $data['selected_item'] = $_category;
+        $data['allcategories'] = StoreCategory::select('category_id')->groupBy('category_id')->with('category')->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.store.allstores',$data);
+    }
+    public function getCategoryStores($_category){
+        $data['storecategories'] = StoreCategory::select('store_id')->where('category_id',$_category)->with(['store' => function($q){
+            $q->select('id','title','logo_url','secondary_url')->with(['offer' => function($oq){
+                $oq->select('title','store_id')->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null)
+                ->where('status','active');
+            }]);
+        }])->get();
+        $data['filtered_letters'] = $data['storecategories']->groupBy(function ($item, $key) {
+            $letter = substr(strtoupper($item->store->title), 0, 1);
+            if(is_numeric($letter)){
+                return "0-9";
+            }
+            else{
+                return $letter;
+            }
+        })->toArray();
+        return response()->json($data);
     }
     public function getStoreOffers(){
         return view('pages.store.storeoffers');

@@ -31,38 +31,26 @@
                 <span class="as-category-heading">Filter Stores By Category</span>
                 <div class="as-categories-container">
                     <ul class="as-categories-list">
+                        <li>
+                            <div class="as-categories-list-item active" id="allstores" title="All Stores & Coupons">
+                                <span>All Stores</span>
+                                <i class="fa fa-angle-right"></i>
+                            </div>
+                        </li>
                         @foreach($allcategories as $category)
-                            @if(strtolower($category->title) == strtolower($selected_item))
                             <li>
-                                <div class="as-categories-list-item active">
-                                    <span>{{$category->title}}</span>
+                            <div class="as-categories-list-item" id="{{$category->category->id}}" title="{{$category->category->title}} Stores & Coupons">
+                                    <span>{{$category->category->title}}</span>
                                     <i class="fa fa-angle-right"></i>
                                 </div>
                             </li>
-                            @else
-                                @if($category->title == "All Stores")
-                                <li>
-                                    <a href="/allstores" class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
-                                        <span>{{$category->title}}</span>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </li>
-                                @else
-                                <li>
-                                    <a href="/{{strtolower($category->title)}}/stores" class="as-categories-list-item" title="{{$category->title}} Stores & Coupons">
-                                        <span>{{$category->title}}</span>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </li>
-                                @endif
-                            @endif
                         @endforeach
                     </ul>
                 </div>
             </div>
         </div>
         <div class="as-filtered-stores-body-container">
-            <span class="as-filtered-stores-heading">All Stores</span>
+            <span class="as-filtered-stores-heading">All Stores & Coupons</span>
             <div class="as-filtered-stores-container">
                 <div class="as-filtered-stores-letters-dropdown" id="as-filtered-stores-letters-dropdown">
                     <div class="select">
@@ -86,8 +74,11 @@
                     @foreach($allstores as $store)
                     <li>
                         <a class="as-filtered-stores-list-item" href="/store/{{$store->secondary_url}}" title="{{$store->title}} Coupons">
-                            <span class="store_title">{{$store->title}}</span>
-                            @if(count($store->offer) > 1) 
+                            <div class="store-info">
+                                <img class="store-logo" src="{{$panel_assets_url.$store->logo_url}}">
+                                <span class="store-title">{{$store->title}}</span>
+                            </div>
+                            @if(count($store->offer) > 1)
                                 <span>{{count($store->offer)}} Coupons Available</span>
                             @elseif(count($store->offer) == 1)
                                 <span>{{count($store->offer)}} Coupon Available</span>
@@ -144,22 +135,22 @@
                 $("#as-filtered-stores-list li").show();
             }
             else if(searched_character == "0-9"){
-                $("#as-filtered-stores-list .store_title").each(function(index, value){
+                $("#as-filtered-stores-list .store-title").each(function(index, value){
                     var current_character = $(value).text().charAt(0);
                     if($.isNumeric(current_character)) {
-                        $(this).parent().parent().show();
+                        $(this).parent().parent().parent().show();
                     } else {
-                        $(this).parent().parent().hide();
+                        $(this).parent().parent().parent().hide();
                     }
                 });
             }
             else{
-                $("#as-filtered-stores-list .store_title").each(function(index, value){
+                $("#as-filtered-stores-list .store-title").each(function(index, value){
                     var current_character = $(value).text().charAt(0);
                     if( current_character.toUpperCase().indexOf(searched_character.toUpperCase()) > -1) {
-                    $(this).parent().parent().show();
+                        $(this).parent().parent().parent().show();
                     } else {
-                        $(this).parent().parent().hide();
+                        $(this).parent().parent().parent().hide();
                     }
                 });
             }
@@ -177,26 +168,54 @@
                 $("#as-filtered-stores-list li").show();
             }
             else if(searched_character == "0-9"){
-                $("#as-filtered-stores-list .store_title").each(function(index, value){
+                $("#as-filtered-stores-list .store-title").each(function(index, value){
                     var current_character = $(value).text().charAt(0);
                     if($.isNumeric(current_character)) {
-                        $(this).parent().parent().show();
+                        $(this).parent().parent().parent().show();
                     } else {
-                        $(this).parent().parent().hide();
+                        $(this).parent().parent().parent().hide();
                     }
                 });
             }
             else{
-                $("#as-filtered-stores-list .store_title").each(function(index, value){
+                $("#as-filtered-stores-list .store-title").each(function(index, value){
                     var current_character = $(value).text().charAt(0);
                     if( current_character.toUpperCase().indexOf(searched_character.toUpperCase()) > -1) {
-                    $(this).parent().parent().show();
+                    $(this).parent().parent().parent().show();
                     } else {
-                        $(this).parent().parent().hide();
+                        $(this).parent().parent().parent().hide();
                     }
                 });
             }
         });
+    });
+    $(".as-categories-list-item").click(function(){
+        if(!$(this).hasClass("active")){
+            $(".as-categories-list-item").removeClass("active");
+            $(this).addClass("active");
+            var category_id = $(this).attr("id");
+            $.ajax({
+                type:'GET',
+                url:'/'+category_id+'/stores',
+                data: '',
+                beforeSend: function(){
+                },
+                complete: function(){
+                },
+                success:function(data){
+                    // $.each(data.storecategories, function (index, storecategory) {
+                    //     console.log(storecategory.store.title);
+                        
+                    //     $.each(storecategory.store.offer, function (index, store) {
+                    //         console.log(store.title);
+                    //     });
+                    // });
+                    $.each(data.filtered_letters, function (index, filtered_letter) {
+                        console.log(filtered_letter);
+                    });
+                }
+            });
+        }
     });
 </script>
 

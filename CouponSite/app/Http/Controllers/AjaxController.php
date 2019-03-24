@@ -13,23 +13,23 @@ class AjaxController extends Controller
     public function getAjaxRequest($action){
         //get top and popular stores
         if($action == 1){
-            $data['topstores'] = Store::where('is_topstore','yes')->where('status','active')->limit(10)->get(['title','logo_url','secondary_url']);
-            $data['popularstores'] = Store::where('is_popularstore','yes')->where('is_topstore','no')->where('status','active')->limit(30)->with(['offer'=> function($q) {
-                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
+            $data['topstores'] = Store::select('title','secondary_url','logo_url')->where('is_topstore','yes')->where('status','active')->limit(10)->get();
+            $data['popularstores'] = Store::select('id','title','secondary_url')->where('is_popularstore','yes')->where('is_topstore','no')->where('status','active')->limit(30)->with(['offer'=> function($q) {
+                $q->select('store_id')->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->where('status','active');
-            }])->get(['title','secondary_url']);
+            }])->get();
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return response()->json($data);
         }
         //get top and popular categories
         else if($action == 2){
-            $data['topcategories'] = Category::where('is_topcategory','yes')->where('status','active')->limit(10)->get(['title','logo_url']);
-            $data['popularcategories'] = Category::where('is_popularcategory','yes')->where('is_topcategory','no')->where('status','active')->limit(30)->with(['offer'=> function($q) {
-                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
+            $data['topcategories'] = Category::select('title','url','logo_url')->where('is_topcategory','yes')->where('status','active')->limit(10)->get();
+            $data['popularcategories'] = Category::select('id','title','url')->where('is_popularcategory','yes')->where('is_topcategory','no')->where('status','active')->limit(30)->with(['offer'=> function($q) {
+                $q->select('category_id')->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->where('status','active');
-            }])->get(['title']);
+            }])->get();
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return response()->json($data);
         }
