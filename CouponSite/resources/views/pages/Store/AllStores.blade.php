@@ -203,16 +203,60 @@
                 complete: function(){
                 },
                 success:function(data){
-                    // $.each(data.storecategories, function (index, storecategory) {
-                    //     console.log(storecategory.store.title);
-                        
-                    //     $.each(storecategory.store.offer, function (index, store) {
-                    //         console.log(store.title);
-                    //     });
-                    // });
-                    $.each(data.filtered_letters, function (index, filtered_letter) {
-                        console.log(filtered_letter);
-                    });
+                    $("#as-filtered-stores-navbar li").not("li:first").remove();
+                    $("#as-filtered-stores-list li").remove();
+                    if(data.status == "allstores"){
+                        $.each(data.filtered_letters, function (index, filtered_letter) {
+                            var html = "<li class='as-filtered-stores-navbar-item'><span class='as-filtered-stores-letter'>"+index+"</span></li>";
+                            $("#as-filtered-stores-navbar").append(html);
+                        });
+                        $.each(data.allstores, function (index, store) {
+                            var html = "<li>"+
+                                "<a class='as-filtered-stores-list-item' href='/store/"+store.secondary_url+"' title='"+store.title+" Coupons'>"+
+                                    "<div class='store-info'>"+
+                                        "<img class='store-logo' src='"+data.panel_assets_url+store.logo_url+"'>"+
+                                        "<span class='store-title'>"+store.title+"</span>"+
+                                    "</div>";
+                                    if(store.offer.length > 1){
+                                        html = html + "<span>"+store.offer.length+" Coupons Available</span>";
+                                    }
+                                    else if(store.offer.length == 1){
+                                        html = html + "<span>"+store.offer.length+" Coupon Available</span>";
+                                    }
+                                    else{
+                                        html = html + "<span>No Coupons Available</span>";                                
+                                    }
+                                "</a>"+
+                            "</li>";
+                            $("#as-filtered-stores-list").append(html);
+                        });
+                    }
+                    else{
+                        $.each(data.filtered_letters, function (index, filtered_letter) {
+                            var html = "<li class='as-filtered-stores-navbar-item'><span class='as-filtered-stores-letter'>"+index+"</span></li>";
+                            $("#as-filtered-stores-navbar").append(html);
+                        });
+                        $.each(data.storecategories, function (index, storecategory) {
+                            var html = "<li>"+
+                                "<a class='as-filtered-stores-list-item' href='/store/"+storecategory.store.secondary_url+"' title='"+storecategory.store.title+" Coupons'>"+
+                                    "<div class='store-info'>"+
+                                        "<img class='store-logo' src='"+data.panel_assets_url+storecategory.store.logo_url+"'>"+
+                                        "<span class='store-title'>"+storecategory.store.title+"</span>"+
+                                    "</div>";
+                                    if(storecategory.store.offer.length > 1){
+                                        html = html + "<span>"+storecategory.store.offer.length+" Coupons Available</span>";
+                                    }
+                                    else if(storecategory.store.offer.length == 1){
+                                        html = html + "<span>"+storecategory.store.offer.length+" Coupon Available</span>";
+                                    }
+                                    else{
+                                        html = html + "<span>No Coupons Available</span>";                                
+                                    }
+                                "</a>"+
+                            "</li>";
+                            $("#as-filtered-stores-list").append(html);
+                        });
+                    }
                 }
             });
         }
