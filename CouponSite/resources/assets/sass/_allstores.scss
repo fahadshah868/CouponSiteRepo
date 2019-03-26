@@ -155,6 +155,8 @@
     display: flex;
     flex-direction: column;
     width: calc(100% - 330px);
+    min-height: 595px;
+    max-height: auto;
     border: 1px solid #d1d1d1;
     background-color: #fff;
     padding: 30px;

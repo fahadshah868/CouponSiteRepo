@@ -119,7 +119,7 @@
             }
         });
         //letters navbar
-        $(".as-filtered-stores-letter").click(function(){
+        $("#as-filtered-stores-navbar").on("click",".as-filtered-stores-navbar-item .as-filtered-stores-letter",function(){
             $(".as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
             $(this).addClass("active-filtered-stores-letter");
             var searched_character = $(this).text();
@@ -156,7 +156,7 @@
             }
         });
         //letters dropdown
-        $("#as-filtered-stores-letters-dropdown .dropdown-menu li").click(function(){
+        $("#as-filtered-stores-letters-dropdown").on("click",".dropdown-menu li",function(){
             var searched_character = $(this).text();
             $(".as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
             $(".as-filtered-stores-letter").each(function(index, value){
@@ -203,12 +203,19 @@
                 complete: function(){
                 },
                 success:function(data){
-                    $("#as-filtered-stores-navbar li").not("li:first").remove();
+                    $("#as-filtered-stores-navbar li").not("#as-filtered-stores-navbar li:first").remove();
                     $("#as-filtered-stores-list li").remove();
+                    $("#as-filtered-stores-letters-dropdown .dropdown-menu li").not("#as-filtered-stores-letters-dropdown .dropdown-menu li:first").remove();
+                    $("#as-filtered-stores-navbar li .as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
+                    $("#as-filtered-stores-navbar li:first .as-filtered-stores-letter").addClass("active-filtered-stores-letter");
+                    $("#as-filtered-stores-letters-dropdown .dropdown-menu li").removeClass("active");
+                    $("#as-filtered-stores-letters-dropdown .dropdown-menu li:first").addClass("active");
+                    $("#as-filtered-stores-letters-dropdown .select span").text("ALL")
                     if(data.status == "allstores"){
                         $.each(data.filtered_letters, function (index, filtered_letter) {
                             var html = "<li class='as-filtered-stores-navbar-item'><span class='as-filtered-stores-letter'>"+index+"</span></li>";
                             $("#as-filtered-stores-navbar").append(html);
+                            $("#as-filtered-stores-letters-dropdown .dropdown-menu").append("<li>"+index+"</li>");
                         });
                         $.each(data.allstores, function (index, store) {
                             var html = "<li>"+
@@ -235,6 +242,7 @@
                         $.each(data.filtered_letters, function (index, filtered_letter) {
                             var html = "<li class='as-filtered-stores-navbar-item'><span class='as-filtered-stores-letter'>"+index+"</span></li>";
                             $("#as-filtered-stores-navbar").append(html);
+                            $("#as-filtered-stores-letters-dropdown .dropdown-menu").append("<li>"+index+"</li>");
                         });
                         $.each(data.storecategories, function (index, storecategory) {
                             var html = "<li>"+
