@@ -77,16 +77,16 @@
   <!--Top Stores-------------------------------------------------------------------------------------------------->
   <div class="top-stores-main-container" id="top-stores-main-container">
     <!--Heading-->
-    <div class="top-stores-heading">Top Featured Stores</div>
+    <div class="top-stores-heading">Top Stores</div>
     <!--Stores Slides-->
     <div class="stores-container">
-      @for($i=1; $i<=10; $i++)
+      @foreach($topstores as $topstore)
       <div class="item">
           <div class="store-img">
-              <img src="https://igx.4sqi.net/img/general/200x200/38757329_V6X_cPjnJ2QsS2w-P7Ret6Lfm8T7J-i4dMRtGBbf-B4.jpg" >
+            <a href="/store/{{$topstore->secondary_url}}"><img src="{{$panel_assets_url.$topstore->logo_url}}" ></a>
           </div>
       </div>
-      @endfor
+      @endforeach
     </div>
     <!--Arrows-->
     <div class="MS-controls">
@@ -101,50 +101,24 @@
     <div class="home-offers-heading">Top Offers, Deals & Coupon Codes</div>
     <!--Products-->
     <div class="home-offers-container">
-      @for($i=1; $i<=12; $i++)
+      @foreach($offers as $offer)
       <div class="home-offer-container">
         <div class="home-offer-store-logo">
-          <a href="#">
-            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg" title="Store Name"/>
+          <a href="/store/{{$offer->store->secondary_url}}" title="{{$offer->store->title}}">
+            <img src="{{$panel_assets_url.$offer->store->logo_url}}"/>
           </a>
         </div>
         <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
         <div class="home-offer-offertitle">
-          20% Off One Select Regular-Priced Item
+          {{$offer->title}}
         </div>
-        <div class="home-offer-offertype-code">Code</div>
-        <a href="#" class="home-offer-button" id="home-offer-button" data-offertitle="20% Off One Select Regular-Priced Item" data-offercode="ZSTG45H" data-offerexpires="10/12/2018" data-storesitelink="https://www.dominos.com">VIEW CODE</a>
+        <span class="home-offer-offertype-code">{{$offer->location}} {{$offer->type}}</span>
+        <span class="home-offer-button" id="home-offer-button" data-offertitle="20% Off One Select Regular-Priced Item" data-offercode="ZSTG45H" data-offerexpires="10/12/2018" data-storesitelink="https://www.dominos.com">VIEW CODE</span>
       </div>
-      @endfor
+      @endforeach
     </div>
+    <span class="home-loadmore-button">Load More</span>
   </div>
-  <!--top instore coupons-->
-  <div class="home-offers-main-container">
-    <!--Heading-->
-    <div class="home-offers-heading">Best In-Store Coupon Codes</div>
-    <!--Products-->
-    <div class="home-offers-container">
-      @for($i=1; $i<=8; $i++)
-      <div class="home-offer-container">
-        <div class="home-offer-store-logo">
-          <a href="#">
-            <img src="https://pbs.twimg.com/profile_images/976862446131580928/mN8gwNRi_400x400.jpg" title="Store Name"/>
-          </a>
-        </div>
-        <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
-        <div class="home-offer-offertitle">
-          Up to 30%
-        </div>
-        <div class="home-offer-offertype-instorecoupon">
-          In-Store coupon
-        </div>
-        <a href="#" class="home-offer-button" id="home-offer-button">VIEW CODE</a>
-      </div>
-      @endfor
-    </div>
-  </div>
-
-
 <script>
     $(document).ready(function() {  
       $("#slider").sliderResponsive({
