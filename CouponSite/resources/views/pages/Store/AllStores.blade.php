@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="as-filtered-stores-body-container">
-            <span class="as-filtered-stores-heading">All Stores & Coupons</span>
+            <span class="as-filtered-stores-heading" id="as-filtered-stores-heading">All Stores & Coupons</span>
             <div class="as-filtered-stores-container">
                 <div class="as-filtered-stores-letters-dropdown" id="as-filtered-stores-letters-dropdown">
                     <div class="select">
@@ -205,13 +205,17 @@
                 success:function(data){
                     $("#as-filtered-stores-navbar li").not("#as-filtered-stores-navbar li:first").remove();
                     $("#as-filtered-stores-list li").remove();
+                    //letters navbar
                     $("#as-filtered-stores-letters-dropdown .dropdown-menu li").not("#as-filtered-stores-letters-dropdown .dropdown-menu li:first").remove();
                     $("#as-filtered-stores-navbar li .as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
                     $("#as-filtered-stores-navbar li:first .as-filtered-stores-letter").addClass("active-filtered-stores-letter");
+                    //letters dropdown
                     $("#as-filtered-stores-letters-dropdown .dropdown-menu li").removeClass("active");
                     $("#as-filtered-stores-letters-dropdown .dropdown-menu li:first").addClass("active");
-                    $("#as-filtered-stores-letters-dropdown .select span").text("ALL")
-                    if(data.status == "allstores"){
+                    $("#as-filtered-stores-letters-dropdown .select span").text("ALL");
+                    //change stores heading text
+                    $("#as-filtered-stores-heading").html(data.filtered_stores_header);
+                    if(data.status == 1){
                         $.each(data.filtered_letters, function (index, filtered_letter) {
                             var html = "<li class='as-filtered-stores-navbar-item'><span class='as-filtered-stores-letter'>"+index+"</span></li>";
                             $("#as-filtered-stores-navbar").append(html);

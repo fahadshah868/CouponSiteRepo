@@ -11,12 +11,13 @@ class StoreController extends Controller
 {
     public function getAllStoresList(){
         $data['topstores'] = Store::select('title','logo_url','secondary_url')->where('is_topstore','yes')->where('status','active')->get();
-        $data['allstores'] = Store::select('id','title','logo_url','secondary_url')->where('status','active')->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')->with(['offer'=> function($q){
-            $q->select('store_id')->where('starting_date', '<=', config('constants.TODAY_DATE'))
+        $data['allstores'] = Store::select('id','title','logo_url','secondary_url')->where('status','active')
+        ->with(['offer' => function($q){
+            $q->select('store_id')->where('status','active')
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-            ->orWhere('expiry_date', null)
-            ->where('status','active');
-        }])->get();
+            ->orWhere('expiry_date', null);
+        }])->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')->get();
         $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
             if(is_numeric($letter)){
@@ -26,18 +27,21 @@ class StoreController extends Controller
                 return $letter;
             }
         })->toArray();
-        $data['allcategories'] = StoreCategory::select('category_id')->groupBy('category_id')->with('category')->get();
+        $data['allcategories'] = StoreCategory::select('category_id')->groupBy('category_id')->with('category')->whereHas('category' , function($q){
+            $q->select('title')->where('status','active');
+        })->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.store.allstores',$data);
     }
-    public function getCategoryStores($_category){
-        if(strcasecmp($_category,"allstores") == 0){
-            $response['allstores'] = Store::select('id','title','logo_url','secondary_url')->where('status','active')->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')->with(['offer'=> function($q){
-                $q->select('store_id')->where('starting_date', '<=', config('constants.TODAY_DATE'))
+    public function getCategoryStores($category){
+        if(strcasecmp($category,"allstores") == 0){
+            $response['allstores'] = Store::select('id','title','logo_url','secondary_url')->where('status','active')
+                ->with(['offer'=> function($q){
+                $q->select('store_id')->where('status','active')
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null)
-                ->where('status','active');
-            }])->get();
+                ->orWhere('expiry_date', null);
+            }])->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')->get();
             $response['filtered_letters'] = $response['allstores']->groupBy(function ($item, $key) {
                 $letter = substr(strtoupper($item->title), 0, 1);
                 if(is_numeric($letter)){
@@ -48,18 +52,20 @@ class StoreController extends Controller
                 }
             })->toArray();
             $response['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            $response['status'] = "allstores";
+            $response['filtered_stores_header'] = "All Stores & Coupons";
+            $response['status'] = 1;
             return response()->json($response);
         }
         else{
-            $response['storecategories'] = StoreCategory::select('store_id')->where('category_id',$_category)->with(['store' => function($q){
-                $q->select('id','title','logo_url','secondary_url')->with(['offer' => function($oq){
-                    $oq->select('title','store_id')->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                    ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                    ->orWhere('expiry_date', null)
-                    ->where('status','active');
-                }]);
-            }])->get();
+            $response['storecategories'] = StoreCategory::select('store_id')->where('category_id',$category)->with(['store','store.offer' => function($q) use($category){
+                $q->select('store_id')->where('status','active')->where('category_id',$category)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            }])
+            ->whereHas('store',function($q){
+                $q->select('id','title','secondary_url')->where('status','active');
+            })->get();
             $response['filtered_letters'] = $response['storecategories']->groupBy(function ($item, $key) {
                 $letter = substr(strtoupper($item->store->title), 0, 1);
                 if(is_numeric($letter)){
@@ -70,7 +76,8 @@ class StoreController extends Controller
                 }
             })->toArray();
             $response['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            $response['status'] = "filteredstores";
+            $response['filtered_stores_header'] = $category." Stores & Coupons";
+            $response['status'] = 2;
             return response()->json($response);
         }
     }
