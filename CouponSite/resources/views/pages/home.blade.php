@@ -117,7 +117,7 @@
       </div>
       @endforeach
     </div>
-    <span class="home-loadmore-button">Load More</span>
+    <span class="loadmore-button" id="loadmore-button"><span><img src="{{asset('/images/45.gif')}}" style="margin-right: 5px;"></span>Load More</span>
   </div>
 <script>
     $(document).ready(function() {  
@@ -136,6 +136,21 @@
         interval: 5000,
         slideAll: false,
         duration: 700
-    }); 
+    });
+    $("#loadmore-button").click(function(){
+      alert('hit');
+      $.ajax({
+        type:'GET',
+        url:'/loadmoreoffers/17',
+        data: '',
+        beforeSend: function(){
+        },
+        complete: function(){
+        },
+        success: function(data){
+          console.log(data.offers.length);
+        }
+      });
+    });
   </script>
 @endsection

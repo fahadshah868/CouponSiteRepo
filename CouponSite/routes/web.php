@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//routes for homecontroller
 Route::get('/' , 'HomeController@home');
+Route::get('/loadmoreoffers/{id}','HomeController@getLoadMoreOffers');
 
 // routes for ajaxcontroller
 Route::get('/getajaxrequest/{action}','AjaxController@getAjaxRequest');
