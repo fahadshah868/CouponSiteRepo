@@ -5,7 +5,7 @@
 @section('content')
 
   <div class="cover-img" ></div>
-  <!--Main Image Slider---------------------------------------------------------------------------------------------->
+  <!--Main Image Slider-->
   {{-- <div class="slider" id="slider">
     <!--Slides-->
     <div style="background-image:url(https://unsplash.it/1920/1200?image=839)"></div>
@@ -17,8 +17,7 @@
     <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path></svg></i>
     <i class="right" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path></svg></i>
   </div> --}}
-
-  <!--Todays New Hot Deals---------------------------------------------------------------------------------------->
+  <!--Todays New Hot Deals-->
   <div class="today-hot-deals-main-container">
     <!--Heading-->
     <div class="today-hot-deals-heading">Today's Hot Deals</div>
@@ -73,8 +72,7 @@
       </div>
     </div>
   </div>
-
-  <!--Top Stores-------------------------------------------------------------------------------------------------->
+  <!--Top Stores-->
   <div class="top-stores-main-container" id="top-stores-main-container">
     <!--Heading-->
     <div class="top-stores-heading">Top Stores</div>
@@ -94,13 +92,12 @@
       <button type="button" class="MS-right"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
     </div>
   </div>
-  
-  <!-- Top Offers Deals Products--------------------------------------------------------------------------------- -->
+  <!-- Top Offers Deals Products-->
   <div class="home-offers-main-container">
     <!--Heading-->
     <div class="home-offers-heading">Top Offers, Deals & Coupon Codes</div>
     <!--Products-->
-    <div class="home-offers-container">
+    <div class="home-offers-container" id="home-offers-container">
       @foreach($offers as $offer)
       <div class="home-offer-container">
         <div class="home-offer-store-logo">
@@ -113,14 +110,42 @@
           {{$offer->title}}
         </div>
         <span class="home-offer-offertype-code">{{$offer->location}} {{$offer->type}}</span>
-        <span class="home-offer-button" id="home-offer-button" data-offertitle="20% Off One Select Regular-Priced Item" data-offercode="ZSTG45H" data-offerexpires="10/12/2018" data-storesitelink="https://www.dominos.com">VIEW CODE</span>
+        <span class="home-offer-button" data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" data-offerexpiry="{{$offer->expiry_date}}" data-storetitle="{{$offer->store->title}}" data-siteurl="{{$offer->store->network_url}}">
+          @if(strcasecmp($offer->type,"code") == 0)
+          GET CODE
+          @else
+          GET DEAL
+          @endif
+        </span>
       </div>
       @endforeach
     </div>
-    <span class="loadmore-button" id="loadmore-button"><span><img src="{{asset('/images/45.gif')}}" style="margin-right: 5px;"></span>Load More</span>
+    @if(count($offers) == 4)
+    <span class="loadmore-button" id="loadmore-button"><img class="loading-circle" id="loading-circle" src="{{asset('/images/loading-circle.gif')}}">Load More</span>
+    @endif
+  </div>
+  <!--blogs container-->
+  <div class="home-blog-main-container">
+      <!--Heading-->
+      <div class="home-blogs-heading">Popular Blogs</div>
+      <!--blogs-->
+      <div class="home-blogs-container">
+          @for($i=1; $i<=3; $i++)
+        <div class="home-blog-container">
+          <div class="blog-image">
+              <a class="blog-link" href="#">
+                  <img src="{{asset('/images/blog.jpg')}}">          
+              </a>
+          </div>
+          <div class="blog-title"><a href="#">title of blog will be here sdf adfvs dfvqadfvwsrf v erfv qerv wrtfv qer </a></div>
+          <div class="readnow-link">[<a href="#">Read Now</a>]</div>
+        </div>
+        @endfor
+      </div>
   </div>
 <script>
-    $(document).ready(function() {  
+    $(document).ready(function() {
+      var rowscount = 4;
       $("#slider").sliderResponsive({
       // Using default everything
         // slidePause: 5000,
@@ -130,26 +155,53 @@
         // hideDots: "off", 
         // hoverZoom: "on", 
         // titleBarTop: "off"
-      });  
-    });
-    $('#top-stores-main-container').multislider({
-        interval: 5000,
-        slideAll: false,
-        duration: 700
-    });
-    $("#loadmore-button").click(function(){
-      alert('hit');
-      $.ajax({
-        type:'GET',
-        url:'/loadmoreoffers/17',
-        data: '',
-        beforeSend: function(){
-        },
-        complete: function(){
-        },
-        success: function(data){
-          console.log(data.offers.length);
-        }
+      });
+      $('#top-stores-main-container').multislider({
+          interval: 5000,
+          slideAll: false,
+          duration: 700
+      });
+      $("#loadmore-button").click(function(){
+        $.ajax({
+          type:'GET',
+          url:'/loadmoreoffers/'+rowscount+'',
+          data: '',
+          beforeSend: function(){
+            $("#loading-circle").css('display','inline');
+          },
+          complete: function(){
+            $("#loading-circle").css('display','none');
+          },
+          success: function(data){
+            $("#offerid").remove();
+            $.each(data.offers, function (index, offer) {
+              var html = 
+              '<div class="home-offer-container">'+
+                '<div class="home-offer-store-logo">'+
+                '<a href="/store/'+offer.store.secondary_url+'" title="'+offer.store.title+'">'+
+                  '<img src="'+data.panel_assets_url+offer.store.logo_url+'"/>'+
+                '</a>'+
+              '</div>'+
+              '<hr style="border-top: 1px dotted #d1d1d1; width: 100%;">'+
+              '<div class="home-offer-offertitle">'+offer.title+'</div>'+
+              '<span class="home-offer-offertype-code">'+offer.location+' '+offer.type+'</span>'+
+              '<span class="home-offer-button" data-offerid="'+offer.id+'" data-offertitle="'+offer.title+'" data-offerlocation="'+offer.location+'" data-offertype="'+offer.type+'" data-offerdetails="'+offer.details+'" data-offercode="'+offer.code+'" data-offerexpiry="'+offer.expiry_date+'" data-storetitle="'+offer.store.title+'" data-siteurl="'+offer.store.network_url+'">'
+                if(offer.type.toLowerCase() == "code"){
+                  html = html + 'GET CODE'
+                }
+                else{
+                  html = html + 'GET DEAL'
+                }
+              html = html + '</span>'+
+              '</div>';
+              $("#home-offers-container").append(html);
+            });
+            rowscount = rowscount + data.offers.length;
+            if(data.offers.length < 4){
+              $("#loadmore-button").css('display','none');
+            }
+          }
+        });
       });
     });
   </script>

@@ -108,6 +108,11 @@
 .loadmore-button:hover{
     background-color: $theme-color-tonext;
 }
+.loadmore-button .loading-circle{
+    margin-right: 5px;
+    margin-top: -5px;
+    display: none;
+}
 @media only screen and (max-width: 1165px){
     .home-offers-container{
         width: 100%;

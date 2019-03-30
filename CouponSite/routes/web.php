@@ -12,7 +12,7 @@
 */
 //routes for homecontroller
 Route::get('/' , 'HomeController@home');
-Route::get('/loadmoreoffers/{id}','HomeController@getLoadMoreOffers');
+Route::get('/loadmoreoffers/{rowscount}','HomeController@getLoadMoreOffers');
 
 // routes for ajaxcontroller
 Route::get('/getajaxrequest/{action}','AjaxController@getAjaxRequest');

@@ -10,15 +10,16 @@ class HomeController extends Controller
 {
     public function home(){
         $data['topstores'] = Store::select('id','secondary_url','logo_url')->where('is_topstore','yes')->where('status','active')->get();
-        $data['offers'] = Offer::select('title','type','location','store_id')
+        $data['offers'] = Offer::select('id','title','details','location','type','code','expiry_date','store_id')
             ->where('display_at_home','yes')
             ->where('status','active')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
             ->orWhere('expiry_date', null)
             ->orderBy('id','DESC')
-            ->limit(12)->with(['store' => function($q){
-                $q->select('id','title','secondary_url','logo_url');
+            ->skip(0)
+            ->limit(4)->with(['store' => function($q){
+                $q->select('id','title','secondary_url','logo_url','network_url');
             }])
             ->whereHas('store', function($q){
             $q->where('status','active');
@@ -26,19 +27,22 @@ class HomeController extends Controller
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.home',$data);
     }
-    public function getLoadMoreOffers($id){
-        $response['offers'] = Offer::where('display_at_home','yes')->where('status','active')
-        ->where('id','<',$id)
+    public function getLoadMoreOffers($rowscount){
+        $response['offers'] = Offer::select('id','title','details','location','type','code','expiry_date','store_id')
+        ->where('display_at_home','yes')
+        ->where('status','active')
         ->where('starting_date', '<=', config('constants.TODAY_DATE'))
         ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
         ->orWhere('expiry_date', null)
         ->orderBy('id','DESC')
-        ->limit(12)->with(['store' => function($q){
-            $q->select('id','title','secondary_url','logo_url');
+        ->skip($rowscount)
+        ->limit(4)->with(['store' => function($q){
+            $q->select('id','title','secondary_url','logo_url','network_url');
         }])
         ->whereHas('store', function($q){
            $q->where('status','active');
         })->get();
+        $response['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return response()->json($response);
     }
 }
