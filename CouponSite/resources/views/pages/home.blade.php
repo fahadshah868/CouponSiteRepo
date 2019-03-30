@@ -137,7 +137,7 @@
                   <img src="{{asset('/images/blog.jpg')}}">          
               </a>
           </div>
-          <div class="blog-title"><a href="#">title of blog will be here sdf adfvs dfvqadfvwsrf v erfv qerv wrtfv qer </a></div>
+          <div class="blog-title"><a href="#">Blog Title Will Be Here...</a></div>
           <div class="readnow-link">[<a href="#">Read Now</a>]</div>
         </div>
         @endfor

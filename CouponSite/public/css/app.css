@@ -12197,7 +12197,12 @@ a:hover {
 .home-blog-container .blog-title {
   font-size: 16px;
   font-weight: 500;
-  line-height: 1.2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.home-blog-container .blog-title a {
+  white-space: nowrap;
 }
 
 .home-blog-container .readnow-link {

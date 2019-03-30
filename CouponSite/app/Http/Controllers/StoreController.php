@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Store;
 use App\Category;
 use App\StoreCategory;
+use App\Offer;
 
 class StoreController extends Controller
 {
@@ -81,7 +82,19 @@ class StoreController extends Controller
             return response()->json($response);
         }
     }
-    public function getStoreOffers(){
-        return view('pages.store.storeoffers');
+    public function getStoreOffers($id){
+        $data['storeoffers'] = Store::select('id','title','description','logo_url','network_url')->where('secondary_url',$id)->where('status','active')->with(['offer' => function($q){
+            $q->select('store_id','title','details','expiry_date','location','type','is_verified')
+            ->where('status','active')
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+            ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+            ->orWhere('expiry_date', null);
+        }])->get();
+
+        $data['storecategories'] = $data['storeoffers']->groupBy(function ($item, $key) {
+            return $item->offer->category_id;
+        });
+        dd($data['storecategories']);
+        return view('pages.store.storeoffers',$data);
     }
 }
