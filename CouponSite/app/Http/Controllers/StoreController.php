@@ -12,13 +12,15 @@ class StoreController extends Controller
 {
     public function getAllStoresList(){
         $data['topstores'] = Store::select('title','logo_url','secondary_url')->where('is_topstore','yes')->where('status','active')->get();
-        $data['allstores'] = Store::select('id','title','logo_url','secondary_url')->where('status','active')
+        $data['allstores'] = Store::select('id','title','logo_url','secondary_url')
+        ->where('status','active')
+        ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
         ->with(['offer' => function($q){
             $q->select('store_id')->where('status','active')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
             ->orWhere('expiry_date', null);
-        }])->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')->get();
+        }])->get();
         $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
             if(is_numeric($letter)){
@@ -36,13 +38,15 @@ class StoreController extends Controller
     }
     public function getCategoryStores($category){
         if(strcasecmp($category,"allstores") == 0){
-            $response['allstores'] = Store::select('id','title','logo_url','secondary_url')->where('status','active')
-                ->with(['offer'=> function($q){
+            $response['allstores'] = Store::select('id','title','logo_url','secondary_url')
+            ->where('status','active')
+            ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
+            ->with(['offer'=> function($q){
                 $q->select('store_id')->where('status','active')
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->orWhere('expiry_date', null);
-            }])->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')->get();
+            }])->get();
             $response['filtered_letters'] = $response['allstores']->groupBy(function ($item, $key) {
                 $letter = substr(strtoupper($item->title), 0, 1);
                 if(is_numeric($letter)){
@@ -84,16 +88,22 @@ class StoreController extends Controller
     }
     public function getStoreOffers($id){
         $data['storeoffers'] = Store::select('id','title','description','logo_url','network_url')->where('secondary_url',$id)->where('status','active')->with(['offer' => function($q){
-            $q->select('store_id','title','details','expiry_date','location','type','is_verified')
+            $q->select('store_id','category_id','title','details','expiry_date','location','type','is_verified')
+            ->with('category')
+            ->whereHas('category',function($q){
+                $q->where('status','active');
+            })
             ->where('status','active')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
             ->orWhere('expiry_date', null);
         }])->get();
-
-        $data['storecategories'] = $data['storeoffers']->groupBy(function ($item, $key) {
-            return $item->offer->category_id;
-        });
+        $data['storecategories'] = null;
+        foreach($data['storeoffers'] as $sample){
+            $data['storecategories'] = $sample->offer->groupBy(function ($item, $key) {
+                return $item->category->title;
+            });
+        }
         dd($data['storecategories']);
         return view('pages.store.storeoffers',$data);
     }
