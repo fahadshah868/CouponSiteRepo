@@ -95,7 +95,6 @@
     overflow: auto;
 }
 .as-categories-list{
-    list-style-type: none;
     padding: 0;
     margin: 2px 0;
 }
@@ -174,7 +173,6 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    list-style-type: none;
     margin: 0;
     padding: 0 20px;
     border: 1px solid #ddd;
@@ -204,7 +202,6 @@
     border-bottom: 3px solid $theme-color;
 }
 .as-filtered-stores-list{
-    list-style-type: none;
     padding: 0;
 }
 .as-filtered-stores-list-item{

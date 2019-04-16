@@ -22,6 +22,10 @@ a{
 a:hover{
     color: $link-color-onhover;
 }
+ul{
+  list-style-type: none;
+  margin-bottom: 0;
+}
 @-webkit-keyframes placeHolderShimmer {
     0% {
       background-position: -468px 0;

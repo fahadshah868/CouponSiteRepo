@@ -112,7 +112,7 @@
         <span class="home-offer-offertype-code">{{$offer->location}} {{$offer->type}}</span>
         <span class="home-offer-button" data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" data-offerexpiry="{{$offer->expiry_date}}" data-storetitle="{{$offer->store->title}}" data-siteurl="{{$offer->store->network_url}}">
           @if(strcasecmp($offer->type,"code") == 0)
-          GET CODE
+          VIEW CODE
           @else
           GET DEAL
           @endif

@@ -9,16 +9,16 @@ use App\Offer;
 class HomeController extends Controller
 {
     public function home(){
-        $data['topstores'] = Store::select('id','secondary_url','logo_url')->where('is_topstore','yes')->where('status','active')->get();
+        $data['topstores'] = Store::select('id','secondary_url','logo_url')->where('is_topstore','yes')->where('status',1)->get();
         $data['offers'] = Offer::select('id','title','details','location','type','code','expiry_date','store_id')
             ->with(['store' => function($q){
                 $q->select('id','title','secondary_url','logo_url','network_url');
             }])
             ->whereHas('store', function($q){
-                $q->where('status','active');
+                $q->where('status',1);
             })
             ->where('display_at_home','yes')
-            ->where('status','active')
+            ->where('status',1)
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
             ->orWhere('expiry_date', null)
@@ -36,10 +36,10 @@ class HomeController extends Controller
             $q->select('id','title','secondary_url','logo_url','network_url');
         }])
         ->whereHas('store', function($q){
-           $q->where('status','active');
+           $q->where('status',1);
         })
         ->where('display_at_home','yes')
-        ->where('status','active')
+        ->where('status',1)
         ->where('starting_date', '<=', config('constants.TODAY_DATE'))
         ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
         ->orWhere('expiry_date', null)

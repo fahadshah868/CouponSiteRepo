@@ -10496,6 +10496,11 @@ a:hover {
   color: #0061ff;
 }
 
+ul {
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
 @-webkit-keyframes placeHolderShimmer {
   0% {
     background-position: -468px 0;
@@ -11796,7 +11801,6 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-align: center;
   padding: 20px;
   text-decoration: none;
   transition: 0.3s;
@@ -11827,7 +11831,7 @@ a:hover {
 .home-offer-offertitle {
   width: 100%;
   margin: 0;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -11866,11 +11870,11 @@ a:hover {
   border: none;
   background-color: #044D6E;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 2px;
   outline: none;
   text-decoration: none;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
   transition: 0.3s;
   -webkit-transition: 0.3s;
   cursor: pointer;
@@ -12400,7 +12404,6 @@ a:hover {
 }
 
 .as-categories-list {
-  list-style-type: none;
   padding: 0;
   margin: 2px 0;
 }
@@ -12508,7 +12511,6 @@ a:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  list-style-type: none;
   margin: 0;
   padding: 0 20px;
   border: 1px solid #ddd;
@@ -12543,7 +12545,6 @@ a:hover {
 }
 
 .as-filtered-stores-list {
-  list-style-type: none;
   padding: 0;
 }
 
@@ -13082,7 +13083,7 @@ a:hover {
 }
 
 .fo-sidebar {
-  width: 250px;
+  width: 270px;
   padding: 0 20px;
 }
 
@@ -13102,8 +13103,6 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  font-size: 16px;
-  font-weight: 500;
   border: 1px solid #CFCFCF;
   border-radius: 2px;
   width: 100%;
@@ -13119,6 +13118,11 @@ a:hover {
 .fo-sidebar-store-link:hover {
   -webkit-box-shadow: 0 0 10px #838383;
           box-shadow: 0 0 10px #838383;
+}
+
+.fo-sidebar-store-link .fo-sidebar-storetitle {
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .fo-sidebar-storelogo {
@@ -13138,6 +13142,63 @@ a:hover {
   width: 900px;
   padding: 0 20px;
 }
+
+.fo-sidebar-list-container {
+  width: 100%;
+  max-height: 425px;
+  overflow: auto;
+}
+
+.fo-sidebar-list-container ul {
+  margin-top: 2px;
+}
+
+.fo-sidebar-list-container ul .fo-sidebar-list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 7px 12px;
+  background-color: #fff;
+  font-size: 13px;
+  margin-top: -1px;
+  border: 1px solid #ddd;
+  color: #555;
+  text-decoration: none;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+
+.fo-sidebar-list-container ul .fo-sidebar-list-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* style for custom scrollbar*/
+
+.fo-sidebar-list-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+.fo-sidebar-list-container::-webkit-scrollbar {
+  width: 5px;
+  background-color: #F5F5F5;
+}
+
+.fo-sidebar-list-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #044D6E;
+}
+
+/* style for custom scrollbar*/
 
 .fo-detailbar-heading {
   width: 100%;
@@ -13167,11 +13228,6 @@ a:hover {
 
 .fo-detailbar-offerbody-container {
   width: 100%;
-  margin-bottom: 10px;
-}
-
-.fo-detailbar-offer-link {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13184,14 +13240,15 @@ a:hover {
   text-decoration: none !important;
   border: 1px solid #CFCFCF;
   border-radius: 2px;
-  padding: 20px;
+  padding: 30px;
   background-color: #fff;
   color: #555 !important;
   transition: 0.3s;
   -webkit-transition: 0.3s;
+  margin-bottom: 10px;
 }
 
-.fo-detailbar-offer-link:hover {
+.fo-detailbar-offerbody-container:hover {
   -webkit-box-shadow: 0 0 10px #838383;
           box-shadow: 0 0 10px #838383;
 }
@@ -13208,12 +13265,10 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 10px;
-  border-right: 1px solid #CFCFCF;
-  font-size: 25px;
-  font-weight: 800;
-  font-style: italic;
+  font-size: 30px;
+  font-weight: 700;
   color: #DC002E;
+  line-height: 1.2;
 }
 
 .fo-detailbar-offer-container {
@@ -13224,13 +13279,14 @@ a:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: calc(100% - 320px);
-  margin: 0 10px;
+  width: calc(100% - 300px);
+  padding: 0 20px;
 }
 
 .fo-detailbar-offertitle {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
+  line-height: 1.2;
 }
 
 .fo-detailbar-offerdetails {
@@ -13240,7 +13296,7 @@ a:hover {
 
 .fo-detailbar-offer-expires {
   color: #929292;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   margin-top: 5px;
 }
@@ -13265,17 +13321,18 @@ a:hover {
 
 .fo-detailbar-offer-button-container #offer-button {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   text-align: center;
   background-color: #044D6E;
   border: none;
   outline: none;
-  border-radius: 4px;
+  border-radius: 2px;
   color: #fff;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
   transition: 0.3s;
   -webkit-transition: 0.3s;
+  margin-bottom: 7px;
 }
 
 .fo-detailbar-offer-button-container #offer-button:hover {
@@ -13503,8 +13560,8 @@ a:hover {
 
   .fo-sidebar {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 250px;
-            flex: 0 0 250px;
+        -ms-flex: 0 0 270px;
+            flex: 0 0 270px;
     padding: 0 20px;
   }
 
@@ -13557,8 +13614,6 @@ a:hover {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding-top: 3px;
-    border-right: 1px solid #CFCFCF;
     font-size: 18px;
     font-weight: 700;
     color: #DC002E;
@@ -13579,6 +13634,7 @@ a:hover {
   .fo-detailbar-offertitle {
     font-size: 15px;
     font-weight: 500;
+    line-height: 1.2;
   }
 
   .fo-detailbar-offerdetails {

@@ -9,72 +9,91 @@
         <div class="fo-sidebar-storelogo-container">
             <a class="fo-sidebar-store-link" href="#">
                 <div class="fo-sidebar-storelogo">
-                    <img src="https://igx.4sqi.net/img/general/200x200/38757329_V6X_cPjnJ2QsS2w-P7Ret6Lfm8T7J-i4dMRtGBbf-B4.jpg" style="width: 100%; height: 100%;"/>
+                    <img src="{{$panel_assets_url.$store->logo_url}}" style="width: 100%; height: 100%;"/>
                 </div>
-                <div class="fo-sidebar-storetitle">Kohl's</div>
+                <div class="fo-sidebar-storetitle">{{$store->title}}</div>
             </a>
         </div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
-        <div class="fo-sidebar-offers-availability">50 Offers Available</div>
+        <div class="fo-sidebar-offers-availability">{{count($store->offer)}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
-        <div class="fo-sidebar-content-container">
-            <div class="fo-sidebar-content-heading">Filter By Offer Type</div>
-            <div class="fo-sidebar-content-body">
-                <label class="radio-container">All
-                    <input type="radio" name="offertype" checked>
-                    <span class="checkmark"></span>
-                </label>
-                @for($i=1; $i<=3; $i++)
-                <label class="radio-container">Online & Instore
-                    <input type="radio" name="offertype">
-                    <span class="checkmark"></span>
-                </label>
-                @endfor
-            </div>
-        </div>
+        
         <div class="fo-sidebar-content-container">
             <div class="fo-sidebar-content-heading">Filter By Category</div>
             <div class="fo-sidebar-content-body">
-                @for($i=1; $i<=10; $i++)
-                <label class="checkbox-container">Clothing
+                @foreach($storecategories as $storecategory => $val)
+                <label class="checkbox-container">{{$storecategory}}
                     <input type="checkbox">
                     <span class="checkmark"></span>
                 </label>
-                @endfor
+                @endforeach
             </div>
         </div>
         <div class="fo-sidebar-content-container">
-            <div class="fo-sidebar-content-heading">About Kohl's</div>
+            <div class="fo-sidebar-content-heading">You May Also Like</div>
+            <div class="fo-sidebar-list-container">
+                <ul>
+                    @for($i=1; $i<=100; $i++)
+                    <li>
+                        <a class="fo-sidebar-list-item" href="#" title="Target coupons">
+                            <span>Target</span>
+                            <span>40 Coupons</span>
+                        </a>
+                    </li>
+                    @endfor
+                </ul>
+            </div>
+        </div>
+        <div class="fo-sidebar-content-container">
+            <div class="fo-sidebar-content-heading">About {{$store->title}}</div>
             <div class="fo-sidebar-content-body">
-                <span class="fo-store-details">Kohl's Department Stores, Inc. operates department stores in the United States. The company offers apparel, footwear, accessories, and home products to middle-income customers.</span>
+                <span class="fo-store-details">{!!$store->description!!}</span>
             </div>
         </div>
     </div>
     <div class="fo-detailbar">
-        <div class="fo-detailbar-heading">Kohl's Coupons & Promo Codes</div>
+        <div class="fo-detailbar-heading">{{$store->title}} Coupons & Promo Codes</div>
         <div class="fo-detailbar-offers-list-container">
-            @for($i=1; $i<= 10; $i++)
-            <div class="fo-detailbar-offerbody-container">
-                <a href="#" class="fo-detailbar-offer-link">
+            <ul>
+                @foreach($store->offer as $offer)
+                <li class="fo-detailbar-offerbody-container">
                     <div class="fo-detailbar-anchor">
-                        <span>40%</span>
-                        <span>OFF</span>
+                        @foreach(explode(' ', $offer->anchor) as $anchor) 
+                            <span>{{$anchor}}</span>
+                        @endforeach
                     </div>
                     <div class="fo-detailbar-offer-container">
                         <div class="fo-detailbar-type-and-verified-container">
-                            <div class="fo-detailbar-offertype-code">Code</div>
+                            <div class="fo-detailbar-offertype-code">{{$offer->location.' '.$offer->type}}</div>
+                            @if(strcasecmp($offer->is_verified,'yes') == 0)
                             <div class="store-offer-verification-container"><i class="fa fa-check-circle"></i>Verfied</div>
+                            @endif
                         </div>
-                        <div class="fo-detailbar-offertitle">40% off total purchase with discount</div>
-                        <div class="fo-detailbar-offerdetails">40% off total purchase with discount</div>
-                        <div class="fo-detailbar-offer-expires"><i class="fa fa-clock-o"></i>Expires: 30/10/18</div>
+                        <div class="fo-detailbar-offertitle">{{$offer->title}}</div>
+                        <div class="fo-detailbar-offerdetails">{{$offer->details}}</div>
+                        <div class="fo-detailbar-offer-expires"><i class="fa fa-clock-o"></i>Expires: {{ Carbon\Carbon::parse($offer->expiry_date)->format('d/m/Y') }}</div>
                     </div>
                     <div class="fo-detailbar-offer-button-container">
-                        <span class="offer-button" id="offer-button">View Code</span>
+                        @if(strcasecmp($offer->location,'Online & In-Store') == 0)
+                        <span class="offer-button" id="offer-button">
+                            USE ONLINE
+                        </span>
+                        <span class="offer-button" id="offer-button">
+                            USE IN-STORE
+                        </span>
+                        @else
+                        <span class="offer-button" id="offer-button">
+                            @if(strcasecmp($offer->type,"code") == 0)
+                                VIEW CODE
+                            @else
+                                GET DEAL
+                            @endif
+                        </span>
+                        @endif
                     </div>
-                </a>
-            </div>
-            @endfor
+                </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 </div>
