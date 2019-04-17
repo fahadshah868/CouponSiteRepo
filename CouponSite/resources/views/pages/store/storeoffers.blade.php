@@ -19,11 +19,14 @@
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         
         <div class="fo-sidebar-content-container">
-            <div class="fo-sidebar-content-heading">Filter By Category</div>
+            <div class="fo-sidebar-content-heading">
+                <span>Filter By Category</span>
+                <span class="reset-category-filters">Reset</span>
+            </div>
             <div class="fo-sidebar-content-body">
                 @foreach($storecategories as $storecategory => $val)
                 <label class="checkbox-container">{{$storecategory}}
-                    <input type="checkbox">
+                    <input type="checkbox" class="{{$storecategory}}">
                     <span class="checkmark"></span>
                 </label>
                 @endforeach
@@ -36,8 +39,8 @@
                     @for($i=1; $i<=100; $i++)
                     <li>
                         <a class="fo-sidebar-list-item" href="#" title="Target coupons">
-                            <span>Target</span>
-                            <span>40 Coupons</span>
+                            <span class="item-title">Target</span>
+                            <span class="coupons-count">40</span>
                         </a>
                     </li>
                     @endfor
@@ -56,7 +59,7 @@
         <div class="fo-detailbar-offers-list-container">
             <ul>
                 @foreach($store->offer as $offer)
-                <li class="fo-detailbar-offerbody-container">
+                <li class="fo-detailbar-offerbody-container {{$offer->category->title}}">
                     <div class="fo-detailbar-anchor">
                         @foreach(explode(' ', $offer->anchor) as $anchor) 
                             <span>{{$anchor}}</span>
@@ -97,5 +100,39 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $(".reset-category-filters").click(function(){
+            $('.checkbox-container').find('input:checkbox').prop("checked", false);
+            $('li.fo-detailbar-offerbody-container').not('.hidden').show();
+            $('.reset-category-filters').css('display','none');
+            if($('li.fo-detailbar-offerbody-container:visible').length > 1){
+                $(".fo-sidebar-offers-availability").html($('li.fo-detailbar-offerbody-container:visible').length+" Offers Available");
+            }
+            else{
+                $(".fo-sidebar-offers-availability").html($('li.fo-detailbar-offerbody-container:visible').length+" Offer Available");
+            }
+        });
+        $(".checkbox-container").click(function(){
+            if($('.checkbox-container').find('input:checkbox:checked').length > 0){
+                $('.reset-category-filters').css('display','block');
+                $('li.fo-detailbar-offerbody-container').hide();
+                $('.checkbox-container').find('input:checked').each(function () {
+                    $('li.fo-detailbar-offerbody-container.' + $(this).attr('class')).not('.hidden').show();
+                });
+            } 
+            else{
+                $('.reset-category-filters').css('display','none');
+                $('li.fo-detailbar-offerbody-container').not('.hidden').show();
+            }
+            if($('li.fo-detailbar-offerbody-container:visible').length > 1){
+                $(".fo-sidebar-offers-availability").html($('li.fo-detailbar-offerbody-container:visible').length+" Offers Available");
+            }
+            else{
+                $(".fo-sidebar-offers-availability").html($('li.fo-detailbar-offerbody-container:visible').length+" Offer Available");
+            }
+        });
+    });
+</script>
 
 @endsection

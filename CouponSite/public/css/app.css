@@ -12458,14 +12458,14 @@ ul {
 }
 
 .as-categories-container::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
   background-color: #F5F5F5;
 }
 
 .as-categories-container::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #555;
+  background-color: #044D6E;
 }
 
 /* style for custom scrollbar*/
@@ -12597,6 +12597,14 @@ ul {
   border: 1px solid #d1d1d1;
   -webkit-box-shadow: 0 0 2px #cccccc;
           box-shadow: 0 0 2px #cccccc;
+}
+
+.as-filtered-stores-list-item .coupons-count {
+  color: #fff;
+  background-color: #044D6E;
+  border: 1px solid #044D6E;
+  border-radius: 8px;
+  padding: 5px 8px;
 }
 
 .as-filtered-stores-letters-dropdown {
@@ -13164,9 +13172,8 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 7px 12px;
+  padding: 10px 12px;
   background-color: #fff;
-  font-size: 13px;
   margin-top: -1px;
   border: 1px solid #ddd;
   color: #555;
@@ -13177,6 +13184,21 @@ ul {
 
 .fo-sidebar-list-container ul .fo-sidebar-list-item:hover {
   background-color: #f1f1f1;
+}
+
+.fo-sidebar-list-container ul .fo-sidebar-list-item .item-title {
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.fo-sidebar-list-container ul .fo-sidebar-list-item .coupons-count {
+  color: #fff;
+  background-color: #044D6E;
+  padding: 2px 6px;
+  border: 1px solid #044D6E;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 500;
 }
 
 /* style for custom scrollbar*/
@@ -13211,8 +13233,8 @@ ul {
   color: #fff;
   background-color: #044D6E;
   /* For browsers that do not support gradients */
-  background-image: -webkit-gradient(linear, left top, right top, from(#044D6E), color-stop(#044D6E), color-stop(#3e8eb2), color-stop(#74c4e8), to(#d6f2ff));
-  background-image: linear-gradient(90deg, #044D6E, #044D6E, #3e8eb2, #74c4e8, #d6f2ff);
+  background-image: -webkit-gradient(linear, left top, right top, from(#044D6E), color-stop(#044D6E), to(#1488CC));
+  background-image: linear-gradient(90deg, #044D6E, #044D6E, #1488CC);
 }
 
 .fo-detailbar-offers-list-container {
@@ -13350,6 +13372,27 @@ ul {
   margin-bottom: 10px;
   font-size: 16px;
   font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.fo-sidebar-content-heading .reset-category-filters {
+  font-size: 15px;
+  color: #0061ff;
+  cursor: pointer;
+  display: none;
+}
+
+.fo-sidebar-content-heading .reset-category-filters:hover {
+  text-decoration: underline;
 }
 
 .fo-store-details {
@@ -13469,79 +13512,6 @@ ul {
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-}
-
-.radio-container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default radio button */
-
-.radio-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom radio button */
-
-.radio-container .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #fff;
-  border-radius: 50%;
-  border: 1px solid #CFCFCF;
-}
-
-/* On mouse-over, add a grey background color */
-
-.radio-container:hover input ~ .checkmark {
-  background-color: #044D6E;
-  border: 1px solid #044D6E;
-}
-
-/* When the radio button is checked, add a blue background */
-
-.radio-container input:checked ~ .checkmark {
-  background-color: #044D6E;
-  border: 1px solid #044D6E;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-
-.radio-container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the indicator (dot/circle) */
-
-.radio-container .checkmark:after {
-  top: 5px;
-  left: 5px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
 }
 
 @media only screen and (max-width: 1165px) {

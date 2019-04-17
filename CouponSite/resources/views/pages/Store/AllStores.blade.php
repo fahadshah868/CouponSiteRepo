@@ -79,11 +79,11 @@
                                 <span class="store-title">{{$store->title}}</span>
                             </div>
                             @if(count($store->offer) > 1)
-                                <span>{{count($store->offer)}} Coupons Available</span>
+                                <span class="coupons-count">{{count($store->offer)}} Coupons Available</span>
                             @elseif(count($store->offer) == 1)
-                                <span>{{count($store->offer)}} Coupon Available</span>
+                                <span class="coupons-count">{{count($store->offer)}} Coupon Available</span>
                             @else
-                                <span>No Coupons Available</span>
+                                <span class="coupons-count">No Coupons Available</span>
                             @endif
                         </a>
                     </li>
@@ -227,13 +227,13 @@
                                         "<span class='store-title'>"+store.title+"</span>"+
                                     "</div>";
                                     if(store.offer.length > 1){
-                                        html = html + "<span>"+store.offer.length+" Coupons Available</span>";
+                                        html = html + "<span class='coupons-count'>"+store.offer.length+" Coupons Available</span>";
                                     }
                                     else if(store.offer.length == 1){
-                                        html = html + "<span>"+store.offer.length+" Coupon Available</span>";
+                                        html = html + "<span class='coupons-count'>"+store.offer.length+" Coupon Available</span>";
                                     }
                                     else{
-                                        html = html + "<span>No Coupons Available</span>";                                
+                                        html = html + "<span class='coupons-count'>No Coupons Available</span>";                                
                                     }
                                 "</a>"+
                             "</li>";
@@ -254,13 +254,13 @@
                                         "<span class='store-title'>"+storecategory.store.title+"</span>"+
                                     "</div>";
                                     if(storecategory.store.offer.length > 1){
-                                        html = html + "<span>"+storecategory.store.offer.length+" Coupons Available</span>";
+                                        html = html + "<span class='coupons-count'>"+storecategory.store.offer.length+" Coupons Available</span>";
                                     }
                                     else if(storecategory.store.offer.length == 1){
-                                        html = html + "<span>"+storecategory.store.offer.length+" Coupon Available</span>";
+                                        html = html + "<span class='coupons-count'>"+storecategory.store.offer.length+" Coupon Available</span>";
                                     }
                                     else{
-                                        html = html + "<span>No Coupons Available</span>";                                
+                                        html = html + "<span class='coupons-count'>No Coupons Available</span>";                                
                                     }
                                 "</a>"+
                             "</li>";
