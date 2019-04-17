@@ -102,18 +102,18 @@
 </div>
 <script>
     $(document).ready(function(){
-        $(".reset-category-filters").click(function(){
-            $('.checkbox-container').find('input:checkbox').prop("checked", false);
+        $(`.reset-category-filters`).click(function(){
+            $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
             $('li.fo-detailbar-offerbody-container').not('.hidden').show();
             $('.reset-category-filters').css('display','none');
             if($('li.fo-detailbar-offerbody-container:visible').length > 1){
-                $(".fo-sidebar-offers-availability").html($('li.fo-detailbar-offerbody-container:visible').length+" Offers Available");
+                $(`.fo-sidebar-offers-availability`).html($('li.fo-detailbar-offerbody-container:visible').length+` Offers Available`);
             }
             else{
-                $(".fo-sidebar-offers-availability").html($('li.fo-detailbar-offerbody-container:visible').length+" Offer Available");
+                $(`.fo-sidebar-offers-availability`).html($('li.fo-detailbar-offerbody-container:visible').length+` Offer Available`);
             }
         });
-        $(".checkbox-container").click(function(){
+        $(`.checkbox-container`).click(function(){
             if($('.checkbox-container').find('input:checkbox:checked').length > 0){
                 $('.reset-category-filters').css('display','block');
                 $('li.fo-detailbar-offerbody-container').hide();
@@ -126,10 +126,10 @@
                 $('li.fo-detailbar-offerbody-container').not('.hidden').show();
             }
             if($('li.fo-detailbar-offerbody-container:visible').length > 1){
-                $(".fo-sidebar-offers-availability").html($('li.fo-detailbar-offerbody-container:visible').length+" Offers Available");
+                $(`.fo-sidebar-offers-availability`).html($('li.fo-detailbar-offerbody-container:visible').length+` Offers Available`);
             }
             else{
-                $(".fo-sidebar-offers-availability").html($('li.fo-detailbar-offerbody-container:visible').length+" Offer Available");
+                $(`.fo-sidebar-offers-availability`).html($('li.fo-detailbar-offerbody-container:visible').length+` Offer Available`);
             }
         });
     });

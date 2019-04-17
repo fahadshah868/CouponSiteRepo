@@ -35,8 +35,6 @@
                     </div>
                 </form>
             </div>
-    
-            
             <div class="site-header-hamburger-mega-menu-container">
                 <div class="site-header-hamburger-button-container">
                     <div class="menu-toggle" id="menu-toggle">

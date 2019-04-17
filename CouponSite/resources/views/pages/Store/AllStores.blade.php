@@ -97,31 +97,31 @@
 <script>
     $(document).ready(function(){
         var height_difference = $(this).scrollTop() - $('#as-allstores-container').position().top;
-        if(height_difference >= 0 && height_difference + 605 < $("#as-allstores-container").height()){
-            $("#as-category-inner-container").css({position: "fixed", top: "10px", bottom: "auto", width: "320px"});
+        if(height_difference >= 0 && height_difference + 605 < $(`#as-allstores-container`).height()){
+            $(`#as-category-inner-container`).css({position: `fixed`, top: `10px`, bottom: `auto`, width: `320px`});
         }
-        else if(height_difference + 605 >= $("#as-allstores-container").height()){
-            $("#as-category-inner-container").css({position: "absolute", top: "auto", bottom: "0", width: "320px"});
+        else if(height_difference + 605 >= $(`#as-allstores-container`).height()){
+            $(`#as-category-inner-container`).css({position: `absolute`, top: `auto`, bottom: `0`, width: `320px`});
         }
         else{
-            $("#as-category-inner-container").css({position: "absolute", top: "0", bottom: "auto", width: "100%"});
+            $(`#as-category-inner-container`).css({position: `absolute`, top: `0`, bottom: `auto`, width: `100%`});
         }
         $(document).on('scroll', function() {
             height_difference = $(this).scrollTop() - $('#as-allstores-container').position().top;
-            if(height_difference >= 0 && height_difference + 605 < $("#as-allstores-container").height()){
-                $("#as-category-inner-container").css({position: "fixed", top: "10px", bottom: "auto", width: "320px"});
+            if(height_difference >= 0 && height_difference + 605 < $(`#as-allstores-container`).height()){
+                $(`#as-category-inner-container`).css({position: `fixed`, top: `10px`, bottom: `auto`, width: `320px`});
             }
-            else if(height_difference + 605 >= $("#as-allstores-container").height()){
-                $("#as-category-inner-container").css({position: "absolute", top: "auto", bottom: "0", width: "320px"});
+            else if(height_difference + 605 >= $(`#as-allstores-container`).height()){
+                $(`#as-category-inner-container`).css({position: `absolute`, top: `auto`, bottom: `0`, width: `320px`});
             }
             else{
-                $("#as-category-inner-container").css({position: "absolute", top: "0", bottom: "auto", width: "100%"});
+                $(`#as-category-inner-container`).css({position: `absolute`, top: `0`, bottom: `auto`, width: `100%`});
             }
         });
         //letters navbar
-        $("#as-filtered-stores-navbar").on("click",".as-filtered-stores-navbar-item .as-filtered-stores-letter",function(){
-            $(".as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
-            $(this).addClass("active-filtered-stores-letter");
+        $(`#as-filtered-stores-navbar`).on(`click`,`.as-filtered-stores-navbar-item .as-filtered-stores-letter`,function(){
+            $(`.as-filtered-stores-letter`).removeClass(`active-filtered-stores-letter`);
+            $(this).addClass(`active-filtered-stores-letter`);
             var searched_character = $(this).text();
             // set dropdown selected option
             $('#as-filtered-stores-letters-dropdown .select span').text($(this).text());
@@ -131,11 +131,11 @@
                     $(this).addClass('active');
                 }
             });
-            if(searched_character.toUpperCase() == "ALL"){
-                $("#as-filtered-stores-list li").show();
+            if(searched_character.toUpperCase() == `ALL`){
+                $(`#as-filtered-stores-list li`).show();
             }
-            else if(searched_character == "0-9"){
-                $("#as-filtered-stores-list .store-title").each(function(index, value){
+            else if(searched_character == `0-9`){
+                $(`#as-filtered-stores-list .store-title`).each(function(index, value){
                     var current_character = $(value).text().charAt(0);
                     if($.isNumeric(current_character)) {
                         $(this).parent().parent().parent().show();
@@ -145,7 +145,7 @@
                 });
             }
             else{
-                $("#as-filtered-stores-list .store-title").each(function(index, value){
+                $(`#as-filtered-stores-list .store-title`).each(function(index, value){
                     var current_character = $(value).text().charAt(0);
                     if( current_character.toUpperCase().indexOf(searched_character.toUpperCase()) > -1) {
                         $(this).parent().parent().parent().show();
@@ -156,19 +156,19 @@
             }
         });
         //letters dropdown
-        $("#as-filtered-stores-letters-dropdown").on("click",".dropdown-menu li",function(){
+        $(`#as-filtered-stores-letters-dropdown`).on(`click`,`.dropdown-menu li`,function(){
             var searched_character = $(this).text();
-            $(".as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
-            $(".as-filtered-stores-letter").each(function(index, value){
+            $(`.as-filtered-stores-letter`).removeClass(`active-filtered-stores-letter`);
+            $(`.as-filtered-stores-letter`).each(function(index, value){
                 if( $(value).text().toUpperCase() == searched_character.toUpperCase()) {
                     $(this).addClass('active-filtered-stores-letter');
                 }
             });
-            if(searched_character.toUpperCase() == "ALL"){
-                $("#as-filtered-stores-list li").show();
+            if(searched_character.toUpperCase() == `ALL`){
+                $(`#as-filtered-stores-list li`).show();
             }
-            else if(searched_character == "0-9"){
-                $("#as-filtered-stores-list .store-title").each(function(index, value){
+            else if(searched_character == `0-9`){
+                $(`#as-filtered-stores-list .store-title`).each(function(index, value){
                     var current_character = $(value).text().charAt(0);
                     if($.isNumeric(current_character)) {
                         $(this).parent().parent().parent().show();
@@ -178,7 +178,7 @@
                 });
             }
             else{
-                $("#as-filtered-stores-list .store-title").each(function(index, value){
+                $(`#as-filtered-stores-list .store-title`).each(function(index, value){
                     var current_character = $(value).text().charAt(0);
                     if( current_character.toUpperCase().indexOf(searched_character.toUpperCase()) > -1) {
                     $(this).parent().parent().parent().show();
@@ -189,11 +189,11 @@
             }
         });
     });
-    $(".as-categories-list-item").click(function(){
-        if(!$(this).hasClass("active")){
-            $(".as-categories-list-item").removeClass("active");
-            $(this).addClass("active");
-            var category_id = $(this).attr("id");
+    $(`.as-categories-list-item`).click(function(){
+        if(!$(this).hasClass(`active`)){
+            $(`.as-categories-list-item`).removeClass(`active`);
+            $(this).addClass(`active`);
+            var category_id = $(this).attr(`id`);
             $.ajax({
                 type:'GET',
                 url:'/'+category_id+'/stores',
@@ -203,68 +203,68 @@
                 complete: function(){
                 },
                 success:function(data){
-                    $("#as-filtered-stores-navbar li").not("#as-filtered-stores-navbar li:first").remove();
-                    $("#as-filtered-stores-list li").remove();
+                    $(`#as-filtered-stores-navbar li`).not(`#as-filtered-stores-navbar li:first`).remove();
+                    $(`#as-filtered-stores-list li`).remove();
                     //letters navbar
-                    $("#as-filtered-stores-letters-dropdown .dropdown-menu li").not("#as-filtered-stores-letters-dropdown .dropdown-menu li:first").remove();
-                    $("#as-filtered-stores-navbar li .as-filtered-stores-letter").removeClass("active-filtered-stores-letter");
-                    $("#as-filtered-stores-navbar li:first .as-filtered-stores-letter").addClass("active-filtered-stores-letter");
+                    $(`#as-filtered-stores-letters-dropdown .dropdown-menu li`).not(`#as-filtered-stores-letters-dropdown .dropdown-menu li:first`).remove();
+                    $(`#as-filtered-stores-navbar li .as-filtered-stores-letter`).removeClass(`active-filtered-stores-letter`);
+                    $(`#as-filtered-stores-navbar li:first .as-filtered-stores-letter`).addClass(`active-filtered-stores-letter`);
                     //letters dropdown
-                    $("#as-filtered-stores-letters-dropdown .dropdown-menu li").removeClass("active");
-                    $("#as-filtered-stores-letters-dropdown .dropdown-menu li:first").addClass("active");
-                    $("#as-filtered-stores-letters-dropdown .select span").text("ALL");
+                    $(`#as-filtered-stores-letters-dropdown .dropdown-menu li`).removeClass(`active`);
+                    $(`#as-filtered-stores-letters-dropdown .dropdown-menu li:first`).addClass(`active`);
+                    $(`#as-filtered-stores-letters-dropdown .select span`).text(`ALL`);
                     if(data.status == 1){
                         $.each(data.filtered_letters, function (index, filtered_letter) {
-                            var html = "<li class='as-filtered-stores-navbar-item'><span class='as-filtered-stores-letter'>"+index+"</span></li>";
-                            $("#as-filtered-stores-navbar").append(html);
-                            $("#as-filtered-stores-letters-dropdown .dropdown-menu").append("<li>"+index+"</li>");
+                            var html = `<li class="as-filtered-stores-navbar-item"><span class="as-filtered-stores-letter">`+index+`</span></li>`;
+                            $(`#as-filtered-stores-navbar`).append(html);
+                            $(`#as-filtered-stores-letters-dropdown .dropdown-menu`).append(`<li>`+index+`</li>`);
                         });
                         $.each(data.allstores, function (index, store) {
-                            var html = "<li>"+
-                                "<a class='as-filtered-stores-list-item' href='/store/"+store.secondary_url+"' title='"+store.title+" Coupons'>"+
-                                    "<div class='store-info'>"+
-                                        "<img class='store-logo' src='"+data.panel_assets_url+store.logo_url+"'>"+
-                                        "<span class='store-title'>"+store.title+"</span>"+
-                                    "</div>";
+                            var html = `<li>`+
+                                `<a class="as-filtered-stores-list-item" href="/store/`+store.secondary_url+`" title="`+store.title+` Coupons">`+
+                                    `<div class="store-info">`+
+                                        `<img class="store-logo" src="`+data.panel_assets_url+store.logo_url+`">`+
+                                        `<span class="store-title">`+store.title+`</span>`+
+                                    `</div>`;
                                     if(store.offer.length > 1){
-                                        html = html + "<span class='coupons-count'>"+store.offer.length+" Coupons Available</span>";
+                                        html = html + `<span class="coupons-count">`+store.offer.length+` Coupons Available</span>`;
                                     }
                                     else if(store.offer.length == 1){
-                                        html = html + "<span class='coupons-count'>"+store.offer.length+" Coupon Available</span>";
+                                        html = html + `<span class="coupons-count">`+store.offer.length+` Coupon Available</span>`;
                                     }
                                     else{
-                                        html = html + "<span class='coupons-count'>No Coupons Available</span>";                                
+                                        html = html + `<span class="coupons-count">No Coupons Available</span>`;                                
                                     }
-                                "</a>"+
-                            "</li>";
-                            $("#as-filtered-stores-list").append(html);
+                                `</a>`+
+                            `</li>`;
+                            $(`#as-filtered-stores-list`).append(html);
                         });
                     }
                     else{
                         $.each(data.filtered_letters, function (index, filtered_letter) {
-                            var html = "<li class='as-filtered-stores-navbar-item'><span class='as-filtered-stores-letter'>"+index+"</span></li>";
-                            $("#as-filtered-stores-navbar").append(html);
-                            $("#as-filtered-stores-letters-dropdown .dropdown-menu").append("<li>"+index+"</li>");
+                            var html = `<li class="as-filtered-stores-navbar-item"><span class="as-filtered-stores-letter">`+index+`</span></li>`;
+                            $(`#as-filtered-stores-navbar`).append(html);
+                            $(`#as-filtered-stores-letters-dropdown .dropdown-menu`).append(`<li>`+index+`</li>`);
                         });
                         $.each(data.storecategories, function (index, storecategory) {
-                            var html = "<li>"+
-                                "<a class='as-filtered-stores-list-item' href='/store/"+storecategory.store.secondary_url+"' title='"+storecategory.store.title+" Coupons'>"+
-                                    "<div class='store-info'>"+
-                                        "<img class='store-logo' src='"+data.panel_assets_url+storecategory.store.logo_url+"'>"+
-                                        "<span class='store-title'>"+storecategory.store.title+"</span>"+
-                                    "</div>";
+                            var html = `<li>`+
+                                `<a class="as-filtered-stores-list-item" href="/store/`+storecategory.store.secondary_url+`" title="`+storecategory.store.title+` Coupons">`+
+                                    `<div class="store-info">`+
+                                        `<img class="store-logo" src="`+data.panel_assets_url+storecategory.store.logo_url+`">`+
+                                        `<span class="store-title">`+storecategory.store.title+`</span>`+
+                                    `</div>`;
                                     if(storecategory.store.offer.length > 1){
-                                        html = html + "<span class='coupons-count'>"+storecategory.store.offer.length+" Coupons Available</span>";
+                                        html = html + `<span class="coupons-count">`+storecategory.store.offer.length+` Coupons Available</span>`;
                                     }
                                     else if(storecategory.store.offer.length == 1){
-                                        html = html + "<span class='coupons-count'>"+storecategory.store.offer.length+" Coupon Available</span>";
+                                        html = html + `<span class="coupons-count">`+storecategory.store.offer.length+` Coupon Available</span>`;
                                     }
                                     else{
-                                        html = html + "<span class='coupons-count'>No Coupons Available</span>";                                
+                                        html = html + `<span class="coupons-count">No Coupons Available</span>`;                                
                                     }
-                                "</a>"+
-                            "</li>";
-                            $("#as-filtered-stores-list").append(html);
+                                `</a>`+
+                            `</li>`;
+                            $(`#as-filtered-stores-list`).append(html);
                         });
                     }
                 }

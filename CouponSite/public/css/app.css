@@ -12974,7 +12974,7 @@ ul {
           justify-content: space-between;
   border: 1px solid #f1f1f1;
   margin-top: -1px;
-  padding: 10px 15px;
+  padding: 12px;
   text-decoration: none !important;
   color: #555 !important;
   font-size: 15px;
@@ -12984,6 +12984,14 @@ ul {
 
 .all-categories-list-item:hover {
   background-color: #f1f1f1;
+}
+
+.all-categories-list-item .coupons-count {
+  color: #fff;
+  background-color: #044D6E;
+  border: 1px solid #044D6E;
+  border-radius: 8px;
+  padding: 4px 8px;
 }
 
 @media only screen and (max-width: 1165px) {

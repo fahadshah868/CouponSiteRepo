@@ -36,12 +36,12 @@
                     <a class="all-categories-list-item" href="/coupons/{{$category->title}}" title="{{$category->title}} Coupons">
                         <span>{{$category->title}}</span>
                         @if(count($category->offer) == 1)
-                        <span>{{count($category->offer)}} Coupon Available</span>
+                        <span class="coupons-count">{{count($category->offer)}} Coupon Available</span>
                         @elseif(count($category->offer) > 1)
-                        <span>{{count($category->offer)}} Coupons Available</span>
+                        <span class="coupons-count">{{count($category->offer)}} Coupons Available</span>
                         @else
-                        <span>No Coupons Available</span>
-                        @endif                        
+                        <span class="coupons-count">No Coupons Available</span>
+                        @endif
                     </a>
                 </li>
                 @endforeach
