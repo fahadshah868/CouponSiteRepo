@@ -10,13 +10,13 @@ class Store extends Model
     protected $primaryKey = "id";
 
     //hasmany
-    public function offer(){
+    public function offers(){
         return $this->hasMany('App\Offer');
     }
-    public function storecategory(){
+    public function storecategories(){
         return $this->hasMany('App\StoreCategory');
     }
-    // public function carouseloffer(){
+    // public function carouseloffers(){
     //     return $this->hasMany('App\CarouselOffer');
     // }
 }

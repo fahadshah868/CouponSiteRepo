@@ -78,10 +78,10 @@
                                 <img class="store-logo" src="{{$panel_assets_url.$store->logo_url}}">
                                 <span class="store-title">{{$store->title}}</span>
                             </div>
-                            @if(count($store->offer) > 1)
-                                <span class="coupons-count">{{count($store->offer)}} Coupons Available</span>
-                            @elseif(count($store->offer) == 1)
-                                <span class="coupons-count">{{count($store->offer)}} Coupon Available</span>
+                            @if(count($store->offers) > 1)
+                                <span class="coupons-count">{{count($store->offers)}} Coupons Available</span>
+                            @elseif(count($store->offers) == 1)
+                                <span class="coupons-count">{{count($store->offers)}} Coupon Available</span>
                             @else
                                 <span class="coupons-count">No Coupons Available</span>
                             @endif
@@ -226,11 +226,11 @@
                                         `<img class="store-logo" src="`+data.panel_assets_url+store.logo_url+`">`+
                                         `<span class="store-title">`+store.title+`</span>`+
                                     `</div>`;
-                                    if(store.offer.length > 1){
-                                        html = html + `<span class="coupons-count">`+store.offer.length+` Coupons Available</span>`;
+                                    if(store.offers.length > 1){
+                                        html = html + `<span class="coupons-count">`+store.offers.length+` Coupons Available</span>`;
                                     }
-                                    else if(store.offer.length == 1){
-                                        html = html + `<span class="coupons-count">`+store.offer.length+` Coupon Available</span>`;
+                                    else if(store.offers.length == 1){
+                                        html = html + `<span class="coupons-count">`+store.offers.length+` Coupon Available</span>`;
                                     }
                                     else{
                                         html = html + `<span class="coupons-count">No Coupons Available</span>`;                                
@@ -253,11 +253,11 @@
                                         `<img class="store-logo" src="`+data.panel_assets_url+storecategory.store.logo_url+`">`+
                                         `<span class="store-title">`+storecategory.store.title+`</span>`+
                                     `</div>`;
-                                    if(storecategory.store.offer.length > 1){
-                                        html = html + `<span class="coupons-count">`+storecategory.store.offer.length+` Coupons Available</span>`;
+                                    if(storecategory.store.offers.length > 1){
+                                        html = html + `<span class="coupons-count">`+storecategory.store.offers.length+` Coupons Available</span>`;
                                     }
-                                    else if(storecategory.store.offer.length == 1){
-                                        html = html + `<span class="coupons-count">`+storecategory.store.offer.length+` Coupon Available</span>`;
+                                    else if(storecategory.store.offers.length == 1){
+                                        html = html + `<span class="coupons-count">`+storecategory.store.offers.length+` Coupon Available</span>`;
                                     }
                                     else{
                                         html = html + `<span class="coupons-count">No Coupons Available</span>`;                                

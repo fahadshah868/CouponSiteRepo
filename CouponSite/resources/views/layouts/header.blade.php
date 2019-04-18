@@ -1,42 +1,42 @@
 
-<header class="site-header-main-container">
-    <div class="site-header-container">
-        <div class="site-header-wrapper">
-            <div class="site-header-logo">
+<header class="header-main-container">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-logo">
                 <a href="/" id="logo">WebSite</a>
             </div>
-            <div class="site-header-searchbar">
+            <div class="header-searchbar-container">
                 <form>
-                    <input type="text" id="searchbar" autocomplete="off" placeholder="Search on...." style="background-image: url(/images/searchicon.png)" />
-                    <div class="site-header-search-items-container" id="site-header-search-items-container">
-                        <div class="site-header-search-items" id="site-header-search-items">
-                            <div class="site-header-default-items-heading">Stores</div>
+                    <input type="text" id="header-searchbar" autocomplete="off" placeholder="Search on...." style="background-image: url(/images/searchicon.png)" />
+                    <div class="header-search-items-container" id="header-search-items-container">
+                        <div class="header-search-items" id="header-search-items">
+                            <!-- <div class="header-searchbar-heading">Stores</div>
                             <ul>
                                 <li><a href="#">Kohl's</a></li>
                                 <li><a href="#">Target</a></li>
                                 <li><a href="#">Amazon</a></li>
                             </ul>
                             <hr>
-                            <div class="site-header-default-items-heading">Categories</div>
+                            <div class="header-searchbar-heading">Categories</div>
                             <ul>
                                 <li><a href="#">Accessories</a></li>
                                 <li><a href="#">Baby</a></li>
                                 <li><a href="#">Jewelery</a></li>
                                 <li><a href="#">Clothing</a></li>
-                            </ul>
+                            </ul> -->
                         </div>
-                        <div class="site-header-default-items" id="site-header-default-items">
-                            <div class="site-header-default-items-heading">Browse Coupons At WebSite</div>
+                        <div class="header-searchbar-default-items" id="header-searchbar-default-items">
+                            <div class="header-searchbar-heading">Browse Coupons At WebSite</div>
                             <ul>
-                                <li><a href="#">Browse Coupons By Store</a></li>
-                                <li><a href="#">Browse Coupons By Category</a></li>
+                                <li><a href="/allstores">Browse Coupons By Store</a></li>
+                                <li><a href="/allcategories">Browse Coupons By Category</a></li>
                             </ul>
                         </div>                    
                     </div>
                 </form>
             </div>
-            <div class="site-header-hamburger-mega-menu-container">
-                <div class="site-header-hamburger-button-container">
+            <div class="header-hamburger-mega-menu-container">
+                <div class="header-hamburger-button-container">
                     <div class="menu-toggle" id="menu-toggle">
                         <div class="hamburger">
                             <span></span>
@@ -55,23 +55,23 @@
                         <li><a href="#">Browse Categories<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Browse Online Codes<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Browse Online Sales<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Browse Free Shipping Offers<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Browse Free Shipping Coupons<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Blog<i class="fa fa-angle-right"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <nav class="site-header-nav-container">
-            <ul class="site-header-nav-list">
-                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
-                    <span class="site-header-nav-list-item-text" id="site-header-nav-list-item-text">Top Stores<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
-                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+        <nav class="header-nav-container">
+            <ul class="header-nav-list">
+                <li class="header-nav-list-item" id="header-nav-list-item">
+                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Stores<i class="fa fa-angle-down header-list-arrow"></i></span>
+                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
+                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
                             <!-- loading overlay container -->
-                            <div class="site-header-mega-dropdown-loading-container" id="site-header-mega-dropdown-loading-container">
-                                <div class="site-header-mega-dropdown-top-items-loading"></div>
+                            <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
+                                <div class="header-mega-dropdown-top-items-loading"></div>
                                 @for($i=1; $i<= 5; $i++)
-                                <div class="site-header-mega-dropdown-popular-items-loading">
+                                <div class="header-mega-dropdown-popular-items-loading">
                                     <div class="text-line"></div>
                                     <div class="text-line"></div>
                                     <div class="text-line"></div>
@@ -82,20 +82,20 @@
                                 @endfor
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="site-header-nav-mega-dropdown-items-container" id="site-header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
-                    <span class="site-header-nav-list-item-text" id="site-header-nav-list-item-text">Top Categories<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
-                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                <li class="header-nav-list-item" id="header-nav-list-item">
+                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Categories<i class="fa fa-angle-down header-list-arrow"></i></span>
+                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
+                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
                             <!-- loading overlay container -->
-                            <div class="site-header-mega-dropdown-loading-container" id="site-header-mega-dropdown-loading-container">
-                                <div class="site-header-mega-dropdown-top-items-loading"></div>
+                            <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
+                                <div class="header-mega-dropdown-top-items-loading"></div>
                                 @for($i=1; $i<= 5; $i++)
-                                <div class="site-header-mega-dropdown-popular-items-loading">
+                                <div class="header-mega-dropdown-popular-items-loading">
                                     <div class="text-line"></div>
                                     <div class="text-line"></div>
                                     <div class="text-line"></div>
@@ -106,66 +106,66 @@
                                 @endfor
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="site-header-nav-mega-dropdown-items-container" id="site-header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
-                    <span class="site-header-nav-list-item-text" id="site-header-nav-list-item-text">Top Online Codes<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
-                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                <li class="header-nav-list-item" id="header-nav-list-item">
+                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Online Codes<i class="fa fa-angle-down header-list-arrow"></i></span>
+                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
+                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
                             <!-- loading overlay container -->
-                            <div class="site-header-mega-dropdown-loading-container" id="site-header-mega-dropdown-loading-container">
-                                <div class="site-header-mega-dropdown-top-offers-loading-container">
+                            <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
+                                <div class="header-mega-dropdown-top-offers-loading-container">
                                     @for($i=1; $i<= 8; $i++)
-                                    <div class="site-header-mega-dropdown-top-offers-loading"></div>
+                                    <div class="header-mega-dropdown-top-offers-loading"></div>
                                     @endfor
                                 </div>
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="site-header-nav-mega-dropdown-items-container" id="site-header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
-                    <span class="site-header-nav-list-item-text" id="site-header-nav-list-item-text">Top Online Sales<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
-                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                <li class="header-nav-list-item" id="header-nav-list-item">
+                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Online Sales<i class="fa fa-angle-down header-list-arrow"></i></span>
+                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
+                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
                             <!-- loading overlay container -->
-                            <div class="site-header-mega-dropdown-loading-container" id="site-header-mega-dropdown-loading-container">
-                                <div class="site-header-mega-dropdown-top-offers-loading-container">
+                            <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
+                                <div class="header-mega-dropdown-top-offers-loading-container">
                                     @for($i=1; $i<= 8; $i++)
-                                    <div class="site-header-mega-dropdown-top-offers-loading"></div>
+                                    <div class="header-mega-dropdown-top-offers-loading"></div>
                                     @endfor
                                 </div>
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="site-header-nav-mega-dropdown-items-container" id="site-header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="site-header-nav-list-item" id="site-header-nav-list-item">
-                    <span class="site-header-nav-list-item-text" id="site-header-nav-list-item-text">Top Free Shipping Offers<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="site-header-nav-mega-dropdown-overlay-container" class="site-header-nav-mega-dropdown-overlay-container">
-                        <div class="site-header-nav-mega-dropdown-body-container" id="site-header-nav-mega-dropdown-body-container">
+                <li class="header-nav-list-item" id="header-nav-list-item">
+                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Free Shipping Coupons<i class="fa fa-angle-down header-list-arrow"></i></span>
+                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
+                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
                              <!-- loading overlay container -->
-                             <div class="site-header-mega-dropdown-loading-container" id="site-header-mega-dropdown-loading-container">
-                                <div class="site-header-mega-dropdown-top-offers-loading-container">
+                             <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
+                                <div class="header-mega-dropdown-top-offers-loading-container">
                                     @for($i=1; $i<= 8; $i++)
-                                    <div class="site-header-mega-dropdown-top-offers-loading"></div>
+                                    <div class="header-mega-dropdown-top-offers-loading"></div>
                                     @endfor
                                 </div>
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="site-header-nav-mega-dropdown-items-container" id="site-header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
-                <li class="site-header-nav-list-item" id="site-header-nav-list-item"><a href="#" class="site-header-nav-list-item-text" id="site-header-nav-list-item-text">Blog</a></li>
+                <li class="header-nav-list-item" id="header-nav-list-item"><a href="#" class="header-nav-list-item-text" id="header-nav-list-item-text">Blog</a></li>
             </ul>
         </nav>
         <div>

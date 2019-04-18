@@ -16,6 +16,7 @@ Route::get('/loadmoreoffers/{rowscount}','HomeController@getLoadMoreOffers');
 
 // routes for ajaxcontroller
 Route::get('/getajaxrequest/{action}','AjaxController@getAjaxRequest');
+Route::get('/getsearchedresults/{title}','AjaxController@getSearchedResults');
 
 // routes for StoreController
 Route::get('/allstores','StoreController@getAllStoresList');

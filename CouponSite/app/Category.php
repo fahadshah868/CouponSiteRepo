@@ -10,10 +10,10 @@ class Category extends Model
     protected $primaryKey = "id";
 
     //has many
-    public function offer(){
+    public function offers(){
         return $this->hasMany('App\Offer');
     }
-    public function storecategory(){
+    public function storecategories(){
         return $this->hasMany('App\StoreCategory');
     }
 }

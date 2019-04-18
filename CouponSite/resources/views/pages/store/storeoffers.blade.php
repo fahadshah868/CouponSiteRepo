@@ -15,7 +15,7 @@
             </a>
         </div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
-        <div class="fo-sidebar-offers-availability">{{count($store->offer)}} Offers Available</div>
+        <div class="fo-sidebar-offers-availability">{{count($store->offers)}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         
         <div class="fo-sidebar-content-container">
@@ -58,7 +58,7 @@
         <div class="fo-detailbar-heading">{{$store->title}} Coupons & Promo Codes</div>
         <div class="fo-detailbar-offers-list-container">
             <ul>
-                @foreach($store->offer as $offer)
+                @foreach($store->offers as $offer)
                 <li class="fo-detailbar-offerbody-container {{$offer->category->title}}">
                     <div class="fo-detailbar-anchor">
                         @foreach(explode(' ', $offer->anchor) as $anchor) 

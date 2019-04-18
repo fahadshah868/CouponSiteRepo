@@ -70,6 +70,7 @@
                 </div>
             </div>
             @endfor
+            {{ $category->links() }}
         </div>
     </div>
 </div>
