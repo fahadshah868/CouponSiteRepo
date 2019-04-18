@@ -9,40 +9,33 @@
         <div class="fo-sidebar-offers-availability">950 Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         <div class="fo-sidebar-content-container">
-            <div class="fo-sidebar-content-heading">Filter By Offer Type</div>
-            <div class="fo-sidebar-content-body">
-                <label class="radio-container">All
-                    <input type="radio" name="offertype" checked>
-                    <span class="checkmark"></span>
-                </label>
-                @for($i=1; $i<=3; $i++)
-                <label class="radio-container">Online & Instore
-                    <input type="radio" name="offertype">
-                    <span class="checkmark"></span>
-                </label>
-                @endfor
+            <div class="fo-sidebar-content-heading">Top Stores</div>
+            <div class="fo-sidebar-list-container">
+                <ul>
+                    @for($i=1; $i<=100; $i++)
+                    <li>
+                        <a class="fo-sidebar-list-item" href="#" title="Target coupons">
+                            <span class="item-title">Target</span>
+                            <span class="coupons-count">40</span>
+                        </a>
+                    </li>
+                    @endfor
+                </ul>
             </div>
         </div>
         <div class="fo-sidebar-content-container">
-            <div class="fo-sidebar-content-heading">Filter By Stores</div>
-            <div class="fo-sidebar-content-body">
-                @for($i=1; $i<=10; $i++)
-                <label class="checkbox-container">Kohl's
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                @endfor
-            </div>
-        </div>
-        <div class="fo-sidebar-content-container">
-            <div class="fo-sidebar-content-heading">Filter By Categories</div>
-            <div class="fo-sidebar-content-body">
-                @for($i=1; $i<=10; $i++)
-                <label class="checkbox-container">Clothing
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                @endfor
+            <div class="fo-sidebar-content-heading">Top Categories</div>
+            <div class="fo-sidebar-list-container">
+                <ul>
+                    @for($i=1; $i<=100; $i++)
+                    <li>
+                        <a class="fo-sidebar-list-item" href="#" title="Target coupons">
+                            <span class="item-title">Clothing</span>
+                            <span class="coupons-count">213</span>
+                        </a>
+                    </li>
+                    @endfor
+                </ul>
             </div>
         </div>
         <div class="fo-sidebar-content-container">
@@ -57,11 +50,11 @@
         <div class="fo-detailbar-offers-list-container">
             @for($i=1; $i<= 10; $i++)
             <div class="fo-detailbar-offerbody-container">
-                <a href="#" class="fo-detailbar-offer-link">
-                    <div class="fo-detailbar-anchor">
-                        <span>40%</span>
-                        <span>OFF</span>
-                    </div>
+                <div class="fo-detailbar-anchor">
+                    <span>40%</span>
+                    <span>OFF</span>
+                </div>
+                <div class="fo-detailbar-action-container">
                     <div class="fo-detailbar-offer-container">
                         <div class="fo-detailbar-type-and-verified-container">
                             <div class="fo-detailbar-offertype-code">Code</div>
@@ -74,7 +67,7 @@
                     <div class="fo-detailbar-offer-button-container">
                         <span class="offer-button" id="offer-button">View Code</span>
                     </div>
-                </a>
+                </div>
             </div>
             @endfor
         </div>

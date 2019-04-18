@@ -65,34 +65,36 @@
                             <span>{{$anchor}}</span>
                         @endforeach
                     </div>
-                    <div class="fo-detailbar-offer-container">
-                        <div class="fo-detailbar-type-and-verified-container">
-                            <div class="fo-detailbar-offertype-code">{{$offer->location.' '.$offer->type}}</div>
-                            @if(strcasecmp($offer->is_verified,'yes') == 0)
-                            <div class="store-offer-verification-container"><i class="fa fa-check-circle"></i>Verfied</div>
+                    <div class="fo-detailbar-action-container">
+                        <div class="fo-detailbar-offer-container">
+                            <div class="fo-detailbar-type-and-verified-container">
+                                <div class="fo-detailbar-offertype-code">{{$offer->location.' '.$offer->type}}</div>
+                                @if(strcasecmp($offer->is_verified,'yes') == 0)
+                                <div class="store-offer-verification-container"><i class="fa fa-check-circle"></i>Verfied</div>
+                                @endif
+                            </div>
+                            <div class="fo-detailbar-offertitle">{{$offer->title}}</div>
+                            <div class="fo-detailbar-offerdetails">{{$offer->details}}</div>
+                            <div class="fo-detailbar-offer-expires"><i class="fa fa-clock-o"></i>Expires: {{ Carbon\Carbon::parse($offer->expiry_date)->format('d/m/Y') }}</div>
+                        </div>
+                        <div class="fo-detailbar-offer-button-container">
+                            @if(strcasecmp($offer->location,'Online & In-Store') == 0)
+                            <span class="offer-button" id="offer-button">
+                                USE ONLINE
+                            </span>
+                            <span class="offer-button" id="offer-button">
+                                USE IN-STORE
+                            </span>
+                            @else
+                            <span class="offer-button" id="offer-button">
+                                @if(strcasecmp($offer->type,"code") == 0)
+                                    VIEW CODE
+                                @else
+                                    GET DEAL
+                                @endif
+                            </span>
                             @endif
                         </div>
-                        <div class="fo-detailbar-offertitle">{{$offer->title}}</div>
-                        <div class="fo-detailbar-offerdetails">{{$offer->details}}</div>
-                        <div class="fo-detailbar-offer-expires"><i class="fa fa-clock-o"></i>Expires: {{ Carbon\Carbon::parse($offer->expiry_date)->format('d/m/Y') }}</div>
-                    </div>
-                    <div class="fo-detailbar-offer-button-container">
-                        @if(strcasecmp($offer->location,'Online & In-Store') == 0)
-                        <span class="offer-button" id="offer-button">
-                            USE ONLINE
-                        </span>
-                        <span class="offer-button" id="offer-button">
-                            USE IN-STORE
-                        </span>
-                        @else
-                        <span class="offer-button" id="offer-button">
-                            @if(strcasecmp($offer->type,"code") == 0)
-                                VIEW CODE
-                            @else
-                                GET DEAL
-                            @endif
-                        </span>
-                        @endif
                     </div>
                 </li>
                 @endforeach

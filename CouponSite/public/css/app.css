@@ -12972,7 +12972,7 @@ ul {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #ddd;
   margin-top: -1px;
   padding: 12px;
   text-decoration: none !important;
@@ -13152,6 +13152,7 @@ ul {
   text-align: center;
   font-weight: 600;
   font-size: 22px;
+  margin-top: 10px;
 }
 
 .fo-detailbar {
@@ -13301,6 +13302,17 @@ ul {
   line-height: 1.2;
 }
 
+.fo-detailbar-action-container {
+  width: calc(100% - 100px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .fo-detailbar-offer-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13309,7 +13321,7 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: calc(100% - 300px);
+  width: calc(100% - 200px);
   padding: 0 20px;
 }
 
@@ -13358,6 +13370,7 @@ ul {
   outline: none;
   border-radius: 2px;
   color: #fff;
+  font-size: 16px;
   font-weight: 400;
   cursor: pointer;
   transition: 0.3s;
@@ -13556,6 +13569,18 @@ ul {
 }
 
 @media only screen and (max-width: 750px) {
+  .fo-detailbar-action-container {
+    width: calc(100% - 100px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0 0 0 20px;
+  }
+
   .fo-detailbar-offer-container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -13564,12 +13589,31 @@ ul {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    width: calc(100% - 110px);
-    margin: 0 0 0 10px;
+    width: 100%;
+    padding: 0;
+  }
+
+  .fo-detailbar-offerdetails {
+    display: none;
+  }
+
+  .fo-detailbar-offer-expires {
+    display: none;
   }
 
   .fo-detailbar-offer-button-container {
-    display: none;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 20px;
   }
 }
 
@@ -13580,6 +13624,21 @@ ul {
 }
 
 @media only screen and (max-width: 500px) {
+  .fo-detailbar-heading {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 15px 25px;
+    font-size: 22px;
+    font-weight: 500;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #fff;
+    background-color: #044D6E;
+    /* For browsers that do not support gradients */
+    background-image: -webkit-gradient(linear, left top, right top, from(#044D6E), color-stop(#044D6E), to(#1488CC));
+    background-image: linear-gradient(90deg, #044D6E, #044D6E, #1488CC);
+  }
+
   .fo-detailbar-anchor {
     width: 60px;
     display: -webkit-box;
@@ -13592,9 +13651,21 @@ ul {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 500;
     color: #DC002E;
+  }
+
+  .fo-detailbar-action-container {
+    width: calc(100% - 60px);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0 0 0 15px;
   }
 
   .fo-detailbar-offer-container {
@@ -13605,8 +13676,7 @@ ul {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    width: calc(100% - 70px);
-    margin: 0 0 0 10px;
+    width: 100%;
   }
 
   .fo-detailbar-offertitle {
@@ -13616,8 +13686,7 @@ ul {
   }
 
   .fo-detailbar-offerdetails {
-    font-size: 13px;
-    font-weight: 400;
+    display: none;
   }
 
   .fo-detailbar-offer-expires {
@@ -13635,19 +13704,6 @@ ul {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     font-size: 12px;
-    font-weight: 700;
-  }
-
-  .fo-detailbar-offertype-code {
-    color: #DC002E;
-  }
-
-  .fo-detailbar-offertype-instoreoffer {
-    color: #228B22;
-  }
-
-  .fo-detailbar-offertype-else {
-    color: #044D6E;
   }
 
   .store-offer-verification-container {
@@ -13659,6 +13715,38 @@ ul {
     margin-right: 3px;
     margin-left: 10px;
     font-weight: 1000;
+  }
+
+  .fo-detailbar-offer-button-container {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 15px;
+  }
+
+  .fo-detailbar-offer-button-container #offer-button {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    background-color: #044D6E;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    margin-bottom: 7px;
   }
 }
 

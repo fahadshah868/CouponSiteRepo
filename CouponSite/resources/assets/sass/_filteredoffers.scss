@@ -44,6 +44,7 @@
     text-align:center;
     font-weight: 600;
     font-size: 22px;
+    margin-top: 10px;
 }
 .fo-detailbar{
     width: 900px;
@@ -150,10 +151,15 @@
     color: #DC002E;
     line-height: 1.2;
 }
+.fo-detailbar-action-container{
+    width: calc(100% - 100px);
+    display: flex;
+    flex-direction: row;
+}
 .fo-detailbar-offer-container{
     display: flex;
     flex-direction: column;
-    width: calc(100% - 300px);
+    width: calc(100% - 200px);
     padding: 0 20px;
 }
 .fo-detailbar-offertitle{
@@ -189,6 +195,7 @@
     outline: none;
     border-radius: 2px;
     color: #fff;
+    font-size: 16px;
     font-weight: 400;
     cursor:pointer;
     transition: 0.3s;
@@ -337,14 +344,30 @@
     }
 }
 @media only screen and (max-width: 750px){
+    .fo-detailbar-action-container{
+        width: calc(100% - 100px);
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 0 20px;
+    }
     .fo-detailbar-offer-container{
         display: flex;
         flex-direction: column;
-        width: calc(100% - 110px);
-        margin: 0 0 0 10px;
+        width: 100%;
+        padding: 0;
+    }
+    .fo-detailbar-offerdetails{
+        display: none;
+    }
+    .fo-detailbar-offer-expires{
+        display: none;
     }
     .fo-detailbar-offer-button-container{
-        display: none;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 20px;
     }
 }
 @media only screen and (max-width: 600px){
@@ -353,20 +376,37 @@
     }
 }
 @media only screen and (max-width: 500px){
+    .fo-detailbar-heading{
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 15px 25px;
+        font-size: 22px;
+        font-weight: 500;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        color: #fff;
+        background-color: $theme-color; /* For browsers that do not support gradients */
+        background-image: linear-gradient(90deg, $theme-color, $theme-color, #1488CC);
+    }
     .fo-detailbar-anchor{
         width: 60px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 20px;
+        font-weight: 500;
         color: #DC002E;
+    }
+    .fo-detailbar-action-container{
+        width: calc(100% - 60px);
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 0 15px;
     }
     .fo-detailbar-offer-container{
         display: flex;
         flex-direction: column;
-        width: calc(100% - 70px);
-        margin: 0 0 0 10px;
+        width: 100%;
     }
     .fo-detailbar-offertitle{
         font-size: 15px;
@@ -374,8 +414,7 @@
         line-height: 1.2;
     }
     .fo-detailbar-offerdetails{
-        font-size: 13px;
-        font-weight: 400;
+        display: none;
     }
     .fo-detailbar-offer-expires{
         display: none;
@@ -385,16 +424,6 @@
         flex-direction: row;
         flex-wrap: wrap;
         font-size: 12px;
-        font-weight: 700;
-    }
-    .fo-detailbar-offertype-code{
-        color: $offer-type-code-color;
-    }
-    .fo-detailbar-offertype-instoreoffer{
-        color: $offer-type-instorecoupon-color;
-    }
-    .fo-detailbar-offertype-else{
-        color: $offer-type-else-color;
     }
     .store-offer-verification-container{
         color: $theme-color;
@@ -404,5 +433,28 @@
         margin-right: 3px;
         margin-left: 10px;
         font-weight: 1000;
+    }
+    .fo-detailbar-offer-button-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .fo-detailbar-offer-button-container #offer-button{
+        width: 100%;
+        padding: 5px;
+        text-align: center;
+        background-color: $theme-color;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        cursor:pointer;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        margin-bottom: 7px;
     }
 }
