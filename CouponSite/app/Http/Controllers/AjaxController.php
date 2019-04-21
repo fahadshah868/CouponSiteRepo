@@ -14,7 +14,7 @@ class AjaxController extends Controller
         //get top and popular stores
         if($action == 1){
             $data['topstores'] = Store::select('title','secondary_url','logo_url')->where('is_topstore','yes')->where('status',1)->limit(10)->get();
-            $data['popularstores'] = Store::select('id','title','secondary_url')->where('is_popularstore','yes')->where('is_topstore','no')->where('status',1)->limit(30)->with(['offers'=> function($q) {
+            $data['popularstores'] = Store::select('id','title','secondary_url')->where('is_popularstore','yes')->where('is_topstore','no')->where('status',1)->limit(30)->withCount(['offers'=> function($q) {
                 $q->select('store_id')->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->where('status',1);

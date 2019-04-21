@@ -79,9 +79,9 @@
                                 <span class="store-title">{{$store->title}}</span>
                             </div>
                             @if(count($store->offers) > 1)
-                                <span class="coupons-count">{{count($store->offers)}} Coupons Available</span>
+                                <span class="coupons-count">{{$store->offers_count}} Coupons Available</span>
                             @elseif(count($store->offers) == 1)
-                                <span class="coupons-count">{{count($store->offers)}} Coupon Available</span>
+                                <span class="coupons-count">{{$store->offers_count}} Coupon Available</span>
                             @else
                                 <span class="coupons-count">No Coupons Available</span>
                             @endif

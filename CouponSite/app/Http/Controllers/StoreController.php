@@ -15,12 +15,12 @@ class StoreController extends Controller
         $data['allstores'] = Store::select('id','title','logo_url','secondary_url')
         ->where('status',1)
         ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
-        ->with(['offers' => function($q){
-            $q->select('store_id')->where('status',1)
-            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+        ->withCount(['offers' => function($q){
+            $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
             ->orWhere('expiry_date', null);
         }])->get();
+        // dd($data['allstores']);
         $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
             if(is_numeric($letter)){

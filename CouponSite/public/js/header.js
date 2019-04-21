@@ -134,10 +134,10 @@ $(document).ready(function() {
                                                             `<span>`+popularstore.title+`</span>`+
                                                             `<span style="white-space: nowrap;">`
                                                                 if(popularstore.offers.length == 1){
-                                                                    html = html + popularstore.offers.length+` Coupon Available`
+                                                                    html = html + popularstore.offers_count+` Coupon Available`
                                                                 }
                                                                 else if(popularstore.offers.length > 1){
-                                                                    html = html + popularstore.offers.length+` Coupons Available`
+                                                                    html = html + popularstore.offers_count+` Coupons Available`
                                                                 }
                                                                 else{
                                                                     html = html + `No Coupons Available`

@@ -95,7 +95,7 @@
             complete: function(){
             },
             success:function(data){
-                console.log(data.current_page);
+                console.log(data.first_page_url);
                 $.each(data, function(index, offer){
                     console.log(index);
                 });
