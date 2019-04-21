@@ -47,7 +47,7 @@
     </div>
     <div class="fo-detailbar">
         <div class="fo-detailbar-heading">Clothing Coupons & Promo Codes</div>
-        <div class="fo-detailbar-offers-list-container">
+        <div class="fo-detailbar-offers-list-container" id="fo-detailbar-offers-list-container">
             @for($i=1; $i<= 10; $i++)
             <div class="fo-detailbar-offerbody-container">
                 <div class="fo-detailbar-anchor">
@@ -70,52 +70,39 @@
                 </div>
             </div>
             @endfor
-            {{ $category->links() }}
+            {{ $category->links('pagination::custom-pagination') }}
         </div>
     </div>
 </div>
 
 
 <script type="text/javascript">
-    $(window).on('hashchange', function() {
-        if (window.location.hash) {
-            var page = window.location.hash.replace('#', '');
-            if (page == Number.NaN || page <= 0) {
-                return false;
-            }else{
-                getData(page);
+    $('body').on('click', '.pagination span', function(e) {
+        e.preventDefault();
+        $('.pagination li').removeClass('active');
+        $(this).parent().addClass('active');
+        var url = $(this).attr('id');
+        getArticles(url);
+    });
+
+    function getArticles(url) {
+        $.ajax({
+            type:'GET',
+            url:url,
+            data: '',
+            beforeSend: function(){
+            },
+            complete: function(){
+            },
+            success:function(data){
+                console.log(data.current_page);
+                $.each(data, function(index, offer){
+                    console.log(index);
+                });
+            },
+            error: function(){
+
             }
-        }
-    });
-    
-    $(document).ready(function()
-    {
-        $(document).on('click', '.pagination a',function(event)
-        {
-            event.preventDefault();
-  
-            $('li').removeClass('active');
-            $(this).parent('li').addClass('active');
-  
-            var myurl = $(this).attr('href');
-            var page=$(this).attr('href').split('page=')[1];
-  
-            getData(page);
-        });
-  
-    });
-  
-    function getData(page){
-        $.ajax(
-        {
-            url: '?page=' + page,
-            type: "get",
-            datatype: "html"
-        }).done(function(data){
-            $("#tag_container").empty().html(data);
-            location.hash = page;
-        }).fail(function(jqXHR, ajaxOptions, thrownError){
-              alert('No response from server');
         });
     }
 </script>

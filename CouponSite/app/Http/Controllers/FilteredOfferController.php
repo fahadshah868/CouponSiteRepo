@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Store;
+use App\Offer;
 
 class FilteredOfferController extends Controller
 {
-    public function getFilteredOffers($filter){
+    public function getFilteredOffers(Request $request, $filter){
         if(strcasecmp($filter,'onlinecodes') == 0){
             dd('1');
             return view('pages.filteredoffer.filteredoffers');
@@ -22,22 +23,28 @@ class FilteredOfferController extends Controller
             return view('pages.filteredoffer.filteredoffers');
         }
         else{
-            $data['category'] = Category::select('id','title')->where('title',$filter)->where('status',1)->first()
-            ->offers()->select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
-            ->with(['store' => function($sq){
-                $sq->select('id','logo_url');
-            }])
-            ->whereHas('store', function($sq){
-                $sq->where('status',1);
-            })
-            ->where('status',1)
-            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-            ->orWhere('expiry_date', null)
-            ->orderBy('is_popular','ASC')
-            ->orderBy('anchor','DESC')
-            ->paginate(1);
-            return view('pages.filteredoffer.filteredoffers',$data);
+            if($request->ajax()){
+                $data['offers'] = Offer::where('category_id',1)->paginate(2);
+                return response()->json($data['offers']);
+            }
+            else{
+                $data['category'] = Category::select('id','title')->where('title',$filter)->where('status',1)->first()
+                ->offers()->select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','logo_url');
+                }])
+                ->whereHas('store', function($sq){
+                    $sq->where('status',1);
+                })
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null)
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(1);
+                return view('pages.filteredoffer.filteredoffers',$data);
+            }
         }
     }
 }
