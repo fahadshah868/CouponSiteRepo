@@ -50,8 +50,9 @@ class AjaxController extends Controller
         }
     }
     public function getSearchedResults($title){
-        $response['stores'] = Store::select('title','secondary_url')->where('title', 'like', '%' . $title . '%')->where('status',1)->limit(4)->get();
+        $response['stores'] = Store::select('title','secondary_url','logo_url')->where('title', 'like', '%' . $title . '%')->where('status',1)->limit(4)->get();
         $response['categories'] = Category::select('title','url')->where('title', 'like', '%' . $title . '%')->where('status',1)->limit(4)->get();
+        $response['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return response()->json($response);
     }
 }

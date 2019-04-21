@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var dropdowndetailcontainerelements = $(`#header-explorebutton-mega-dropdown-detail-container`).children();
+    var currentRequest = null;
     $(`.hamburgerbutton-mega-menu-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
     $(`.header-nav-mega-dropdown-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
     $(window).resize(function() {
@@ -12,39 +12,48 @@ $(document).ready(function() {
     $(`#header-searchbar`).focus(function(){
         $("#header-search-items-container").css('display','block');
     });
-    $(`#header-searchbar`).bind('keyup input propertychange', function(){
+    $(`#header-searchbar`).bind('change input propertychange', function(){
         var title = $.trim($(`#header-searchbar`).val());
+        $(`#header-search-items`).html('');
         if(!title == ``){
             $(`#header-searchbar-default-items`).css(`display`,`none`);
-            $.ajax({
+            currentRequest = $.ajax({
                 type:`GET`,
                 url:`/getsearchedresults/`+title,
                 data: ``,
                 beforeSend: function(){
-                    //todo
+                    if(currentRequest != null) {
+                        currentRequest.abort();
+                        $("#header-search-loading").css('display','flex');
+                    }
                 },
                 complete: function(){
-                    //todo
+                    $("#header-search-loading").css('display','none');
                 },
                 success:function(data){
-                    $(`#header-search-items`).html('');
                     var html = "";
                     if(data.stores.length > 0){
                         html = `<div class="header-searchbar-heading">Stores</div>`+
                         `<ul>`;
                         $.each(data.stores, function (index, store) {
-                            html = html + `<li><a href="/store/`+store.secondary_url+`">`+store.title+`</a></li>`;
+                            html = html + `<li><a class="header-searched-item" href="/store/`+store.secondary_url+`">`+
+                            `<div class="header-searched-item-img"><img src="`+data.panel_assets_url+store.logo_url+`"></div>`+
+                            `<span>`+store.title+`</span>`+
+                            `</a></li>`;
                         });
                         html = html + `</ul>`;
                     }
                     if(data.stores.length > 0 && data.categories.length > 0){
                         html = html + `<hr>`;
                     }
+                    else if(data.stores.length == 0 && data.categories.length == 0){
+                        html = html + "<div style='display: flex; flex-wrap: wrap; justify-content: center; font-size: 16px; font-weight: 500;'>No Result Found</div>";
+                    }
                     if(data.categories.length > 0){
                         html = html + `<div class="header-searchbar-heading">Categories</div>`+
                         `<ul>`;
                         $.each(data.categories, function (index, category) {
-                            html = html + `<li><a href="/coupons/`+category.url+`">`+category.title+`</a></li>`;
+                            html = html + `<li><a class="header-searched-item" href="/coupons/`+category.url+`">`+category.title+`</a></li>`;
                         });
                         html = html + "</ul>";
                     }
@@ -54,6 +63,8 @@ $(document).ready(function() {
             });
         }
         else{
+            currentRequest.abort();
+            $("#header-search-loading").css('display','none');
             $(`#header-searchbar-default-items`).css(`display`,`block`);
             $(`#header-search-items`).css(`display`,`none`);
         }

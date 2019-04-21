@@ -22,24 +22,6 @@ class FilteredOfferController extends Controller
             return view('pages.filteredoffer.filteredoffers');
         }
         else{
-            // $data['category'] = Category::select('id','title')->where('title',$filter)->where('status',1)->with(['offers' => function($q){
-            //     $q->select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
-            //     ->with(['store' => function($sq){
-            //         $sq->select('id','logo_url');
-            //     }])
-            //     ->whereHas('store', function($sq){
-            //         $sq->where('status',1);
-            //     })
-            //     ->where('status',1)
-            //     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            //     ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-            //     ->orWhere('expiry_date', null)
-            //     ->orderBy('is_popular','ASC')
-            //     ->orderBy('anchor','DESC');
-            // }])->first()->offers()->simplePaginate(1);
-
-
-
             $data['category'] = Category::select('id','title')->where('title',$filter)->where('status',1)->first()
             ->offers()->select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
@@ -54,7 +36,7 @@ class FilteredOfferController extends Controller
             ->orWhere('expiry_date', null)
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC')
-            ->simplePaginate(1);
+            ->paginate(1);
             return view('pages.filteredoffer.filteredoffers',$data);
         }
     }

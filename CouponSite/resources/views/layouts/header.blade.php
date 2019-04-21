@@ -9,21 +9,11 @@
                 <form>
                     <input type="text" id="header-searchbar" autocomplete="off" placeholder="Search on...." style="background-image: url(/images/searchicon.png)" />
                     <div class="header-search-items-container" id="header-search-items-container">
+                        <div class="header-search-loading" id="header-search-loading">
+                            <img src="{{asset('images/header-loading.gif')}}">
+                        </div>
                         <div class="header-search-items" id="header-search-items">
-                            <!-- <div class="header-searchbar-heading">Stores</div>
-                            <ul>
-                                <li><a href="#">Kohl's</a></li>
-                                <li><a href="#">Target</a></li>
-                                <li><a href="#">Amazon</a></li>
-                            </ul>
-                            <hr>
-                            <div class="header-searchbar-heading">Categories</div>
-                            <ul>
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Baby</a></li>
-                                <li><a href="#">Jewelery</a></li>
-                                <li><a href="#">Clothing</a></li>
-                            </ul> -->
+                            {{-- searched items will display here --}}
                         </div>
                         <div class="header-searchbar-default-items" id="header-searchbar-default-items">
                             <div class="header-searchbar-heading">Browse Coupons At WebSite</div>
