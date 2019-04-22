@@ -12,7 +12,7 @@ $(document).ready(function() {
     $(`#header-searchbar`).focus(function(){
         $("#header-search-items-container").css('display','block');
     });
-    $(`#header-searchbar`).bind('change input propertychange', function(){
+    $(`#header-searchbar`).on(`input`,function(){
         var title = $.trim($(`#header-searchbar`).val());
         $(`#header-search-items`).html('');
         if(!title == ``){
@@ -133,10 +133,10 @@ $(document).ready(function() {
                                                         `<div style="display: flex; flex-direction: row; justify-content: space-between;">`+
                                                             `<span>`+popularstore.title+`</span>`+
                                                             `<span style="white-space: nowrap;">`
-                                                                if(popularstore.offers.length == 1){
+                                                                if(popularstore.offers_count == 1){
                                                                     html = html + popularstore.offers_count+` Coupon Available`
                                                                 }
-                                                                else if(popularstore.offers.length > 1){
+                                                                else if(popularstore.offers_count > 1){
                                                                     html = html + popularstore.offers_count+` Coupons Available`
                                                                 }
                                                                 else{
@@ -206,11 +206,11 @@ $(document).ready(function() {
                                                         `<div style="display: flex; flex-direction: row; justify-content: space-between;">`+
                                                             `<span>`+popularcategory.title+`</span>`+
                                                             `<span style="white-space: nowrap;">`
-                                                            if(popularcategory.offers.length == 1){
-                                                                html = html + popularcategory.offers.length+` Coupon Available`
+                                                            if(popularcategory.offers_count == 1){
+                                                                html = html + popularcategory.offers_count+` Coupon Available`
                                                             }
-                                                            else if(popularcategory.offers.length > 1){
-                                                                html = html + popularcategory.offers.length+` Coupons Available`
+                                                            else if(popularcategory.offers_count > 1){
+                                                                html = html + popularcategory.offers_count+` Coupons Available`
                                                             }
                                                             else{
                                                                 html = html + `No Coupons Available`

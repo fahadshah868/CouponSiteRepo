@@ -47,62 +47,26 @@
     </div>
     <div class="fo-detailbar">
         <div class="fo-detailbar-heading">Clothing Coupons & Promo Codes</div>
-        <div class="fo-detailbar-offers-list-container" id="fo-detailbar-offers-list-container">
-            @for($i=1; $i<= 10; $i++)
-            <div class="fo-detailbar-offerbody-container">
-                <div class="fo-detailbar-anchor">
-                    <span>40%</span>
-                    <span>OFF</span>
-                </div>
-                <div class="fo-detailbar-action-container">
-                    <div class="fo-detailbar-offer-container">
-                        <div class="fo-detailbar-type-and-verified-container">
-                            <div class="fo-detailbar-offertype-code">Code</div>
-                            <div class="store-offer-verification-container"><i class="fa fa-check-circle"></i>Verfied</div>
-                        </div>
-                        <div class="fo-detailbar-offertitle">40% off total purchase with discount</div>
-                        <div class="fo-detailbar-offerdetails">40% off total purchase with discount</div>
-                        <div class="fo-detailbar-offer-expires"><i class="fa fa-clock-o"></i>Expires: 30/10/18</div>
-                    </div>
-                    <div class="fo-detailbar-offer-button-container">
-                        <span class="offer-button" id="offer-button">View Code</span>
-                    </div>
-                </div>
-            </div>
-            @endfor
-            {{ $category->links('pagination::custom-pagination') }}
-        </div>
+        <section id="filtered-offers">
+        @include('partialviews.filteredoffers')
+        </section>
     </div>
 </div>
 
 
 <script type="text/javascript">
-    $('body').on('click', '.pagination span', function(e) {
+    $('body').on('click', '.pagination a', function(e) {
         e.preventDefault();
-        $('.pagination li').removeClass('active');
-        $(this).parent().addClass('active');
-        var url = $(this).attr('id');
+        var url = $(this).attr('href');  
         getArticles(url);
     });
-
     function getArticles(url) {
         $.ajax({
-            type:'GET',
-            url:url,
-            data: '',
-            beforeSend: function(){
-            },
-            complete: function(){
-            },
-            success:function(data){
-                console.log(data.first_page_url);
-                $.each(data, function(index, offer){
-                    console.log(index);
-                });
-            },
-            error: function(){
-
-            }
+            url : url
+        }).done(function (data) {
+            $('#filtered-offers').html(data);  
+        }).fail(function () {
+            alert('Articles could not be loaded.');
         });
     }
 </script>

@@ -41,8 +41,8 @@ class StoreController extends Controller
             $response['allstores'] = Store::select('id','title','logo_url','secondary_url')
             ->where('status',1)
             ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
-            ->with(['offers'=> function($q){
-                $q->select('store_id')->where('status',1)
+            ->withCount(['offers'=> function($q){
+                $q->where('status',1)
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->orWhere('expiry_date', null);
@@ -61,14 +61,17 @@ class StoreController extends Controller
             return response()->json($response);
         }
         else{
-            $response['storecategories'] = StoreCategory::select('store_id')->where('category_id',$category)->with(['store','store.offer' => function($q) use($category){
-                $q->select('store_id')->where('status',1)->where('category_id',$category)
-                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null);
+            $response['storecategories'] = StoreCategory::select('store_id')->where('category_id',$category)->with(['store' => function($q) use($category){
+                $q->select('id','title','logo_url','secondary_url')
+                ->withCount(['offers' => function($oq) use($category){
+                    $oq->where('status',1)->where('category_id',$category)
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                }]);
             }])
             ->whereHas('store',function($q){
-                $q->select('id','title','secondary_url')->where('status',1);
+                $q->select('id')->where('status',1);
             })->get();
             $response['filtered_letters'] = $response['storecategories']->groupBy(function ($item, $key) {
                 $letter = substr(strtoupper($item->store->title), 0, 1);

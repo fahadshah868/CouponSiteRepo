@@ -226,11 +226,11 @@
                                         `<img class="store-logo" src="`+data.panel_assets_url+store.logo_url+`">`+
                                         `<span class="store-title">`+store.title+`</span>`+
                                     `</div>`;
-                                    if(store.offers.length > 1){
-                                        html = html + `<span class="coupons-count">`+store.offers.length+` Coupons Available</span>`;
+                                    if(store.offers_count > 1){
+                                        html = html + `<span class="coupons-count">`+store.offers_count+` Coupons Available</span>`;
                                     }
-                                    else if(store.offers.length == 1){
-                                        html = html + `<span class="coupons-count">`+store.offers.length+` Coupon Available</span>`;
+                                    else if(store.offers_count == 1){
+                                        html = html + `<span class="coupons-count">`+store.offers_count+` Coupon Available</span>`;
                                     }
                                     else{
                                         html = html + `<span class="coupons-count">No Coupons Available</span>`;                                
@@ -253,11 +253,11 @@
                                         `<img class="store-logo" src="`+data.panel_assets_url+storecategory.store.logo_url+`">`+
                                         `<span class="store-title">`+storecategory.store.title+`</span>`+
                                     `</div>`;
-                                    if(storecategory.store.offers.length > 1){
-                                        html = html + `<span class="coupons-count">`+storecategory.store.offers.length+` Coupons Available</span>`;
+                                    if(storecategory.store.offers_count > 1){
+                                        html = html + `<span class="coupons-count">`+storecategory.store.offers_count+` Coupons Available</span>`;
                                     }
-                                    else if(storecategory.store.offers.length == 1){
-                                        html = html + `<span class="coupons-count">`+storecategory.store.offers.length+` Coupon Available</span>`;
+                                    else if(storecategory.store.offers_count == 1){
+                                        html = html + `<span class="coupons-count">`+storecategory.store.offers_count+` Coupon Available</span>`;
                                     }
                                     else{
                                         html = html + `<span class="coupons-count">No Coupons Available</span>`;                                

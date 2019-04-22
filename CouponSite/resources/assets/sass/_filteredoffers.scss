@@ -151,6 +151,14 @@
     color: #DC002E;
     line-height: 1.2;
 }
+.fo-detailbar-logo{
+    width: 100px;
+    height: 100px;
+}
+.fo-detailbar-logo img{
+    width: 100%;
+    height: 100%;
+}
 .fo-detailbar-action-container{
     width: calc(100% - 100px);
     display: flex;
@@ -160,7 +168,7 @@
     display: flex;
     flex-direction: column;
     width: calc(100% - 200px);
-    padding: 0 20px;
+    padding: 0 30px;
 }
 .fo-detailbar-offertitle{
     font-size: 18px;
@@ -321,6 +329,16 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+.pagination{
+    margin-top: 30px;
+}
+.pagination a{
+    color: $theme-color;
+}
+.pagination .page-item.active .page-link{
+    background-color: $theme-color !important;
+    border: 1px solid $theme-color;
+}
 @media only screen and (max-width: 1165px){
     .fo-main-container{
         display: flex;
@@ -396,6 +414,10 @@
         font-size: 20px;
         font-weight: 500;
         color: #DC002E;
+    }
+    .fo-detailbar-logo{
+        width: 80px;
+        height: 80px;
     }
     .fo-detailbar-action-container{
         width: calc(100% - 60px);
