@@ -6,7 +6,7 @@
 
 <div class="fo-main-container">
     <div class="fo-sidebar">
-        <div class="fo-sidebar-offers-availability">950 Offers Available</div>
+        <div class="fo-sidebar-offers-availability">{{$filteredoffers->total()}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         <div class="fo-sidebar-content-container">
             <div class="fo-sidebar-content-heading">Top Stores</div>
@@ -39,14 +39,14 @@
             </div>
         </div>
         <div class="fo-sidebar-content-container">
-            <div class="fo-sidebar-content-heading">Clothing</div>
+            <div class="fo-sidebar-content-heading">{{$category->title}}</div>
             <div class="fo-sidebar-content-body">
-                <span class="fo-store-details">Kohl's Department Stores, Inc. operates department stores in the United States. The company offers apparel, footwear, accessories, and home products to middle-income customers.</span>
+                <span class="fo-store-details">{!!$category->description!!}</span>
             </div>
         </div>
     </div>
     <div class="fo-detailbar">
-        <div class="fo-detailbar-heading">Clothing Coupons & Promo Codes</div>
+        <div class="fo-detailbar-heading">{{$category->title}} Coupons & Promo Codes</div>
         <section id="filtered-offers">
         @include('partialviews.filteredoffers')
         </section>
