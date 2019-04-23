@@ -78,9 +78,9 @@
                                 <img class="store-logo" src="{{$panel_assets_url.$store->logo_url}}">
                                 <span class="store-title">{{$store->title}}</span>
                             </div>
-                            @if(count($store->offers) > 1)
+                            @if($store->offers_count > 1)
                                 <span class="coupons-count">{{$store->offers_count}} Coupons Available</span>
-                            @elseif(count($store->offers) == 1)
+                            @elseif($store->offers_count == 1)
                                 <span class="coupons-count">{{$store->offers_count}} Coupon Available</span>
                             @else
                                 <span class="coupons-count">No Coupons Available</span>

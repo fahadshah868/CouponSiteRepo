@@ -7,7 +7,7 @@
 <div class="fo-main-container">
     <div class="fo-sidebar">
         <div class="fo-sidebar-storelogo-container">
-            <a class="fo-sidebar-store-link" href="#">
+            <a class="fo-sidebar-store-link" href="{{$store->network_url}}" target="_blank">
                 <div class="fo-sidebar-storelogo">
                     <img src="{{$panel_assets_url.$store->logo_url}}" style="width: 100%; height: 100%;"/>
                 </div>
@@ -24,26 +24,26 @@
                 <span class="reset-category-filters">Reset</span>
             </div>
             <div class="fo-sidebar-content-body">
-                @foreach($storecategories as $storecategory => $val)
-                <label class="checkbox-container">{{$storecategory}}
-                    <input type="checkbox" class="{{$storecategory}}">
+                @foreach($categories as $category)
+                <label class="checkbox-container">{{$category{0}->category->title}}
+                    <input type="checkbox" class="{{$category{0}->category->title}}">
                     <span class="checkmark"></span>
                 </label>
                 @endforeach
             </div>
         </div>
         <div class="fo-sidebar-content-container">
-            <div class="fo-sidebar-content-heading">You May Also Like</div>
+            <div class="fo-sidebar-content-heading">Top Stores</div>
             <div class="fo-sidebar-list-container">
                 <ul>
-                    @for($i=1; $i<=100; $i++)
+                    @foreach($alltopstores as $topstore)
                     <li>
-                        <a class="fo-sidebar-list-item" href="#" title="Target coupons">
-                            <span class="item-title">Target</span>
-                            <span class="coupons-count">40</span>
+                        <a class="fo-sidebar-list-item" href="/store/{{$topstore->secondary_url}}" title="Target coupons">
+                            <span class="item-title">{{$topstore->title}}</span>
+                            <span class="coupons-count">{{$topstore->offers_count}}</span>
                         </a>
                     </li>
-                    @endfor
+                    @endforeach
                 </ul>
             </div>
         </div>

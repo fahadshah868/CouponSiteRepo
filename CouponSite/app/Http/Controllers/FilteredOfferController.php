@@ -28,7 +28,7 @@ class FilteredOfferController extends Controller
             $data['filteredoffers'] = $data['category']->offers()
                 ->select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
                 ->with(['store' => function($sq){
-                    $sq->select('id','logo_url');
+                    $sq->select('id','title','logo_url');
                 }])
                 ->whereHas('store', function($sq){
                     $sq->where('status',1);
@@ -46,19 +46,21 @@ class FilteredOfferController extends Controller
                 return view('partialviews.filteredoffers',$data);
             }
             else{
-                $data['stores'] = StoreCategory::select('store_id')->where('category_id',$data['category']->id)
-                ->groupBy('store_id')
-                ->with(['store' => function($q){
-                    $q->select('id','title')
-                    ->withCount(['offers' => function($oq){
-                        $oq->where('status',1)
-                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                        ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                        ->orWhere('expiry_date', null);
-                    }]);
-                }]);
-                return view('pages.filteredoffer.filteredoffers',$data);
+                $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
+                    return $item->store->id;
+                });
+                $data['alltopcategories'] = Category::select('id','title','url')->where('is_topcategory',1)->orWhere('is_popularcategory',1)->where('status',1)
+                ->withCount(['offers' => function($q){
+                    $q->where('status',1)
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                }])->get();
+                return view('pages.category.categoryoffers',$data);
             }
         }
+    }
+    public function getMoreFilteredOffers(){
+        
     }
 }

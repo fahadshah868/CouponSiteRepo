@@ -30,7 +30,10 @@ class StoreController extends Controller
                 return $letter;
             }
         })->toArray();
-        $data['allcategories'] = StoreCategory::select('category_id')->groupBy('category_id')->with('category')->whereHas('category' , function($q){
+        $data['allcategories'] = StoreCategory::select('category_id')->groupBy('category_id')
+        ->with(['category' => function($q){
+            $q->select('id','title');
+        }])->whereHas('category' , function($q){
             $q->select('title')->where('status',1);
         })->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
@@ -103,9 +106,16 @@ class StoreController extends Controller
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC');
         }])->first();
-        $data['storecategories'] = $data['store']->offers->groupBy(function ($item, $key) {
-            return $item->category->title;
+        $data['categories'] = $data['store']->offers->groupBy(function ($item, $key) {
+            return $item->category->id;
         });
+        $data['alltopstores'] = Store::select('id','title','secondary_url')->where('is_topstore',1)->orWhere('is_popularstore',1)->where('status',1)
+        ->withCount(['offers' => function($q){
+            $q->where('status',1)
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+            ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+            ->orWhere('expiry_date', null);
+        }])->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.store.storeoffers',$data);
     }

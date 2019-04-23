@@ -6,7 +6,7 @@
 
 <div class="fo-main-container">
     <div class="fo-sidebar">
-        <div class="fo-sidebar-offers-availability">{{$filteredoffers->total()}} Offers Available</div>
+        <div class="fo-sidebar-offers-availability">{{$categoryoffers->total()}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         <div class="fo-sidebar-content-container">
             <div class="fo-sidebar-content-heading">

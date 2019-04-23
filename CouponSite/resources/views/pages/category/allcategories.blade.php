@@ -15,7 +15,7 @@
         <div class="ac-top-categories-list-container">
             @foreach($topcategories as $topcategory)
             <div class="ac-top-category-container">
-                <a href="/coupons/{{$topcategory->title}}}" class="ac-top-category-link">
+                <a href="/coupons/{{$topcategory->url}}}" class="ac-top-category-link">
                     <div class="ac-top-category-logo">
                         <img src="{{$panel_assets_url}}{{$topcategory->logo_url}}"/>
                     </div>
@@ -33,12 +33,12 @@
             <ul class="ac-all-categories-list">
                 @foreach($allcategories as $category)
                 <li>
-                    <a class="all-categories-list-item" href="/coupons/{{$category->title}}" title="{{$category->title}} Coupons">
+                    <a class="all-categories-list-item" href="/coupons/{{$category->url}}" title="{{$category->title}} Coupons">
                         <span>{{$category->title}}</span>
-                        @if(count($category->offers) == 1)
-                        <span class="coupons-count">{{count($category->offers)}} Coupon Available</span>
-                        @elseif(count($category->offers) > 1)
-                        <span class="coupons-count">{{count($category->offers)}} Coupons Available</span>
+                        @if($category->offers_count == 1)
+                        <span class="coupons-count">{{$category->offers_count}} Coupon Available</span>
+                        @elseif($category->offers_count > 1)
+                        <span class="coupons-count">{{$category->offers_count}} Coupons Available</span>
                         @else
                         <span class="coupons-count">No Coupons Available</span>
                         @endif
