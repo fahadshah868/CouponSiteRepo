@@ -52,7 +52,7 @@
         <div class="as-filtered-stores-body-container">
             <span class="as-filtered-stores-heading">All Stores & Coupons</span>
             <div class="as-filtered-stores-container">
-                <div class="as-filtered-stores-letters-dropdown" id="as-filtered-stores-letters-dropdown">
+                <div class="letters-dropdown" id="letters-dropdown">
                     <div class="select">
                         <span>ALL</span>
                         <i class="fa fa-chevron-down"></i>
@@ -124,9 +124,9 @@
             $(this).addClass(`active-filtered-stores-letter`);
             var searched_character = $(this).text();
             // set dropdown selected option
-            $('#as-filtered-stores-letters-dropdown .select span').text($(this).text());
-            $('#as-filtered-stores-letters-dropdown .dropdown-menu li').removeClass('active');
-            $('#as-filtered-stores-letters-dropdown .dropdown-menu li').each(function(index, value){
+            $('#letters-dropdown .select span').text($(this).text());
+            $('#letters-dropdown .dropdown-menu li').removeClass('active');
+            $('#letters-dropdown .dropdown-menu li').each(function(index, value){
                 if( $(value).text().toUpperCase() == searched_character.toUpperCase()) {
                     $(this).addClass('active');
                 }
@@ -156,7 +156,7 @@
             }
         });
         //letters dropdown
-        $(`#as-filtered-stores-letters-dropdown`).on(`click`,`.dropdown-menu li`,function(){
+        $(`#letters-dropdown`).on(`click`,`.dropdown-menu li`,function(){
             var searched_character = $(this).text();
             $(`.as-filtered-stores-letter`).removeClass(`active-filtered-stores-letter`);
             $(`.as-filtered-stores-letter`).each(function(index, value){
@@ -206,18 +206,18 @@
                     $(`#as-filtered-stores-navbar li`).not(`#as-filtered-stores-navbar li:first`).remove();
                     $(`#as-filtered-stores-list li`).remove();
                     //letters navbar
-                    $(`#as-filtered-stores-letters-dropdown .dropdown-menu li`).not(`#as-filtered-stores-letters-dropdown .dropdown-menu li:first`).remove();
+                    $(`#letters-dropdown .dropdown-menu li`).not(`#letters-dropdown .dropdown-menu li:first`).remove();
                     $(`#as-filtered-stores-navbar li .as-filtered-stores-letter`).removeClass(`active-filtered-stores-letter`);
                     $(`#as-filtered-stores-navbar li:first .as-filtered-stores-letter`).addClass(`active-filtered-stores-letter`);
                     //letters dropdown
-                    $(`#as-filtered-stores-letters-dropdown .dropdown-menu li`).removeClass(`active`);
-                    $(`#as-filtered-stores-letters-dropdown .dropdown-menu li:first`).addClass(`active`);
-                    $(`#as-filtered-stores-letters-dropdown .select span`).text(`ALL`);
+                    $(`#letters-dropdown .dropdown-menu li`).removeClass(`active`);
+                    $(`#letters-dropdown .dropdown-menu li:first`).addClass(`active`);
+                    $(`#letters-dropdown .select span`).text(`ALL`);
                     if(data.status == 1){
                         $.each(data.filtered_letters, function (index, filtered_letter) {
                             var html = `<li class="as-filtered-stores-navbar-item"><span class="as-filtered-stores-letter">`+index+`</span></li>`;
                             $(`#as-filtered-stores-navbar`).append(html);
-                            $(`#as-filtered-stores-letters-dropdown .dropdown-menu`).append(`<li>`+index+`</li>`);
+                            $(`#letters-dropdown .dropdown-menu`).append(`<li>`+index+`</li>`);
                         });
                         $.each(data.allstores, function (index, store) {
                             var html = `<li>`+
@@ -244,7 +244,7 @@
                         $.each(data.filtered_letters, function (index, filtered_letter) {
                             var html = `<li class="as-filtered-stores-navbar-item"><span class="as-filtered-stores-letter">`+index+`</span></li>`;
                             $(`#as-filtered-stores-navbar`).append(html);
-                            $(`#as-filtered-stores-letters-dropdown .dropdown-menu`).append(`<li>`+index+`</li>`);
+                            $(`#letters-dropdown .dropdown-menu`).append(`<li>`+index+`</li>`);
                         });
                         $.each(data.storecategories, function (index, storecategory) {
                             var html = `<li>`+

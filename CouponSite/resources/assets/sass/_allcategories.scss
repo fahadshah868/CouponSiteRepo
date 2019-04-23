@@ -62,61 +62,77 @@
     font-size: 14px;
     font-weight: 500;
 }
-.ac-all-categories-container{
+.ac-main-container{
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    margin: 30px 0;
-    border: 1px solid $border-color-ongrey;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    box-shadow: 0 0 5px $boxshadow-color;
-}
-.ac-all-categories-list-heading{
-    width: 100%;
-    padding: 20px 35px;
-    font-size: 18px;
-    font-weight: 500;
-    background-color: $theme-color;
-    color: #fff;
-    border-bottom: 1px solid $theme-color;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-}
-.ac-all-categories-list-container{
-    width: 100%;
+    max-height: auto;
+    border: 1px solid #d1d1d1;
     background-color: #fff;
     padding: 30px;
 }
-.ac-all-categories-list{
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.ac-main-heading{
+    font-size: 22px;
+    font-weight: 700;
+}
+.ac-container{
+    width: 100%;
+    margin: 20px 0;
+}
+.ac-letters-navbar{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 20px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    background-color: #f1f1f1;
 }
-.ac-all-categories-list li{
-    width: calc(50% - 15px);
+.ac-letters-navbar .ac-letter-item{
+    padding: 20px 0 2px 0;
 }
-.ac-all-categories-list li:nth-child(odd){
-    margin-right: 30px;
+.ac-letter{
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0 3px 20px 3px;
+    text-decoration: none !important;
+    color: #555 !important;
+    cursor: pointer;
 }
-.all-categories-list-item{
+.ac-letter:hover{
+    color: $theme-color !important;
+    font-weight: 700;
+    border-bottom: 3px solid $theme-color;
+}
+.active-ac-letter{
+    color: $theme-color !important;
+    font-weight: 700;
+    border-bottom: 3px solid $theme-color;
+}
+.ac-list{
+    padding: 0;
+}
+.ac-list-item{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid #ddd;
     margin-top: -1px;
-    padding: 12px;
+    padding: 15px;
     text-decoration: none !important;
     color: #555 !important;
     font-size: 15px;
     transition: 0.2s;
     -webkit-transition: 0.2s;
 }
-.all-categories-list-item:hover{
+.ac-list-item:hover{
     background-color: #f1f1f1;
 }
-.all-categories-list-item .coupons-count{
+.ac-list-item .coupons-count{
     color: #fff;
     background-color: $theme-color;
     border: 1px solid $theme-color;
@@ -140,12 +156,6 @@
     }
     .ac-top-category-container:nth-child(5n){
         margin: 0 0 20px 0;
-    }
-    .ac-all-categories-list li{
-        width: 100%;
-    }
-    .ac-all-categories-list li:nth-child(n){
-        margin: 0;
     }
 }
 @media only screen and (max-width: 900px){
@@ -177,6 +187,15 @@
         width: 100px;
         height: 100px;
     }
+    .ac-letters-navbar{
+        display: none;
+    }
+    .ac-container .letters-dropdown{
+        display: block;
+    }
+    .ac-list-item{
+        font-size: 14px;
+    }
 }
 @media only screen and (max-width: 500px){
     .ac-top-category-container:nth-child(n){
@@ -193,6 +212,12 @@
     .ac-top-category-logo{
         width: 100px;
         height: 100px;
+    }
+    .ac-main-container{
+        padding: 15px;
+    }
+    .ac-list-item{
+        font-size: 12px;
     }
 }
 @media only screen and (max-width: 300px){
