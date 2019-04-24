@@ -17,7 +17,7 @@
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         <div class="fo-sb-offers-availability">{{count($store->offers)}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
-        
+        @if(count($categories) > 0)
         <div class="fo-sb-content-container">
             <div class="fo-sb-content-heading">
                 <span>Filter By Category</span>
@@ -32,6 +32,7 @@
                 @endforeach
             </div>
         </div>
+        @endif
         <div class="fo-sb-content-container">
             <div class="fo-sb-content-heading">Top Stores</div>
             <div class="fo-sb-list-container">
@@ -58,6 +59,7 @@
     </div>
     <div class="fo-db">
         <div class="fo-db-heading">{{$store->title}} Coupons & Promo Codes</div>
+        @if(count($store->offers) > 0)
         <div class="fo-db-offers-list-container">
             <ul>
                 @foreach($store->offers as $offer)
@@ -102,6 +104,9 @@
                 @endforeach
             </ul>
         </div>
+        @else
+        <div class="no-coupons-alert"><span>No Coupons Available For {{$store->title}}</span></div>
+        @endif
     </div>
 </div>
 <script>

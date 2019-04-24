@@ -95,7 +95,7 @@
   <!-- Top Offers Deals Products-->
   <div class="hm-offers-main-container">
     <!--Heading-->
-    <div class="hm-offers-heading">Top Offers, Deals & Coupon Codes</div>
+    <div class="hm-offers-heading">Today's Offers, Deals & Coupon Codes</div>
     <!--Products-->
     <div class="hm-offers-container" id="hm-offers-container">
       @foreach($offers as $offer)
@@ -130,7 +130,7 @@
     <div class="hm-popular-stores-heading">Popular Stores</div>
     <div class="hm-popular-stores-container">
       @foreach($popularstores as $popularstore)
-      <a href="#" class="hm-popular-store-container" title="{{$popularstore->title}}">
+      <a href="/store/{{$popularstore->secondary_url}}" class="hm-popular-store-container" title="{{$popularstore->title}}">
         <span class="store-title">{{$popularstore->title}}</span>
         @if($popularstore->offers_count > 1)
             <span class="coupons-count">{{$popularstore->offers_count}} Coupons Available</span>
@@ -149,17 +149,17 @@
       <div class="hm-blogs-heading">Latest Blogs</div>
       <!--blogs-->
       <div class="hm-blogs-container">
-          @for($i=1; $i<=3; $i++)
+        @foreach($latestblogs as $latestblog)
         <div class="hm-blog-container">
           <div class="blog-image">
-              <a class="blog-link" href="#">
-                  <img src="{{asset('/images/blog.jpg')}}">          
+              <a class="blog-link" href="{{$latestblog->id}}">
+                  <img src="{{$panel_assets_url.$latestblog->image_url}}">          
               </a>
           </div>
-          <div class="blog-title"><a href="#">Blog Title Will Be Here...</a></div>
-          <div class="readnow-link">[<a href="#">Read Now</a>]</div>
+          <div class="blog-title"><a href="{{$latestblog->id}}">{{$latestblog->title}}</a></div>
+          <div class="readnow-link">[<a href="{{$latestblog->id}}">Read Now</a>]</div>
         </div>
-        @endfor
+        @endforeach
       </div>
   </div>
 <script>

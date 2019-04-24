@@ -8,6 +8,7 @@
     <div class="fo-sb">
         <div class="fo-sb-offers-availability">{{$filteredoffers->total()}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
+        @if(count($stores) > 0)
         <div class="fo-sb-content-container">
             <div class="fo-sb-content-heading">
                 <span>Filter By Store</span>
@@ -16,12 +17,13 @@
             <div class="fo-sb-content-body">
                 @foreach($stores as $store)
                 <label class="checkbox-container">{{$store{0}->store->title}}
-                    <input type="checkbox" id="{{$store{0}->store->id}}">
+                    <input type="checkbox" name="related-store" id="{{$store{0}->store->id}}">
                     <span class="checkmark"></span>
                 </label>
                 @endforeach
             </div>
         </div>
+        @endif
         <div class="fo-sb-content-container">
             <div class="fo-sb-content-heading">Top Categories</div>
             <div class="fo-sb-list-container">
@@ -48,13 +50,15 @@
     </div>
     <div class="fo-db">
         <div class="fo-db-heading">{{$category->title}} Coupons & Promo Codes</div>
+        @if(count($filteredoffers) > 0)
         <section id="filtered-offers">
         @include('partialviews.filteredoffers')
         </section>
+        @else
+        <div class="no-coupons-alert">No Coupons Available For {{$category->title}}</div>
+        @endif
     </div>
 </div>
-
-
 <script type="text/javascript">
     $('body').on('click', '.pagination a', function(e) {
         e.preventDefault();
@@ -70,6 +74,29 @@
             alert('Articles could not be loaded.');
         });
     }
+    $(".checkbox-container").unbind().click(function(){
+        var stores = [];
+        $('.checkbox-container').find('input:checked').each(function () {
+            stores.push($(this).attr('id'));
+        });
+        // alert('a');
+        if(stores.length > 0){
+            $.ajax({
+                type:`GET`,
+                url:`/applymorefilters/`+stores,
+                data: ``,
+                beforeSend: function(){
+                    //todo
+                },
+                complete: function(){
+                    //todo
+                },
+                success:function(data){
+                    alert(data[0]);
+                }
+            });
+        }
+    });
 </script>
 
 @endsection

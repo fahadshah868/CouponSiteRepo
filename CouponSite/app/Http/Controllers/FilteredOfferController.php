@@ -60,7 +60,7 @@ class FilteredOfferController extends Controller
             }
         }
     }
-    public function getMoreFilteredOffers(){
-        
+    public function getMoreFilteredOffers($filters){
+        return response()->json($filters);
     }
 }
