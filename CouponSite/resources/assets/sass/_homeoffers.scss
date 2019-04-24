@@ -1,5 +1,5 @@
 .hm-offers-main-container{
-    width: 100%;
+    width: 1150px;
     margin: 30px auto;
     text-align: center;
 }
@@ -8,7 +8,7 @@
     font-weight: 700;
 }
 .hm-offers-container{
-    width: 1150px;
+    width: 100%;
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
@@ -113,11 +113,8 @@
     display: none;
 }
 @media only screen and (max-width: 1165px){
-    .hm-offers-container{
+    .hm-offers-main-container{
         width: 100%;
-        padding: 0 30px;
-    }
-    .hm-offers-heading{
         padding: 0 30px;
     }
     .hm-offers-container .hm-offer-container{
@@ -131,10 +128,6 @@
     }    
 }
 @media only screen and (max-width: 1050px){
-    .hm-offers-container{
-        width: 100%;
-        padding: 0 30px;
-    }
     .hm-offers-container .hm-offer-container:nth-child(n){
         width: calc(33% - 8.4px);
         margin: 0 16px 16px 0;
@@ -149,10 +142,6 @@
     }
 }
 @media only screen and (max-width: 800px){
-    .hm-offers-container{
-        width: 100%;
-        padding: 0 30px;
-    }
     .hm-offers-container .hm-offer-container:nth-child(n){
         width: calc(50% - 8px);
         margin: 0 16px 16px 0;
@@ -167,16 +156,12 @@
     }
 }
 @media only screen and (max-width: 600px){
-    .hm-offers-container{
+    .hm-offers-main-container{
         width: 100%;
         padding: 0 15px;
     }
 }
 @media only screen and (max-width: 500px){
-    .hm-offers-container{
-        width: 100%;
-        padding: 0 15px;
-    }
     .hm-offers-container .hm-offer-container:nth-child(n){
         width: 100%;
         margin: 0 0 16px 0;

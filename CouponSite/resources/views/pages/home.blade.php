@@ -1,6 +1,6 @@
 @extends('layouts.app_layout')
 
-@section('title','hm Page')
+@section('title','Home Page')
 
 @section('content')
 
@@ -124,10 +124,29 @@
     <span class="loadmore-button" id="loadmore-button"><img class="loading-circle" id="loading-circle" src="{{asset('/images/loading-circle.gif')}}">Load More</span>
     @endif
   </div>
+  <!--popular stores container-->
+  <div class="hm-popular-stores-main-container">
+    <!--Heading-->
+    <div class="hm-popular-stores-heading">Popular Stores</div>
+    <div class="hm-popular-stores-container">
+      @foreach($popularstores as $popularstore)
+      <a href="#" class="hm-popular-store-container" title="{{$popularstore->title}}">
+        <span class="store-title">{{$popularstore->title}}</span>
+        @if($popularstore->offers_count > 1)
+            <span class="coupons-count">{{$popularstore->offers_count}} Coupons Available</span>
+        @elseif($popularstore->offers_count == 1)
+            <span class="coupons-count">{{$popularstore->offers_count}} Coupon Available</span>
+        @else
+            <span class="coupons-count">No Coupons Available</span>
+        @endif
+      </a>
+      @endforeach
+    </div>
+  </div>
   <!--blogs container-->
   <div class="hm-blog-main-container">
       <!--Heading-->
-      <div class="hm-blogs-heading">Popular Blogs</div>
+      <div class="hm-blogs-heading">Latest Blogs</div>
       <!--blogs-->
       <div class="hm-blogs-container">
           @for($i=1; $i<=3; $i++)

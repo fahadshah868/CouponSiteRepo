@@ -39,7 +39,7 @@
                     @foreach($alltopstores as $topstore)
                         @if($topstore->id != $store->id)
                         <li>
-                            <a class="fo-sb-list-item" href="/store/{{$topstore->secondary_url}}" title="Target coupons">
+                            <a class="fo-sb-list-item" href="/store/{{$topstore->secondary_url}}" title="{{$topstore->title}} Coupons">
                                 <span class="item-title">{{$topstore->title}}</span>
                                 <span class="coupons-count">{{$topstore->offers_count}}</span>
                             </a>

@@ -29,7 +29,7 @@
                     @foreach($alltopcategories as $topcategory)
                         @if($topcategory->id != $category->id)
                         <li>
-                            <a class="fo-sb-list-item" href="/coupons/{{$topcategory->url}}" title="Target coupons">
+                            <a class="fo-sb-list-item" href="/coupons/{{$topcategory->url}}" title="{{$topcategory->title}} Coupons">
                                 <span class="item-title">{{$topcategory->title}}</span>
                                 <span class="coupons-count">{{$topcategory->offers_count}}</span>
                             </a>

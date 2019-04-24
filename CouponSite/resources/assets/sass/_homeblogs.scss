@@ -1,5 +1,5 @@
 .hm-blog-main-container{
-    width: 100%;
+    width: 1150px;
     margin: 50px auto;
     text-align: center;
 }
@@ -8,7 +8,7 @@
     font-weight: 700;
 }
 .hm-blogs-container{
-    width: 1150px;
+    width: 100%;
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
@@ -51,11 +51,8 @@
     color: $link-color-onhover;
 }
 @media only screen and (max-width: 1167px){
-    .hm-blogs-container{
+    .hm-blog-main-container{
         width: 100%;
-        padding: 0 30px;
-    }
-    .hm-blogs-heading{
         padding: 0 30px;
     }
 }
@@ -71,6 +68,12 @@
     }
     .hm-blog-container:nth-child(2n){
         margin: 0 0 40px 0;
+    }
+}
+@media only screen and (max-width: 600px){
+    .hm-blog-main-container{
+        width: 100%;
+        padding: 0 15px;
     }
 }
 @media only screen and (max-width: 500px){
