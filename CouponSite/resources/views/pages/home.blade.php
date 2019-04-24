@@ -1,6 +1,6 @@
 @extends('layouts.app_layout')
 
-@section('title','Home Page')
+@section('title','hm Page')
 
 @section('content')
 
@@ -73,11 +73,11 @@
     </div>
   </div>
   <!--Top Stores-->
-  <div class="top-stores-main-container" id="top-stores-main-container">
+  <div class="hm-ts-main-container" id="hm-ts-main-container">
     <!--Heading-->
-    <div class="top-stores-heading">Top Stores</div>
+    <div class="hm-ts-heading">Top Stores</div>
     <!--Stores Slides-->
-    <div class="stores-container">
+    <div class="hm-ts-container">
       @foreach($topstores as $topstore)
       <div class="item">
           <div class="store-img">
@@ -93,24 +93,24 @@
     </div>
   </div>
   <!-- Top Offers Deals Products-->
-  <div class="home-offers-main-container">
+  <div class="hm-offers-main-container">
     <!--Heading-->
-    <div class="home-offers-heading">Top Offers, Deals & Coupon Codes</div>
+    <div class="hm-offers-heading">Top Offers, Deals & Coupon Codes</div>
     <!--Products-->
-    <div class="home-offers-container" id="home-offers-container">
+    <div class="hm-offers-container" id="hm-offers-container">
       @foreach($offers as $offer)
-      <div class="home-offer-container">
-        <div class="home-offer-store-logo">
+      <div class="hm-offer-container">
+        <div class="hm-offer-store-logo">
           <a href="/store/{{$offer->store->secondary_url}}" title="{{$offer->store->title}}">
             <img src="{{$panel_assets_url.$offer->store->logo_url}}"/>
           </a>
         </div>
         <hr style="border-top: 1px dotted #d1d1d1; width: 100%;">
-        <div class="home-offer-offertitle">
+        <div class="hm-offer-offertitle">
           {{$offer->title}}
         </div>
-        <span class="home-offer-offertype-code">{{$offer->location}} {{$offer->type}}</span>
-        <span class="home-offer-button" data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" data-offerexpiry="{{$offer->expiry_date}}" data-storetitle="{{$offer->store->title}}" data-siteurl="{{$offer->store->network_url}}">
+        <span class="hm-offer-offertype-code">{{$offer->location}} {{$offer->type}}</span>
+        <span class="hm-offer-button" data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" data-offerexpiry="{{$offer->expiry_date}}" data-storetitle="{{$offer->store->title}}" data-siteurl="{{$offer->store->network_url}}">
           @if(strcasecmp($offer->type,"code") == 0)
           VIEW CODE
           @else
@@ -125,13 +125,13 @@
     @endif
   </div>
   <!--blogs container-->
-  <div class="home-blog-main-container">
+  <div class="hm-blog-main-container">
       <!--Heading-->
-      <div class="home-blogs-heading">Popular Blogs</div>
+      <div class="hm-blogs-heading">Popular Blogs</div>
       <!--blogs-->
-      <div class="home-blogs-container">
+      <div class="hm-blogs-container">
           @for($i=1; $i<=3; $i++)
-        <div class="home-blog-container">
+        <div class="hm-blog-container">
           <div class="blog-image">
               <a class="blog-link" href="#">
                   <img src="{{asset('/images/blog.jpg')}}">          
@@ -156,7 +156,7 @@
         // hoverZoom: "on", 
         // titleBarTop: "off"
       });
-      $('#top-stores-main-container').multislider({
+      $('#hm-ts-main-container').multislider({
           interval: 5000,
           slideAll: false,
           duration: 700
@@ -176,25 +176,25 @@
             $("#offerid").remove();
             $.each(data.offers, function (index, offer) {
               var html = 
-              '<div class="home-offer-container">'+
-                '<div class="home-offer-store-logo">'+
+              '<div class="hm-offer-container">'+
+                '<div class="hm-offer-store-logo">'+
                 '<a href="/store/'+offer.store.secondary_url+'" title="'+offer.store.title+'">'+
                   '<img src="'+data.panel_assets_url+offer.store.logo_url+'"/>'+
                 '</a>'+
               '</div>'+
               '<hr style="border-top: 1px dotted #d1d1d1; width: 100%;">'+
-              '<div class="home-offer-offertitle">'+offer.title+'</div>'+
-              '<span class="home-offer-offertype-code">'+offer.location+' '+offer.type+'</span>'+
-              '<span class="home-offer-button" data-offerid="'+offer.id+'" data-offertitle="'+offer.title+'" data-offerlocation="'+offer.location+'" data-offertype="'+offer.type+'" data-offerdetails="'+offer.details+'" data-offercode="'+offer.code+'" data-offerexpiry="'+offer.expiry_date+'" data-storetitle="'+offer.store.title+'" data-siteurl="'+offer.store.network_url+'">'
+              '<div class="hm-offer-offertitle">'+offer.title+'</div>'+
+              '<span class="hm-offer-offertype-code">'+offer.location+' '+offer.type+'</span>'+
+              '<span class="hm-offer-button" data-offerid="'+offer.id+'" data-offertitle="'+offer.title+'" data-offerlocation="'+offer.location+'" data-offertype="'+offer.type+'" data-offerdetails="'+offer.details+'" data-offercode="'+offer.code+'" data-offerexpiry="'+offer.expiry_date+'" data-storetitle="'+offer.store.title+'" data-siteurl="'+offer.store.network_url+'">'
                 if(offer.type.toLowerCase() == "code"){
-                  html = html + 'GET CODE'
+                  html = html + 'VIEW CODE'
                 }
                 else{
                   html = html + 'GET DEAL'
                 }
               html = html + '</span>'+
               '</div>';
-              $("#home-offers-container").append(html);
+              $("#hm-offers-container").append(html);
             });
             rowscount = rowscount + data.offers.length;
             if(data.offers.length < 4){

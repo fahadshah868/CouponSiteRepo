@@ -4,15 +4,15 @@
     width: 1150px;
     margin: 30px auto;
 }
-.fo-sidebar{
+.fo-sb{
     width: 270px;
     padding: 0 20px;
 }
-.fo-sidebar-storelogo-container{
+.fo-sb-storelogo-container{
     width: 100%;
     margin-bottom: 30px;
 }
-.fo-sidebar-store-link{
+.fo-sb-store-link{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -27,38 +27,38 @@
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.fo-sidebar-store-link:hover{
+.fo-sb-store-link:hover{
     box-shadow: 0 0 10px $boxshadow-color;
 }
-.fo-sidebar-store-link .fo-sidebar-storetitle{
+.fo-sb-store-link .fo-sb-storetitle{
     font-size: 15px;
     font-weight: 500;
 }
-.fo-sidebar-storelogo{
+.fo-sb-storelogo{
     width: 150px;
     height: 150px;
     margin-bottom: 10px;
 }
-.fo-sidebar-offers-availability{
+.fo-sb-offers-availability{
     width: 100%;
     text-align:center;
     font-weight: 600;
     font-size: 22px;
     margin-top: 10px;
 }
-.fo-detailbar{
+.fo-db{
     width: 900px;
     padding: 0 20px;
 }
-.fo-sidebar-list-container{
+.fo-sb-list-container{
     width: 100%;
     max-height: 425px;
     overflow: auto;
 }
-.fo-sidebar-list-container ul{
+.fo-sb-list-container ul{
     margin-top: 2px;
 }
-.fo-sidebar-list-container ul .fo-sidebar-list-item{
+.fo-sb-list-container ul .fo-sb-list-item{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -71,14 +71,14 @@
     transition: 0.2s;
     -webkit-transition: 0.2s;
 }
-.fo-sidebar-list-container ul .fo-sidebar-list-item:hover{
+.fo-sb-list-container ul .fo-sb-list-item:hover{
     background-color: #f1f1f1;
 }
-.fo-sidebar-list-container ul .fo-sidebar-list-item .item-title{
+.fo-sb-list-container ul .fo-sb-list-item .item-title{
     font-size: 14px;
     margin-right: 5px;
 }
-.fo-sidebar-list-container ul .fo-sidebar-list-item .coupons-count{
+.fo-sb-list-container ul .fo-sb-list-item .coupons-count{
     color: #fff; 
     background-color: $theme-color;
     padding: 2px 6px;
@@ -88,25 +88,25 @@
     font-weight: 500;
 }
 /* style for custom scrollbar*/
-.fo-sidebar-list-container::-webkit-scrollbar-track
+.fo-sb-list-container::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
     background-color: #F5F5F5;
 }
-.fo-sidebar-list-container::-webkit-scrollbar
+.fo-sb-list-container::-webkit-scrollbar
 {
     width: 5px;
     background-color: #F5F5F5;
 }
-.fo-sidebar-list-container::-webkit-scrollbar-thumb
+.fo-sb-list-container::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: $theme-color;
 }
 /* style for custom scrollbar*/
-.fo-detailbar-heading{
+.fo-db-heading{
     width: 100%;
     margin-bottom: 10px;
     padding: 15px 25px;
@@ -118,12 +118,12 @@
     background-color: $theme-color; /* For browsers that do not support gradients */
     background-image: linear-gradient(90deg, $theme-color, $theme-color, #1488CC);
 }
-.fo-detailbar-offers-list-container{
+.fo-db-offers-list-container{
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-.fo-detailbar-offerbody-container{
+.fo-db-offerbody-container{
     width:100%;
     display: flex;
     flex-direction: row;
@@ -138,10 +138,10 @@
     -webkit-transition: 0.3s;
     margin-bottom: 5px;
 }
-.fo-detailbar-offerbody-container:hover{
+.fo-db-offerbody-container:hover{
     box-shadow: 0 0 10px $boxshadow-color;
 }
-.fo-detailbar-anchor{
+.fo-db-anchor{
     width: 100px;
     display: flex;
     flex-direction: column;
@@ -151,50 +151,50 @@
     color: #DC002E;
     line-height: 1.2;
 }
-.fo-detailbar-logo{
+.fo-db-logo{
     width: 100px;
     height: 100px;
 }
-.fo-detailbar-logo img{
+.fo-db-logo img{
     width: 100%;
     height: 100%;
 }
-.fo-detailbar-action-container{
+.fo-db-action-container{
     width: calc(100% - 100px);
     display: flex;
     flex-direction: row;
 }
-.fo-detailbar-offer-container{
+.fo-db-offer-container{
     display: flex;
     flex-direction: column;
     width: calc(100% - 200px);
     padding: 0 30px;
 }
-.fo-detailbar-offertitle{
+.fo-db-offertitle{
     font-size: 18px;
     font-weight: 500;
     line-height: 1.2;
 }
-.fo-detailbar-offerdetails{
+.fo-db-offerdetails{
     font-size: 16px;
     font-weight: 400;
 }
-.fo-detailbar-offer-expires{
+.fo-db-offer-expires{
     color: #929292;
     font-size: 12px;
     font-weight: 400;
     margin-top:5px;
 }
-.fo-detailbar-offer-expires .fa-clock-o{
+.fo-db-offer-expires .fa-clock-o{
     margin-right: 5px;
 }
-.fo-detailbar-offer-button-container{
+.fo-db-offer-button-container{
     width: 200px;
     display: flex;
     flex-direction: column;
     justify-content:center;
 }
-.fo-detailbar-offer-button-container #offer-button{
+.fo-db-offer-button-container .offer-button{
     width: 100%;
     padding: 8px;
     text-align: center;
@@ -210,16 +210,16 @@
     -webkit-transition: 0.3s;
     margin-bottom: 7px;
 }
-.fo-detailbar-offer-button-container #offer-button:hover{
+.fo-db-offer-button-container .offer-button:hover{
     background-color: $theme-color-tonext !important;
     color: #fff;
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.fo-sidebar-content-container{
+.fo-sb-content-container{
     margin-bottom: 30px;
 }
-.fo-sidebar-content-heading{
+.fo-sb-content-heading{
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: 500;
@@ -227,20 +227,20 @@
     flex-direction: row;
     justify-content: space-between;
 }
-.fo-sidebar-content-heading .reset-category-filters{
+.fo-sb-content-heading .reset-category-filters{
     font-size: 15px;
     color: $link-color-onhover;
     cursor: pointer;
     display: none;
 }
-.fo-sidebar-content-heading .reset-category-filters:hover{
+.fo-sb-content-heading .reset-category-filters:hover{
     text-decoration: underline;
 }
 .fo-store-details{
     font-size: 14px;
     font-weight: 400;
 }
-.fo-detailbar-type-and-verified-container{
+.fo-db-type-and-verified-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -248,20 +248,20 @@
     font-weight: 700;
     font-style: italic;
 }
-.fo-detailbar-offertype-code{
+.fo-db-offertype-code{
     color: $offer-type-code-color;
 }
-.fo-detailbar-offertype-instoreoffer{
+.fo-db-offertype-instoreoffer{
     color: $offer-type-instorecoupon-color;
 }
-.fo-detailbar-offertype-else{
+.fo-db-offertype-else{
     color: $offer-type-else-color;
 }
-.store-offer-verification-container{
+.offer-verification-container{
     color: $theme-color;
     font-weight: 500;
 }
-.store-offer-verification-container .fa-check-circle{
+.offer-verification-container .fa-check-circle{
     margin-right: 3px;
     margin-left: 10px;
     font-weight: 1000;
@@ -347,40 +347,40 @@
         padding: 0 10px;
         margin: 30px auto; 
     }
-    .fo-sidebar{
+    .fo-sb{
         flex: 0 0 270px;
         padding: 0 20px;
     }
-    .fo-detailbar{
+    .fo-db{
         width: 100%;
         padding: 0 20px;
     }
 }
 @media only screen and (max-width: 1000px){
-    .fo-sidebar{
+    .fo-sb{
         display: none;
     }
 }
 @media only screen and (max-width: 750px){
-    .fo-detailbar-action-container{
+    .fo-db-action-container{
         width: calc(100% - 100px);
         display: flex;
         flex-direction: column;
         padding: 0 0 0 20px;
     }
-    .fo-detailbar-offer-container{
+    .fo-db-offer-container{
         display: flex;
         flex-direction: column;
         width: 100%;
         padding: 0;
     }
-    .fo-detailbar-offerdetails{
+    .fo-db-offerdetails{
         display: none;
     }
-    .fo-detailbar-offer-expires{
+    .fo-db-offer-expires{
         display: none;
     }
-    .fo-detailbar-offer-button-container{
+    .fo-db-offer-button-container{
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -389,12 +389,12 @@
     }
 }
 @media only screen and (max-width: 600px){
-    .fo-detailbar{
+    .fo-db{
         padding: 0;
     }
 }
 @media only screen and (max-width: 500px){
-    .fo-detailbar-heading{
+    .fo-db-heading{
         width: 100%;
         margin-bottom: 10px;
         padding: 15px 25px;
@@ -406,7 +406,7 @@
         background-color: $theme-color; /* For browsers that do not support gradients */
         background-image: linear-gradient(90deg, $theme-color, $theme-color, #1488CC);
     }
-    .fo-detailbar-anchor{
+    .fo-db-anchor{
         width: 60px;
         display: flex;
         flex-direction: column;
@@ -415,55 +415,55 @@
         font-weight: 500;
         color: #DC002E;
     }
-    .fo-detailbar-logo{
+    .fo-db-logo{
         width: 80px;
         height: 80px;
     }
-    .fo-detailbar-action-container{
+    .fo-db-action-container{
         width: calc(100% - 60px);
         display: flex;
         flex-direction: column;
         padding: 0 0 0 15px;
     }
-    .fo-detailbar-offer-container{
+    .fo-db-offer-container{
         display: flex;
         flex-direction: column;
         width: 100%;
     }
-    .fo-detailbar-offertitle{
+    .fo-db-offertitle{
         font-size: 15px;
         font-weight: 500;
         line-height: 1.2;
     }
-    .fo-detailbar-offerdetails{
+    .fo-db-offerdetails{
         display: none;
     }
-    .fo-detailbar-offer-expires{
+    .fo-db-offer-expires{
         display: none;
     }
-    .fo-detailbar-type-and-verified-container{
+    .fo-db-type-and-verified-container{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         font-size: 12px;
     }
-    .store-offer-verification-container{
+    .offer-verification-container{
         color: $theme-color;
         font-weight: 500;
     }
-    .store-offer-verification-container .fa-check-circle{
+    .offer-verification-container .fa-check-circle{
         margin-right: 3px;
         margin-left: 10px;
         font-weight: 1000;
     }
-    .fo-detailbar-offer-button-container{
+    .fo-db-offer-button-container{
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin-top: 15px;
     }
-    .fo-detailbar-offer-button-container #offer-button{
+    .fo-db-offer-button-container .offer-button{
         width: 100%;
         padding: 5px;
         text-align: center;

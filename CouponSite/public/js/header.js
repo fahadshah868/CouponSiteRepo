@@ -1,12 +1,12 @@
 $(document).ready(function() {
     var currentRequest = null;
-    $(`.hamburgerbutton-mega-menu-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
-    $(`.header-nav-mega-dropdown-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
+    $(`.hamburger-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
+    $(`.header-nav-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
     $(window).resize(function() {
-        $(`.hamburgerbutton-mega-menu-overlay-container`).css(`height`, `0`);
-        $(`.hamburgerbutton-mega-menu-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
-        $(`.header-nav-mega-dropdown-overlay-container`).css(`height`, `0`);
-        $(`.header-nav-mega-dropdown-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
+        $(`.hamburger-overlay-container`).css(`height`, `0`);
+        $(`.hamburger-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
+        $(`.header-nav-overlay-container`).css(`height`, `0`);
+        $(`.header-nav-overlay-container`).css(`height`, $(document).height() - 122 + `px`);
     });
     //search through header search bar 
     $(`#header-searchbar`).focus(function(){
@@ -73,24 +73,24 @@ $(document).ready(function() {
     $(`.menu-toggle`).on(`click`,function(){
         $(`.menu-toggle`).toggleClass(`active`);
         if($(this).hasClass(`active`)){
-            $(`#hamburgerbutton-mega-menu-overlay-container`).css(`display`,`block`);
+            $(`#hamburger-overlay-container`).css(`display`,`block`);
         }
         else{
-            $(`#hamburgerbutton-mega-menu-overlay-container`).css(`display`,`none`);
+            $(`#hamburger-overlay-container`).css(`display`,`none`);
         }
     });
     //click on header nav links
     $(`.header-nav-list-item-text, .header-nav-list-item-text.fa-angle-down`).click(function(e){
         var header_list_item = $(this).parentsUntil(`.header-nav-list`);
-        $(`.header-nav-list-item #header-nav-mega-dropdown-overlay-container`).not(header_list_item.find(`#header-nav-mega-dropdown-overlay-container`)).css(`display`,`none`);
+        $(`.header-nav-list-item #header-nav-overlay-container`).not(header_list_item.find(`#header-nav-overlay-container`)).css(`display`,`none`);
         $(`.header-nav-list-item .header-nav-list-item-text`).removeClass(`active-nav-list-item`);
-        header_list_item.find(`#header-nav-mega-dropdown-overlay-container`).toggle();
-        if(header_list_item.find(`#header-nav-mega-dropdown-overlay-container`).css(`display`) == `block`){
+        header_list_item.find(`#header-nav-overlay-container`).toggle();
+        if(header_list_item.find(`#header-nav-overlay-container`).css(`display`) == `block`){
             header_list_item.find(`#header-nav-list-item-text`).addClass(`active-nav-list-item`);
             if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Stores`){
-                if(header_list_item.find(`#header-nav-mega-dropdown-items-container`).children().length > 0){
-                    header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                    header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
+                    header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                    header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                 }
                 else{
                     $.ajax({
@@ -98,12 +98,12 @@ $(document).ready(function() {
                         url:`/getajaxrequest/1`,
                         data: ``,
                         beforeSend: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`block`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`none`);
                         },
                         complete: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                         },
                         success:function(data){
                             var html = 
@@ -152,7 +152,7 @@ $(document).ready(function() {
                                         `</ul>`+
                                     `</div>`+
                                 `</div>`
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).html(html);
+                            header_list_item.find(`#header-nav-items-container`).html(html);
                         },
                         error:function(){
                             alert(`Error! something went wrong`);
@@ -161,9 +161,9 @@ $(document).ready(function() {
                 }
             }
             else if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Categories`){
-                if(header_list_item.find(`#header-nav-mega-dropdown-items-container`).children().length > 0){
-                    header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                    header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
+                    header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                    header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                 }
                 else{
                     $.ajax({
@@ -171,12 +171,12 @@ $(document).ready(function() {
                         url:`/getajaxrequest/2`,
                         data: ``,
                         beforeSend: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`block`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`none`);
                         },
                         complete: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                         },
                         success:function(data){
                             var html = 
@@ -225,7 +225,7 @@ $(document).ready(function() {
                                         `</ul>`+
                                     `</div>`+
                                 `</div>`
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).html(html);
+                            header_list_item.find(`#header-nav-items-container`).html(html);
                         },
                         error:function(){
                             alert(`Error! something went wrong`);
@@ -234,9 +234,9 @@ $(document).ready(function() {
                 }
             }
             else if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Online Codes`){
-                if(header_list_item.find(`#header-nav-mega-dropdown-items-container`).children().length > 0){
-                    header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                    header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
+                    header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                    header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                 }
                 else{
                     $.ajax({
@@ -244,12 +244,12 @@ $(document).ready(function() {
                         url:`/getajaxrequest/3`,
                         data: ``,
                         beforeSend: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`block`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`none`);
                         },
                         complete: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                         },
                         success:function(data){
                             var html = 
@@ -275,7 +275,7 @@ $(document).ready(function() {
                                 html = html +
                                 `</div>`+
                             `</div>`
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).html(html);
+                            header_list_item.find(`#header-nav-items-container`).html(html);
                         },
                         error:function(){
                             alert(`Error! something went wrong`);
@@ -284,9 +284,9 @@ $(document).ready(function() {
                 }
             }
             else if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Online Sales`){
-                if(header_list_item.find(`#header-nav-mega-dropdown-items-container`).children().length > 0){
-                    header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                    header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
+                    header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                    header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                 }
                 else{
                     $.ajax({
@@ -294,12 +294,12 @@ $(document).ready(function() {
                         url:`/getajaxrequest/4`,
                         data: ``,
                         beforeSend: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`block`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`none`);
                         },
                         complete: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                         },
                         success:function(data){
                             var html = 
@@ -325,7 +325,7 @@ $(document).ready(function() {
                                 html = html +
                                 `</div>`+
                             `</div>`
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).html(html);
+                            header_list_item.find(`#header-nav-items-container`).html(html);
                         },
                         error:function(){
                             alert(`Error! something went wrong`);
@@ -334,9 +334,9 @@ $(document).ready(function() {
                 }
             }
             else if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Free Shipping Coupons`){
-                if(header_list_item.find(`#header-nav-mega-dropdown-items-container`).children().length > 0){
-                    header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                    header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
+                    header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                    header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                 }
                 else{
                     $.ajax({
@@ -344,12 +344,12 @@ $(document).ready(function() {
                         url:`/getajaxrequest/5`,
                         data: ``,
                         beforeSend: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`block`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`none`);
                         },
                         complete: function(){
-                            header_list_item.find(`#header-mega-dropdown-loading-container`).css(`display`,`none`);
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).css(`display`,`block`);
+                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
+                            header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
                         },
                         success:function(data){
                             var html = 
@@ -375,7 +375,7 @@ $(document).ready(function() {
                                 html = html +
                                 `</div>`+
                             `</div>`
-                            header_list_item.find(`#header-nav-mega-dropdown-items-container`).html(html);
+                            header_list_item.find(`#header-nav-items-container`).html(html);
                         },
                         error:function(){
                             alert(`Error! something went wrong`);
@@ -390,16 +390,16 @@ $(document).ready(function() {
     });
     $(document).click(function(e){
         //click outside the mega dropdown container
-        if(!$(e.target).hasClass(`header-nav-mega-dropdown-body-container`) &&                         //click on body container
-        !$(e.target).parents(`.header-nav-mega-dropdown-body-container`).length > 0 &&                 //click inside body container
+        if(!$(e.target).hasClass(`header-nav-body-container`) &&                         //click on body container
+        !$(e.target).parents(`.header-nav-body-container`).length > 0 &&                 //click inside body container
         !$(e.target).hasClass(`header-nav-list-item-text`) &&                                          //click on nav list item text
         !$(e.target).hasClass(`header-list-arrow`) &&                                                       //click on nav list item arrow
         !$(e.target).hasClass(`menu-toggle`) &&                                                             //click on hamburger menu
         !$(e.target).parents(`.menu-toggle`).length > 0 &&                                                  //click on inside hamburger menu
-        !$(e.target).parents(`.hamburger-mega-menu-list`).length > 0){                                      //click on hamburger menu list items
+        !$(e.target).parents(`.hamburger-menu-list`).length > 0){                                      //click on hamburger menu list items
             $(`.header-nav-list-item .header-nav-list-item-text`).removeClass(`active-nav-list-item`);
-            $(`.header-nav-mega-dropdown-overlay-container`).css(`display`,`none`);
-            $(`#hamburgerbutton-mega-menu-overlay-container`).css(`display`,`none`);
+            $(`.header-nav-overlay-container`).css(`display`,`none`);
+            $(`#hamburger-overlay-container`).css(`display`,`none`);
             $(`.menu-toggle`).removeClass(`active`);
         }
         //click outside the header-searchbar and searched items container

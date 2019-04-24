@@ -1,35 +1,35 @@
-.all-stores-main-container{
+.as-main-container{
     width: 1150px;
     margin: 30px auto;
 }
-.all-stores-main-heading{
+.as-main-heading{
     font-size: 26px;
     font-weight: 700;
 }
-.as-top-stores-container{
+.ts-main-container{
     width:100%;
     margin: 20px 0;
 }
-.as-top-stores-heading{
+.ts-heading{
     font-size: 22px;
     font-weight: 700;
 }
-.as-top-stores-list-container{
+.ts-list-container{
     width: 100%;
     margin: 30px 0;
     display:flex;
     flex-wrap: wrap;
 }
-.as-top-store-container:nth-child(n){
+.ts-container:nth-child(n){
     width: calc(16.666667% - 16.67px);
     margin-bottom: 20px;
     margin-right: 20px;
     background-color: #fff;
 }
-.as-top-store-container:nth-child(6n){
+.ts-container:nth-child(6n){
     margin: 0 0 20px 0;
 }
-.as-top-store-container a.as-top-store-link{
+.ts-container a.ts-link{
     width: 100%;
     height: 100%;
     display:flex;
@@ -43,24 +43,24 @@
     text-decoration: none;
     color: #555;
 }
-.as-top-store-container a.as-top-store-link:hover{
+.ts-container a.ts-link:hover{
     box-shadow: 0 0 10px $boxshadow-color;
 }
-.as-top-store-logo{
+.ts-logo{
     width: 120px;
     height: 120px;
     margin-bottom: 10px;
 }
-.as-top-store-logo img{
+.ts-logo img{
     width: 100%;
     height: 100%;
 }
-.as-top-store-container .as-top-store-title{
+.ts-container .ts-title{
     text-align: center;
     font-size: 14px;
     font-weight: 500;
 }
-.as-allstores-container{
+.as-mega-container{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -150,7 +150,7 @@
 }
 /* style for custom scrollbar*/
 /* filtered stores body area*/
-.as-filtered-stores-body-container{
+.as-body-container{
     display: flex;
     flex-direction: column;
     width: calc(100% - 330px);
@@ -160,15 +160,15 @@
     background-color: #fff;
     padding: 30px;
 }
-.as-filtered-stores-heading{
+.as-heading{
     font-size: 22px;
     font-weight: 700;
 }
-.as-filtered-stores-container{
+.as-container{
     width: 100%;
     margin: 20px 0;
 }
-.as-filtered-stores-navbar{
+.as-letters-navbar{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -179,10 +179,10 @@
     border-bottom: none;
     background-color: #f1f1f1;
 }
-.as-filtered-stores-navbar-item{
+.as-letters-navbar-item{
     padding: 20px 0 2px 0;
 }
-.as-filtered-stores-letter{
+.as-navbar-letter{
     display: block;
     font-size: 15px;
     font-weight: 700;
@@ -191,20 +191,20 @@
     color: #555 !important;
     cursor: pointer;
 }
-.as-filtered-stores-letter:hover{
+.as-navbar-letter:hover{
     color: $theme-color !important;
     font-weight: 700;
     border-bottom: 3px solid $theme-color;
 }
-.active-filtered-stores-letter{
+.active-navbar-letter{
     color: $theme-color !important;
     font-weight: 700;
     border-bottom: 3px solid $theme-color;
 }
-.as-filtered-stores-list{
+.as-list{
     padding: 0;
 }
-.as-filtered-stores-list-item{
+.as-list-item{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -218,23 +218,23 @@
     transition: 0.2s;
     -webkit-transition: 0.2s;
 }
-.as-filtered-stores-list-item:hover{
+.as-list-item:hover{
     background-color: #f1f1f1;
 }
-.as-filtered-stores-list-item .store-info{
+.as-list-item .store-info{
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-right: 20px;
 }
-.as-filtered-stores-list-item .store-info .store-logo{
+.as-list-item .store-info .store-logo{
     width: 60px;
     height: 60px;
     margin-right: 20px;
     border: 1px solid #d1d1d1;
     box-shadow: 0 0 2px rgb(204, 204, 204);
 }
-.as-filtered-stores-list-item .coupons-count{
+.as-list-item .coupons-count{
     color: #fff;
     background-color: $theme-color;
     border: 1px solid $theme-color;
@@ -243,13 +243,13 @@
 }
 /* filtered stores body area*/
 @media only screen and (max-width: 1165px){
-    .all-stores-main-container{
+    .as-main-container{
         width: 100%;
         padding: 0 30px;
     }   
 }
 @media only screen and (max-width: 1000px){
-    .as-top-store-container:nth-child(n){
+    .ts-container:nth-child(n){
         width: calc(20% - 16px);
         transition: 0.3s;
         -webkit-transition: 0.3s;
@@ -257,18 +257,18 @@
         margin-right: 20px;
         background-color: #fff;
     }
-    .as-top-store-container:nth-child(5n){
+    .ts-container:nth-child(5n){
         margin: 0 0 20px 0;
     }
     .as-category-outer-container{
         display: none;
     }
-    .as-filtered-stores-body-container{
+    .as-body-container{
         width: 100%;
     }
 }
 @media only screen and (max-width: 900px){
-    .as-top-store-container:nth-child(n){
+    .ts-container:nth-child(n){
         width: calc(25% - 15px);
         transition: 0.3s;
         -webkit-transition: 0.3s;
@@ -276,12 +276,12 @@
         margin-right: 20px;
         background-color: #fff;
     }
-    .as-top-store-container:nth-child(4n){
+    .ts-container:nth-child(4n){
         margin: 0 0 20px 0;
     }
 }
 @media only screen and (max-width: 750px){
-    .as-top-store-container:nth-child(n){
+    .ts-container:nth-child(n){
         width: calc(33% - 9px);
         transition: 0.3s;
         -webkit-transition: 0.3s;
@@ -289,25 +289,25 @@
         margin-right: 15px;
         background-color: #fff;
     }
-    .as-top-store-container:nth-child(3n){
+    .ts-container:nth-child(3n){
         margin: 0 0 15px 0;
     }
-    .as-top-store-logo{
+    .ts-logo{
         width: 100px;
         height: 100px;
     }
-    .as-filtered-stores-navbar{
+    .as-letters-navbar{
         display: none;
     }
-    .as-filtered-stores-container .letters-dropdown{
+    .as-container .letters-dropdown{
         display: block;
     }
-    .as-filtered-stores-list-item{
+    .as-list-item{
         font-size: 14px;
     }
 }
 @media only screen and (max-width: 500px){
-    .as-top-store-container:nth-child(n){
+    .ts-container:nth-child(n){
         width: calc(50% - 8px);
         transition: 0.3s;
         -webkit-transition: 0.3s;
@@ -315,22 +315,22 @@
         margin-right: 15px;
         background-color: #fff;
     }
-    .as-top-store-container:nth-child(2n){
+    .ts-container:nth-child(2n){
         margin: 0 0 15px 0;
     }
-    .as-top-store-logo{
+    .ts-logo{
         width: 100px;
         height: 100px;
     }
-    .as-filtered-stores-body-container{
+    .as-body-container{
         padding: 15px;
     }
-    .as-filtered-stores-list-item{
+    .as-list-item{
         font-size: 12px;
     }
 }
 @media only screen and (max-width: 300px){
-    .as-top-store-logo{
+    .ts-logo{
         width: 60px;
         height: 60px;
     }

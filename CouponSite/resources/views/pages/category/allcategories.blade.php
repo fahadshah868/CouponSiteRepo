@@ -4,28 +4,28 @@
 
 @section('content')
 
-<div class="all-categories-main-container">
-    <div class="all-categories-main-heading">
+<div class="ac-main-container">
+    <div class="ac-main-heading">
         Browse Coupons By Category
     </div>
-    <div class="ac-top-categories-container">
-        <div class="ac-top-categories-heading">
+    <div class="tc-main-container">
+        <div class="tc-heading">
             Top Categories
         </div>
-        <div class="ac-top-categories-list-container">
+        <div class="tc-list-container">
             @foreach($topcategories as $topcategory)
-            <div class="ac-top-category-container">
-                <a href="/coupons/{{$topcategory->url}}}" class="ac-top-category-link">
-                    <div class="ac-top-category-logo">
+            <div class="tc-container">
+                <a href="/coupons/{{$topcategory->url}}}" class="tc-link">
+                    <div class="tc-logo">
                         <img src="{{$panel_assets_url}}{{$topcategory->logo_url}}"/>
                     </div>
-                    <div class="ac-top-category-title">{{$topcategory->title}}</div>
+                    <div class="tc-title">{{$topcategory->title}}</div>
                 </a>
             </div>
             @endforeach
         </div>
     </div>
-    <div class="ac-main-container">
+    <div class="ac-mega-container">
         <span class="ac-main-heading">All Categories & Coupons</span>
         <div class="ac-container">
             <div class="letters-dropdown" id="letters-dropdown">
@@ -41,9 +41,9 @@
                 </ul>
             </div>
             <ul class="ac-letters-navbar" id="ac-letters-navbar">
-                <li class="ac-letter-item"><span class="ac-letter active-ac-letter">ALL</span></li>
+                <li class="ac-letters-navbar-item"><span class="ac-navbar-letter active-navbar-letter">ALL</span></li>
                 @foreach($filtered_letters as $filtered_letter => $val)
-                    <li class="ac-letter-item"><span class="ac-letter">{{$filtered_letter}}</span></li>
+                    <li class="ac-letters-navbar-item"><span class="ac-navbar-letter">{{$filtered_letter}}</span></li>
                 @endforeach
             </ul>
             <ul class="ac-list" id="ac-list">
@@ -69,9 +69,9 @@
 <script>
     $(document).ready(function(){
         //letters navbar
-        $(`#ac-letters-navbar`).on(`click`,`.ac-letter-item .ac-letter`,function(){
-            $(`.ac-letter`).removeClass(`active-ac-letter`);
-            $(this).addClass(`active-ac-letter`);
+        $(`#ac-letters-navbar`).on(`click`,`.ac-letters-navbar-item .ac-navbar-letter`,function(){
+            $(`.ac-navbar-letter`).removeClass(`active-navbar-letter`);
+            $(this).addClass(`active-navbar-letter`);
             var searched_character = $(this).text();
             // set dropdown selected option
             $('#letters-dropdown .select span').text($(this).text());
@@ -108,10 +108,10 @@
         //letters dropdown
         $(`#letters-dropdown`).on(`click`,`.dropdown-menu li`,function(){
             var searched_character = $(this).text();
-            $(`.ac-letter`).removeClass(`active-ac-letter`);
-            $(`.ac-letter`).each(function(index, value){
+            $(`.ac-navbar-letter`).removeClass(`active-navbar-letter`);
+            $(`.ac-navbar-letter`).each(function(index, value){
                 if( $(value).text().toUpperCase() == searched_character.toUpperCase()) {
-                    $(this).addClass('active-ac-letter');
+                    $(this).addClass('active-navbar-letter');
                 }
             });
             if(searched_character.toUpperCase() == `ALL`){

@@ -1,19 +1,19 @@
-.home-blog-main-container{
+.hm-blog-main-container{
     width: 100%;
     margin: 50px auto;
     text-align: center;
 }
-.home-blogs-heading{
+.hm-blogs-heading{
     font-size:25px;
     font-weight: 700;
 }
-.home-blogs-container{
+.hm-blogs-container{
     width: 1150px;
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
 }
-.home-blog-container:nth-child(n){
+.hm-blog-container:nth-child(n){
     width: calc(33% - 24px);
     margin: 0 40px 40px 0;
     display: flex;
@@ -23,44 +23,44 @@
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.home-blog-container:nth-child(3n){
+.hm-blog-container:nth-child(3n){
     margin: 0 0 40px 0;
 }
-.home-blog-container .blog-image{
+.hm-blog-container .blog-image{
     width: 100%;
     margin-bottom: 15px;
 }
-.home-blog-container .blog-image img{
+.hm-blog-container .blog-image img{
     width: 100%;
     height: auto;
 }
-.home-blog-container .blog-title{
+.hm-blog-container .blog-title{
     font-size: 16px;
     font-weight: 500;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.home-blog-container .blog-title a{
+.hm-blog-container .blog-title a{
     white-space: nowrap;
 }
-.home-blog-container .readnow-link{
+.hm-blog-container .readnow-link{
     font-size: 14px;
     font-weight: 400;
 }
-.home-blog-container .readnow-link a{
+.hm-blog-container .readnow-link a{
     color: $link-color-onhover;
 }
 @media only screen and (max-width: 1167px){
-    .home-blogs-container{
+    .hm-blogs-container{
         width: 100%;
         padding: 0 30px;
     }
-    .home-blogs-heading{
+    .hm-blogs-heading{
         padding: 0 30px;
     }
 }
 @media only screen and (max-width: 875px){
-    .home-blog-container:nth-child(n){
+    .hm-blog-container:nth-child(n){
         width: calc(50% - 20px);
         margin: 0 40px 40px 0;
         display: flex;
@@ -69,12 +69,12 @@
         transition: 0.3s;
         -webkit-transition: 0.3s;
     }
-    .home-blog-container:nth-child(2n){
+    .hm-blog-container:nth-child(2n){
         margin: 0 0 40px 0;
     }
 }
 @media only screen and (max-width: 500px){
-    .home-blog-container:nth-child(n){
+    .hm-blog-container:nth-child(n){
         width: 100%;
         margin: 0 0 40px 0;
         display: flex;

@@ -25,8 +25,8 @@
                     </div>
                 </form>
             </div>
-            <div class="header-hamburger-mega-menu-container">
-                <div class="header-hamburger-button-container">
+            <div class="hamburger-menu-container">
+                <div class="hamburger-button-container">
                     <div class="menu-toggle" id="menu-toggle">
                         <div class="hamburger">
                             <span></span>
@@ -39,8 +39,8 @@
                         </div>
                         </div>
                 </div>
-                <div id="hamburgerbutton-mega-menu-overlay-container" class="hamburgerbutton-mega-menu-overlay-container">
-                    <ul class="hamburger-mega-menu-list">
+                <div id="hamburger-overlay-container" class="hamburger-overlay-container">
+                    <ul class="hamburger-menu-list">
                         <li><a href="#">Browse Stores<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Browse Categories<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Browse Online Codes<i class="fa fa-angle-right"></i></a></li>
@@ -55,13 +55,13 @@
             <ul class="header-nav-list">
                 <li class="header-nav-list-item" id="header-nav-list-item">
                     <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Stores<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
-                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
+                    <div id="header-nav-overlay-container" class="header-nav-overlay-container">
+                        <div class="header-nav-body-container" id="header-nav-body-container">
                             <!-- loading overlay container -->
-                            <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
-                                <div class="header-mega-dropdown-top-items-loading"></div>
+                            <div class="header-nav-loading-container" id="header-nav-loading-container">
+                                <div class="header-nav-top-items-loading"></div>
                                 @for($i=1; $i<= 5; $i++)
-                                <div class="header-mega-dropdown-popular-items-loading">
+                                <div class="header-nav-popular-items-loading">
                                     <div class="text-line"></div>
                                     <div class="text-line"></div>
                                     <div class="text-line"></div>
@@ -72,20 +72,20 @@
                                 @endfor
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-items-container" id="header-nav-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="header-nav-list-item" id="header-nav-list-item">
                     <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Categories<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
-                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
+                    <div id="header-nav-overlay-container" class="header-nav-overlay-container">
+                        <div class="header-nav-body-container" id="header-nav-body-container">
                             <!-- loading overlay container -->
-                            <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
-                                <div class="header-mega-dropdown-top-items-loading"></div>
+                            <div class="header-nav-loading-container" id="header-nav-loading-container">
+                                <div class="header-nav-top-items-loading"></div>
                                 @for($i=1; $i<= 5; $i++)
-                                <div class="header-mega-dropdown-popular-items-loading">
+                                <div class="header-nav-popular-items-loading">
                                     <div class="text-line"></div>
                                     <div class="text-line"></div>
                                     <div class="text-line"></div>
@@ -96,17 +96,17 @@
                                 @endfor
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-items-container" id="header-nav-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="header-nav-list-item" id="header-nav-list-item">
                     <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Online Codes<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
-                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
+                    <div id="header-nav-overlay-container" class="header-nav-overlay-container">
+                        <div class="header-nav-body-container" id="header-nav-body-container">
                             <!-- loading overlay container -->
-                            <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
+                            <div class="header-nav-loading-container" id="header-nav-loading-container">
                                 <div class="header-mega-dropdown-top-offers-loading-container">
                                     @for($i=1; $i<= 8; $i++)
                                     <div class="header-mega-dropdown-top-offers-loading"></div>
@@ -114,17 +114,17 @@
                                 </div>
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-items-container" id="header-nav-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="header-nav-list-item" id="header-nav-list-item">
                     <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Online Sales<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
-                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
+                    <div id="header-nav-overlay-container" class="header-nav-overlay-container">
+                        <div class="header-nav-body-container" id="header-nav-body-container">
                             <!-- loading overlay container -->
-                            <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
+                            <div class="header-nav-loading-container" id="header-nav-loading-container">
                                 <div class="header-mega-dropdown-top-offers-loading-container">
                                     @for($i=1; $i<= 8; $i++)
                                     <div class="header-mega-dropdown-top-offers-loading"></div>
@@ -132,17 +132,17 @@
                                 </div>
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-items-container" id="header-nav-items-container">
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="header-nav-list-item" id="header-nav-list-item">
                     <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Free Shipping Coupons<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="header-nav-mega-dropdown-overlay-container" class="header-nav-mega-dropdown-overlay-container">
-                        <div class="header-nav-mega-dropdown-body-container" id="header-nav-mega-dropdown-body-container">
+                    <div id="header-nav-overlay-container" class="header-nav-overlay-container">
+                        <div class="header-nav-body-container" id="header-nav-body-container">
                              <!-- loading overlay container -->
-                             <div class="header-mega-dropdown-loading-container" id="header-mega-dropdown-loading-container">
+                             <div class="header-nav-loading-container" id="header-nav-loading-container">
                                 <div class="header-mega-dropdown-top-offers-loading-container">
                                     @for($i=1; $i<= 8; $i++)
                                     <div class="header-mega-dropdown-top-offers-loading"></div>
@@ -150,7 +150,7 @@
                                 </div>
                             </div>
                             <!-- end loading overlay container -->
-                            <div class="header-nav-mega-dropdown-items-container" id="header-nav-mega-dropdown-items-container">
+                            <div class="header-nav-items-container" id="header-nav-items-container">
                             </div>
                         </div>
                     </div>

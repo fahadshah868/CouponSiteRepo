@@ -1,19 +1,19 @@
-.home-offers-main-container{
+.hm-offers-main-container{
     width: 100%;
     margin: 30px auto;
     text-align: center;
 }
-.home-offers-heading{
+.hm-offers-heading{
     font-size:25px;
     font-weight: 700;
 }
-.home-offers-container{
+.hm-offers-container{
     width: 1150px;
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
 }
-.home-offers-container .home-offer-container:nth-child(n){
+.hm-offers-container .hm-offer-container:nth-child(n){
     width: calc(25% - 12px);
     margin: 0 16px 16px 0;
     background-color: #fff;
@@ -28,48 +28,48 @@
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.home-offers-container .home-offer-container:nth-child(4n){
+.hm-offers-container .hm-offer-container:nth-child(4n){
     margin: 0 0 16px 0;
 }
-.home-offers-container .home-offer-container:hover{
+.hm-offers-container .hm-offer-container:hover{
     box-shadow: 0 0 10px $boxshadow-color;
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
-.home-offer-store-logo{
+.hm-offer-store-logo{
     width:120px;
     height:120px;
 }
-.home-offer-store-logo img{
+.hm-offer-store-logo img{
     width: 100%;
     height: 100%;
 }
-.home-offer-offertitle{
+.hm-offer-offertitle{
     width: 100%;
     margin: 0;
     font-size: 15px;
     font-weight: 500;
 }
-.home-offer-offertype-code{
+.hm-offer-offertype-code{
     font-size: 14px;
     font-weight: 700;
     font-style: italic;
     color: $offer-type-code-color;
     flex-grow: 1;
 }
-.home-offer-offertype-instorecoupon{
+.hm-offer-offertype-instorecoupon{
     font-size: 14px;
     font-weight: 700;
     color: $offer-type-instorecoupon-color;
     flex-grow: 1;
 }
-.home-offer-offertype-else{
+.hm-offer-offertype-else{
     font-size: 14px;
     font-weight: 700;
     color: $offer-type-else-color;
     flex-grow: 1;
 }
-.home-offer-button{
+.hm-offer-button{
     margin-top: 10px;
     width:100%; 
     padding: 5px 10px;
@@ -85,7 +85,7 @@
     -webkit-transition: 0.3s;
     cursor: pointer;
 }
-.home-offer-button:hover{
+.hm-offer-button:hover{
     background-color: $theme-color-tonext !important;
     color: #fff;
     transition: 0.3s;
@@ -113,14 +113,14 @@
     display: none;
 }
 @media only screen and (max-width: 1165px){
-    .home-offers-container{
+    .hm-offers-container{
         width: 100%;
         padding: 0 30px;
     }
-    .home-offers-heading{
+    .hm-offers-heading{
         padding: 0 30px;
     }
-    .home-offers-container .home-offer-container{
+    .hm-offers-container .hm-offer-container{
         width: calc(25% - 12px);
         margin: 0 16px 16px 0;
         background-color: #fff;
@@ -131,11 +131,11 @@
     }    
 }
 @media only screen and (max-width: 1050px){
-    .home-offers-container{
+    .hm-offers-container{
         width: 100%;
         padding: 0 30px;
     }
-    .home-offers-container .home-offer-container:nth-child(n){
+    .hm-offers-container .hm-offer-container:nth-child(n){
         width: calc(33% - 8.4px);
         margin: 0 16px 16px 0;
         background-color: #fff;
@@ -144,16 +144,16 @@
         transition: 0.3s;
         -webkit-transition: 0.3s;
     }
-    .home-offers-container .home-offer-container:nth-child(3n){
+    .hm-offers-container .hm-offer-container:nth-child(3n){
         margin: 0 0 16px 0;
     }
 }
 @media only screen and (max-width: 800px){
-    .home-offers-container{
+    .hm-offers-container{
         width: 100%;
         padding: 0 30px;
     }
-    .home-offers-container .home-offer-container:nth-child(n){
+    .hm-offers-container .hm-offer-container:nth-child(n){
         width: calc(50% - 8px);
         margin: 0 16px 16px 0;
         background-color: #fff;
@@ -162,22 +162,22 @@
         transition: 0.3s;
         -webkit-transition: 0.3s;
     }
-    .home-offers-container .home-offer-container:nth-child(2n){
+    .hm-offers-container .hm-offer-container:nth-child(2n){
         margin: 0 0 16px 0;
     }
 }
 @media only screen and (max-width: 600px){
-    .home-offers-container{
+    .hm-offers-container{
         width: 100%;
         padding: 0 15px;
     }
 }
 @media only screen and (max-width: 500px){
-    .home-offers-container{
+    .hm-offers-container{
         width: 100%;
         padding: 0 15px;
     }
-    .home-offers-container .home-offer-container:nth-child(n){
+    .hm-offers-container .hm-offer-container:nth-child(n){
         width: 100%;
         margin: 0 0 16px 0;
         background-color: #fff;

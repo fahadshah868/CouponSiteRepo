@@ -134,7 +134,7 @@
     transition: 0.2s;
     -webkit-transition: 0.2s;
 }
-.header-nav-mega-dropdown-overlay-container{
+.header-nav-overlay-container{
     position: absolute;
     top: 119px;
     left: 0;
@@ -145,7 +145,7 @@
 }
 /*toggle button and list
 --------------------------------------------------------------*/
-.header-hamburger-mega-menu-container{
+.hamburger-menu-container{
     display: none;
 }
 .menu-toggle{
@@ -217,16 +217,16 @@
 .menu-toggle.active .cross span:last-child{
 	transform:translateY(-50%) rotate(-45deg) scaleX(1);
 }
-.hamburger-mega-menu-list .fa-angle-down{
+.hamburger-menu-list .fa-angle-down{
     float: right;
     padding-top: 4px;
 }
-.hamburger-mega-menu-list li{
+.hamburger-menu-list li{
   list-style: none;
   width: 100%;
   background-color: $theme-color;
 }
-.hamburger-mega-menu-list li a{
+.hamburger-menu-list li a{
   display: block;
   text-decoration: none;
   padding: 14px 30px;
@@ -234,12 +234,12 @@
   transition: 0.2s;
   -webkit-transition: 0.2s;
 }
-.hamburger-mega-menu-list li a:hover{
+.hamburger-menu-list li a:hover{
   background-color: #0b78aa;
   transition: 0.2s;
   -webkit-transition: 0.2s;
 }
-.hamburgerbutton-mega-menu-overlay-container{
+.hamburger-overlay-container{
     position: absolute;
     top: 80px;
     left: 0;
@@ -248,22 +248,22 @@
     z-index: 2;
     display: none;
 }
-.hamburger-mega-menu-list li ul{
+.hamburger-menu-list li ul{
   display: none;
 }
-.hamburger-mega-menu-list ul li{
+.hamburger-menu-list ul li{
   background-color: $theme-color-tonext;
 }
-.hamburger-mega-menu-list ul li a{
+.hamburger-menu-list ul li a{
   padding: 14px 50px;
   transition: 0.2s;
   -webkit-transition: 0.2s;
 }
-.hamburger-mega-menu-list .fa-angle-right{
+.hamburger-menu-list .fa-angle-right{
   padding-top: 4px;
   float: right;
 }
-.hamburger-mega-menu-list ul li a:hover{
+.hamburger-menu-list ul li a:hover{
   background-color: #0b78aa;
   transition: 0.2s;
   -webkit-transition: 0.2s;
@@ -314,14 +314,14 @@
     transition: 0.2s;
     -webkit-transition: 0.2s;
 }
-.header-nav-mega-dropdown-body-container{
+.header-nav-body-container{
     width: 1150px;
     margin: auto;
     background-color: #fff;
     padding: 30px 60px;
     position: relative;
 }
-.header-nav-mega-dropdown-items-container{
+.header-nav-items-container{
     width: 100%;
     display: none;
 }
@@ -497,11 +497,11 @@
     color: red;
 }
 // loading container
-.header-mega-dropdown-top-items-loading{
+.header-nav-top-items-loading{
     height: 100px;
     width: 100%;
 }
-.header-mega-dropdown-popular-items-loading{
+.header-nav-popular-items-loading{
     margin-top: 20px;
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -534,10 +534,10 @@
         flex-direction: row;
         justify-content: left;
     }
-    .header-nav-mega-dropdown-overlay-container{
+    .header-nav-overlay-container{
         padding: 0 20px;
     }
-    .header-nav-mega-dropdown-body-container{
+    .header-nav-body-container{
         width: 100%;
     }
 }
@@ -564,7 +564,7 @@
         width: 100%;
         margin-right: 20px;
     }
-    .header-hamburger-mega-menu-container{
+    .hamburger-menu-container{
         display: block;
     }
 }

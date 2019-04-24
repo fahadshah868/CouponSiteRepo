@@ -11,7 +11,7 @@ $(document).ready(function(){
             setTimeout(navigateToUrl,1000);
         }
     }
-    $(".home-offer-button").click(function(){
+    $(".hm-offers-container").on('click','.hm-offer-button',function(){
         second = 0;
         var title = $(this).attr("data-offertitle");
         var code = $(this).attr("data-offercode");
