@@ -109,6 +109,8 @@
         @endif
     </div>
 </div>
+@endsection
+@section('js-section')
 <script>
     $(document).ready(function(){
         $(`.reset-category-filters`).click(function(){
@@ -143,5 +145,4 @@
         });
     });
 </script>
-
 @endsection

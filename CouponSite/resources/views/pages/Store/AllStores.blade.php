@@ -93,7 +93,8 @@
         </div>
     </div>
 </div>
-<script src="{{asset('js/customdropdown.js')}}"></script>
+@endsection
+@section('js-section')
 <script>
     $(document).ready(function(){
         var height_difference = $(this).scrollTop() - $('#as-mega-container').position().top;
@@ -272,5 +273,4 @@
         }
     });
 </script>
-
 @endsection

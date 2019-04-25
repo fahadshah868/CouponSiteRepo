@@ -162,10 +162,12 @@
         @endforeach
       </div>
   </div>
+@endsection
+@section('js-section')
 <script>
     $(document).ready(function() {
       var rowscount = 4;
-      $("#slider").sliderResponsive({
+      // $("#slider").sliderResponsive({
       // Using default everything
         // slidePause: 5000,
         // fadeSpeed: 800,
@@ -174,7 +176,7 @@
         // hideDots: "off", 
         // hoverZoom: "on", 
         // titleBarTop: "off"
-      });
+      // });
       $('#hm-ts-main-container').multislider({
           interval: 5000,
           slideAll: false,
@@ -224,4 +226,4 @@
       });
     });
   </script>
-@endsection
+  @endsection

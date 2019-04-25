@@ -59,6 +59,8 @@
         @endif
     </div>
 </div>
+@endsection
+@section('js-section')
 <script type="text/javascript">
     $('body').on('click', '.pagination a', function(e) {
         e.preventDefault();
@@ -98,5 +100,4 @@
         }
     });
 </script>
-
 @endsection

@@ -65,7 +65,8 @@
         </div>
     </div>
 </div>
-<script src="{{asset('js/customdropdown.js')}}"></script>
+@endsection
+@section('js-section')
 <script>
     $(document).ready(function(){
         //letters navbar
