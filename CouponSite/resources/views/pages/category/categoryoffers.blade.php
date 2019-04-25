@@ -17,7 +17,7 @@
             <div class="fo-sb-content-body">
                 @foreach($stores as $store)
                 <label class="checkbox-container">{{$store{0}->store->title}}
-                    <input type="checkbox" name="related-store" id="{{$store{0}->store->id}}">
+                    <input type="checkbox" class="store-filter" id="{{$store{0}->store->id}}">
                     <span class="checkmark"></span>
                 </label>
                 @endforeach
@@ -61,32 +61,35 @@
 </div>
 @endsection
 @section('js-section')
-<script type="text/javascript">
-    $('body').on('click', '.pagination a', function(e) {
+<script>
+    $(`body`).on(`click`, `.pagination a`, function(e) {
         e.preventDefault();
-        var url = $(this).attr('href');  
+        var url = $(this).attr(`href`);  
         getArticles(url);
     });
     function getArticles(url) {
         $.ajax({
             url : url
         }).done(function (data) {
-            $('#filtered-offers').html(data);  
+            $(`#filtered-offers`).html(data);  
         }).fail(function () {
-            alert('Articles could not be loaded.');
+            alert(`something went wrong.`);
         });
     }
-    $(".checkbox-container").unbind().click(function(){
+    $(`.checkbox-container input[type="checkbox"]`).click(function(){
         var stores = [];
-        $('.checkbox-container').find('input:checked').each(function () {
-            stores.push($(this).attr('id'));
+        $(`.checkbox-container`).find(`input:checked`).each(function () {
+            stores.push($(this).attr(`id`));
         });
-        // alert('a');
+        console.log(stores[stores.length-1]);
+        console.log(stores);
         if(stores.length > 0){
             $.ajax({
                 type:`GET`,
                 url:`/applymorefilters/`+stores,
                 data: ``,
+                dataType: 'json',
+                traditional: true,
                 beforeSend: function(){
                     //todo
                 },
@@ -94,7 +97,10 @@
                     //todo
                 },
                 success:function(data){
-                    alert(data[0]);
+                    $.each(data.filteredoffers, function (index, offer) {
+                        alert(offer.id);
+                        console.log(offer);
+                    })
                 }
             });
         }

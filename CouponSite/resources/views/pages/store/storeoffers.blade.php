@@ -124,7 +124,7 @@
                 $(`.fo-sb-offers-availability`).html($('li.fo-db-offerbody-container:visible').length+` Offer Available`);
             }
         });
-        $(`.checkbox-container`).click(function(){
+        $(`.checkbox-container input[type='checkbox']`).click(function(){
             if($('.checkbox-container').find('input:checkbox:checked').length > 0){
                 $('.reset-category-filters').css('display','block');
                 $('li.fo-db-offerbody-container').hide();
