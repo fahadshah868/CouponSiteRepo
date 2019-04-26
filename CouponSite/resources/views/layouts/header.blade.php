@@ -53,8 +53,8 @@
         </div>
         <nav class="header-nav-container">
             <ul class="header-nav-list">
-                <li class="header-nav-list-item" id="header-nav-list-item">
-                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Stores<i class="fa fa-angle-down header-list-arrow"></i></span>
+                <li class="header-nav-item" id="header-nav-item">
+                    <span class="header-nav-item-text" id="header-nav-item-text">Top Stores<i class="fa fa-angle-down header-list-arrow"></i></span>
                     <div id="header-nav-overlay-container" class="header-nav-overlay-container">
                         <div class="header-nav-body-container" id="header-nav-body-container">
                             <!-- loading overlay container -->
@@ -77,8 +77,8 @@
                         </div>
                     </div>
                 </li>
-                <li class="header-nav-list-item" id="header-nav-list-item">
-                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Categories<i class="fa fa-angle-down header-list-arrow"></i></span>
+                <li class="header-nav-item" id="header-nav-item">
+                    <span class="header-nav-item-text" id="header-nav-item-text">Top Categories<i class="fa fa-angle-down header-list-arrow"></i></span>
                     <div id="header-nav-overlay-container" class="header-nav-overlay-container">
                         <div class="header-nav-body-container" id="header-nav-body-container">
                             <!-- loading overlay container -->
@@ -101,61 +101,18 @@
                         </div>
                     </div>
                 </li>
-                <li class="header-nav-list-item" id="header-nav-list-item">
-                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Online Codes<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="header-nav-overlay-container" class="header-nav-overlay-container">
-                        <div class="header-nav-body-container" id="header-nav-body-container">
-                            <!-- loading overlay container -->
-                            <div class="header-nav-loading-container" id="header-nav-loading-container">
-                                <div class="header-mega-dropdown-top-offers-loading-container">
-                                    @for($i=1; $i<= 8; $i++)
-                                    <div class="header-mega-dropdown-top-offers-loading"></div>
-                                    @endfor
-                                </div>
-                            </div>
-                            <!-- end loading overlay container -->
-                            <div class="header-nav-items-container" id="header-nav-items-container">
-                            </div>
-                        </div>
-                    </div>
+                <li class="header-nav-item" id="header-nav-item">
+                    <a href="/coupons/onlinecodes" class="header-nav-item-text" id="header-nav-item-text">See All Online Codes</a>
                 </li>
-                <li class="header-nav-list-item" id="header-nav-list-item">
-                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Online Sales<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="header-nav-overlay-container" class="header-nav-overlay-container">
-                        <div class="header-nav-body-container" id="header-nav-body-container">
-                            <!-- loading overlay container -->
-                            <div class="header-nav-loading-container" id="header-nav-loading-container">
-                                <div class="header-mega-dropdown-top-offers-loading-container">
-                                    @for($i=1; $i<= 8; $i++)
-                                    <div class="header-mega-dropdown-top-offers-loading"></div>
-                                    @endfor
-                                </div>
-                            </div>
-                            <!-- end loading overlay container -->
-                            <div class="header-nav-items-container" id="header-nav-items-container">
-                            </div>
-                        </div>
-                    </div>
+                <li class="header-nav-item" id="header-nav-item">
+                    <a href="/coupons/onlinesales" class="header-nav-item-text" id="header-nav-item-text">See All Online Sales</a>
                 </li>
-                <li class="header-nav-list-item" id="header-nav-list-item">
-                    <span class="header-nav-list-item-text" id="header-nav-list-item-text">Top Free Shipping Coupons<i class="fa fa-angle-down header-list-arrow"></i></span>
-                    <div id="header-nav-overlay-container" class="header-nav-overlay-container">
-                        <div class="header-nav-body-container" id="header-nav-body-container">
-                             <!-- loading overlay container -->
-                             <div class="header-nav-loading-container" id="header-nav-loading-container">
-                                <div class="header-mega-dropdown-top-offers-loading-container">
-                                    @for($i=1; $i<= 8; $i++)
-                                    <div class="header-mega-dropdown-top-offers-loading"></div>
-                                    @endfor
-                                </div>
-                            </div>
-                            <!-- end loading overlay container -->
-                            <div class="header-nav-items-container" id="header-nav-items-container">
-                            </div>
-                        </div>
-                    </div>
+                <li class="header-nav-item" id="header-nav-item">
+                    <a href="/coupons/freeshipping" class="header-nav-item-text" id="header-nav-item-text">See All Free Shipping Coupons</a>
                 </li>
-                <li class="header-nav-list-item" id="header-nav-list-item"><a href="#" class="header-nav-list-item-text" id="header-nav-list-item-text">Blog</a></li>
+                <li class="header-nav-item" id="header-nav-item">
+                    <a href="/blog" class="header-nav-item-text" id="header-nav-item-text">Blog</a>
+                </li>
             </ul>
         </nav>
         <div>

@@ -80,14 +80,14 @@ $(document).ready(function() {
         }
     });
     //click on header nav links
-    $(`.header-nav-list-item-text, .header-nav-list-item-text.fa-angle-down`).click(function(e){
+    $(`.header-nav-item-text, .header-nav-item-text.fa-angle-down`).click(function(e){
         var header_list_item = $(this).parentsUntil(`.header-nav-list`);
-        $(`.header-nav-list-item #header-nav-overlay-container`).not(header_list_item.find(`#header-nav-overlay-container`)).css(`display`,`none`);
-        $(`.header-nav-list-item .header-nav-list-item-text`).removeClass(`active-nav-list-item`);
+        $(`.header-nav-item #header-nav-overlay-container`).not(header_list_item.find(`#header-nav-overlay-container`)).css(`display`,`none`);
+        $(`.header-nav-item .header-nav-item-text`).removeClass(`active-nav-list-item`);
         header_list_item.find(`#header-nav-overlay-container`).toggle();
         if(header_list_item.find(`#header-nav-overlay-container`).css(`display`) == `block`){
-            header_list_item.find(`#header-nav-list-item-text`).addClass(`active-nav-list-item`);
-            if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Stores`){
+            header_list_item.find(`#header-nav-item-text`).addClass(`active-nav-list-item`);
+            if(header_list_item.find(`#header-nav-item-text`).text() == `Top Stores`){
                 if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
                     header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
                     header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
@@ -107,24 +107,24 @@ $(document).ready(function() {
                         },
                         success:function(data){
                             var html = 
-                                `<div class="header-nav-mega-dropdown-topitems-container">`;
+                                `<div class="header-nav-topitems-container">`;
                                     $.each(data.topstores, function (index, topstore) {
                                         html = html + 
-                                        `<a href="/store/`+topstore.secondary_url+`" class="header-nav-mega-dropdown-topitems-item-container">`+
-                                            `<div class="header-nav-mega-dropdown-topitems-item">`+
+                                        `<a href="/store/`+topstore.secondary_url+`" class="header-nav-topitem-container">`+
+                                            `<div class="header-nav-topitem">`+
                                                 `<img src="`+data.panel_assets_url+topstore.logo_url+`">`+
-                                                `<span class="header-nav-mega-dropdown-topitems-item-text">`+topstore.title+`</span>`+
+                                                `<span class="header-nav-topitem-text">`+topstore.title+`</span>`+
                                             `</div>`+
                                         `</a>`
                                     });
                                 html = html +
                                 `</div>`+
-                                `<div class="header-nav-mega-dropdown-popularitems-container">`+
-                                    `<div class="header-nav-mega-dropdown-popularitems-heading-container">`+
+                                `<div class="header-nav-popularitems-container">`+
+                                    `<div class="header-nav-popularitems-heading">`+
                                         `<span>Popular Stores</span>`+
                                         `<a href="/allstores">See All Stores</a>`+
                                     `</div>`+
-                                    `<div class="header-nav-mega-dropdown-popularitems">`+
+                                    `<div class="header-nav-popularitems">`+
                                         `<ul>`
                                             $.each(data.popularstores, function (index, popularstore) {
                                                 html = html +
@@ -160,7 +160,7 @@ $(document).ready(function() {
                     });
                 }
             }
-            else if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Categories`){
+            else if(header_list_item.find(`#header-nav-item-text`).text() == `Top Categories`){
                 if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
                     header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
                     header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
@@ -180,24 +180,24 @@ $(document).ready(function() {
                         },
                         success:function(data){
                             var html = 
-                                `<div class="header-nav-mega-dropdown-topitems-container">`;
+                                `<div class="header-nav-topitems-container">`;
                                     $.each(data.topcategories, function (index, topcategory) {
                                         html = html + 
-                                        `<a href="/coupons/`+topcategory.url+`" class="header-nav-mega-dropdown-topitems-item-container">`+
-                                            `<div class="header-nav-mega-dropdown-topitems-item">`+
+                                        `<a href="/coupons/`+topcategory.url+`" class="header-nav-topitem-container">`+
+                                            `<div class="header-nav-topitem">`+
                                                 `<img src="`+data.panel_assets_url+topcategory.logo_url+`">`+
-                                                `<span class="header-nav-mega-dropdown-topitems-item-text">`+topcategory.title+`</span>`+
+                                                `<span class="header-nav-topitem-text">`+topcategory.title+`</span>`+
                                             `</div>`+
                                         `</a>`
                                     });
                                 html = html +
                                 `</div>`+
-                                `<div class="header-nav-mega-dropdown-popularitems-container">`+
-                                    `<div class="header-nav-mega-dropdown-popularitems-heading-container">`+
+                                `<div class="header-nav-popularitems-container">`+
+                                    `<div class="header-nav-popularitems-heading">`+
                                         `<span>Popular Categories</span>`+
                                         `<a href="/allcategories">See All Categories</a>`+
                                     `</div>`+
-                                    `<div class="header-nav-mega-dropdown-popularitems">`+
+                                    `<div class="header-nav-popularitems">`+
                                         `<ul>`
                                             $.each(data.popularcategories, function (index, popularcategory) {
                                                 html = html +
@@ -233,171 +233,21 @@ $(document).ready(function() {
                     });
                 }
             }
-            else if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Online Codes`){
-                if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
-                    header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
-                    header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
-                }
-                else{
-                    $.ajax({
-                        type:`GET`,
-                        url:`/getajaxrequest/3`,
-                        data: ``,
-                        beforeSend: function(){
-                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`block`);
-                            header_list_item.find(`#header-nav-items-container`).css(`display`,`none`);
-                        },
-                        complete: function(){
-                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
-                            header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
-                        },
-                        success:function(data){
-                            var html = 
-                            `<div class="header-nav-mega-dropdown-topoffers-container">`+
-                                `<div class="header-nav-mega-dropdown-topoffers-heading-container">`+
-                                    `<span>Top Online codes</span>`+
-                                    `<a href="/coupons/onlinecodes">See All Online Codes</a>`+
-                                `</div>`+
-                                `<div class="header-nav-mega-dropdown-top-offer-container">`
-                                    $.each(data.toponlinecodes, function (index, toponlinecode) {
-                                        html = html +
-                                        `<div class="header-nav-mega-dropdown-topoffer-details-container">`+
-                                            `<img src="`+data.panel_assets_url+toponlinecode.store.logo_url+`" class="header-nav-mega-dropdown-topoffer-storelogo"></img>`+
-                                            `<div class="header-nav-mega-dropdown-topoffer-details">`+
-                                                `<span class="header-nav-mega-dropdown-topoffer-title">`+toponlinecode.title+`</span>`+
-                                                `<div class="header-nav-mega-dropdown-topoffer-type-container">`+
-                                                    `<span class="header-nav-mega-dropdown-topoffer-storetitle">`+toponlinecode.store.title+`</span>`+
-                                                    `<span class="header-nav-mega-dropdown-topoffer-type">`+toponlinecode.type+`</span>`+
-                                                `</div>`+
-                                            `</div>`+
-                                        `</div>`
-                                    });
-                                html = html +
-                                `</div>`+
-                            `</div>`
-                            header_list_item.find(`#header-nav-items-container`).html(html);
-                        },
-                        error:function(){
-                            alert(`Error! something went wrong`);
-                        }
-                    });
-                }
-            }
-            else if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Online Sales`){
-                if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
-                    header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
-                    header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
-                }
-                else{
-                    $.ajax({
-                        type:`GET`,
-                        url:`/getajaxrequest/4`,
-                        data: ``,
-                        beforeSend: function(){
-                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`block`);
-                            header_list_item.find(`#header-nav-items-container`).css(`display`,`none`);
-                        },
-                        complete: function(){
-                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
-                            header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
-                        },
-                        success:function(data){
-                            var html = 
-                            `<div class="header-nav-mega-dropdown-topoffers-container">`+
-                                `<div class="header-nav-mega-dropdown-topoffers-heading-container">`+
-                                    `<span>Top Online Sales</span>`+
-                                    `<a href="/coupons/onlinesales">See All Online Sales</a>`+
-                                `</div>`+
-                                `<div class="header-nav-mega-dropdown-top-offer-container">`
-                                    for(var i=1; i<=8; i++){
-                                        html = html +
-                                        `<div class="header-nav-mega-dropdown-topoffer-details-container">`+
-                                            `<img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg" class="header-nav-mega-dropdown-topoffer-storelogo"></img>`+
-                                            `<div class="header-nav-mega-dropdown-topoffer-details">`+
-                                                `<span class="header-nav-mega-dropdown-topoffer-title">20% off on your online order + free shipping</span>`+
-                                                `<div class="header-nav-mega-dropdown-topoffer-type-container">`+
-                                                    `<span class="header-nav-mega-dropdown-topoffer-storetitle">Kohl's</span>`+
-                                                    `<span class="header-nav-mega-dropdown-topoffer-type">Sale</span>`+
-                                                `</div>`+
-                                            `</div>`+
-                                        `</div>`
-                                    }
-                                html = html +
-                                `</div>`+
-                            `</div>`
-                            header_list_item.find(`#header-nav-items-container`).html(html);
-                        },
-                        error:function(){
-                            alert(`Error! something went wrong`);
-                        }
-                    });
-                }
-            }
-            else if(header_list_item.find(`#header-nav-list-item-text`).text() == `Top Free Shipping Coupons`){
-                if(header_list_item.find(`#header-nav-items-container`).children().length > 0){
-                    header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
-                    header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
-                }
-                else{
-                    $.ajax({
-                        type:`GET`,
-                        url:`/getajaxrequest/5`,
-                        data: ``,
-                        beforeSend: function(){
-                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`block`);
-                            header_list_item.find(`#header-nav-items-container`).css(`display`,`none`);
-                        },
-                        complete: function(){
-                            header_list_item.find(`#header-nav-loading-container`).css(`display`,`none`);
-                            header_list_item.find(`#header-nav-items-container`).css(`display`,`block`);
-                        },
-                        success:function(data){
-                            var html = 
-                            `<div class="header-nav-mega-dropdown-topoffers-container">`+
-                                `<div class="header-nav-mega-dropdown-topoffers-heading-container">`+
-                                    `<span>Top Free Shipping Coupons</span>`+
-                                    `<a href="/coupons/freeshipping">See All Free Shipping Coupons</a>`+
-                                `</div>`+
-                                `<div class="header-nav-mega-dropdown-top-offer-container">`
-                                    for(var i=1; i<=8; i++){
-                                        html = html +
-                                        `<div class="header-nav-mega-dropdown-topoffer-details-container">`+
-                                            `<img src="https://thumbor.forbes.com/thumbor/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fi.forbesimg.com%2Fmedia%2Flists%2Fcompanies%2Fkohls_416x416.jpg" class="header-nav-mega-dropdown-topoffer-storelogo"></img>`+
-                                            `<div class="header-nav-mega-dropdown-topoffer-details">`+
-                                                `<span class="header-nav-mega-dropdown-topoffer-title">20% off on your online order + free shipping</span>`+
-                                                `<div class="header-nav-mega-dropdown-topoffer-type-container">`+
-                                                    `<span class="header-nav-mega-dropdown-topoffer-storetitle">Kohl's</span>`+
-                                                    `<span class="header-nav-mega-dropdown-topoffer-type">Code</span>`+
-                                                `</div>`+
-                                            `</div>`+
-                                        `</div>`
-                                    }
-                                html = html +
-                                `</div>`+
-                            `</div>`
-                            header_list_item.find(`#header-nav-items-container`).html(html);
-                        },
-                        error:function(){
-                            alert(`Error! something went wrong`);
-                        }
-                    });
-                }
-            }
         }
         else{
-            header_list_item.find(`#header-nav-list-item-text`).removeClass(`active-nav-list-item`);
+            header_list_item.find(`#header-nav-item-text`).removeClass(`active-nav-list-item`);
         }
     });
     $(document).click(function(e){
         //click outside the mega dropdown container
         if(!$(e.target).hasClass(`header-nav-body-container`) &&                         //click on body container
         !$(e.target).parents(`.header-nav-body-container`).length > 0 &&                 //click inside body container
-        !$(e.target).hasClass(`header-nav-list-item-text`) &&                                          //click on nav list item text
+        !$(e.target).hasClass(`header-nav-item-text`) &&                                          //click on nav list item text
         !$(e.target).hasClass(`header-list-arrow`) &&                                                       //click on nav list item arrow
         !$(e.target).hasClass(`menu-toggle`) &&                                                             //click on hamburger menu
         !$(e.target).parents(`.menu-toggle`).length > 0 &&                                                  //click on inside hamburger menu
         !$(e.target).parents(`.hamburger-menu-list`).length > 0){                                      //click on hamburger menu list items
-            $(`.header-nav-list-item .header-nav-list-item-text`).removeClass(`active-nav-list-item`);
+            $(`.header-nav-item .header-nav-item-text`).removeClass(`active-nav-list-item`);
             $(`.header-nav-overlay-container`).css(`display`,`none`);
             $(`#hamburger-overlay-container`).css(`display`,`none`);
             $(`.menu-toggle`).removeClass(`active`);

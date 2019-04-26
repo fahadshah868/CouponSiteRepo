@@ -82,7 +82,7 @@
                             <div class="fo-db-offer-expires"><i class="fa fa-clock-o"></i>Expires: {{ Carbon\Carbon::parse($offer->expiry_date)->format('d/m/Y') }}</div>
                         </div>
                         <div class="fo-db-offer-button-container">
-                            @if(strcasecmp($offer->location,'Online & In-Store') == 0 && strcasecmp($filteredoffer->type, 'Code') == 0)
+                            @if(strcasecmp($offer->location,'Online & In-Store') == 0 && strcasecmp($offer->type, 'Code') == 0)
                             <span class="offer-button" id="offer-button">
                                 USE ONLINE
                             </span>

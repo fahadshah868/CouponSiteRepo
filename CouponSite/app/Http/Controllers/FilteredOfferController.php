@@ -12,16 +12,85 @@ class FilteredOfferController extends Controller
 {
     public function getFilteredOffers(Request $request, $filter){
         if(strcasecmp($filter,'onlinecodes') == 0){
-            dd('1');
-            return view('pages.filteredoffer.filteredoffers');
+            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+            ->with(['store' => function($sq){
+                $sq->select('id','title','logo_url');
+            }])
+            ->whereHas('store', function($sq){
+                $sq->where('status',1);
+            })
+            ->where([
+                [ 'status',1 ],
+                [ 'type',1 ],
+            ])
+            ->whereIn('location',[1,3])
+            ->orderBy('id','DESC')
+            ->orderBy('is_popular','ASC')
+            ->orderBy('anchor','DESC')
+            ->paginate(2);
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            if($request->ajax()){
+                return view('partialviews.filteredoffers',$data);
+            }
+            else{
+                $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
+                    return $item->store->id;
+                });
+                return view('pages.filteredoffer.filteredoffers',$data);
+            }
         }
         else if(strcasecmp($filter,'onlinesales') == 0){
-            dd('2');
-            return view('pages.filteredoffer.filteredoffers');
+            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+            ->with(['store' => function($sq){
+                $sq->select('id','title','logo_url');
+            }])
+            ->whereHas('store', function($sq){
+                $sq->where('status',1);
+            })
+            ->where([
+                [ 'status',1 ],
+                [ 'type',2 ],
+            ])
+            ->whereIn('location',[1,3])
+            ->orderBy('id','DESC')
+            ->orderBy('is_popular','ASC')
+            ->orderBy('anchor','DESC')
+            ->paginate(2);
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            if($request->ajax()){
+                return view('partialviews.filteredoffers',$data);
+            }
+            else{
+                $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
+                    return $item->store->id;
+                });
+                return view('pages.filteredoffer.filteredoffers',$data);
+            }
         }
         else if(strcasecmp($filter,'freeshipping') == 0){
-            dd('3');
-            return view('pages.filteredoffer.filteredoffers');
+            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+            ->with(['store' => function($sq){
+                $sq->select('id','title','logo_url');
+            }])
+            ->whereHas('store', function($sq){
+                $sq->where('status',1);
+            })
+            ->where('status',1)
+            ->where('free_shipping',1)
+            ->orderBy('id','DESC')
+            ->orderBy('is_popular','ASC')
+            ->orderBy('anchor','DESC')
+            ->paginate(2);
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            if($request->ajax()){
+                return view('partialviews.filteredoffers',$data);
+            }
+            else{
+                $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
+                    return $item->store->id;
+                });
+                return view('pages.filteredoffer.filteredoffers',$data);
+            }
         }
         else{
             $data['category'] = Category::select('id','title','description')->where('title',$filter)->where('status',1)->first();
