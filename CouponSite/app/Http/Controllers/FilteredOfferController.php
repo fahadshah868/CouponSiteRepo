@@ -60,20 +60,32 @@ class FilteredOfferController extends Controller
             }
         }
     }
-    public function getMoreFilteredOffers($filters){
-        $data['filters'] = explode(',',$filters);
-        $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
-        ->where('status',1)
-        ->Where(function($q) use($data){
-            for($i=0; $i< count($data['filters']); $i++){
-                if($i==0){
-                    $q->where('store_id',$data['filters'][$i]);
+    public function getMoreFilteredOffers($filters, $category_id){
+        if($filters != 0){
+            $data['filters'] = explode(',',$filters);
+            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+            ->where('status',1)
+            ->where('category_id',$category_id)
+            ->Where(function($q) use($data){
+                for($i=0; $i< count($data['filters']); $i++){
+                    if($i==0){
+                        $q->where('store_id',$data['filters'][$i]);
+                    }
+                    else{
+                        $q->orWhere('store_id',$data['filters'][$i]);
+                    }
                 }
-                else{
-                    $q->orWhere('store_id',$data['filters'][$i]);
-                }
-            }
-        })->get();
-        return response()->json(count($data['filteredoffers']));
+            })->paginate(2);
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            return view('partialviews.filteredoffers',$data);
+        }
+        else{
+            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+            ->where('status',1)
+            ->where('category_id',$category_id)
+            ->paginate(2);
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            return view('partialviews.filteredoffers',$data);
+        }
     }
 }

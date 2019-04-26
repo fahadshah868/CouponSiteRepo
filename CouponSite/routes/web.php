@@ -28,8 +28,7 @@ Route::get('/allcategories','CategoryController@getAllCategoriesList');
 
 //routes for FilteredController
 Route::get('/coupons/{filter}','FilteredOfferController@getFilteredOffers');
-Route::get('/applymorefilters/{filters}', 'FilteredOfferController@getMoreFilteredOffers');
-// Route::get('/applymorefilters/{array}',array('as'=>'stores','uses'=>'FilteredOfferController@getMoreFilteredOffers'));
+Route::get('/applymorefilters/{filters}/{category}', 'FilteredOfferController@getMoreFilteredOffers');
 
 // routes for OnlineCodeController
 Route::get('/gettoponlinecodes','OnlineCodeController@getTopOnlineCodesList');

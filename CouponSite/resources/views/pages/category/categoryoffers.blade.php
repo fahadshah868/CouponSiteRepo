@@ -6,7 +6,7 @@
 
 <div class="fo-main-container">
     <div class="fo-sb">
-        <div class="fo-sb-offers-availability">{{$filteredoffers->total()}} Offers Available</div>
+        <div class="fo-sb-offers-availability" id="offers-availability">{{$filteredoffers->total()}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         @if(count($stores) > 0)
         <div class="fo-sb-content-container">
@@ -15,9 +15,10 @@
                 <span class="reset-category-filters">Reset</span>
             </div>
             <div class="fo-sb-content-body">
+                <input type="hidden" id="category_id" value="{{$category->id}}">
                 @foreach($stores as $store)
                 <label class="checkbox-container">{{$store{0}->store->title}}
-                    <input type="checkbox" class="store-filter" id="{{$store{0}->store->id}}">
+                    <input type="checkbox" value="{{$store{0}->store->id}}" class="store-filter">
                     <span class="checkmark"></span>
                 </label>
                 @endforeach
@@ -77,31 +78,41 @@
         });
     }
     $(`.checkbox-container input[type="checkbox"]`).click(function(){
-        var stores = [];
+        var category_id = $("#category_id").val();
+        var stores_id = [];
         $(`.checkbox-container`).find(`input:checked`).each(function () {
-            stores.push($(this).attr(`id`));
+            stores_id.push($(this).val());
         });
-        console.log(stores[stores.length-1]);
-        console.log(stores);
-        if(stores.length > 0){
+        if(stores_id.length > 0){
             $.ajax({
                 type:`GET`,
-                url:`/applymorefilters/`+stores,
-                data: ``,
-                dataType: 'json',
-                traditional: true,
+                url:`/applymorefilters/`+stores_id+`/`+category_id,
                 beforeSend: function(){
-                    //todo
                 },
                 complete: function(){
-                    //todo
                 },
                 success:function(data){
-                    $.each(data.filteredoffers, function (index, offer) {
-                        alert(offer.id);
-                        console.log(offer);
-                    })
                 }
+            }).done(function (data) {
+                $(`#filtered-offers`).html(data);  
+            }).fail(function () {
+                alert(`something went wrong.`);
+            });
+        }
+        else{
+            $.ajax({
+                type:`GET`,
+                url:`/applymorefilters/0/`+category_id,
+                beforeSend: function(){
+                },
+                complete: function(){
+                },
+                success:function(data){
+                }
+            }).done(function (data) {
+                $(`#filtered-offers`).html(data);
+            }).fail(function () {
+                alert(`something went wrong.`);
             });
         }
     });
