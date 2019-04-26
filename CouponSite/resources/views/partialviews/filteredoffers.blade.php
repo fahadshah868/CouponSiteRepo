@@ -1,4 +1,5 @@
 <div class="fo-db-offers-list-container" id="fo-db-offers-list-container">
+    <input type="hidden" id="fo-offers-availability" value="{{$filteredoffers->total()}}">
     @foreach($filteredoffers as $filteredoffer)
     <div class="fo-db-offerbody-container">
         <div class="fo-db-logo">
@@ -17,7 +18,7 @@
                 <div class="fo-db-offer-expires"><i class="fa fa-clock-o"></i>Expires: {{ Carbon\Carbon::parse($filteredoffer->expiry_date)->format('d/m/Y') }}</div>
             </div>
             <div class="fo-db-offer-button-container">
-                @if(strcasecmp($filteredoffer->location,'Online & In-Store') == 0)
+                @if(strcasecmp($filteredoffer->location,'Online & In-Store') == 0 && strcasecmp($filteredoffer->type, 'Code') == 0)
                 <span class="offer-button" id="offer-button">
                     USE ONLINE
                 </span>

@@ -9,6 +9,7 @@ require('./bootstrap');
 require('./header');
 require('./topstoresms.min.js');
 require('./customdropdown');
+require('./offermodal');
 
 // window.Vue = require('vue');
 

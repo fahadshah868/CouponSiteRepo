@@ -50,27 +50,28 @@
     font-size: 15px;
     font-weight: 500;
 }
+.hm-offer-type{
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
 .hm-offer-offertype-code{
     font-size: 14px;
     font-weight: 700;
     font-style: italic;
     color: $offer-type-code-color;
-    flex-grow: 1;
 }
 .hm-offer-offertype-instorecoupon{
     font-size: 14px;
     font-weight: 700;
     color: $offer-type-instorecoupon-color;
-    flex-grow: 1;
 }
 .hm-offer-offertype-else{
     font-size: 14px;
     font-weight: 700;
     color: $offer-type-else-color;
-    flex-grow: 1;
 }
 .hm-offer-button{
-    margin-top: 10px;
+    margin-bottom: 3px;
     width:100%; 
     padding: 5px 10px;
     border: none;

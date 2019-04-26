@@ -12,7 +12,7 @@
         <div class="fo-sb-content-container">
             <div class="fo-sb-content-heading">
                 <span>Filter By Store</span>
-                <span class="reset-category-filters">Reset</span>
+                <span class="reset-store-filters" id="reset-store-filters">Reset</span>
             </div>
             <div class="fo-sb-content-body">
                 <input type="hidden" id="category_id" value="{{$category->id}}">
@@ -72,7 +72,10 @@
         $.ajax({
             url : url
         }).done(function (data) {
-            $(`#filtered-offers`).html(data);  
+            $(`#filtered-offers`).html(data);
+            $('html, body').animate({
+                scrollTop: $("div.fo-db-heading").offset().top
+            }, 500)
         }).fail(function () {
             alert(`something went wrong.`);
         });
@@ -84,37 +87,58 @@
             stores_id.push($(this).val());
         });
         if(stores_id.length > 0){
+            $(`#reset-store-filters`).css('display','block');
             $.ajax({
                 type:`GET`,
-                url:`/applymorefilters/`+stores_id+`/`+category_id,
-                beforeSend: function(){
-                },
-                complete: function(){
-                },
-                success:function(data){
-                }
+                url:`/applymorefilters/`+stores_id+`/`+category_id
             }).done(function (data) {
-                $(`#filtered-offers`).html(data);  
+                $(`#filtered-offers`).html(data);
+                if($(`#fo-offers-availability`).val() > 1){
+                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offers Available");
+                }
+                else if($(`#fo-offers-availability`).val() == 1){
+                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offer Available");
+                }
             }).fail(function () {
                 alert(`something went wrong.`);
             });
         }
         else{
+            $(`#reset-store-filters`).css('display','none');
             $.ajax({
                 type:`GET`,
-                url:`/applymorefilters/0/`+category_id,
-                beforeSend: function(){
-                },
-                complete: function(){
-                },
-                success:function(data){
-                }
+                url:`/applymorefilters/0/`+category_id
             }).done(function (data) {
                 $(`#filtered-offers`).html(data);
+                if($(`#fo-offers-availability`).val() > 1){
+                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offers Available");
+                }
+                else if($(`#fo-offers-availability`).val() == 1){
+                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offer Available");
+                }
             }).fail(function () {
                 alert(`something went wrong.`);
             });
         }
+        $(`#reset-store-filters`).click(function(){
+            var category_id = $("#category_id").val();
+            $(`#reset-store-filters`).css('display','none');
+            $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
+            $.ajax({
+                type:`GET`,
+                url:`/applymorefilters/0/`+category_id
+            }).done(function (data) {
+                $(`#filtered-offers`).html(data);
+                if($(`#fo-offers-availability`).val() > 1){
+                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offers Available");
+                }
+                else if($(`#fo-offers-availability`).val() == 1){
+                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offer Available");
+                }
+            }).fail(function () {
+                alert(`something went wrong.`);
+            });
+        });
     });
 </script>
 @endsection

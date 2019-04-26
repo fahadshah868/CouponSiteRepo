@@ -21,7 +21,7 @@
         <div class="fo-sb-content-container">
             <div class="fo-sb-content-heading">
                 <span>Filter By Category</span>
-                <span class="reset-category-filters">Reset</span>
+                <span class="reset-category-filters" id="reset-category-filters">Reset</span>
             </div>
             <div class="fo-sb-content-body">
                 @foreach($categories as $category)
@@ -82,7 +82,7 @@
                             <div class="fo-db-offer-expires"><i class="fa fa-clock-o"></i>Expires: {{ Carbon\Carbon::parse($offer->expiry_date)->format('d/m/Y') }}</div>
                         </div>
                         <div class="fo-db-offer-button-container">
-                            @if(strcasecmp($offer->location,'Online & In-Store') == 0)
+                            @if(strcasecmp($offer->location,'Online & In-Store') == 0 && strcasecmp($filteredoffer->type, 'Code') == 0)
                             <span class="offer-button" id="offer-button">
                                 USE ONLINE
                             </span>
@@ -113,10 +113,10 @@
 @section('js-section')
 <script>
     $(document).ready(function(){
-        $(`.reset-category-filters`).click(function(){
+        $(`#reset-category-filters`).click(function(){
             $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
             $('li.fo-db-offerbody-container').not('.hidden').show();
-            $('.reset-category-filters').css('display','none');
+            $('#reset-category-filters').css('display','none');
             if($('li.fo-db-offerbody-container:visible').length > 1){
                 $(`.fo-sb-offers-availability`).html($('li.fo-db-offerbody-container:visible').length+` Offers Available`);
             }
@@ -126,14 +126,14 @@
         });
         $(`.checkbox-container input[type='checkbox']`).click(function(){
             if($('.checkbox-container').find('input:checkbox:checked').length > 0){
-                $('.reset-category-filters').css('display','block');
+                $('#reset-category-filters').css('display','block');
                 $('li.fo-db-offerbody-container').hide();
                 $('.checkbox-container').find('input:checked').each(function () {
                     $('li.fo-db-offerbody-container.' + $(this).attr('class')).not('.hidden').show();
                 });
             } 
             else{
-                $('.reset-category-filters').css('display','none');
+                $('#reset-category-filters').css('display','none');
                 $('li.fo-db-offerbody-container').not('.hidden').show();
             }
             if($('li.fo-db-offerbody-container:visible').length > 1){

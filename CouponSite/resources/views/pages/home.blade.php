@@ -109,14 +109,25 @@
         <div class="hm-offer-offertitle">
           {{$offer->title}}
         </div>
-        <span class="hm-offer-offertype-code">{{$offer->location}} {{$offer->type}}</span>
-        <span class="hm-offer-button" data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" data-offerexpiry="{{$offer->expiry_date}}" data-storetitle="{{$offer->store->title}}" data-siteurl="{{$offer->store->network_url}}">
+        <div class="hm-offer-type">
+          <span class="hm-offer-offertype-code">{{$offer->location}} {{$offer->type}}</span>
+        </div>
+        @if(strcasecmp($offer->location,'Online & In-Store') == 0 && strcasecmp($offer->type, 'Code') == 0)
+          <span class="hm-offer-button" id="hm-offer-button">
+              USE ONLINE
+          </span>
+          <span class="hm-offer-button" id="hm-offer-button">
+              USE IN-STORE
+          </span>
+        @else
+        <span class="hm-offer-button" id="hm-offer-button" data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" data-offerexpiry="{{$offer->expiry_date}}" data-storetitle="{{$offer->store->title}}" data-siteurl="{{$offer->store->network_url}}">
           @if(strcasecmp($offer->type,"code") == 0)
-          VIEW CODE
+              VIEW CODE
           @else
-          GET DEAL
+              GET DEAL
           @endif
         </span>
+        @endif
       </div>
       @endforeach
     </div>
@@ -205,15 +216,30 @@
               '</div>'+
               '<hr style="border-top: 1px dotted #d1d1d1; width: 100%;">'+
               '<div class="hm-offer-offertitle">'+offer.title+'</div>'+
-              '<span class="hm-offer-offertype-code">'+offer.location+' '+offer.type+'</span>'+
-              '<span class="hm-offer-button" data-offerid="'+offer.id+'" data-offertitle="'+offer.title+'" data-offerlocation="'+offer.location+'" data-offertype="'+offer.type+'" data-offerdetails="'+offer.details+'" data-offercode="'+offer.code+'" data-offerexpiry="'+offer.expiry_date+'" data-storetitle="'+offer.store.title+'" data-siteurl="'+offer.store.network_url+'">'
-                if(offer.type.toLowerCase() == "code"){
-                  html = html + 'VIEW CODE'
-                }
-                else{
-                  html = html + 'GET DEAL'
-                }
-              html = html + '</span>'+
+              '<div class="hm-offer-type">'+
+                '<span class="hm-offer-offertype-code">'+offer.location+' '+offer.type+'</span>'+
+              '</div>'
+              if(offer.location.toLowerCase() == "online & in-store" && offer.type.toLowerCase() == "code"){
+                html = html +
+                '<span class="hm-offer-button" id="offer-button">'+
+                    'USE ONLINE'+
+                '</span>'+
+                '<span class="hm-offer-button" id="offer-button">'+
+                    'USE IN-STORE'+
+                '</span>'
+              }
+              else{
+                html = html +
+                '<span class="hm-offer-button" id="hm-offer-button" data-offerid="'+offer.id+'" data-offertitle="'+offer.title+'" data-offerlocation="'+offer.location+'" data-offertype="'+offer.type+'" data-offerdetails="'+offer.details+'" data-offercode="'+offer.code+'" data-offerexpiry="'+offer.expiry_date+'" data-storetitle="'+offer.store.title+'" data-siteurl="'+offer.store.network_url+'">'
+                  if(offer.type.toLowerCase() == "code"){
+                    html = html + 'VIEW CODE';
+                  }
+                  else if(offer.type.toLowerCase() == "sale"){
+                    html = html + 'GET DEAL';
+                  }
+                '</span>'
+              }
+              html = html +
               '</div>';
               $("#hm-offers-container").append(html);
             });

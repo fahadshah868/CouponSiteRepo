@@ -236,6 +236,15 @@
 .fo-sb-content-heading .reset-category-filters:hover{
     text-decoration: underline;
 }
+.fo-sb-content-heading .reset-store-filters{
+    font-size: 15px;
+    color: $link-color-onhover;
+    cursor: pointer;
+    display: none;
+}
+.fo-sb-content-heading .reset-store-filters:hover{
+    text-decoration: underline;
+}
 .fo-store-details{
     font-size: 14px;
     font-weight: 400;

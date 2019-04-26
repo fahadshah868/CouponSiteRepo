@@ -64,6 +64,9 @@ class FilteredOfferController extends Controller
         if($filters != 0){
             $data['filters'] = explode(',',$filters);
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+            ->with(['store' => function($sq){
+                $sq->select('id','title','logo_url');
+            }])
             ->where('status',1)
             ->where('category_id',$category_id)
             ->Where(function($q) use($data){
@@ -81,6 +84,9 @@ class FilteredOfferController extends Controller
         }
         else{
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+            ->with(['store' => function($sq){
+                $sq->select('id','title','logo_url');
+            }])
             ->where('status',1)
             ->where('category_id',$category_id)
             ->paginate(2);
