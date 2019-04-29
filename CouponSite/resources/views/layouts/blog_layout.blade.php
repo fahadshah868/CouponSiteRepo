@@ -26,9 +26,9 @@
             @include('pages.modal.modal')
         </div>
         <!--footer content-->
-        <!-- @section('app-footer')
+        @section('app-footer')
             @include('layouts.app_footer')
-        @show -->
+        @show
         <!--jquery content-->
         <script src="{{asset('js/app.js')}}"></script>
         @yield('js-section')
