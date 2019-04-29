@@ -30,8 +30,5 @@ Route::get('/allcategories','CategoryController@getAllCategoriesList');
 Route::get('/coupons/{filter}','FilteredOfferController@getFilteredOffers');
 Route::get('/applymorefilters/{filters}/{category}', 'FilteredOfferController@getMoreFilteredOffers');
 
-// routes for OnlineCodeController
-Route::get('/gettoponlinecodes','OnlineCodeController@getTopOnlineCodesList');
-
-// route for InstoreOffersController
-Route::get('/gettopinstoreoffers','InstoreOffersController@getTopInstoreOffersList');
+// routes for BlogController
+Route::get('/blog','BlogController@getAllBlogsList');

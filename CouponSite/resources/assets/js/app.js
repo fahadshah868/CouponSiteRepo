@@ -6,7 +6,7 @@
  */
 
 require('./bootstrap');
-require('./header');
+require('./app_header');
 require('./topstoresms.min.js');
 require('./customdropdown');
 require('./offermodal');
