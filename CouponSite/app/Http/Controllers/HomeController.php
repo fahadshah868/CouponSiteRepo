@@ -35,7 +35,7 @@ class HomeController extends Controller
                 ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->orWhere('expiry_date', null);
             }])->limit(24)->get();
-        $data['latestblogs'] = Blog::select('id','title','image_url')->where('status',1)->orderBy('id','DESC')->limit(3)->get();
+        $data['latestblogs'] = Blog::select('id','url','title','image_url')->where('status',1)->orderBy('id','DESC')->limit(3)->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.home',$data);
     }

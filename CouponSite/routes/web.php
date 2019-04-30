@@ -32,3 +32,5 @@ Route::get('/applymorefilters/{filters}/{category}', 'FilteredOfferController@ge
 
 // routes for BlogController
 Route::get('/blog','BlogController@getAllBlogsList');
+Route::get('/blog/{url}','BlogController@getReadBlog');
+Route::get('/blog/','BlogController@getsearchBlog');

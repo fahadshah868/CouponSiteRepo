@@ -43,6 +43,9 @@
 .hm-blog-container .blog-title a{
     white-space: nowrap;
 }
+.hm-blog-container .blog-title a:hover{
+    color: $blog-link-color-onhover;
+}
 .hm-blog-container .readnow-link{
     font-size: 14px;
     font-weight: 400;

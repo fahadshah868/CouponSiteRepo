@@ -20,10 +20,34 @@
             @include('layouts.blog_header')
         @show
         <!--body content-->
-        <div>
-            @yield('content')
-            <!--offer modal-->
-            @include('pages.modal.modal')
+        <div class="blog-main-container">
+            <div class="blog-wrapper-detail-container">
+                <div class="blog-container">
+                @yield('content')
+                </div>
+                <div class="blog-sidebar-container">
+                    <div class="blog-sb-content-container">
+                        <div class="blog-sb-content-heading">Popular Stores</div>
+                        <div class="blog-sb-content-details">
+                            @foreach($topstores as $store)
+                            <a class="blog-sb-content-img" href="/store/{{$store->secondary_url}}" title="{{$store->title}} Coupons">
+                                <img src="{{$panel_assets_url.$store->logo_url}}">
+                            </a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="blog-sb-content-container">
+                        <div class="blog-sb-content-heading">Popular Categories</div>
+                        <div class="blog-sb-content-details">
+                            @foreach($topcategories as $category)
+                            <a class="blog-sb-content-img" href="/coupons/{{$category->url}}" title="{{$category->title}} Coupons">
+                                <img src="{{$panel_assets_url.$category->logo_url}}">
+                            </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--footer content-->
         @section('app-footer')

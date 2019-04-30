@@ -163,12 +163,12 @@
         @foreach($latestblogs as $latestblog)
         <div class="hm-blog-container">
           <div class="blog-image">
-              <a class="blog-link" href="{{$latestblog->id}}">
+              <a class="blog-link" href="/blog/{{$latestblog->url}}">
                   <img src="{{$panel_assets_url.$latestblog->image_url}}">          
               </a>
           </div>
-          <div class="blog-title"><a href="{{$latestblog->id}}">{{$latestblog->title}}</a></div>
-          <div class="readnow-link">[<a href="{{$latestblog->id}}">Read Now</a>]</div>
+          <div class="blog-title"><a href="/blog/{{$latestblog->url}}">{{$latestblog->title}}</a></div>
+          <div class="readnow-link">[<a href="/blog/{{$latestblog->url}}">Read Now</a>]</div>
         </div>
         @endforeach
       </div>

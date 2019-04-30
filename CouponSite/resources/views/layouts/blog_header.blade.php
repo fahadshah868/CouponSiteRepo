@@ -6,8 +6,8 @@
                 <a href="/blog" class="logo">Blog By CC</a>
             </div>
             <div class="blog-header-searchbar-container">
-                <form>
-                    <input type="text" class="blog-header-searchbar" placeholder="Search Blog"/>
+                <form action="/blog/" method="GET">
+                    <input type="text" name="title" class="blog-header-searchbar" placeholder="Search Blog"/>
                     <button type="submit" class="blog-header-search-btn"><i class="fa fa-search"></i></button>
                 </form>
             </div>
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div class="blog-wrapper-container">
+    <div class="blog-heading-wrapper-container">
         <div class="blog-heading-container">
             <span class="blog-main-heading">Shopping Articles</span>
             <a href="/" class="site-link">goto CouponsCorner<i class="fa fa-angle-double-right"></i></a>
