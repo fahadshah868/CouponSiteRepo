@@ -1,0 +1,105 @@
+.rb-main-container{
+    width: 100%;
+}
+.rb-container{
+    margin-bottom: 20px;
+}
+.rb-img-container{
+    position: relative;
+}
+.rb-img-container img{
+    width: 100%;
+    height: auto;
+}
+.rb-img-container .overlay{
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0,0,0, 0.7);
+    overflow: hidden;
+    width: 100%;
+    height: 150px;
+}
+.rb-img-container .overlay .rb-title{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 400;
+    color: #fff;
+}
+.rb-body{
+    padding: 25px;
+    font-size: 14px;
+    color: #000;
+}
+.rb-body a{
+    color: #0061ff;
+}
+.rb-comment-container{
+    border: 1px solid #ced4da;
+    padding: 20px 30px;
+    border-radius: 3px;
+    background: #fff;
+    margin: 80px 0;
+}
+.blog_comment_form{
+    display: flex;
+    flex-direction: column;
+}
+.cmt-alert-message{
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 8px;
+    font-size: 14px;
+    display: none;
+}
+.alert-dismissible .close{
+    padding: 0 10px 0 0;
+}
+label.error{
+    margin-top: -5px;
+    font-size: 13px;
+    padding: 4px 10px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #dc3545;
+}
+.rb-comment-field-heading{
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+.rb-comment-textarea{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    height: 150px;
+    padding: 10px;
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2) inset;
+}
+.rb-textfield{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    padding: 4px 10px;
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2) inset;
+}
+.rb-comment-btn{
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    padding: 4px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #ced4da;
+    box-shadow: 1px 1px 2px 0 rgba(0,0,0,.2) inset;
+    cursor: pointer;
+}

@@ -11949,7 +11949,7 @@ ul {
   margin: 0 16px 16px 0;
   background-color: #fff;
   border-radius: 2px;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #ced4da;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12082,7 +12082,7 @@ ul {
     margin: 0 16px 16px 0;
     background-color: #fff;
     border-radius: 2px;
-    border: 1px solid #CFCFCF;
+    border: 1px solid #ced4da;
     transition: 0.3s;
     -webkit-transition: 0.3s;
   }
@@ -12094,7 +12094,7 @@ ul {
     margin: 0 16px 16px 0;
     background-color: #fff;
     border-radius: 2px;
-    border: 1px solid #CFCFCF;
+    border: 1px solid #ced4da;
     transition: 0.3s;
     -webkit-transition: 0.3s;
   }
@@ -12110,7 +12110,7 @@ ul {
     margin: 0 16px 16px 0;
     background-color: #fff;
     border-radius: 2px;
-    border: 1px solid #CFCFCF;
+    border: 1px solid #ced4da;
     transition: 0.3s;
     -webkit-transition: 0.3s;
   }
@@ -12133,7 +12133,7 @@ ul {
     margin: 0 0 16px 0;
     background-color: #fff;
     border-radius: 2px;
-    border: 1px solid #CFCFCF;
+    border: 1px solid #ced4da;
     transition: 0.3s;
     -webkit-transition: 0.3s;
   }
@@ -12174,7 +12174,7 @@ ul {
   width: 130px;
   height: 130px;
   margin: 20px auto;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #ced4da;
   transition: 0.3s;
   -webkit-transition: 0.3s;
 }
@@ -12329,7 +12329,7 @@ ul {
           justify-content: space-between;
   padding: 5px 5px 5px 10px;
   background-color: #fff;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 14px;
   transition: 0.3s;
@@ -12388,7 +12388,7 @@ ul {
             justify-content: space-between;
     padding: 5px 5px 5px 10px;
     background-color: #fff;
-    border: 1px solid #CFCFCF;
+    border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 14px;
     transition: 0.3s;
@@ -12421,7 +12421,7 @@ ul {
             justify-content: space-between;
     padding: 5px 5px 5px 10px;
     background-color: #fff;
-    border: 1px solid #CFCFCF;
+    border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 13px;
     transition: 0.3s;
@@ -12458,7 +12458,7 @@ ul {
             justify-content: space-between;
     padding: 5px 5px 5px 10px;
     background-color: #fff;
-    border: 1px solid #CFCFCF;
+    border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 13px;
     transition: 0.3s;
@@ -12655,7 +12655,7 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #ced4da;
   border-radius: 2px;
   transition: 0.3s;
   -webkit-transition: 0.3s;
@@ -13111,7 +13111,7 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #ced4da;
   border-radius: 2px;
   transition: 0.3s;
   -webkit-transition: 0.3s;
@@ -13389,7 +13389,7 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #ced4da;
   border-radius: 2px;
   width: 100%;
   padding: 20px;
@@ -13539,7 +13539,7 @@ ul {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   text-decoration: none !important;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #ced4da;
   border-radius: 2px;
   padding: 30px;
   background-color: #fff;
@@ -13782,7 +13782,7 @@ ul {
   height: 22px;
   width: 22px;
   background-color: #fff;
-  border: 1px solid #CFCFCF;
+  border: 1px solid #ced4da;
 }
 
 /* On mouse-over, add a grey background color */
@@ -14190,8 +14190,8 @@ ul {
   padding: 15px 22px;
   font-size: 20px;
   font-weight: 500;
-  border: 1px solid #CFCFCF;
-  background-color: #CFCFCF;
+  border: 1px solid #ced4da;
+  background-color: #ced4da;
   border-radius: 2px;
   cursor: pointer;
   -webkit-user-select: all;
@@ -14366,11 +14366,15 @@ ul {
 
 .blog-container {
   width: 800px;
-  padding: 0 30px;
+  padding: 30px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  margin-right: 20px;
 }
 
 .blog-sidebar-container {
-  width: 350px;
+  width: 330px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14385,6 +14389,7 @@ ul {
   padding: 20px 30px;
   margin-bottom: 20px;
   background-color: #fff;
+  border: 1px solid #ced4da;
   border-radius: 5px;
 }
 
@@ -14429,6 +14434,10 @@ ul {
 
 .ab-main-container {
   width: 100%;
+}
+
+.rb-ab-main-container {
+  margin: 80px 0 30px 0;
 }
 
 .ab-container {
@@ -14479,5 +14488,140 @@ ul {
 .ab-details-container .ab-author {
   font-size: 12px;
   font-weight: 500;
+}
+
+.rb-main-container {
+  width: 100%;
+}
+
+.rb-container {
+  margin-bottom: 20px;
+}
+
+.rb-img-container {
+  position: relative;
+}
+
+.rb-img-container img {
+  width: 100%;
+  height: auto;
+}
+
+.rb-img-container .overlay {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  width: 100%;
+  height: 150px;
+}
+
+.rb-img-container .overlay .rb-title {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 32px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.rb-body {
+  padding: 25px;
+  font-size: 14px;
+  color: #000;
+}
+
+.rb-body a {
+  color: #0061ff;
+}
+
+.rb-comment-container {
+  border: 1px solid #ced4da;
+  padding: 20px 30px;
+  border-radius: 3px;
+  background: #fff;
+  margin: 80px 0;
+}
+
+.blog_comment_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.cmt-alert-message {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 5px 8px;
+  font-size: 14px;
+  display: none;
+}
+
+.alert-dismissible .close {
+  padding: 0 10px 0 0;
+}
+
+label.error {
+  margin-top: -5px;
+  font-size: 13px;
+  padding: 4px 10px;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 10px;
+  background-color: #dc3545;
+}
+
+.rb-comment-field-heading {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.rb-comment-textarea {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  height: 150px;
+  padding: 10px;
+  -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+.rb-textfield {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  padding: 4px 10px;
+  -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+.rb-comment-btn {
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #ced4da;
+  -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
+  cursor: pointer;
 }
 
