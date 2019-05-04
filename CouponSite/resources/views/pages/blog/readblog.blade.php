@@ -37,7 +37,7 @@
             @if(Session::has('validation_message'))
                 <label class="error">{{Session::get('validation_message')}}</label>
             @endif
-            <input type="submit" id="rb-comment-btn" class="rb-comment-btn">
+            <input type="submit" value="Post Comment" id="rb-comment-btn" class="rb-comment-btn">
         </form>
     </div>
     <hr>

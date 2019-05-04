@@ -21,7 +21,7 @@
         @show
         <!--body content-->
         <div class="blog-main-container">
-            <div class="blog-wrapper-detail-container">
+            <div class="blog-wrapper-area-container">
                 <div class="blog-container">
                 @yield('content')
                 </div>

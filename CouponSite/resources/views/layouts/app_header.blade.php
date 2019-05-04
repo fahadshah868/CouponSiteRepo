@@ -25,7 +25,7 @@
                     </div>
                 </form>
             </div>
-            <div class="hamburger-menu-container">
+            <div class="hamburger-menu-container app-header-hamburger">
                 <div class="hamburger-button-container">
                     <div class="menu-toggle" id="menu-toggle">
                         <div class="hamburger">

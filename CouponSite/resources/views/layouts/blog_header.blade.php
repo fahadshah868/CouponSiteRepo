@@ -5,13 +5,7 @@
             <div class="blog-header-logo">
                 <a href="/blog" class="logo">Blog By CC</a>
             </div>
-            <div class="blog-header-searchbar-container">
-                <form action="/blog/" method="GET">
-                    <input type="text" name="title" class="blog-header-searchbar" placeholder="Search Blog"/>
-                    <button type="submit" class="blog-header-search-btn"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
-            <div class="hamburger-menu-container">
+            <div class="hamburger-menu-container blog-header-hamburger">
                 <div class="hamburger-button-container">
                     <div class="menu-toggle" id="menu-toggle">
                         <div class="hamburger">
@@ -27,15 +21,28 @@
                 </div>
                 <div id="hamburger-overlay-container" class="hamburger-overlay-container">
                     <ul class="hamburger-menu-list">
+                        <li><a href="#">Shopping Articles<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Food Articles<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="#">Clothing Articles<i class="fa fa-angle-right"></i></a></li>
                         <li><a href="#">Go To CouponsCorner<i class="fa fa-angle-right"></i></a></li>
                     </ul>
                 </div>
             </div>
+            <div class="blog-header-searchbar-container">
+                <form action="/blog/" method="GET">
+                    <input type="text" name="title" class="blog-header-searchbar" placeholder="Search Blog" required/>
+                    <button type="submit" class="blog-header-search-btn"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="blog-heading-wrapper-container">
-        <div class="blog-heading-container">
-            <span class="blog-main-heading">Shopping Articles</span>
+    <div class="blog-nav-wrapper-container">
+        <div class="blog-nav-container">
+            <ul class="blog-nav-list">
+                <li><a class="blog-category-title" href="#">Shopping Articles</a></li>
+                <li><a class="blog-category-title" href="#">Food Articles</a></li>
+                <li><a class="blog-category-title" href="#">Clothing Articles</a></li>
+            </ul>
             <a href="/" class="site-link">goto CouponsCorner<i class="fa fa-angle-double-right"></i></a>
         </div>
     </div>

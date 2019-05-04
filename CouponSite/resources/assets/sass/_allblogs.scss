@@ -11,12 +11,11 @@
     margin-bottom: 10px;
 }
 .ab-img-container{
-    width: 405px;
-    height: 225px;
+    width: 420px;
 }
 .ab-img-container img{
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 .ab-details-container{
     display: flex;
@@ -35,4 +34,26 @@
 .ab-details-container .ab-author{
     font-size: 12px;
     font-weight: 500;
+}
+@media only screen and (max-width: 700px){
+    .ab-img-container{
+        width: 100%;
+    }
+    .ab-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin-bottom: 10px;
+    }
+    .ab-details-container{
+        display: flex;
+        flex-direction: column;
+        padding: 16px 0;
+        color: #555;
+    }
+    .ab-details-container .ab-title{
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: 500;
+    }
 }
