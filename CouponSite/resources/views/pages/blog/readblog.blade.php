@@ -16,18 +16,17 @@
             {!! $blog->body !!}
         </div>
     </div>
-    <hr>
+    <hr id="post-comment">
     <div class="rb-comment-container">
-        <div id="cmt-alert-message" class="alert alert-dismissible fade show cmt-alert-message">
+        <div id="js-cmt-alert-message" class="alert alert-dismissible fade show js-cmt-alert-message">
             <span class="close" aria-label="close">&times;</span>
             <span id="alert-message-area">
             </span>
         </div>
-        @isset($message)
-            <span class="cmt-alert-message">{{$message}}</span>
-        @endisset
+        @if(Session::has('comment_message'))
+            <div class="cmt-alert-message">{{Session::get('comment_message')}}</div>
+        @endif
         <form id="blog_comment_form" class="blog_comment_form" action="/blog/postcomment" method="POST">
-            <input type="hidden" value="{{$blog->title}}" id="blog_title" name="blog_title">
             <input type="hidden" value="{{$blog->id}}" id="blog_id" name="blog_id">
             <label class="rb-comment-field-heading">Comment</label>
             <textarea class="rb-comment-textarea" id="comment" name="comment" required></textarea>
@@ -35,6 +34,9 @@
             <input class="rb-textfield" type="text" id="author" name="author" required>
             <label class="rb-comment-field-heading">Email*</label>
             <input class="rb-textfield" type="text" id="email" name="email" required>
+            @if(Session::has('validation_message'))
+                <label class="error">{{Session::get('validation_message')}}</label>
+            @endif
             <input type="submit" id="rb-comment-btn" class="rb-comment-btn">
         </form>
     </div>
@@ -98,7 +100,7 @@
                     cache: false,
                     success: function(data){
                         $("#alert-message-area").html(data.message);
-                        $("#cmt-alert-message").css('display','block');
+                        $("#js-cmt-alert-message").css('display','block');
                     },
                     error: function(){
                         alert('something went wrong');

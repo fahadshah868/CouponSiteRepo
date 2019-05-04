@@ -93,7 +93,7 @@ class FilteredOfferController extends Controller
             }
         }
         else{
-            $data['category'] = Category::select('id','title','description')->where('title',$filter)->where('status',1)->first();
+            $data['category'] = Category::select('id','title','description')->where('url',$filter)->where('status',1)->first();
             $data['filteredoffers'] = $data['category']->offers()
                 ->select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
                 ->with(['store' => function($sq){
@@ -118,13 +118,19 @@ class FilteredOfferController extends Controller
                 $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
                     return $item->store->id;
                 });
-                $data['alltopcategories'] = Category::select('id','title','url')->where('is_topcategory',1)->orWhere('is_popularcategory',1)->where('status',1)
+                $data['alltopcategories'] = Category::select('id','title','url')
+                ->whereNotIn('id',[$data['category']->id])
+                ->Where('is_popularcategory',1)
+                ->where('status',1)
                 ->withCount(['offers' => function($q){
                     $q->where('status',1)
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                     ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                     ->orWhere('expiry_date', null);
-                }])->get();
+                }])
+                ->orderBy('is_topcategory','ASC')
+                ->orderBy('is_popularcategory','ASC')
+                ->get();
                 return view('pages.category.categoryoffers',$data);
             }
         }

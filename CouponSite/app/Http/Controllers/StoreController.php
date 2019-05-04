@@ -109,13 +109,19 @@ class StoreController extends Controller
         $data['categories'] = $data['store']->offers->groupBy(function ($item, $key) {
             return $item->category->id;
         });
-        $data['alltopstores'] = Store::select('id','title','secondary_url')->where('is_topstore',1)->orWhere('is_popularstore',1)->where('status',1)
+        $data['alltopstores'] = Store::select('id','title','secondary_url')
+        ->where('status',1)
+        ->where('is_popularstore',1)
+        ->whereNotIn('id',[$data['store']->id])
         ->withCount(['offers' => function($q){
             $q->where('status',1)
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
             ->orWhere('expiry_date', null);
-        }])->get();
+        }])
+        ->orderBy('is_topstore','ASC')
+        ->orderBy('is_popularstore','ASC')
+        ->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.store.storeoffers',$data);
     }

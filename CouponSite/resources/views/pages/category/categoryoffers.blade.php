@@ -9,39 +9,39 @@
         <div class="fo-sb-offers-availability" id="offers-availability">{{$filteredoffers->total()}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         @if(count($stores) > 0)
-        <div class="fo-sb-content-container">
-            <div class="fo-sb-content-heading">
-                <span>Filter By Store</span>
-                <span class="reset-store-filters" id="reset-store-filters">Reset</span>
-            </div>
-            <div class="fo-sb-content-body">
-                <input type="hidden" id="category_id" value="{{$category->id}}">
-                @foreach($stores as $store)
-                <label class="checkbox-container">{{$store{0}->store->title}}
-                    <input type="checkbox" value="{{$store{0}->store->id}}" class="store-filter">
-                    <span class="checkmark"></span>
-                </label>
-                @endforeach
-            </div>
-        </div>
-        @endif
-        <div class="fo-sb-content-container">
-            <div class="fo-sb-content-heading">Top Categories</div>
-            <div class="fo-sb-list-container">
-                <ul>
-                    @foreach($alltopcategories as $topcategory)
-                        @if($topcategory->id != $category->id)
-                        <li>
-                            <a class="fo-sb-list-item" href="/coupons/{{$topcategory->url}}" title="{{$topcategory->title}} Coupons">
-                                <span class="item-title">{{$topcategory->title}}</span>
-                                <span class="coupons-count">{{$topcategory->offers_count}}</span>
-                            </a>
-                        </li>
-                        @endif
+            <div class="fo-sb-content-container">
+                <div class="fo-sb-content-heading">
+                    <span>Filter By Store</span>
+                    <span class="reset-store-filters" id="reset-store-filters">Reset</span>
+                </div>
+                <div class="fo-sb-content-body">
+                    <input type="hidden" id="category_id" value="{{$category->id}}">
+                    @foreach($stores as $store)
+                    <label class="checkbox-container">{{$store{0}->store->title}}
+                        <input type="checkbox" value="{{$store{0}->store->id}}" class="store-filter">
+                        <span class="checkmark"></span>
+                    </label>
                     @endforeach
-                </ul>
+                </div>
             </div>
-        </div>
+        @endif
+        @if(count($alltopcategories) > 0)
+            <div class="fo-sb-content-container">
+                <div class="fo-sb-content-heading">Top Categories</div>
+                <div class="fo-sb-list-container">
+                    <ul>
+                        @foreach($alltopcategories as $topcategory)
+                            <li>
+                                <a class="fo-sb-list-item" href="/coupons/{{$topcategory->url}}" title="{{$topcategory->title}} Coupons">
+                                    <span class="item-title">{{$topcategory->title}}</span>
+                                    <span class="coupons-count">{{$topcategory->offers_count}}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
         <div class="fo-sb-content-container">
             <div class="fo-sb-content-heading">{{$category->title}}</div>
             <div class="fo-sb-content-body">
