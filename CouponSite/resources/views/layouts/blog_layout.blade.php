@@ -60,7 +60,6 @@
         <script>
             $(document).ready(function(){
                 var blog_container_height = $("#blog-sidebar-inner-container").height();
-                console.log(blog_container_height);
                 var height_difference = $(this).scrollTop() - $('#blog-wrapper-container').position().top;
                 if(height_difference >= 0 && height_difference + blog_container_height < $(`#blog-wrapper-container`).height()){
                     $(`#blog-sidebar-inner-container`).css({position: `fixed`, top: `10px`, bottom: `auto`, width: `330px`});

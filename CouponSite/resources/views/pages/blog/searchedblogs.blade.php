@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="ab-main-container">
-        <div style="font-style: italic; font-size: 22px; font-weight: 500;">Search Results For "{{ $searched_title }}"</div>
+        <div style="font-style: italic; font-size: 22px; font-weight: 500;">Search Results For "{{ Session::get('searched_title') }}"</div>
         <hr>
         @if(count($searchedblogs) > 0)
             @foreach($searchedblogs as $searchedblog)

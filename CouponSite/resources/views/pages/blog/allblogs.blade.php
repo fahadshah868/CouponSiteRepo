@@ -4,20 +4,28 @@
 
 @section('content')
 
-    <div class="ab-main-container">
-        @foreach($allblogs as $blog)
-            <div class="ab-container">
-                <a href="/blog/{{$blog->url}}">
-                    <div class="ab-img-container">
-                        <img src="{{$panel_assets_url.$blog->image_url}}">
-                    </div>
-                </a>
-                <div class="ab-details-container">
-                    <a class="ab-title" href="/blog/{{$blog->url}}">{{$blog->title}}</a>
-                    <span class="ab-author">By {{$blog->author}}</span>
-                </div>
-            </div>
-        @endforeach
-    </div>
+<section id="js-blogs">
+    @include('partialviews.allblogs')
+</section>
 
+@endsection
+@section('js-section')
+<script>
+    $(document).ready(function(){
+        $('body').on('click', '.pagination a', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');  
+            getArticles(url);
+        });
+        function getArticles(url) {
+            $.ajax({
+                url : url
+            }).done(function (data) {
+                $('#js-blogs').html(data);
+            }).fail(function () {
+                alert('something went wrong.');
+            });
+        }
+    });
+</script>
 @endsection

@@ -67,18 +67,10 @@
         </form>
     </div>
     <hr>
-    <div class="rb-ab-main-container">
-        @foreach($allblogs as $blog)
-            <div class="ab-container">
-                <a class="ab-img-container" href="/blog/{{$blog->url}}">
-                    <img src="{{$panel_assets_url.$blog->image_url}}">
-                </a>
-                <div class="ab-details-container">
-                    <a class="ab-title" href="/blog/{{$blog->url}}">{{$blog->title}}</a>
-                    <span class="ab-author">By {{$blog->author}}</span>
-                </div>
-            </div>
-        @endforeach
+    <div class="rb-ab-wrapper">
+        <section id="js-blogs">
+            @include('partialviews.allblogs')
+        </section>
     </div>
 </div>
 
@@ -87,6 +79,20 @@
 @section('js-section')
 <script>
     $(document).ready(function(){
+        $('body').on('click', '.pagination a', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');  
+            getArticles(url);
+        });
+        function getArticles(url) {
+            $.ajax({
+                url : url
+            }).done(function (data) {
+                $('#js-blogs').html(data);
+            }).fail(function () {
+                alert('something went wrong.');
+            });
+        }
         $(".close").click(function(){
             $(".alert").slideUp();
         });

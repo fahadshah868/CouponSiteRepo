@@ -35,7 +35,7 @@
         <div class="fo-db-heading">Online Promo Codes</div>
         @if(count($filteredoffers) > 0)
         <section id="filtered-offers">
-        @include('partialviews.filteredoffers')
+            @include('partialviews.filteredoffers')
         </section>
         @else
         <div class="no-coupons-alert">No Coupons Available For </div>
@@ -44,21 +44,23 @@
 </div>
 @endsection
 @section('js-section')
-<script type="text/javascript">
-    $('body').on('click', '.pagination a', function(e) {
-        e.preventDefault();
-        var url = $(this).attr('href');  
-        getArticles(url);
-    });
-    function getArticles(url) {
-        $.ajax({
-            url : url
-        }).done(function (data) {
-            $('#filtered-offers').html(data);  
-        }).fail(function () {
-            alert('Articles could not be loaded.');
+<script>
+    $(document).ready(function(){
+        $('body').on('click', '.pagination a', function(e) {
+            e.preventDefault();
+            var url = $(this).attr('href');  
+            getOffers(url);
         });
-    }
+        function getOffers(url) {
+            $.ajax({
+                url : url
+            }).done(function (data) {
+                $('#filtered-offers').html(data);  
+            }).fail(function () {
+                alert('something went wrong.');
+            });
+        }
+    });
 </script>
 
 @endsection

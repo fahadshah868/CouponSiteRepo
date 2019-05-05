@@ -15,38 +15,68 @@ use Validator;
 class BlogController extends Controller
 {
     public function getBlogsList(Request $request){
-        if($request->has('title')){
-            $url = str_replace(' ', '-', $request->title);
-            $data['searchedblogs'] = Blog::select('id','title','url','body','image_url','author')->where('url','LIKE','%'.$url.'%')->where('status',1)->get();
-            $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
-            $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
-            $data['searched_title'] = $request->title;
+        if($request->ajax()){
+            $data['allblogs'] = Blog::select('id','title','url','image_url','author')
+            ->where('status',1)
+            ->simplePaginate(1);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            return view('pages.blog.searchedblogs',$data);
+            return view('partialviews.allblogs',$data);
         }
         else{
-            $data['allblogs'] = Blog::select('id','title','url','image_url','author')->where('status',1)->get();
-            $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
-            $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
-            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            return view('pages.blog.allblogs',$data);
+            //search blogs by title using searchbar
+            if($request->has('title')){
+                $url = str_replace(' ', '-', $request->title);
+                $data['searchedblogs'] = Blog::select('id','title','url','body','image_url','author')
+                ->where('url','LIKE','%'.$url.'%')
+                ->where('status',1)
+                ->simplePaginate(1);
+                $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
+                $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
+                Session::flash('searched_title', $request->title);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                return view('pages.blog.searchedblogs',$data);
+            }
+            //get all blogs in http request
+            else{
+                $data['allblogs'] = Blog::select('id','title','url','image_url','author')
+                ->where('status',1)
+                ->simplePaginate(1);
+                // dd($data['allblogs']);
+                $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
+                $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                return view('pages.blog.allblogs',$data);
+            }
         }
     }
-    public function getReadBlog($url){
-        $data['blog'] = Blog::select('id','title','url','body','image_url','author')
-        ->with(['comments' => function($q){
-            $q->select('id','author','body','blog_id','created_at')
+    public function getReadBlog(Request $request, $url){
+        if($request->ajax()){
+            $data['allblogs'] = Blog::select('id','title','url','image_url','author')
+            // ->whereNotIn('id',[$data['blog']->id])
             ->where('status',1)
-            ->where('is_approved',1);
-        }])
-        ->where('url',$url)
-        ->where('status',1)
-        ->first();
-        $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->limit(9)->get();
-        $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
-        $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-        $data['allblogs'] = Blog::select('id','title','url','image_url','author')->whereNotIn('id',[$data['blog']->id])->where('status',1)->get();
-        return view('pages.blog.readblog',$data);
+            ->simplePaginate(1);
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            return view('partialviews.allblogs',$data);
+        }
+        else{
+            $data['blog'] = Blog::select('id','title','url','body','image_url','author')
+            ->with(['comments' => function($q){
+                $q->select('id','author','body','blog_id','created_at')
+                ->where('status',1)
+                ->where('is_approved',1);
+            }])
+            ->where('url',$url)
+            ->where('status',1)
+            ->first();
+            $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->limit(9)->get();
+            $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
+            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            $data['allblogs'] = Blog::select('id','title','url','image_url','author')
+            // ->whereNotIn('id',[$data['blog']->id])
+            ->where('status',1)
+            ->simplePaginate(1);
+            return view('pages.blog.readblog',$data);
+        }
     }
     public function postBlogComment(Request $request){
         if($request->ajax()){

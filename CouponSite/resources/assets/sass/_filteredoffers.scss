@@ -338,16 +338,6 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-.pagination{
-    margin-top: 30px;
-}
-.pagination a{
-    color: $theme-color;
-}
-.pagination .page-item.active .page-link{
-    background-color: $theme-color !important;
-    border: 1px solid $theme-color;
-}
 @media only screen and (max-width: 1165px){
     .fo-main-container{
         display: flex;

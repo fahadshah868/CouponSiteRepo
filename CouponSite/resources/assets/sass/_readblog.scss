@@ -55,7 +55,7 @@
 }
 .comment-header-container{
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -89,10 +89,9 @@
     padding: 0 10px;
     border-radius: 5px;
 }
-
-
-
-
+.comment-body p{
+    font-size: 15px;
+}
 .comment-form-container{
     border: 1px solid #ced4da;
     padding: 20px 30px;
