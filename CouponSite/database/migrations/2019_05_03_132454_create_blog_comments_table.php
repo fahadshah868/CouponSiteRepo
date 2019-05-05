@@ -15,7 +15,7 @@ class CreateBlogCommentsTable extends Migration
     {
         Schema::create('blog_comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('comment');
+            $table->longText('body');
             $table->String('author');
             $table->String('email');
             $table->enum('is_approved',['yes','no']);

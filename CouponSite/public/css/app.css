@@ -10479,6 +10479,10 @@ a.text-dark:focus {
   white-space: normal;
 }
 
+p {
+  margin: 0;
+}
+
 body {
   width: 100%;
   height: 100%;
@@ -14415,7 +14419,7 @@ ul {
   margin: 50px 0;
 }
 
-.blog-wrapper-area-container {
+.blog-wrapper-container {
   width: 1150px;
   margin: auto;
   display: -webkit-box;
@@ -14431,6 +14435,7 @@ ul {
 
 .blog-container {
   width: 800px;
+  min-height: 200px;
   padding: 30px;
   background-color: #fff;
   border: 1px solid #ced4da;
@@ -14438,8 +14443,12 @@ ul {
   margin-right: 20px;
 }
 
-.blog-sidebar-container {
+.blog-sidebar-outer-container {
   width: 330px;
+  position: relative;
+}
+
+.blog-sidebar-inner-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14456,6 +14465,10 @@ ul {
   background-color: #fff;
   border: 1px solid #ced4da;
   border-radius: 5px;
+}
+
+.blog-sb-content-container:nth-child(2n) {
+  margin: 0;
 }
 
 .blog-sb-content-heading {
@@ -14498,7 +14511,7 @@ ul {
 }
 
 @media only screen and (max-width: 1167px) {
-  .blog-wrapper-area-container {
+  .blog-wrapper-container {
     width: 100%;
     padding: 0 30px;
     margin: auto;
@@ -14513,7 +14526,7 @@ ul {
         flex-wrap: nowrap;
   }
 
-  .blog-sidebar-container {
+  .blog-sidebar-outer-container {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 330px;
             flex: 0 0 330px;
@@ -14530,7 +14543,7 @@ ul {
 }
 
 @media only screen and (max-width: 1100px) {
-  .blog-sidebar-container {
+  .blog-sidebar-outer-container {
     display: none;
   }
 
@@ -14539,12 +14552,32 @@ ul {
   }
 }
 
+@media only screen and (max-width: 650px) {
+  .blog-wrapper-container {
+    padding: 0 10px;
+  }
+}
+
 .ab-main-container {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .rb-ab-main-container {
   margin: 80px 0 30px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .ab-container {
@@ -14557,11 +14590,12 @@ ul {
           flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 .ab-img-container {
   width: 420px;
+  margin-right: 20px;
 }
 
 .ab-img-container img {
@@ -14577,7 +14611,6 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 3px 20px;
   color: #555;
 }
 
@@ -14594,43 +14627,6 @@ ul {
 .ab-details-container .ab-author {
   font-size: 12px;
   font-weight: 500;
-}
-
-@media only screen and (max-width: 700px) {
-  .ab-img-container {
-    width: 100%;
-  }
-
-  .ab-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    margin-bottom: 10px;
-  }
-
-  .ab-details-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding: 16px 0;
-    color: #555;
-  }
-
-  .ab-details-container .ab-title {
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: 500;
-  }
 }
 
 .rb-main-container {
@@ -14682,15 +14678,102 @@ ul {
   color: #0061ff;
 }
 
-.rb-comment-container {
+.comments-list-container {
+  margin: 30px 0;
+}
+
+.comments-main-heading {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.comments-list {
+  padding: 0 40px;
+}
+
+.comments-list li {
+  margin-bottom: 30px;
+}
+
+.comment-assets {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.comment-header-container {
+  width: 100%;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.comment-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.comment-author-image {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.comment-author-image img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #f1f1f1;
+}
+
+.comment-author {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.comment-time {
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #044D6E;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.comment-form-container {
   border: 1px solid #ced4da;
   padding: 20px 30px;
   border-radius: 3px;
   background: #fff;
-  margin: 80px 0;
+  margin: 30px 0;
 }
 
-.blog_comment_form {
+.comment_form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14733,13 +14816,13 @@ label.error {
   background-color: #dc3545;
 }
 
-.rb-comment-field-heading {
+.comment-form-field-heading {
   font-size: 16px;
   font-weight: 700;
   margin: 0;
 }
 
-.rb-comment-textarea {
+.comment-form-textarea {
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 10px;
@@ -14752,7 +14835,7 @@ label.error {
           box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
 }
 
-.rb-textfield {
+.comment-form-textfield {
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 10px;
@@ -14764,7 +14847,7 @@ label.error {
           box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
 }
 
-.rb-comment-btn {
+.comment-form-btn {
   width: 100%;
   border: 1px solid #ced4da;
   border-radius: 3px;

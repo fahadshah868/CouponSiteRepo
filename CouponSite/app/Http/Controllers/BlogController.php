@@ -33,7 +33,15 @@ class BlogController extends Controller
         }
     }
     public function getReadBlog($url){
-        $data['blog'] = Blog::select('id','title','url','body','image_url','author')->where('url',$url)->where('status',1)->first();
+        $data['blog'] = Blog::select('id','title','url','body','image_url','author')
+        ->with(['comments' => function($q){
+            $q->select('id','author','body','blog_id','created_at')
+            ->where('status',1)
+            ->where('is_approved',1);
+        }])
+        ->where('url',$url)
+        ->where('status',1)
+        ->first();
         $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->limit(9)->get();
         $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
@@ -43,7 +51,7 @@ class BlogController extends Controller
     public function postBlogComment(Request $request){
         if($request->ajax()){
             $blogcomment = new BlogComment;
-            $blogcomment->comment = $request->comment;
+            $blogcomment->body = $request->body;
             $blogcomment->author = $request->author;
             $blogcomment->email = $request->email;
             $blogcomment->is_approved = 'no';
@@ -67,7 +75,7 @@ class BlogController extends Controller
                 return Redirect::to(URL::previous() . "#post-comment");
             }
             $blogcomment = new BlogComment;
-            $blogcomment->comment = $request->comment;
+            $blogcomment->body = $request->body;
             $blogcomment->author = $request->author;
             $blogcomment->email = $request->email;
             $blogcomment->is_approved = 'no';

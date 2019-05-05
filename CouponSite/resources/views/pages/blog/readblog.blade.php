@@ -17,7 +17,33 @@
         </div>
     </div>
     <hr id="post-comment">
-    <div class="rb-comment-container">
+    @if(count($blog->comments) > 0)
+    <div class="comments-list-container">
+        <div class="comments-main-heading">Comments For "{{$blog->title}}"</div>
+        <ol class="comments-list">
+            @foreach($blog->comments as $comment)
+            <li>
+                <div class="comment-assets">
+                    <div class="comment-header-container">
+                        <div class="comment-header">
+                            <div class="comment-author-image">
+                                <img src="{{asset('images/user-placeholder.png')}}">
+                            </div>
+                            <span class="comment-author">{{$comment->author}} says:</span>
+                        </div>
+                        {{-- May 20, 2019 at 1:30pm --}}
+                        <span class="comment-time">{{ Carbon\Carbon::parse($comment->created_at)->format('D, M d, Y')}} at {{Carbon\Carbon::parse($comment->created_at)->format('h:i:s A') }}</span>
+                    </div>
+                    <div class="comment-body">
+                        <p>{{$comment->body}}</p>
+                    </div>
+                </div>
+            </li>
+            @endforeach
+        </ol>
+    </div>
+    @endif
+    <div class="comment-form-container">
         <div id="js-cmt-alert-message" class="alert alert-dismissible fade show js-cmt-alert-message">
             <span class="close" aria-label="close">&times;</span>
             <span id="alert-message-area">
@@ -26,18 +52,18 @@
         @if(Session::has('comment_message'))
             <div class="cmt-alert-message">{{Session::get('comment_message')}}</div>
         @endif
-        <form id="blog_comment_form" class="blog_comment_form" action="/blog/postcomment" method="POST">
+        <form id="comment_form" class="comment_form" action="/blog/postcomment" method="POST">
             <input type="hidden" value="{{$blog->id}}" id="blog_id" name="blog_id">
-            <label class="rb-comment-field-heading">Comment</label>
-            <textarea class="rb-comment-textarea" id="comment" name="comment" required></textarea>
-            <label class="rb-comment-field-heading">Name*</label>
-            <input class="rb-textfield" type="text" id="author" name="author" required>
-            <label class="rb-comment-field-heading">Email*</label>
-            <input class="rb-textfield" type="text" id="email" name="email" required>
+            <label class="comment-form-field-heading">Comment</label>
+            <textarea class="comment-form-textarea" id="body" name="body" required></textarea>
+            <label class="comment-form-field-heading">Name*</label>
+            <input class="comment-form-textfield" type="text" id="author" name="author" required>
+            <label class="comment-form-field-heading">Email*</label>
+            <input class="comment-form-textfield" type="text" id="email" name="email" required>
             @if(Session::has('validation_message'))
                 <label class="error">{{Session::get('validation_message')}}</label>
             @endif
-            <input type="submit" value="Post Comment" id="rb-comment-btn" class="rb-comment-btn">
+            <input type="submit" value="Post Comment" id="comment-form-btn" class="comment-form-btn">
         </form>
     </div>
     <hr>
@@ -69,32 +95,32 @@
             return value.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
         },'please enter a valid email');
         //validation rules for form
-        $("#blog_comment_form").submit(function(event){
+        $("#comment_form").submit(function(event){
             event.preventDefault();
         }).validate({
             ignore: ".hide",
             rules: {
-                comment: "required",
+                body: "required",
                 author: "required",
                 email: { required: true, email: true, emailre: true},
             },
             messages: {
-                comment: "Please Fill Comment Field",
+                body: "Please Fill Comment Field",
                 author: "Please Fill Name Field",
                 email: { required: "Please Fill Email Field", email: "Please Enter A Valid Email", emailre:"Please Enter A Valid Email"},
             },
             submitHandler: function(form) {
-                var _comment = $("#comment").val();
+                var _body = $("#body").val();
                 var _author = $("#author").val();
                 var _email = $("#email").val();
-                var jsondata = JSON.stringify({blog_id: '{{$blog->id}}', comment: _comment, author: _author, email: _email});
+                var jsondata = JSON.stringify({blog_id: '{{$blog->id}}', body: _body, author: _author, email: _email});
                 $.ajax({
                     method: "POST",
                     url: "/blog/postcomment",
                     dataType: "json",
                     data: jsondata,
                     beforeSend: function() {
-                        $("#blog_comment_form").trigger("reset");
+                        $("#comment_form").trigger("reset");
                     },
                     contentType: "application/json",
                     cache: false,

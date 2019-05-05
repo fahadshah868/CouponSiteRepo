@@ -21,29 +21,31 @@
         @show
         <!--body content-->
         <div class="blog-main-container">
-            <div class="blog-wrapper-area-container">
+            <div class="blog-wrapper-container" id="blog-wrapper-container">
                 <div class="blog-container">
                 @yield('content')
                 </div>
-                <div class="blog-sidebar-container">
-                    <div class="blog-sb-content-container">
-                        <div class="blog-sb-content-heading">Popular Stores</div>
-                        <div class="blog-sb-content-details">
-                            @foreach($topstores as $store)
-                            <a class="blog-sb-content-img" href="/store/{{$store->secondary_url}}" title="{{$store->title}} Coupons">
-                                <img src="{{$panel_assets_url.$store->logo_url}}">
-                            </a>
-                            @endforeach
+                <div class="blog-sidebar-outer-container">
+                    <div class="blog-sidebar-inner-container" id="blog-sidebar-inner-container">
+                        <div class="blog-sb-content-container">
+                            <div class="blog-sb-content-heading">Popular Stores</div>
+                            <div class="blog-sb-content-details">
+                                @foreach($topstores as $store)
+                                <a class="blog-sb-content-img" href="/store/{{$store->secondary_url}}" title="{{$store->title}} Coupons">
+                                    <img src="{{$panel_assets_url.$store->logo_url}}">
+                                </a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-                    <div class="blog-sb-content-container">
-                        <div class="blog-sb-content-heading">Popular Categories</div>
-                        <div class="blog-sb-content-details">
-                            @foreach($topcategories as $category)
-                            <a class="blog-sb-content-img" href="/coupons/{{$category->url}}" title="{{$category->title}} Coupons">
-                                <img src="{{$panel_assets_url.$category->logo_url}}">
-                            </a>
-                            @endforeach
+                        <div class="blog-sb-content-container">
+                            <div class="blog-sb-content-heading">Popular Categories</div>
+                            <div class="blog-sb-content-details">
+                                @foreach($topcategories as $category)
+                                <a class="blog-sb-content-img" href="/coupons/{{$category->url}}" title="{{$category->title}} Coupons">
+                                    <img src="{{$panel_assets_url.$category->logo_url}}">
+                                </a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -55,6 +57,34 @@
         @show
         <!--jquery content-->
         <script src="{{asset('js/app.js')}}"></script>
+        <script>
+            $(document).ready(function(){
+                var blog_container_height = $("#blog-sidebar-inner-container").height();
+                console.log(blog_container_height);
+                var height_difference = $(this).scrollTop() - $('#blog-wrapper-container').position().top;
+                if(height_difference >= 0 && height_difference + blog_container_height < $(`#blog-wrapper-container`).height()){
+                    $(`#blog-sidebar-inner-container`).css({position: `fixed`, top: `10px`, bottom: `auto`, width: `330px`});
+                }
+                else if(height_difference + blog_container_height >= $(`#blog-wrapper-container`).height()){
+                    $(`#blog-sidebar-inner-container`).css({position: `absolute`, top: `auto`, bottom: `0`, width: `330px`});
+                }
+                else{
+                    $(`#blog-sidebar-inner-container`).css({position: `absolute`, top: `0`, bottom: `auto`, width: `100%`});
+                }
+                $(document).on('scroll', function() {
+                    height_difference = $(this).scrollTop() - $('#blog-wrapper-container').position().top;
+                    if(height_difference >= 0 && height_difference + blog_container_height < $(`#blog-wrapper-container`).height()){
+                        $(`#blog-sidebar-inner-container`).css({position: `fixed`, top: `10px`, bottom: `auto`, width: `330px`});
+                    }
+                    else if(height_difference + blog_container_height >= $(`#blog-wrapper-container`).height()){
+                        $(`#blog-sidebar-inner-container`).css({position: `absolute`, top: `auto`, bottom: `0`, width: `330px`});
+                    }
+                    else{
+                        $(`#blog-sidebar-inner-container`).css({position: `absolute`, top: `0`, bottom: `auto`, width: `100%`});
+                    }
+                });
+            });
+        </script>
         @yield('js-section')
     </div>
 </body>
