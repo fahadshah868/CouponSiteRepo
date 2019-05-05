@@ -8,7 +8,7 @@
             </a>
             <div class="ab-details-container">
                 <a class="ab-title" href="/blog/{{$blog->url}}">{{$blog->title}}</a>
-                <span class="ab-author">By {{$blog->author}}</span>
+                <span class="ab-author">By {{$blog->author}} | {{ Carbon\Carbon::parse($blog->created_at)->format('M d, Y')}}</span>
                 <div class="readnow-link">[<a href="/blog/{{$blog->url}}">Read Now</a>]</div>
             </div>
         </div>

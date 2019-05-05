@@ -31,7 +31,6 @@
                             </div>
                             <span class="comment-author">{{$comment->author}} says:</span>
                         </div>
-                        {{-- May 20, 2019 at 1:30pm --}}
                         <span class="comment-time">{{ Carbon\Carbon::parse($comment->created_at)->format('D, M d, Y')}} at {{Carbon\Carbon::parse($comment->created_at)->format('h:i:s A') }}</span>
                     </div>
                     <div class="comment-body">

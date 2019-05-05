@@ -41,7 +41,6 @@ class BlogController extends Controller
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('status',1)
                 ->simplePaginate(1);
-                // dd($data['allblogs']);
                 $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
                 $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
