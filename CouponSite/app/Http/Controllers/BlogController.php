@@ -51,7 +51,7 @@ class BlogController extends Controller
     public function getReadBlog(Request $request, $url){
         if($request->ajax()){
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
-            // ->whereNotIn('id',[$data['blog']->id])
+            ->whereNotIn('id',[$request->id])
             ->where('status',1)
             ->simplePaginate(1);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
@@ -71,7 +71,7 @@ class BlogController extends Controller
             $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
-            // ->whereNotIn('id',[$data['blog']->id])
+            ->whereNotIn('id',[$data['blog']->id])
             ->where('status',1)
             ->simplePaginate(1);
             return view('pages.blog.readblog',$data);
