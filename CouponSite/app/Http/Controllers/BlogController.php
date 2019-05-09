@@ -61,8 +61,7 @@ class BlogController extends Controller
             $data['blog'] = Blog::select('id','title','url','body','image_url','author')
             ->with(['comments' => function($q){
                 $q->select('id','author','body','blog_id','created_at')
-                ->where('status',1)
-                ->where('is_approved',1);
+                ->where('status',2);
             }])
             ->where('url',$url)
             ->where('status',1)
@@ -83,8 +82,7 @@ class BlogController extends Controller
             $blogcomment->body = $request->body;
             $blogcomment->author = $request->author;
             $blogcomment->email = $request->email;
-            $blogcomment->is_approved = 'no';
-            $blogcomment->status = "active";
+            $blogcomment->status = "pending";
             $blogcomment->blog_id = $request->blog_id;
             $blogcomment->save();
             $response = [
@@ -107,8 +105,7 @@ class BlogController extends Controller
             $blogcomment->body = $request->body;
             $blogcomment->author = $request->author;
             $blogcomment->email = $request->email;
-            $blogcomment->is_approved = 'no';
-            $blogcomment->status = "active";
+            $blogcomment->status = "pending";
             $blogcomment->blog_id = $request->blog_id;
             $blogcomment->save();
             Session::flash('comment_message','Your comment has been successfully received. Your comment will be visible after it is approved.');
