@@ -10,9 +10,9 @@ class Offer extends Model
     protected $primaryKey = "id";
 
     public function store(){
-        return $this->belongsTo('App\Store');
+        return $this->belongsTo('App\Store','store_id');
     }
     public function category(){
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Category','category_id');
     }
 }

@@ -31,6 +31,13 @@
     padding: 25px;
     color: #000;
 }
+.rb-body ul{
+    list-style-type: disc;
+    list-style-position: inside;
+}
+.rb-body ol{
+    list-style-position: inside;
+}
 .rb-body a{
     color: #0061ff;
 }

@@ -10,6 +10,6 @@ class BlogComment extends Model
     protected $primaryKey = "id";
 
     public function blog(){
-        return $this->belongsTo('App\Blog');
+        return $this->belongsTo('App\Blog','blog_id');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\BlogCategory;
 use App\Blog;
 use App\Store;
 use App\Category;
@@ -18,7 +19,7 @@ class BlogController extends Controller
         if($request->ajax()){
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->where('status',1)
-            ->simplePaginate(1);
+            ->simplePaginate(3);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return view('partialviews.allblogs',$data);
         }
@@ -29,7 +30,8 @@ class BlogController extends Controller
                 $data['searchedblogs'] = Blog::select('id','title','url','body','image_url','author')
                 ->where('url','LIKE','%'.$url.'%')
                 ->where('status',1)
-                ->simplePaginate(1);
+                ->simplePaginate(3);
+                $data['blogcategories'] = BlogCategory::select('id','title','url')->where('status',1)->get();
                 $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
                 $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
                 Session::flash('searched_title', $request->title);
@@ -38,9 +40,10 @@ class BlogController extends Controller
             }
             //get all blogs in http request
             else{
+                $data['blogcategories'] = BlogCategory::select('id','title','url')->where('status',1)->get();
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('status',1)
-                ->simplePaginate(1);
+                ->simplePaginate(3);
                 $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
                 $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
@@ -53,11 +56,12 @@ class BlogController extends Controller
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->whereNotIn('id',[$request->id])
             ->where('status',1)
-            ->simplePaginate(1);
+            ->simplePaginate(3);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return view('partialviews.allblogs',$data);
         }
         else{
+            $data['blogcategories'] = BlogCategory::select('id','title','url')->where('status',1)->get();
             $data['blog'] = Blog::select('id','title','url','body','image_url','author')
             ->with(['comments' => function($q){
                 $q->select('id','author','body','blog_id','created_at')
@@ -72,7 +76,7 @@ class BlogController extends Controller
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->whereNotIn('id',[$data['blog']->id])
             ->where('status',1)
-            ->simplePaginate(1);
+            ->simplePaginate(3);
             return view('pages.blog.readblog',$data);
         }
     }

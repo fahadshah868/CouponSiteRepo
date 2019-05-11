@@ -39,9 +39,9 @@
     <div class="blog-nav-wrapper-container">
         <div class="blog-nav-container">
             <ul class="blog-nav-list">
-                <li><a class="blog-category-title" href="#">Shopping Articles</a></li>
-                <li><a class="blog-category-title" href="#">Food Articles</a></li>
-                <li><a class="blog-category-title" href="#">Clothing Articles</a></li>
+                @foreach($blogcategories as $blogcategory)
+                    <li><a class="blog-category-title" href="/blog/{{$blogcategory->url}}">{{$blogcategory->title}}</a></li>
+                @endforeach
             </ul>
             <a href="/" class="site-link">goto CouponsCorner<i class="fa fa-angle-double-right"></i></a>
         </div>

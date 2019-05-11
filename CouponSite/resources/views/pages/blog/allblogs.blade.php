@@ -22,6 +22,9 @@
                 url : url
             }).done(function (data) {
                 $('#js-blogs').html(data);
+                $('html, body').animate({
+                    scrollTop: $("div.blog-container").offset().top
+                }, 500)
             }).fail(function () {
                 alert('something went wrong.');
             });
