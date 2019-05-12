@@ -86,7 +86,7 @@
         function getArticles(url) {
             $.ajax({
                 url : url,
-                data: {id: '{{$blog->id}}'},
+                data: {id: '{{$blog->id}}', remark: 2},
             }).done(function (data) {
                 $('#js-blogs').html(data);
             }).fail(function () {
