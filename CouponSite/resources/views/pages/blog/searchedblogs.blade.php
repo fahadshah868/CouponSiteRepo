@@ -7,7 +7,7 @@
 <div style="font-style: italic; font-size: 22px; font-weight: 500;">Searched Results For "{{ $searched_blog_title }}"</div>
 <hr>
 <section id="js-blogs">
-    @include('partialviews.allblogs')
+    @include('partialviews.blogs')
 </section>
 
 @endsection

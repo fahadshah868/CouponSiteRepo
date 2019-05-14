@@ -24,14 +24,14 @@ class BlogController extends Controller
                 ->where('status',1)
                 ->simplePaginate(3);
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-                return view('partialviews.allblogs',$data);
+                return view('partialviews.blogs',$data);
             }
             else{
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('status',1)
                 ->simplePaginate(3);
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-                return view('partialviews.allblogs',$data);
+                return view('partialviews.blogs',$data);
             }
         }
         else{
@@ -69,7 +69,7 @@ class BlogController extends Controller
             ->where('status',1)
             ->simplePaginate(3);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            return view('partialviews.allblogs',$data);
+            return view('partialviews.blogs',$data);
         }
         else{
             $data['allblogs'] = [];
@@ -96,7 +96,7 @@ class BlogController extends Controller
             ->where('status',1)
             ->simplePaginate(3);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            return view('partialviews.allblogs',$data);
+            return view('partialviews.blogs',$data);
         }
         else{
             $data['blog'] = Blog::select('id','title','url','body','image_url','author')

@@ -22,7 +22,7 @@
         <!--body content-->
         <div class="blog-main-container">
             <div class="blog-wrapper-container" id="blog-wrapper-container">
-                <div class="blog-container">
+                <div class="blog-frame-container">
                 @yield('content')
                 </div>
                 <div class="blog-sidebar-outer-container">

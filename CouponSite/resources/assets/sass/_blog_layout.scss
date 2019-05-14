@@ -9,7 +9,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
-.blog-container{
+.blog-frame-container{
     width: 800px;
     min-height: 200px;
     padding: 30px;
@@ -78,7 +78,7 @@
     .blog-sidebar-outer-container{
         flex: 0 0 330px;
     }
-    .blog-container{
+    .blog-frame-container{
         width: 100%;
         padding: 30px;
         background-color: #fff;
@@ -91,7 +91,7 @@
     .blog-sidebar-outer-container{
         display: none;
     }
-    .blog-container{
+    .blog-frame-container{
         margin: 0;
     }
 }

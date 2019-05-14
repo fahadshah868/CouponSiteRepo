@@ -5,7 +5,7 @@
 @section('content')
 
 <section id="js-blogs">
-    @include('partialviews.allblogs')
+    @include('partialviews.blogs')
 </section>
 
 @endsection

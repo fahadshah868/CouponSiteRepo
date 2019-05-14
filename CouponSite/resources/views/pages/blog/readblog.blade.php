@@ -6,11 +6,15 @@
 
 <div class="rb-main-container">
     <div class="rb-container">
+        <h1>{{$blog->title}}</h1>
+        @include('partialviews.socialshare', [
+            'url' => request()->fullUrl(),
+            'description' => 'This is really cool link',
+            'image' => 'http://placehold.it/300x300?text=Cool+link'
+        ])
+        <hr>
         <div class="rb-img-container">
             <img src="{{$panel_assets_url.$blog->image_url}}">
-            <div class="overlay">
-                <div class="rb-title">{{$blog->title}}</div>
-            </div>
         </div>
         <div class="rb-body">
             {!! $blog->body !!}
@@ -66,9 +70,9 @@
         </form>
     </div>
     <hr>
-    <div class="rb-ab-wrapper">
+    <div class="rb-wrapper-container">
         <section id="js-blogs">
-            @include('partialviews.allblogs')
+            @include('partialviews.blogs')
         </section>
     </div>
 </div>
@@ -78,6 +82,24 @@
 @section('js-section')
 <script>
     $(document).ready(function(){
+        //social share events handler
+        var popupSize = {
+            width: 780,
+            height: 550
+        };
+        $(document).on('click', '.social-buttons > a', function(e){
+            var verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
+                horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
+            var popup = window.open($(this).prop('href'), 'social',
+                'width='+popupSize.width+',height='+popupSize.height+
+                ',left='+verticalPos+',top='+horisontalPos+
+                ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+            if (popup) {
+                popup.focus();
+                e.preventDefault();
+            }
+        });
+        //pagination events handler
         $('body').on('click', '.pagination a', function(e) {
             e.preventDefault();
             var url = $(this).attr('href');  
@@ -90,7 +112,7 @@
             }).done(function (data) {
                 $('#js-blogs').html(data);
                 $('html, body').animate({
-                    scrollTop: $("div.rb-ab-wrapper").offset().top
+                    scrollTop: $("div.rb-wrapper-container").offset().top
                 }, 500)
             }).fail(function () {
                 alert('something went wrong.');
