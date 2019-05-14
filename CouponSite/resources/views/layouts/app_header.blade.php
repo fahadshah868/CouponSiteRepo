@@ -41,12 +41,12 @@
                 </div>
                 <div id="hamburger-overlay-container" class="hamburger-overlay-container">
                     <ul class="hamburger-menu-list">
-                        <li><a href="#">Browse Stores<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Browse Categories<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Browse Online Codes<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Browse Online Sales<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Browse Free Shipping Coupons<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Blog<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="/allstores">Browse Coupons By Stores<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="/allcategories">Browse Coupons By Categories<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="/coupons/onlinecodes">Browse Online Codes<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="/coupons/onlinesales">Browse Online Sales<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="/coupons/freeshipping">Browse Free Shipping Coupons<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="/blog/">Blog<i class="fa fa-angle-right"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                     <a href="/coupons/freeshipping" class="app-header-nav-item-text" id="app-header-nav-item-text">See All Free Shipping Coupons</a>
                 </li>
                 <li class="app-header-nav-item" id="app-header-nav-item">
-                    <a href="/blog" class="app-header-nav-item-text" id="app-header-nav-item-text">Blog</a>
+                    <a href="/blog/" class="app-header-nav-item-text" id="app-header-nav-item-text">Blog</a>
                 </li>
             </ul>
         </nav>

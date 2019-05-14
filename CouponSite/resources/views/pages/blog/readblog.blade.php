@@ -86,9 +86,12 @@
         function getArticles(url) {
             $.ajax({
                 url : url,
-                data: {id: '{{$blog->id}}', remark: 2},
+                data: {id: '{{$blog->id}}'},
             }).done(function (data) {
                 $('#js-blogs').html(data);
+                $('html, body').animate({
+                    scrollTop: $("div.rb-ab-wrapper").offset().top
+                }, 500)
             }).fail(function () {
                 alert('something went wrong.');
             });

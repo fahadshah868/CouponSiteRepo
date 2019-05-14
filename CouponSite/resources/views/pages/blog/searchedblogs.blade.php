@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div style="font-style: italic; font-size: 22px; font-weight: 500;">"{{ Session::get('searched_blogs_header') }}"</div>
+<div style="font-style: italic; font-size: 22px; font-weight: 500;">Searched Results For "{{ $searched_blog_title }}"</div>
 <hr>
 <section id="js-blogs">
     @include('partialviews.allblogs')
@@ -22,7 +22,7 @@
         function getArticles(url) {
             $.ajax({
                 url : url,
-                data: {blog_category_id: '{{ $blog_category_id }}', remark: 1},
+                data: {title: '{{$searched_blog_title}}'},
             }).done(function (data) {
                 $('#js-blogs').html(data);
                 $('html, body').animate({

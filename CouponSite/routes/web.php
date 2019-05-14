@@ -31,6 +31,7 @@ Route::get('/coupons/{filter}','FilteredOfferController@getFilteredOffers');
 Route::get('/applymorefilters/{filters}/{category}', 'FilteredOfferController@getMoreFilteredOffers');
 
 // routes for BlogController
-Route::get('/blog','BlogController@getBlogsList');
-Route::get('/blog/{url}','BlogController@getfilteredblogs');
+Route::get('/blog/','BlogController@getBlogsList');
+Route::get('/blog/{blog}','BlogController@getReadblog');
+Route::get('/blog/category/{category}','BlogController@getCategoryWiseBlogsList');
 Route::post('/blog/postcomment','BlogController@postBlogComment');
