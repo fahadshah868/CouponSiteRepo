@@ -28,7 +28,7 @@
                 <img src="{{asset('images/social-icons/pinterest.png')}}">
         </div>
     </a>
-    <a href="https://instogram.com/share?url={{ urlencode($url) }}"
+    <a href="https://wa.me/?text={{ urlencode($url) }}"
         target="_blank">
         <div class="social-icon-container">
             <img src="{{asset('images/social-icons/whatsapp.png')}}">

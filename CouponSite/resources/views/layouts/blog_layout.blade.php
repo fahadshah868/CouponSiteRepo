@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    
+    <meta property="og:title" content="@yield('sharetitle')">
+    <meta property="og:description" content="@yield('description')">
+    <meta property="og:url" content="@yield('pageurl')">
+    <meta property="og:image" content="@yield('imageurl')">
+    <meta property="og:image:secure_url" content="@yield('imageurl')">
+    <meta property="og:image:width" content="900"/>
+    <meta property="og:image:height" content="600"/>
+
+    <meta name="twitter:title" content="@yield('sharetitle')">
+    <meta name="twitter:description" content="@yield('description')">
+    <meta name="twitter:image" content="@yield('imageurl')">
+    <meta name="twitter:card" content="summary_large_image">
+
+    
     <title>@yield('title')</title>
     <!--stylesheet section-->
     @section('stylesheet')

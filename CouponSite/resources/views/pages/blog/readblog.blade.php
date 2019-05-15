@@ -1,6 +1,10 @@
 @extends('layouts.blog_layout')
 
 @section('title','All Blogs')
+@section('sharetitle',$blog->title)
+@section('description',strip_tags($blog->body))
+@section('imageurl',$panel_assets_url.$blog->image_url)
+@section('pageurl',request()->fullUrl())
 
 @section('content')
 
@@ -9,8 +13,8 @@
         <h1>{{$blog->title}}</h1>
         @include('partialviews.socialshare', [
             'url' => request()->fullUrl(),
-            'description' => 'This is really cool link',
-            'image' => 'http://placehold.it/300x300?text=Cool+link'
+            'description' => strip_tags($blog->body),
+            'image' => $panel_assets_url.$blog->image_url
         ])
         <hr>
         <div class="rb-img-container">
