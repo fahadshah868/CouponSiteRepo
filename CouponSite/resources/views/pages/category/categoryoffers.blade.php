@@ -72,7 +72,7 @@
         $.ajax({
             url : url
         }).done(function (data) {
-            $(`#filtered-offers`).html(data);
+            $(`#filtered-offers`).html(data.partialview);
             $('html, body').animate({
                 scrollTop: $("div.fo-db-heading").offset().top
             }, 500)
@@ -92,12 +92,15 @@
                 type:`GET`,
                 url:`/applymorefilters/`+stores_id+`/`+category_id
             }).done(function (data) {
-                $(`#filtered-offers`).html(data);
-                if($(`#fo-offers-availability`).val() > 1){
-                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offers Available");
+                $(`#filtered-offers`).html(data.partialview);
+                if(data.offerscount > 1){
+                    $(`#offers-availability`).html(data.offerscount+" Offers Available");
                 }
-                else if($(`#fo-offers-availability`).val() == 1){
-                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offer Available");
+                else if(data.offerscount == 1){
+                    $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                }
+                else if(data.offerscount < 1){
+                    $(`#offers-availability`).html("No Offers Available");
                 }
             }).fail(function () {
                 alert(`something went wrong.`);
@@ -109,12 +112,15 @@
                 type:`GET`,
                 url:`/applymorefilters/0/`+category_id
             }).done(function (data) {
-                $(`#filtered-offers`).html(data);
-                if($(`#fo-offers-availability`).val() > 1){
-                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offers Available");
+                $(`#filtered-offers`).html(data.partialview);
+                if(data.offerscount > 1){
+                    $(`#offers-availability`).html(data.offerscount+" Offers Available");
                 }
-                else if($(`#fo-offers-availability`).val() == 1){
-                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offer Available");
+                else if(data.offerscount == 1){
+                    $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                }
+                else if(data.offerscount < 1){
+                    $(`#offers-availability`).html("No Offers Available");
                 }
             }).fail(function () {
                 alert(`something went wrong.`);
@@ -128,12 +134,15 @@
                 type:`GET`,
                 url:`/applymorefilters/0/`+category_id
             }).done(function (data) {
-                $(`#filtered-offers`).html(data);
-                if($(`#fo-offers-availability`).val() > 1){
-                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offers Available");
+                $(`#filtered-offers`).html(data.partialview);
+                if(data.offerscount > 1){
+                    $(`#offers-availability`).html(data.offerscount+" Offers Available");
                 }
-                else if($(`#fo-offers-availability`).val() == 1){
-                    $(`#offers-availability`).html($(`#fo-offers-availability`).val()+" Offer Available");
+                else if(data.offerscount == 1){
+                    $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                }
+                else if(data.offerscount < 1){
+                    $(`#offers-availability`).html("No Offers Available");
                 }
             }).fail(function () {
                 alert(`something went wrong.`);
