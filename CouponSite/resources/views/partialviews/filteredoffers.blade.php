@@ -1,5 +1,4 @@
 <div class="fo-db-offers-list-container" id="fo-db-offers-list-container">
-    <input type="hidden" id="fo-offers-availability" value="{{$filteredoffers->total()}}">
     @foreach($filteredoffers as $filteredoffer)
     <div class="fo-db-offerbody-container">
         <div class="fo-db-logo">
