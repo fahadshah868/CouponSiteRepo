@@ -140,23 +140,21 @@ class FilteredOfferController extends Controller
             }
         }
     }
-    public function getMoreFilteredOffers($_stores_id, $_categories_id){
+    public function getMoreFilteredOffers(Request $request){
         // stores_id = [] && categories_id = []
-        if($_stores_id != 0 && $_categories_id != 0){
-            $stores_id = explode(',',$_stores_id);
-            $categories_id = explode(',',$_categories_id);
+        if($request->stores_id != 0 && $request->categories_id != 0){
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
                 $sq->select('id','title','logo_url');
             }])
-            ->where(function($q) use($stores_id, $categories_id){
-                for($store = 0; $store < count($stores_id); $store++){
-                    for($category=0; $category< count($categories_id); $category++){
+            ->where(function($q) use($request){
+                for($store = 0; $store < count($request->stores_id); $store++){
+                    for($category=0; $category< count($request->categories_id); $category++){
                         if($store == 0){
-                            $q->where('store_id',$stores_id[$store])->where('category_id',$categories_id[$category]);
+                            $q->where('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
                         }
                         else{
-                            $q->orWhere('store_id',$stores_id[$store])->where('category_id',$categories_id[$category]);
+                            $q->orWhere('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
                         }
                     }
                 }
@@ -177,20 +175,18 @@ class FilteredOfferController extends Controller
             return response()->json($data);
         }
         // stores_id = [] && categories_id = 0
-        else if($_stores_id != 0 && $_categories_id == 0){
-            $stores_id = explode(',',$_stores_id);
-            $categories_id = explode(',',$_categories_id);
+        else if($request->stores_id != 0 && $request->categories_id == 0){
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
                 $sq->select('id','title','logo_url');
             }])
-            ->where(function($q) use($stores_id, $categories_id){
-                for($store = 0; $store < count($stores_id); $store++){
+            ->where(function($q) use($request){
+                for($store = 0; $store < count($request->stores_id); $store++){
                     if($store == 0){
-                        $q->where('store_id',$stores_id[$store]);
+                        $q->where('store_id',$request->stores_id[$store]);
                     }
                     else{
-                        $q->orWhere('store_id',$stores_id[$store]);
+                        $q->orWhere('store_id',$request->stores_id[$store]);
                     }
                 }
             })
@@ -210,20 +206,18 @@ class FilteredOfferController extends Controller
             return response()->json($data);
         }
         // stores_id = 0 && categories_id = []
-        else if($_stores_id == 0 && $_categories_id != 0){
-            $stores_id = explode(',',$_stores_id);
-            $categories_id = explode(',',$_categories_id);
+        else if($request->stores_id == 0 && $request->categories_id != 0){
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
                 $sq->select('id','title','logo_url');
             }])
-            ->where(function($q) use($stores_id, $categories_id){
-                for($category=0; $category< count($categories_id); $category++){
+            ->where(function($q) use($request){
+                for($category=0; $category< count($request->categories_id); $category++){
                     if($category == 0){
-                        $q->where('category_id',$categories_id[$category]);
+                        $q->where('category_id',$request->categories_id[$category]);
                     }
                     else{
-                        $q->orWhere('category_id',$categories_id[$category]);
+                        $q->orWhere('category_id',$request->categories_id[$category]);
                     }
                 }
             })
@@ -243,9 +237,7 @@ class FilteredOfferController extends Controller
             return response()->json($data);
         }
         // stores_id = 0 && categories_id = 0
-        else if($_stores_id == 0 && $_categories_id == 0){
-            $stores_id = explode(',',$_stores_id);
-            $categories_id = explode(',',$_categories_id);
+        else if($request->stores_id == 0 && $request->categories_id == 0){
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
                 $sq->select('id','title','logo_url');

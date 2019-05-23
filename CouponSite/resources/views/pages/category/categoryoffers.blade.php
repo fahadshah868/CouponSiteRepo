@@ -52,9 +52,9 @@
     <div class="fo-db">
         <div class="fo-db-heading">{{$category->title}} Coupons & Promo Codes</div>
         @if(count($filteredoffers) > 0)
-        <section id="filtered-offers">
+        <div id="filtered-offers">
         @include('partialviews.filteredoffers')
-        </section>
+        </div>
         @else
         <div class="no-coupons-alert">No Coupons Available For {{$category->title}}</div>
         @endif
@@ -65,12 +65,18 @@
 <script>
     $(`body`).on(`click`, `.pagination a`, function(e) {
         e.preventDefault();
-        var url = $(this).attr(`href`);  
+        var url = $(this).attr(`href`);
         getArticles(url);
     });
     function getArticles(url) {
+        var category_id = [$("#category_id").val()];
+        var stores_id = [];
+        $(`.checkbox-container`).find(`input:checked`).each(function () {
+            stores_id.push($(this).val());
+        });
         $.ajax({
-            url : url
+            url : url,
+            data: {stores_id: stores_id, categories_id: category_id}
         }).done(function (data) {
             $(`#filtered-offers`).html(data.partialview);
             $('html, body').animate({
@@ -81,7 +87,7 @@
         });
     }
     $(`.checkbox-container input[type="checkbox"]`).click(function(){
-        var category_id = $("#category_id").val();
+        var category_id = [$("#category_id").val()];
         var stores_id = [];
         $(`.checkbox-container`).find(`input:checked`).each(function () {
             stores_id.push($(this).val());
@@ -90,7 +96,8 @@
             $(`#reset-store-filters`).css('display','block');
             $.ajax({
                 type:`GET`,
-                url:`/applymorefilters/`+stores_id+`/`+category_id
+                url:`/applymorefilters`,
+                data: {stores_id: stores_id, categories_id: category_id}
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
                 if(data.offerscount > 1){
@@ -110,7 +117,7 @@
             $(`#reset-store-filters`).css('display','none');
             $.ajax({
                 type:`GET`,
-                url:`/applymorefilters/0/`+category_id
+                url:`/applymorefilters`
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
                 if(data.offerscount > 1){
@@ -132,7 +139,7 @@
             $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
             $.ajax({
                 type:`GET`,
-                url:`/applymorefilters/0/`+category_id
+                url:`/applymorefilters`
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
                 if(data.offerscount > 1){
