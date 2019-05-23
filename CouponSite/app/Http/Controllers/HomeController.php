@@ -21,8 +21,10 @@ class HomeController extends Controller
             ->where('display_at_home',1)
             ->where('status',1)
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-            ->orWhere('expiry_date', null)
+            ->where(function($sq){
+                $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            })
             ->orderBy('id','DESC')
             ->skip(0)
             ->limit(4)
@@ -32,8 +34,10 @@ class HomeController extends Controller
             ->withCount(['offers' => function($q){
                 $q->where('status',1)
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null);
+                ->where(function($sq){
+                    $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                });
             }])->limit(24)->get();
         $data['latestblogs'] = Blog::select('id','url','title','image_url')->where('status',1)->orderBy('id','DESC')->limit(3)->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
@@ -50,8 +54,10 @@ class HomeController extends Controller
         ->where('display_at_home',1)
         ->where('status',1)
         ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-        ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-        ->orWhere('expiry_date', null)
+        ->where(function($sq){
+            $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+            ->orWhere('expiry_date', null);
+        })
         ->orderBy('id','DESC')
         ->skip($rowscount)
         ->limit(4)

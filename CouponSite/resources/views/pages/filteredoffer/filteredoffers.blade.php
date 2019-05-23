@@ -24,6 +24,22 @@
             </div>
         </div>
         @endif
+        @if(count($categories) > 0)
+        <div class="fo-sb-content-container">
+            <div class="fo-sb-content-heading">
+                <span>Filter By Category</span>
+                <span class="reset-category-filters" id="reset-category-filters">Reset</span>
+            </div>
+            <div class="fo-sb-content-body">
+                @foreach($categories as $category)
+                <label class="checkbox-container">{{$category->title}}
+                    <input type="checkbox" value="{{$category->id}}" class="category-filter">
+                    <span class="checkmark"></span>
+                </label>
+                @endforeach
+            </div>
+        </div>
+        @endif
         <div class="fo-sb-content-container">
             <div class="fo-sb-content-heading">Title</div>
             <div class="fo-sb-content-body">

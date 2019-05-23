@@ -36,6 +36,8 @@ class FilteredOfferController extends Controller
                 $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
                     return $item->store->id;
                 });
+                $data['categories'] = Category::select('id','title')
+                ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
                 return view('pages.filteredoffer.filteredoffers',$data);
             }
         }

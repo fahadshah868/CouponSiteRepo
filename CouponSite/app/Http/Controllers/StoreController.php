@@ -17,8 +17,10 @@ class StoreController extends Controller
         ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
         ->withCount(['offers' => function($q){
             $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-            ->orWhere('expiry_date', null);
+            ->where(function($sq){
+                $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            });
         }])->get();
         $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
@@ -46,8 +48,10 @@ class StoreController extends Controller
             ->withCount(['offers'=> function($q){
                 $q->where('status',1)
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null);
+                ->where(function($sq){
+                    $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                });
             }])->get();
             $response['filtered_letters'] = $response['allstores']->groupBy(function ($item, $key) {
                 $letter = substr(strtoupper($item->title), 0, 1);
@@ -69,8 +73,10 @@ class StoreController extends Controller
                 ->withCount(['offers' => function($oq) use($category){
                     $oq->where('status',1)->where('category_id',$category)
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                    ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                    ->orWhere('expiry_date', null);
+                    ->where(function($sq){
+                        $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
                 }]);
             }])
             ->whereHas('store',function($q){
@@ -101,8 +107,10 @@ class StoreController extends Controller
             })
             ->where('status',1)
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-            ->orWhere('expiry_date', null)
+            ->where(function($sq){
+                $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            })
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC');
         }])->first();
@@ -116,8 +124,10 @@ class StoreController extends Controller
         ->withCount(['offers' => function($q){
             $q->where('status',1)
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-            ->orWhere('expiry_date', null);
+            ->where(function($sq){
+                $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            });
         }])
         ->orderBy('is_topstore','ASC')
         ->orderBy('is_popularstore','ASC')

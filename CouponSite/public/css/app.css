@@ -13153,7 +13153,7 @@ ul {
       flex-wrap: wrap;
 }
 
-.ac-top-category-container:nth-child(n) {
+.tc-container:nth-child(n) {
   width: calc(16.666667% - 16.67px);
   transition: 0.3s;
   -webkit-transition: 0.3s;
@@ -13162,11 +13162,11 @@ ul {
   background-color: #fff;
 }
 
-.ac-top-category-container:nth-child(6n) {
+.tc-container:nth-child(6n) {
   margin: 0 0 20px 0;
 }
 
-.ac-top-category-container a.tc-link {
+.tc-container a.tc-link {
   width: 100%;
   height: 100%;
   display: -webkit-box;
@@ -13188,7 +13188,7 @@ ul {
   color: #555;
 }
 
-.ac-top-category-container a.tc-link:hover {
+.tc-container a.tc-link:hover {
   -webkit-box-shadow: 0 0 10px #838383;
           box-shadow: 0 0 10px #838383;
 }
@@ -13204,7 +13204,7 @@ ul {
   height: 100%;
 }
 
-.ac-top-category-container .tc-title {
+.tc-container .tc-title {
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -13329,7 +13329,7 @@ ul {
 }
 
 @media only screen and (max-width: 1000px) {
-  .ac-top-category-container:nth-child(n) {
+  .tc-container:nth-child(n) {
     width: calc(20% - 16px);
     transition: 0.3s;
     -webkit-transition: 0.3s;
@@ -13338,13 +13338,13 @@ ul {
     background-color: #fff;
   }
 
-  .ac-top-category-container:nth-child(5n) {
+  .tc-container:nth-child(5n) {
     margin: 0 0 20px 0;
   }
 }
 
 @media only screen and (max-width: 900px) {
-  .ac-top-category-container:nth-child(n) {
+  .tc-container:nth-child(n) {
     width: calc(25% - 15px);
     transition: 0.3s;
     -webkit-transition: 0.3s;
@@ -13353,13 +13353,13 @@ ul {
     background-color: #fff;
   }
 
-  .ac-top-category-container:nth-child(4n) {
+  .tc-container:nth-child(4n) {
     margin: 0 0 20px 0;
   }
 }
 
 @media only screen and (max-width: 750px) {
-  .ac-top-category-container:nth-child(n) {
+  .tc-container:nth-child(n) {
     width: calc(33% - 9px);
     transition: 0.3s;
     -webkit-transition: 0.3s;
@@ -13368,7 +13368,7 @@ ul {
     background-color: #fff;
   }
 
-  .ac-top-category-container:nth-child(3n) {
+  .tc-container:nth-child(3n) {
     margin: 0 0 15px 0;
   }
 
@@ -13391,7 +13391,7 @@ ul {
 }
 
 @media only screen and (max-width: 500px) {
-  .ac-top-category-container:nth-child(n) {
+  .tc-container:nth-child(n) {
     width: calc(50% - 8px);
     transition: 0.3s;
     -webkit-transition: 0.3s;
@@ -13400,7 +13400,7 @@ ul {
     background-color: #fff;
   }
 
-  .ac-top-category-container:nth-child(2n) {
+  .tc-container:nth-child(2n) {
     margin: 0 0 15px 0;
   }
 
