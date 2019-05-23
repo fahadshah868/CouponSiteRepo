@@ -55,7 +55,10 @@
             $.ajax({
                 url : url
             }).done(function (data) {
-                $('#filtered-offers').html(data);  
+                $('#filtered-offers').html(data.partialview);  
+                $('html, body').animate({
+                    scrollTop: $("div.fo-db-heading").offset().top
+                }, 500)
             }).fail(function () {
                 alert('something went wrong.');
             });

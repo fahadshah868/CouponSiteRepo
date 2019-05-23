@@ -29,7 +29,8 @@ class FilteredOfferController extends Controller
             ->paginate(2);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             if($request->ajax()){
-                return view('partialviews.filteredoffers',$data);
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
             }
             else{
                 $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
@@ -55,7 +56,8 @@ class FilteredOfferController extends Controller
             ->paginate(2);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             if($request->ajax()){
-                return view('partialviews.filteredoffers',$data);
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
             }
             else{
                 $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
@@ -80,7 +82,8 @@ class FilteredOfferController extends Controller
             ->paginate(2);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             if($request->ajax()){
-                return view('partialviews.filteredoffers',$data);
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
             }
             else{
                 $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
@@ -101,15 +104,18 @@ class FilteredOfferController extends Controller
                 })
                 ->where('status',1)
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null)
+                ->where(function($q){
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
                 ->orderBy('id','DESC')
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             if($request->ajax()){
-                return view('partialviews.filteredoffers',$data);
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
             }
             else{
                 $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
@@ -119,11 +125,13 @@ class FilteredOfferController extends Controller
                 ->whereNotIn('id',[$data['category']->id])
                 ->Where('is_popularcategory',1)
                 ->where('status',1)
-                ->withCount(['offers' => function($q){
-                    $q->where('status',1)
+                ->withCount(['offers' => function($oq){
+                    $oq->where('status',1)
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                    ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                    ->orWhere('expiry_date', null);
+                    ->where(function($sq){
+                        $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
                 }])
                 ->orderBy('is_topcategory','ASC')
                 ->orderBy('is_popularcategory','ASC')
@@ -154,9 +162,9 @@ class FilteredOfferController extends Controller
                 }
             })
             ->where('status',1)
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
-                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->orWhere('expiry_date', null);
             })
             ->orderBy('id','DESC')
@@ -187,9 +195,9 @@ class FilteredOfferController extends Controller
                 }
             })
             ->where('status',1)
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
-                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->orWhere('expiry_date', null);
             })
             ->orderBy('id','DESC')
@@ -220,9 +228,9 @@ class FilteredOfferController extends Controller
                 }
             })
             ->where('status',1)
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
-                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->orWhere('expiry_date', null);
             })
             ->orderBy('id','DESC')
@@ -243,9 +251,9 @@ class FilteredOfferController extends Controller
                 $sq->select('id','title','logo_url');
             }])
             ->where('status',1)
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
-                $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                 ->orWhere('expiry_date', null);
             })
             ->orderBy('id','DESC')
