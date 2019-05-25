@@ -16,8 +16,8 @@
             </div>
             <div class="fo-sb-content-body">
                 @foreach($stores as $store)
-                <label class="checkbox-container">{{$store{0}->store->title}}
-                    <input type="checkbox" value="{{$store{0}->store->id}}" class="store-filter">
+                <label class="checkbox-container">{{$store->title}}
+                    <input type="checkbox" value="{{$store->id}}" class="store-filter">
                     <span class="checkmark"></span>
                 </label>
                 @endforeach
@@ -68,8 +68,14 @@
             getOffers(url);
         });
         function getOffers(url) {
+            var category_id = [];
+            var stores_id = [];
+            $(`.checkbox-container`).find(`input:checked`).each(function () {
+                stores_id.push($(this).val());
+            });
             $.ajax({
-                url : url
+                url : url,
+                data: {stores_id: stores_id, categories_id: category_id}
             }).done(function (data) {
                 $('#filtered-offers').html(data.partialview);  
                 $('html, body').animate({
@@ -79,6 +85,82 @@
                 alert('something went wrong.');
             });
         }
+        
+        
+        
+        
+        
+        
+        $(`.checkbox-container input[type="checkbox"]`).click(function(){
+            var category_id = [];
+            var stores_id = [];
+            $(`.checkbox-container`).find(`input:checked`).each(function () {
+                stores_id.push($(this).val());
+            });
+            if(stores_id.length > 0){
+                $(`#reset-store-filters`).css('display','block');
+                $.ajax({
+                    type:`GET`,
+                    url:`/applymorefilters`,
+                    data: {stores_id: stores_id, categories_id: category_id}
+                }).done(function (data) {
+                    $(`#filtered-offers`).html(data.partialview);
+                    if(data.offerscount > 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offers Available");
+                    }
+                    else if(data.offerscount == 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                    }
+                    else if(data.offerscount < 1){
+                        $(`#offers-availability`).html("No Offers Available");
+                    }
+                }).fail(function () {
+                    alert(`something went wrong.`);
+                });
+            }
+            else{
+                $(`#reset-store-filters`).css('display','none');
+                $.ajax({
+                    type:`GET`,
+                    url:`/applymorefilters`
+                }).done(function (data) {
+                    $(`#filtered-offers`).html(data.partialview);
+                    if(data.offerscount > 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offers Available");
+                    }
+                    else if(data.offerscount == 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                    }
+                    else if(data.offerscount < 1){
+                        $(`#offers-availability`).html("No Offers Available");
+                    }
+                }).fail(function () {
+                    alert(`something went wrong.`);
+                });
+            }
+            $(`#reset-store-filters`).click(function(){
+                var category_id = $("#category_id").val();
+                $(`#reset-store-filters`).css('display','none');
+                $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
+                $.ajax({
+                    type:`GET`,
+                    url:`/applymorefilters`
+                }).done(function (data) {
+                    $(`#filtered-offers`).html(data.partialview);
+                    if(data.offerscount > 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offers Available");
+                    }
+                    else if(data.offerscount == 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                    }
+                    else if(data.offerscount < 1){
+                        $(`#offers-availability`).html("No Offers Available");
+                    }
+                }).fail(function () {
+                    alert(`something went wrong.`);
+                });
+            });
+        });
     });
 </script>
 

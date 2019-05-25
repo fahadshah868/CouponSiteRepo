@@ -15,7 +15,7 @@
         <div class="tc-list-container">
             @foreach($topcategories as $topcategory)
             <div class="tc-container">
-                <a href="/coupons/{{$topcategory->url}}}" class="tc-link">
+                <a href="/coupons/{{$topcategory->url}}" class="tc-link">
                     <div class="tc-logo">
                         <img src="{{$panel_assets_url}}{{$topcategory->logo_url}}"/>
                     </div>

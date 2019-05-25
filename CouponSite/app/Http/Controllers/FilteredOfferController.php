@@ -33,9 +33,8 @@ class FilteredOfferController extends Controller
                 return response()->json($data);
             }
             else{
-                $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
-                    return $item->store->id;
-                });
+                $data['stores'] = Store::select('id','title')
+                ->where('status',1)->where('is_topstore',1)->where('is_popularstore',1)->get();
                 $data['categories'] = Category::select('id','title')
                 ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
                 return view('pages.filteredoffer.filteredoffers',$data);
@@ -120,9 +119,19 @@ class FilteredOfferController extends Controller
                 return response()->json($data);
             }
             else{
-                $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
-                    return $item->store->id;
-                });
+                $data['storecategories'] = StoreCategory::select('store_id')->where('category_id',$data['category']->id)
+                ->with(['store' => function($q){
+                    $q->select('id','title')
+                    ->withCount(['offers' => function($sq){
+                        $sq->where('status',1)
+                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                        ->where(function($sq){
+                            $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                            ->orWhere('expiry_date', null);
+                        });
+                    }]);
+                }])
+                ->get();
                 $data['alltopcategories'] = Category::select('id','title','url')
                 ->whereNotIn('id',[$data['category']->id])
                 ->Where('is_popularcategory',1)

@@ -8,7 +8,7 @@
     <div class="fo-sb">
         <div class="fo-sb-offers-availability" id="offers-availability">{{$filteredoffers->total()}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
-        @if(count($stores) > 0)
+        @if(count($storecategories) > 0)
             <div class="fo-sb-content-container">
                 <div class="fo-sb-content-heading">
                     <span>Filter By Store</span>
@@ -16,11 +16,13 @@
                 </div>
                 <div class="fo-sb-content-body">
                     <input type="hidden" id="category_id" value="{{$category->id}}">
-                    @foreach($stores as $store)
-                    <label class="checkbox-container">{{$store{0}->store->title}}
-                        <input type="checkbox" value="{{$store{0}->store->id}}" class="store-filter">
+                    @foreach($storecategories as $storecategory)
+                    @if($storecategory->store->offers_count > 0)
+                    <label class="checkbox-container">{{$storecategory->store->title}}
+                        <input type="checkbox" value="{{$storecategory->store->id}}" class="store-filter">
                         <span class="checkmark"></span>
                     </label>
+                    @endif
                     @endforeach
                 </div>
             </div>
@@ -63,96 +65,98 @@
 @endsection
 @section('js-section')
 <script>
-    $(`body`).on(`click`, `.pagination a`, function(e) {
-        e.preventDefault();
-        var url = $(this).attr(`href`);
-        getArticles(url);
-    });
-    function getArticles(url) {
-        var category_id = [$("#category_id").val()];
-        var stores_id = [];
-        $(`.checkbox-container`).find(`input:checked`).each(function () {
-            stores_id.push($(this).val());
+    $(document).ready(function(){
+        $(`body`).on(`click`, `.pagination a`, function(e) {
+            e.preventDefault();
+            var url = $(this).attr(`href`);
+            getArticles(url);
         });
-        $.ajax({
-            url : url,
-            data: {stores_id: stores_id, categories_id: category_id}
-        }).done(function (data) {
-            $(`#filtered-offers`).html(data.partialview);
-            $('html, body').animate({
-                scrollTop: $("div.fo-db-heading").offset().top
-            }, 500)
-        }).fail(function () {
-            alert(`something went wrong.`);
-        });
-    }
-    $(`.checkbox-container input[type="checkbox"]`).click(function(){
-        var category_id = [$("#category_id").val()];
-        var stores_id = [];
-        $(`.checkbox-container`).find(`input:checked`).each(function () {
-            stores_id.push($(this).val());
-        });
-        if(stores_id.length > 0){
-            $(`#reset-store-filters`).css('display','block');
+        function getArticles(url) {
+            var category_id = [$("#category_id").val()];
+            var stores_id = [];
+            $(`.checkbox-container`).find(`input:checked`).each(function () {
+                stores_id.push($(this).val());
+            });
             $.ajax({
-                type:`GET`,
-                url:`/applymorefilters`,
+                url : url,
                 data: {stores_id: stores_id, categories_id: category_id}
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
-                if(data.offerscount > 1){
-                    $(`#offers-availability`).html(data.offerscount+" Offers Available");
-                }
-                else if(data.offerscount == 1){
-                    $(`#offers-availability`).html(data.offerscount+" Offer Available");
-                }
-                else if(data.offerscount < 1){
-                    $(`#offers-availability`).html("No Offers Available");
-                }
+                $('html, body').animate({
+                    scrollTop: $("div.fo-db-heading").offset().top
+                }, 500)
             }).fail(function () {
                 alert(`something went wrong.`);
             });
         }
-        else{
-            $(`#reset-store-filters`).css('display','none');
-            $.ajax({
-                type:`GET`,
-                url:`/applymorefilters`
-            }).done(function (data) {
-                $(`#filtered-offers`).html(data.partialview);
-                if(data.offerscount > 1){
-                    $(`#offers-availability`).html(data.offerscount+" Offers Available");
-                }
-                else if(data.offerscount == 1){
-                    $(`#offers-availability`).html(data.offerscount+" Offer Available");
-                }
-                else if(data.offerscount < 1){
-                    $(`#offers-availability`).html("No Offers Available");
-                }
-            }).fail(function () {
-                alert(`something went wrong.`);
+        $(`.checkbox-container input[type="checkbox"]`).click(function(){
+            var category_id = [$("#category_id").val()];
+            var stores_id = [];
+            $(`.checkbox-container`).find(`input:checked`).each(function () {
+                stores_id.push($(this).val());
             });
-        }
-        $(`#reset-store-filters`).click(function(){
-            var category_id = $("#category_id").val();
-            $(`#reset-store-filters`).css('display','none');
-            $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
-            $.ajax({
-                type:`GET`,
-                url:`/applymorefilters`
-            }).done(function (data) {
-                $(`#filtered-offers`).html(data.partialview);
-                if(data.offerscount > 1){
-                    $(`#offers-availability`).html(data.offerscount+" Offers Available");
-                }
-                else if(data.offerscount == 1){
-                    $(`#offers-availability`).html(data.offerscount+" Offer Available");
-                }
-                else if(data.offerscount < 1){
-                    $(`#offers-availability`).html("No Offers Available");
-                }
-            }).fail(function () {
-                alert(`something went wrong.`);
+            if(stores_id.length > 0){
+                $(`#reset-store-filters`).css('display','block');
+                $.ajax({
+                    type:`GET`,
+                    url:`/applymorefilters`,
+                    data: {stores_id: stores_id, categories_id: category_id}
+                }).done(function (data) {
+                    $(`#filtered-offers`).html(data.partialview);
+                    if(data.offerscount > 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offers Available");
+                    }
+                    else if(data.offerscount == 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                    }
+                    else if(data.offerscount < 1){
+                        $(`#offers-availability`).html("No Offers Available");
+                    }
+                }).fail(function () {
+                    alert(`something went wrong.`);
+                });
+            }
+            else{
+                $(`#reset-store-filters`).css('display','none');
+                $.ajax({
+                    type:`GET`,
+                    url:`/applymorefilters`
+                }).done(function (data) {
+                    $(`#filtered-offers`).html(data.partialview);
+                    if(data.offerscount > 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offers Available");
+                    }
+                    else if(data.offerscount == 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                    }
+                    else if(data.offerscount < 1){
+                        $(`#offers-availability`).html("No Offers Available");
+                    }
+                }).fail(function () {
+                    alert(`something went wrong.`);
+                });
+            }
+            $(`#reset-store-filters`).click(function(){
+                var category_id = $("#category_id").val();
+                $(`#reset-store-filters`).css('display','none');
+                $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
+                $.ajax({
+                    type:`GET`,
+                    url:`/applymorefilters`
+                }).done(function (data) {
+                    $(`#filtered-offers`).html(data.partialview);
+                    if(data.offerscount > 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offers Available");
+                    }
+                    else if(data.offerscount == 1){
+                        $(`#offers-availability`).html(data.offerscount+" Offer Available");
+                    }
+                    else if(data.offerscount < 1){
+                        $(`#offers-availability`).html("No Offers Available");
+                    }
+                }).fail(function () {
+                    alert(`something went wrong.`);
+                });
             });
         });
     });
