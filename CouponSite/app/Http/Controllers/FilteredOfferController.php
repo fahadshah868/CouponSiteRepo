@@ -152,121 +152,188 @@ class FilteredOfferController extends Controller
         }
     }
     public function getMoreFilteredOffers(Request $request){
-        // stores_id = [] && categories_id = []
-        if($request->stores_id != 0 && $request->categories_id != 0){
-            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
-            ->with(['store' => function($sq){
-                $sq->select('id','title','logo_url');
-            }])
-            ->where(function($q) use($request){
-                for($store = 0; $store < count($request->stores_id); $store++){
-                    for($category=0; $category< count($request->categories_id); $category++){
+        //fetch category offers
+        if($request->filter == 1){
+            // stores_id = [] && categories_id = []
+            if($request->stores_id != 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($store = 0; $store < count($request->stores_id); $store++){
                         if($store == 0){
-                            $q->where('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                            $q->where('store_id',$request->stores_id[$store])->where('category_id',$request->category_id);
                         }
                         else{
-                            $q->orWhere('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                            $q->orWhere('store_id',$request->stores_id[$store])->where('category_id',$request->category_id);
                         }
                     }
-                }
-            })
-            ->where('status',1)
-            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where(function($q) {
-                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null);
-            })
-            ->orderBy('id','DESC')
-            ->orderBy('is_popular','ASC')
-            ->orderBy('anchor','DESC')
-            ->paginate(2);
-            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            $data['offerscount'] = $data['filteredoffers']->total();
-            $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
-            return response()->json($data);
+                })
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = 0 && categories_id = []
+            else if($request->stores_id == 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where('category_id',$request->category_id)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
         }
-        // stores_id = [] && categories_id = 0
-        else if($request->stores_id != 0 && $request->categories_id == 0){
-            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
-            ->with(['store' => function($sq){
-                $sq->select('id','title','logo_url');
-            }])
-            ->where(function($q) use($request){
-                for($store = 0; $store < count($request->stores_id); $store++){
-                    if($store == 0){
-                        $q->where('store_id',$request->stores_id[$store]);
+        //fetch online codes
+        else if($request->filter == 1){
+            // stores_id = [] && categories_id = []
+            if($request->stores_id != 0 && $request->categories_id != 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($store = 0; $store < count($request->stores_id); $store++){
+                        for($category=0; $category< count($request->categories_id); $category++){
+                            if($store == 0){
+                                $q->where('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                            }
+                            else{
+                                $q->orWhere('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                            }
+                        }
                     }
-                    else{
-                        $q->orWhere('store_id',$request->stores_id[$store]);
+                })
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = [] && categories_id = 0
+            else if($request->stores_id != 0 && $request->categories_id == 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($store = 0; $store < count($request->stores_id); $store++){
+                        if($store == 0){
+                            $q->where('store_id',$request->stores_id[$store]);
+                        }
+                        else{
+                            $q->orWhere('store_id',$request->stores_id[$store]);
+                        }
                     }
-                }
-            })
-            ->where('status',1)
-            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where(function($q) {
-                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null);
-            })
-            ->orderBy('id','DESC')
-            ->orderBy('is_popular','ASC')
-            ->orderBy('anchor','DESC')
-            ->paginate(2);
-            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            $data['offerscount'] = $data['filteredoffers']->total();
-            $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
-            return response()->json($data);
+                })
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = 0 && categories_id = []
+            else if($request->stores_id == 0 && $request->categories_id != 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($category=0; $category< count($request->categories_id); $category++){
+                        if($category == 0){
+                            $q->where('category_id',$request->categories_id[$category]);
+                        }
+                        else{
+                            $q->orWhere('category_id',$request->categories_id[$category]);
+                        }
+                    }
+                })
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = 0 && categories_id = 0
+            else if($request->stores_id == 0 && $request->categories_id == 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
         }
-        // stores_id = 0 && categories_id = []
-        else if($request->stores_id == 0 && $request->categories_id != 0){
-            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
-            ->with(['store' => function($sq){
-                $sq->select('id','title','logo_url');
-            }])
-            ->where(function($q) use($request){
-                for($category=0; $category< count($request->categories_id); $category++){
-                    if($category == 0){
-                        $q->where('category_id',$request->categories_id[$category]);
-                    }
-                    else{
-                        $q->orWhere('category_id',$request->categories_id[$category]);
-                    }
-                }
-            })
-            ->where('status',1)
-            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where(function($q) {
-                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null);
-            })
-            ->orderBy('id','DESC')
-            ->orderBy('is_popular','ASC')
-            ->orderBy('anchor','DESC')
-            ->paginate(2);
-            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            $data['offerscount'] = $data['filteredoffers']->total();
-            $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
-            return response()->json($data);
+        //fetch online sales
+        else if($request->filter == 1){
+
         }
-        // stores_id = 0 && categories_id = 0
-        else if($request->stores_id == 0 && $request->categories_id == 0){
-            $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
-            ->with(['store' => function($sq){
-                $sq->select('id','title','logo_url');
-            }])
-            ->where('status',1)
-            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where(function($q) {
-                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null);
-            })
-            ->orderBy('id','DESC')
-            ->orderBy('is_popular','ASC')
-            ->orderBy('anchor','DESC')
-            ->paginate(2);
-            $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
-            $data['offerscount'] = $data['filteredoffers']->total();
-            $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
-            return response()->json($data);
+        //fetch free shipping offers
+        else if($request->filter == 1){
+
         }
     }
 }

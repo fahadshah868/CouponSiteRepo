@@ -72,14 +72,14 @@
             getArticles(url);
         });
         function getArticles(url) {
-            var category_id = [$("#category_id").val()];
+            var category_id = $("#category_id").val();
             var stores_id = [];
             $(`.checkbox-container`).find(`input:checked`).each(function () {
                 stores_id.push($(this).val());
             });
             $.ajax({
                 url : url,
-                data: {stores_id: stores_id, categories_id: category_id}
+                data: {stores_id: stores_id, category_id: category_id, filter: 1}
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
                 $('html, body').animate({
@@ -90,7 +90,7 @@
             });
         }
         $(`.checkbox-container input[type="checkbox"]`).click(function(){
-            var category_id = [$("#category_id").val()];
+            var category_id = $("#category_id").val();
             var stores_id = [];
             $(`.checkbox-container`).find(`input:checked`).each(function () {
                 stores_id.push($(this).val());
@@ -100,7 +100,7 @@
                 $.ajax({
                     type:`GET`,
                     url:`/applymorefilters`,
-                    data: {stores_id: stores_id, categories_id: category_id}
+                    data: {stores_id: stores_id, category_id: category_id, filter: 1}
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
                     if(data.offerscount > 1){
@@ -118,9 +118,11 @@
             }
             else{
                 $(`#reset-store-filters`).css('display','none');
+                var category_id = $("#category_id").val();
                 $.ajax({
                     type:`GET`,
-                    url:`/applymorefilters`
+                    url:`/applymorefilters`,
+                    data: {stores_id: 0, category_id: category_id, filter: 1}
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
                     if(data.offerscount > 1){
@@ -142,7 +144,8 @@
                 $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
                 $.ajax({
                     type:`GET`,
-                    url:`/applymorefilters`
+                    url:`/applymorefilters`,
+                    data: {stores_id: 0, category_id: category_id, filter: 1}
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
                     if(data.offerscount > 1){
