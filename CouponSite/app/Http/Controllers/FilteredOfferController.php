@@ -8,6 +8,7 @@ use App\Store;
 use App\Offer;
 use App\StoreCategory;
 use View;
+use Session;
 
 class FilteredOfferController extends Controller
 {
@@ -28,6 +29,7 @@ class FilteredOfferController extends Controller
             ->orderBy('anchor','DESC')
             ->paginate(2);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            Session::flash('filter',2);
             if($request->ajax()){
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
                 return response()->json($data);
@@ -56,6 +58,7 @@ class FilteredOfferController extends Controller
             ->orderBy('anchor','DESC')
             ->paginate(2);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            Session::flash('filter',3);
             if($request->ajax()){
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
                 return response()->json($data);
@@ -82,6 +85,7 @@ class FilteredOfferController extends Controller
             ->orderBy('anchor','DESC')
             ->paginate(2);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            Session::flash('filter',4);
             if($request->ajax()){
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
                 return response()->json($data);
@@ -114,6 +118,7 @@ class FilteredOfferController extends Controller
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+            Session::flash('filter',1);
             if($request->ajax()){
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
                 return response()->json($data);
@@ -209,7 +214,7 @@ class FilteredOfferController extends Controller
             }
         }
         //fetch online codes
-        else if($request->filter == 1){
+        else if($request->filter == 2){
             // stores_id = [] && categories_id = []
             if($request->stores_id != 0 && $request->categories_id != 0){
                 $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
@@ -219,15 +224,21 @@ class FilteredOfferController extends Controller
                 ->where(function($q) use($request){
                     for($store = 0; $store < count($request->stores_id); $store++){
                         for($category=0; $category< count($request->categories_id); $category++){
-                            if($store == 0){
-                                $q->where('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                            if($store == 0 && $category == 0){
+                                $q->where(function($sq) use($request, $store, $category){
+                                    $sq->where('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                                });
                             }
                             else{
-                                $q->orWhere('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                                $q->orWhere(function($sq) use($request, $store, $category){
+                                    $sq->orWhere('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                                });
                             }
                         }
                     }
                 })
+                ->whereIn('location',[1,3])
+                ->where('type',1)
                 ->where('status',1)
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where(function($q) {
@@ -238,6 +249,47 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
+                $data['storecategories'] = null;
+                if($request->filtertype == 1){
+                    $data['storecategories'] = StoreCategory::select('store_id','category_id')
+                    ->where(function($q) use($request){
+                        for($store = 0; $store < count($request->stores_id); $store++){
+                            if($store == 0){
+                                $q->where('store_id',$request->stores_id[$store]);
+                            }
+                            else{
+                                $q->orWhere('store_id',$request->stores_id[$store]);
+                            }
+                        }
+                    })
+                    ->groupBy('category_id')
+                    ->with(['category'=>function($q){
+                        $q->select('id','title');
+                    }])
+                    ->whereHas('category', function($q){
+                        $q->select('id')->where('status',1);
+                    })->get();
+                }
+                else if($request->filtertype == 2){
+                    $data['storecategories'] = StoreCategory::select('store_id','category_id')
+                    ->where(function($q) use($request){
+                        for($category = 0; $category < count($request->categories_id); $category++){
+                            if($category == 0){
+                                $q->where('category_id',$request->categories_id[$category]);
+                            }
+                            else{
+                                $q->orWhere('category_id',$request->categories_id[$category]);
+                            }
+                        }
+                    })
+                    ->groupBy('store_id')
+                    ->with(['store'=>function($q){
+                        $q->select('id','title');
+                    }])
+                    ->whereHas('store', function($q){
+                        $q->select('id')->where('status',1);
+                    })->get();
+                }
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
@@ -259,6 +311,8 @@ class FilteredOfferController extends Controller
                         }
                     }
                 })
+                ->whereIn('location',[1,3])
+                ->where('type',1)
                 ->where('status',1)
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where(function($q) {
@@ -269,6 +323,27 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
+                $data['storecategories'] = null;
+                if($request->filtertype == 1){
+                    $data['storecategories'] = StoreCategory::select('store_id','category_id')
+                    ->where(function($q) use($request){
+                        for($store = 0; $store < count($request->stores_id); $store++){
+                            if($store == 0){
+                                $q->where('store_id',$request->stores_id[$store]);
+                            }
+                            else{
+                                $q->orWhere('store_id',$request->stores_id[$store]);
+                            }
+                        }
+                    })
+                    ->groupBy('category_id')
+                    ->with(['category'=>function($q){
+                        $q->select('id','title');
+                    }])
+                    ->whereHas('category', function($q){
+                        $q->select('id')->where('status',1);
+                    })->get();
+                }
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
@@ -290,6 +365,8 @@ class FilteredOfferController extends Controller
                         }
                     }
                 })
+                ->whereIn('location',[1,3])
+                ->where('type',1)
                 ->where('status',1)
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where(function($q) {
@@ -300,6 +377,27 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
+                $data['storecategories'] = null;
+                if($request->filtertype == 2){
+                    $data['storecategories'] = StoreCategory::select('store_id','category_id')
+                    ->where(function($q) use($request){
+                        for($category = 0; $category < count($request->categories_id); $category++){
+                            if($category == 0){
+                                $q->where('category_id',$request->categories_id[$category]);
+                            }
+                            else{
+                                $q->orWhere('category_id',$request->categories_id[$category]);
+                            }
+                        }
+                    })
+                    ->groupBy('store_id')
+                    ->with(['store'=>function($q){
+                        $q->select('id','title');
+                    }])
+                    ->whereHas('store', function($q){
+                        $q->select('id')->where('status',1);
+                    })->get();
+                }
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
@@ -311,6 +409,8 @@ class FilteredOfferController extends Controller
                 ->with(['store' => function($sq){
                     $sq->select('id','title','logo_url');
                 }])
+                ->whereIn('location',[1,3])
+                ->where('type',1)
                 ->where('status',1)
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where(function($q) {
@@ -321,6 +421,10 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
+                $data['stores'] = Store::select('id','title')
+                ->where('status',1)->where('is_topstore',1)->where('is_popularstore',1)->get();
+                $data['categories'] = Category::select('id','title')
+                ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
@@ -328,11 +432,11 @@ class FilteredOfferController extends Controller
             }
         }
         //fetch online sales
-        else if($request->filter == 1){
+        else if($request->filter == 3){
 
         }
         //fetch free shipping offers
-        else if($request->filter == 1){
+        else if($request->filter == 4){
 
         }
     }
