@@ -421,6 +421,7 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
+                $data['storecategories'] = null;
                 $data['stores'] = Store::select('id','title')
                 ->where('status',1)->where('is_topstore',1)->where('is_popularstore',1)->get();
                 $data['categories'] = Category::select('id','title')

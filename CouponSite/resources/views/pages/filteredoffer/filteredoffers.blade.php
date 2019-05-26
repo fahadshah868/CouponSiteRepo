@@ -16,7 +16,7 @@
             </div>
             <div class="fo-sb-content-body">
                 @foreach($stores as $store)
-                <label class="checkbox-container">{{$store->title}}
+                <label class="checkbox-container store">{{$store->title}}
                     <input type="checkbox" value="{{$store->id}}" class="store-filter">
                     <span class="checkmark"></span>
                 </label>
@@ -32,7 +32,7 @@
             </div>
             <div class="fo-sb-content-body">
                 @foreach($categories as $category)
-                <label class="checkbox-container">{{$category->title}}
+                <label class="checkbox-container category">{{$category->title}}
                     <input type="checkbox" value="{{$category->id}}" class="category-filter">
                     <span class="checkmark"></span>
                 </label>
@@ -129,6 +129,7 @@
                     data: {stores_id: stores_id, categories_id: categories_id, filter: filter, filtertype: filtertype}
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
+                    //set offers count
                     if(data.offerscount > 1){
                         $(`#offers-availability`).html(data.offerscount+" Offers Available");
                     }
@@ -138,6 +139,38 @@
                     else if(data.offerscount < 1){
                         $(`#offers-availability`).html("No Offers Available");
                     }
+                    //set store categories
+                    if(data.storecategories != null){
+                        if(filtertype == 1){
+                            var categories = $('.checkbox-container.category').each(function(){
+                                return $(this).text();
+                            });
+                            $.each(data.storecategories, function(index, storecategory){
+                                var filteredcategory = storecategory.category.title;
+                                categories.each(function(){
+                                    var existingcategory = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                });
+                            });
+                        }
+                        else if(filtertype == 2){
+
+                        }
+                    }
+                    else{
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
                 }).fail(function () {
                     alert(`something went wrong.`);
                 });
