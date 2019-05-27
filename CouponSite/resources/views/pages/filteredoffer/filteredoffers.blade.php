@@ -14,7 +14,7 @@
                 <span>Filter By Store</span>
                 <span class="reset-store-filters" id="reset-store-filters">Reset</span>
             </div>
-            <div class="fo-sb-content-body">
+            <div class="fo-sb-content-body" id="fo-sb-store-container">
                 @foreach($stores as $store)
                 <label class="checkbox-container store">{{$store->title}}
                     <input type="checkbox" value="{{$store->id}}" class="store-filter">
@@ -30,7 +30,7 @@
                 <span>Filter By Category</span>
                 <span class="reset-category-filters" id="reset-category-filters">Reset</span>
             </div>
-            <div class="fo-sb-content-body">
+            <div class="fo-sb-content-body" id="fo-sb-category-container">
                 @foreach($categories as $category)
                 <label class="checkbox-container category">{{$category->title}}
                     <input type="checkbox" value="{{$category->id}}" class="category-filter">
@@ -93,7 +93,7 @@
                 alert('something went wrong.');
             });
         }
-        $(`.checkbox-container input[type="checkbox"]`).click(function(){
+        $(`.fo-sb-content-body`).on('click','.checkbox-container input[type="checkbox"]',function(){
             if($(this).attr('class') == "store-filter"){
                 filtertype = 1;
             }
@@ -142,35 +142,105 @@
                     //set store categories
                     if(data.storecategories != null){
                         if(filtertype == 1){
+                            var html = "";
                             var categories = $('.checkbox-container.category').each(function(){
                                 return $(this).text();
                             });
                             $.each(data.storecategories, function(index, storecategory){
                                 var filteredcategory = storecategory.category.title;
+                                var flag = false;
                                 categories.each(function(){
                                     var existingcategory = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                    if(existingcategory == filteredcategory){
+                                        flag = true;
+                                        var checkbox = $(this).find('input[type="checkbox"]');
+                                        if(checkbox.prop("checked")){
+                                            html = html +
+                                            `<label class="checkbox-container category">`+filteredcategory+
+                                                `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter" checked>`+
+                                                `<span class="checkmark"></span>`+
+                                            `</label>`
+                                        }
+                                        else{
+                                            html = html +
+                                            `<label class="checkbox-container category">`+filteredcategory+
+                                                `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter">`+
+                                                `<span class="checkmark"></span>`+
+                                            `</label>`
+                                        }
+                                        return false;
+                                    }
                                 });
+                                if(!flag){
+                                    html = html +
+                                    `<label class="checkbox-container category">`+filteredcategory+
+                                        `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter">`+
+                                        `<span class="checkmark"></span>`+
+                                    `</label>`
+                                }
                             });
+                            $(`#fo-sb-category-container`).html(html);
                         }
                         else if(filtertype == 2){
-
+                            var html = "";
+                            var stores = $('.checkbox-container.store').each(function(){
+                                return $(this).text();
+                            });
+                            $.each(data.storecategories, function(index, storecategory){
+                                var filteredstore = storecategory.store.title;
+                                var flag = false;
+                                stores.each(function(){
+                                    var existingstore = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                    if(existingstore == filteredstore){
+                                        flag = true;
+                                        var checkbox = $(this).find('input[type="checkbox"]');
+                                        if(checkbox.prop("checked")){
+                                            html = html +
+                                            `<label class="checkbox-container store">`+filteredstore+
+                                                `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter" checked>`+
+                                                `<span class="checkmark"></span>`+
+                                            `</label>`
+                                        }
+                                        else{
+                                            html = html +
+                                            `<label class="checkbox-container store">`+filteredstore+
+                                                `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter">`+
+                                                `<span class="checkmark"></span>`+
+                                            `</label>`
+                                        }
+                                        return false;
+                                    }
+                                });
+                                if(!flag){
+                                    html = html +
+                                    `<label class="checkbox-container store">`+filteredstore+
+                                        `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter">`+
+                                        `<span class="checkmark"></span>`+
+                                    `</label>`
+                                }
+                            });
+                            $(`#fo-sb-store-container`).html(html);
                         }
                     }
                     else{
-
+                        var html = "";
+                        $.each(data.stores, function(index, store){
+                            html = html +
+                            `<label class="checkbox-container store">`+store.title+
+                                `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
+                                `<span class="checkmark"></span>`+
+                            `</label>`
+                        });
+                        $(`#fo-sb-store-container`).html(html);
+                        $.each(data.categories, function(index, category){
+                            html = html +
+                            `<label class="checkbox-container category">`+category.title+
+                                `<input type="checkbox" value="`+categort.id+`" class="category-filter">`+
+                                `<span class="checkmark"></span>`+
+                            `</label>`
+                        });
+                        $(`#fo-sb-category-container`).html(html);
                     }
-
-
-
-
-
-
-
-
-
-
-
-
                 }).fail(function () {
                     alert(`something went wrong.`);
                 });
