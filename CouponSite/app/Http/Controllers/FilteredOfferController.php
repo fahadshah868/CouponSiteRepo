@@ -13,6 +13,7 @@ use Session;
 class FilteredOfferController extends Controller
 {
     public function getFilteredOffers(Request $request, $filter){
+        // get all online codes----------------------------------------------------------------
         if(strcasecmp($filter,'onlinecodes') == 0){
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
@@ -24,6 +25,11 @@ class FilteredOfferController extends Controller
             ->where('status',1)
             ->where('type',1)
             ->whereIn('location',[1,3])
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+            ->where(function($q){
+                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            })
             ->orderBy('id','DESC')
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC')
@@ -36,12 +42,39 @@ class FilteredOfferController extends Controller
             }
             else{
                 $data['stores'] = Store::select('id','title')
-                ->where('status',1)->where('is_topstore',1)->where('is_popularstore',1)->get();
+                ->whereHas('offers', function($q){
+                    $q->where('status',1)
+                    ->where('type',1)
+                    ->whereIn('location',[1,3])
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                })
+                ->where('status',1)
+                ->orderBy('is_topstore','ASC')
+                ->orderBy('is_popularstore','ASC')
+                ->get();
                 $data['categories'] = Category::select('id','title')
-                ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
+                ->whereHas('offers', function($q){
+                    $q->where('status',1)
+                    ->where('type',1)
+                    ->whereIn('location',[1,3])
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                })
+                ->where('status',1)
+                ->orderBy('is_topcategory','ASC')
+                ->orderBy('is_popularcategory','ASC')
+                ->get();
                 return view('pages.filteredoffer.filteredoffers',$data);
             }
         }
+        // get all online sales----------------------------------------------------------------
         else if(strcasecmp($filter,'onlinesales') == 0){
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
@@ -53,6 +86,11 @@ class FilteredOfferController extends Controller
             ->where('status',1)
             ->where('type',2)
             ->whereIn('location',[1,3])
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+            ->where(function($q){
+                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            })
             ->orderBy('id','DESC')
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC')
@@ -70,6 +108,7 @@ class FilteredOfferController extends Controller
                 return view('pages.filteredoffer.filteredoffers',$data);
             }
         }
+        // get all free shipping offers----------------------------------------------------------------
         else if(strcasecmp($filter,'freeshipping') == 0){
             $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
@@ -79,6 +118,11 @@ class FilteredOfferController extends Controller
                 $sq->where('status',1);
             })
             ->where('status',1)
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+            ->where(function($q){
+                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            })
             ->where('free_shipping',1)
             ->orderBy('id','DESC')
             ->orderBy('is_popular','ASC')
@@ -97,6 +141,7 @@ class FilteredOfferController extends Controller
                 return view('pages.filteredoffer.filteredoffers',$data);
             }
         }
+        // get category wise offers----------------------------------------------------------------
         else{
             $data['category'] = Category::select('id','title','description')->where('url',$filter)->where('status',1)->first();
             $data['filteredoffers'] = $data['category']->offers()

@@ -4,6 +4,7 @@
 
 @section('content')
 
+<div style="position: fixed; width: 100%; height: 100%; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(0,0,0,0.7); z-index: 2;"></div>
 <div class="fo-main-container">
     <div class="fo-sb">
         <div class="fo-sb-offers-availability" id="offers-availability">{{$filteredoffers->total()}} Offers Available</div>
@@ -312,6 +313,9 @@
                             $(`#fo-sb-category-container`).html(html);
                         }
                     }
+                    $('html, body').animate({
+                        scrollTop: $("div.fo-db-heading").offset().top
+                    }, 500)
                 }).fail(function () {
                     alert(`something went wrong.`);
                 });
@@ -359,6 +363,9 @@
                         });
                         $(`#fo-sb-category-container`).html(html);
                     }
+                    $('html, body').animate({
+                        scrollTop: $("div.fo-db-heading").offset().top
+                    }, 500)
                 }).fail(function () {
                     alert(`something went wrong.`);
                 });
@@ -432,6 +439,9 @@
                     });
                     $(`#fo-sb-category-container`).html(html);
                 }
+                $('html, body').animate({
+                    scrollTop: $("div.fo-db-heading").offset().top
+                }, 500)
             }).fail(function () {
                 alert(`something went wrong.`);
             });
@@ -505,6 +515,9 @@
                     });
                     $(`#fo-sb-store-container`).html(html);
                 }
+                $('html, body').animate({
+                    scrollTop: $("div.fo-db-heading").offset().top
+                }, 500)
             }).fail(function () {
                 alert(`something went wrong.`);
             });
