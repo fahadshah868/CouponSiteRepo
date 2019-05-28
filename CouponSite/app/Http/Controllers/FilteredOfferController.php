@@ -157,7 +157,7 @@ class FilteredOfferController extends Controller
         }
     }
     public function getMoreFilteredOffers(Request $request){
-        //fetch category offers
+        //fetch category offers------------------------------------------------------------------------
         if($request->filter == 1){
             // stores_id = [] && categories_id = []
             if($request->stores_id != 0){
@@ -213,8 +213,9 @@ class FilteredOfferController extends Controller
                 return response()->json($data);
             }
         }
-        //fetch online codes
+        //fetch online codes------------------------------------------------------------------------
         else if($request->filter == 2){
+            $data = $this->getRelatedAssets($request);
             // stores_id = [] && categories_id = []
             if($request->stores_id != 0 && $request->categories_id != 0){
                 $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
@@ -250,46 +251,6 @@ class FilteredOfferController extends Controller
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
                 $data['storecategories'] = null;
-                if($request->filtertype == 1){
-                    $data['storecategories'] = StoreCategory::select('store_id','category_id')
-                    ->where(function($q) use($request){
-                        for($store = 0; $store < count($request->stores_id); $store++){
-                            if($store == 0){
-                                $q->where('store_id',$request->stores_id[$store]);
-                            }
-                            else{
-                                $q->orWhere('store_id',$request->stores_id[$store]);
-                            }
-                        }
-                    })
-                    ->groupBy('category_id')
-                    ->with(['category'=>function($q){
-                        $q->select('id','title');
-                    }])
-                    ->whereHas('category', function($q){
-                        $q->select('id')->where('status',1);
-                    })->get();
-                }
-                else if($request->filtertype == 2){
-                    $data['storecategories'] = StoreCategory::select('store_id','category_id')
-                    ->where(function($q) use($request){
-                        for($category = 0; $category < count($request->categories_id); $category++){
-                            if($category == 0){
-                                $q->where('category_id',$request->categories_id[$category]);
-                            }
-                            else{
-                                $q->orWhere('category_id',$request->categories_id[$category]);
-                            }
-                        }
-                    })
-                    ->groupBy('store_id')
-                    ->with(['store'=>function($q){
-                        $q->select('id','title');
-                    }])
-                    ->whereHas('store', function($q){
-                        $q->select('id')->where('status',1);
-                    })->get();
-                }
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
@@ -323,27 +284,6 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
-                $data['storecategories'] = null;
-                if($request->filtertype == 1){
-                    $data['storecategories'] = StoreCategory::select('store_id','category_id')
-                    ->where(function($q) use($request){
-                        for($store = 0; $store < count($request->stores_id); $store++){
-                            if($store == 0){
-                                $q->where('store_id',$request->stores_id[$store]);
-                            }
-                            else{
-                                $q->orWhere('store_id',$request->stores_id[$store]);
-                            }
-                        }
-                    })
-                    ->groupBy('category_id')
-                    ->with(['category'=>function($q){
-                        $q->select('id','title');
-                    }])
-                    ->whereHas('category', function($q){
-                        $q->select('id')->where('status',1);
-                    })->get();
-                }
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
@@ -377,27 +317,6 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
-                $data['storecategories'] = null;
-                if($request->filtertype == 2){
-                    $data['storecategories'] = StoreCategory::select('store_id','category_id')
-                    ->where(function($q) use($request){
-                        for($category = 0; $category < count($request->categories_id); $category++){
-                            if($category == 0){
-                                $q->where('category_id',$request->categories_id[$category]);
-                            }
-                            else{
-                                $q->orWhere('category_id',$request->categories_id[$category]);
-                            }
-                        }
-                    })
-                    ->groupBy('store_id')
-                    ->with(['store'=>function($q){
-                        $q->select('id','title');
-                    }])
-                    ->whereHas('store', function($q){
-                        $q->select('id')->where('status',1);
-                    })->get();
-                }
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
@@ -421,24 +340,90 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
-                $data['storecategories'] = null;
-                $data['stores'] = Store::select('id','title')
-                ->where('status',1)->where('is_topstore',1)->where('is_popularstore',1)->get();
-                $data['categories'] = Category::select('id','title')
-                ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
                 return response()->json($data);
             }
         }
-        //fetch online sales
+        //fetch online sales------------------------------------------------------------------------
         else if($request->filter == 3){
 
         }
-        //fetch free shipping offers
+        //fetch free shipping offers------------------------------------------------------------------------
         else if($request->filter == 4){
 
         }
+    }
+    public function getRelatedAssets(Request $request){
+        $data['storecategories'] = null;
+        $data['categories'] = null;
+        $data['stores'] = null;
+        //get related categories
+        if($request->filtertype == 1){
+            //get related categories
+            if($request->stores_id != 0){
+                $data['storecategories'] = StoreCategory::select('store_id','category_id')
+                ->where(function($q) use($request){
+                    for($store = 0; $store < count($request->stores_id); $store++){
+                        if($store == 0){
+                            $q->where('store_id',$request->stores_id[$store]);
+                        }
+                        else{
+                            $q->orWhere('store_id',$request->stores_id[$store]);
+                        }
+                    }
+                })
+                ->groupBy('category_id')
+                ->with(['category'=>function($q){
+                    $q->select('id','title');
+                }])
+                ->whereHas('category', function($q){
+                    $q->select('id')->where('status',1);
+                })->get();
+            }
+            //get all top OR popular categories
+            else{
+                $data['categories'] = Category::select('id','title')
+                ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
+            }
+        }
+        //get related stores
+        else if($request->filtertype == 2){
+            //get related categories
+            if($request->categories_id != 0){
+                $data['storecategories'] = StoreCategory::select('store_id','category_id')
+                ->where(function($q) use($request){
+                    for($category = 0; $category < count($request->categories_id); $category++){
+                        if($category == 0){
+                            $q->where('category_id',$request->categories_id[$category]);
+                        }
+                        else{
+                            $q->orWhere('category_id',$request->categories_id[$category]);
+                        }
+                    }
+                })
+                ->groupBy('store_id')
+                ->with(['store'=>function($q){
+                    $q->select('id','title');
+                }])
+                ->whereHas('store', function($q){
+                    $q->select('id')->where('status',1);
+                })->get();
+            }
+            //get all stores
+            else{
+                $data['stores'] = Store::select('id','title')
+                ->where('status',1)->where('is_topstore',1)->orwhere('is_popularstore',1)->get();
+            }
+        }
+        //get all stores AND categories
+        else if($request->filtertype == 0){
+            $data['stores'] = Store::select('id','title')
+            ->where('status',1)->where('is_topstore',1)->orwhere('is_popularstore',1)->get();
+            $data['categories'] = Category::select('id','title')
+            ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
+        }
+        return $data;
     }
 }

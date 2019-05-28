@@ -139,6 +139,13 @@
                     else if(data.offerscount < 1){
                         $(`#offers-availability`).html("No Offers Available");
                     }
+                    console.log(stores_id);
+                    console.log(categories_id);
+                    console.log("filter:  "+filter);
+                    console.log("filter type:  "+filtertype);
+                    console.log("storecategories:  "+data.storecategories);
+                    console.log("stores:  "+data.stores);
+                    console.log("categories:  "+data.categories);
                     //set store categories
                     if(data.storecategories != null){
                         if(filtertype == 1){
@@ -146,6 +153,7 @@
                             var categories = $('.checkbox-container.category').each(function(){
                                 return $(this).text();
                             });
+                            console.log(categories);
                             $.each(data.storecategories, function(index, storecategory){
                                 var filteredcategory = storecategory.category.title;
                                 var flag = false;
@@ -223,23 +231,28 @@
                         }
                     }
                     else{
-                        var html = "";
-                        $.each(data.stores, function(index, store){
-                            html = html +
-                            `<label class="checkbox-container store">`+store.title+
-                                `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
-                                `<span class="checkmark"></span>`+
-                            `</label>`
-                        });
-                        $(`#fo-sb-store-container`).html(html);
-                        $.each(data.categories, function(index, category){
-                            html = html +
-                            `<label class="checkbox-container category">`+category.title+
-                                `<input type="checkbox" value="`+categort.id+`" class="category-filter">`+
-                                `<span class="checkmark"></span>`+
-                            `</label>`
-                        });
-                        $(`#fo-sb-category-container`).html(html);
+                        if(data.stores != null){
+                            var html = "";
+                            $.each(data.stores, function(index, store){
+                                html = html +
+                                `<label class="checkbox-container store">`+store.title+
+                                    `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
+                                    `<span class="checkmark"></span>`+
+                                `</label>`
+                            });
+                            $(`#fo-sb-store-container`).html(html);
+                        }
+                        if(data.categories != null){
+                            var html = "";
+                            $.each(data.categories, function(index, category){
+                                html = html +
+                                `<label class="checkbox-container category">`+category.title+
+                                    `<input type="checkbox" value="`+category.id+`" class="category-filter">`+
+                                    `<span class="checkmark"></span>`+
+                                `</label>`
+                            });
+                            $(`#fo-sb-category-container`).html(html);
+                        }
                     }
                 }).fail(function () {
                     alert(`something went wrong.`);
@@ -262,6 +275,31 @@
                     }
                     else if(data.offerscount < 1){
                         $(`#offers-availability`).html("No Offers Available");
+                    }
+                    //display all top AND popular stores
+                    if(data.stores != null){
+                        var html = "";
+                        $.each(data.stores, function(index, store){
+                            html = html +
+                            `<label class="checkbox-container store">`+store.title+
+                                `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
+                                `<span class="checkmark"></span>`+
+                            `</label>`
+                        });
+                        $(`#fo-sb-store-container`).html(html);
+                    }
+                    alert(data.categories);
+                    //display all top AND popular categories
+                    if(data.categories != null){
+                        var html = "";
+                        $.each(data.categories, function(index, category){
+                            html = html +
+                            `<label class="checkbox-container category">`+category.title+
+                                `<input type="checkbox" value="`+category.id+`" class="category-filter">`+
+                                `<span class="checkmark"></span>`+
+                            `</label>`
+                        });
+                        $(`#fo-sb-category-container`).html(html);
                     }
                 }).fail(function () {
                     alert(`something went wrong.`);
