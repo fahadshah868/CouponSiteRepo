@@ -215,7 +215,9 @@ class FilteredOfferController extends Controller
         }
         //fetch online codes------------------------------------------------------------------------
         else if($request->filter == 2){
-            $data = $this->getRelatedAssets($request);
+            if($request->filtertype != -1){
+                $data = $this->getRelatedAssets($request);
+            }
             // stores_id = [] && categories_id = []
             if($request->stores_id != 0 && $request->categories_id != 0){
                 $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
@@ -250,7 +252,6 @@ class FilteredOfferController extends Controller
                 ->orderBy('is_popular','ASC')
                 ->orderBy('anchor','DESC')
                 ->paginate(2);
-                $data['storecategories'] = null;
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 $data['offerscount'] = $data['filteredoffers']->total();
                 $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);

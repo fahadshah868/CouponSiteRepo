@@ -67,6 +67,7 @@
         if("{{Session::has('filter')}}"){
             filter = "{{Session::get('filter')}}";
         }
+        // pagination using ajax----------------------------------------------------
         $('body').on('click', '.pagination a', function(e) {
             e.preventDefault();
             var url = $(this).attr('href');  
@@ -83,7 +84,7 @@
             });
             $.ajax({
                 url : url,
-                data: {stores_id: stores_id, categories_id: categories_id, filter: filter, filtertype: 0}
+                data: {stores_id: stores_id, categories_id: categories_id, filter: filter, filtertype: -1}
             }).done(function (data) {
                 $('#filtered-offers').html(data.partialview);  
                 $('html, body').animate({
@@ -93,6 +94,7 @@
                 alert('something went wrong.');
             });
         }
+        // click on checkboxes----------------------------------------------------
         $(`.fo-sb-content-body`).on('click','.checkbox-container input[type="checkbox"]',function(){
             if($(this).attr('class') == "store-filter"){
                 filtertype = 1;
@@ -108,6 +110,7 @@
             $(`.checkbox-container`).find(`.category-filter:checked`).each(function () {
                 categories_id.push($(this).val());
             });
+            // if (one OR both) stores OR categories filters applied
             if(stores_id.length > 0 || categories_id.length > 0){
                 if(stores_id.length == 0){
                     $(`#reset-store-filters`).css('display','none');
@@ -139,21 +142,14 @@
                     else if(data.offerscount < 1){
                         $(`#offers-availability`).html("No Offers Available");
                     }
-                    console.log(stores_id);
-                    console.log(categories_id);
-                    console.log("filter:  "+filter);
-                    console.log("filter type:  "+filtertype);
-                    console.log("storecategories:  "+data.storecategories);
-                    console.log("stores:  "+data.stores);
-                    console.log("categories:  "+data.categories);
-                    //set store categories
+                    //set store categories if not null e.g. when any checkbox checked
                     if(data.storecategories != null){
+                        // when apply store filter
                         if(filtertype == 1){
                             var html = "";
                             var categories = $('.checkbox-container.category').each(function(){
                                 return $(this).text();
                             });
-                            console.log(categories);
                             $.each(data.storecategories, function(index, storecategory){
                                 var filteredcategory = storecategory.category.title;
                                 var flag = false;
@@ -189,6 +185,7 @@
                             });
                             $(`#fo-sb-category-container`).html(html);
                         }
+                        // when apply category filter
                         else if(filtertype == 2){
                             var html = "";
                             var stores = $('.checkbox-container.store').each(function(){
@@ -230,26 +227,87 @@
                             $(`#fo-sb-store-container`).html(html);
                         }
                     }
+                    // if store categories are null e.g. when uncheck all stores checkboxes and any of category checkbox checked
                     else{
+                        // when uncheck all categories checkboxes and any of store checkbox checked
                         if(data.stores != null){
                             var html = "";
+                            var stores = $('.checkbox-container.store').each(function(){
+                                return $(this).text();
+                            });
                             $.each(data.stores, function(index, store){
-                                html = html +
-                                `<label class="checkbox-container store">`+store.title+
-                                    `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
-                                    `<span class="checkmark"></span>`+
-                                `</label>`
+                                var filteredstore = store.title;
+                                var flag = false;
+                                stores.each(function(){
+                                    var existingstore = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                    if(existingstore == filteredstore){
+                                        flag = true;
+                                        var checkbox = $(this).find('input[type="checkbox"]');
+                                        if(checkbox.prop("checked")){
+                                            html = html +
+                                            `<label class="checkbox-container store">`+filteredstore+
+                                                `<input type="checkbox" value="`+store.id+`" class="store-filter" checked>`+
+                                                `<span class="checkmark"></span>`+
+                                            `</label>`
+                                        }
+                                        else{
+                                            html = html +
+                                            `<label class="checkbox-container store">`+filteredstore+
+                                                `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
+                                                `<span class="checkmark"></span>`+
+                                            `</label>`
+                                        }
+                                        return false;
+                                    }
+                                });
+                                if(!flag){
+                                    html = html +
+                                    `<label class="checkbox-container store">`+filteredstore+
+                                        `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
+                                        `<span class="checkmark"></span>`+
+                                    `</label>`
+                                }
                             });
                             $(`#fo-sb-store-container`).html(html);
                         }
+                        // when uncheck all stores checkboxes and any of category checkbox checked
                         if(data.categories != null){
                             var html = "";
+                            var categories = $('.checkbox-container.category').each(function(){
+                                return $(this).text();
+                            });
                             $.each(data.categories, function(index, category){
-                                html = html +
-                                `<label class="checkbox-container category">`+category.title+
-                                    `<input type="checkbox" value="`+category.id+`" class="category-filter">`+
-                                    `<span class="checkmark"></span>`+
-                                `</label>`
+                                var filteredcategory = category.title;
+                                var flag = false;
+                                categories.each(function(){
+                                    var existingcategory = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                    if(existingcategory == filteredcategory){
+                                        flag = true;
+                                        var checkbox = $(this).find('input[type="checkbox"]');
+                                        if(checkbox.prop("checked")){
+                                            html = html +
+                                            `<label class="checkbox-container category">`+filteredcategory+
+                                                `<input type="checkbox" value="`+category.id+`" class="category-filter" checked>`+
+                                                `<span class="checkmark"></span>`+
+                                            `</label>`
+                                        }
+                                        else{
+                                            html = html +
+                                            `<label class="checkbox-container category">`+filteredcategory+
+                                                `<input type="checkbox" value="`+category.id+`" class="category-filter">`+
+                                                `<span class="checkmark"></span>`+
+                                            `</label>`
+                                        }
+                                        return false;
+                                    }
+                                });
+                                if(!flag){
+                                    html = html +
+                                    `<label class="checkbox-container category">`+filteredcategory+
+                                        `<input type="checkbox" value="`+category.id+`" class="category-filter">`+
+                                        `<span class="checkmark"></span>`+
+                                    `</label>`
+                                }
                             });
                             $(`#fo-sb-category-container`).html(html);
                         }
@@ -258,6 +316,7 @@
                     alert(`something went wrong.`);
                 });
             }
+            // when both stores and categories filters/checkboxes are unchecked
             else{
                 $(`#reset-store-filters`).css('display','none');
                 $(`#reset-category-filters`).css('display','none');
@@ -288,7 +347,6 @@
                         });
                         $(`#fo-sb-store-container`).html(html);
                     }
-                    alert(data.categories);
                     //display all top AND popular categories
                     if(data.categories != null){
                         var html = "";
@@ -323,6 +381,7 @@
                 data: {stores_id: 0, categories_id: categories_id, filter: filter, filtertype: filtertype}
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
+                // set filtered offers count
                 if(data.offerscount > 1){
                     $(`#offers-availability`).html(data.offerscount+" Offers Available");
                 }
@@ -331,6 +390,47 @@
                 }
                 else if(data.offerscount < 1){
                     $(`#offers-availability`).html("No Offers Available");
+                }
+                // when uncheck all stores checkboxes and any of category checkbox checked
+                if(data.categories != null){
+                    var html = "";
+                    var categories = $('.checkbox-container.category').each(function(){
+                        return $(this).text();
+                    });
+                    $.each(data.categories, function(index, category){
+                        var filteredcategory = category.title;
+                        var flag = false;
+                        categories.each(function(){
+                            var existingcategory = $(this).text().replace(/^\s+|\s+$/gm,'');
+                            if(existingcategory == filteredcategory){
+                                flag = true;
+                                var checkbox = $(this).find('input[type="checkbox"]');
+                                if(checkbox.prop("checked")){
+                                    html = html +
+                                    `<label class="checkbox-container category">`+filteredcategory+
+                                        `<input type="checkbox" value="`+category.id+`" class="category-filter" checked>`+
+                                        `<span class="checkmark"></span>`+
+                                    `</label>`
+                                }
+                                else{
+                                    html = html +
+                                    `<label class="checkbox-container category">`+filteredcategory+
+                                        `<input type="checkbox" value="`+category.id+`" class="category-filter">`+
+                                        `<span class="checkmark"></span>`+
+                                    `</label>`
+                                }
+                                return false;
+                            }
+                        });
+                        if(!flag){
+                            html = html +
+                            `<label class="checkbox-container category">`+filteredcategory+
+                                `<input type="checkbox" value="`+category.id+`" class="category-filter">`+
+                                `<span class="checkmark"></span>`+
+                            `</label>`
+                        }
+                    });
+                    $(`#fo-sb-category-container`).html(html);
                 }
             }).fail(function () {
                 alert(`something went wrong.`);
@@ -354,6 +454,7 @@
                 data: {stores_id: stores_id, categories_id: 0, filter: filter, filtertype: filtertype}
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
+                // set filtered offers count
                 if(data.offerscount > 1){
                     $(`#offers-availability`).html(data.offerscount+" Offers Available");
                 }
@@ -362,6 +463,47 @@
                 }
                 else if(data.offerscount < 1){
                     $(`#offers-availability`).html("No Offers Available");
+                }
+                // when uncheck all categories checkboxes and any of store checkbox checked
+                if(data.stores != null){
+                    var html = "";
+                    var stores = $('.checkbox-container.store').each(function(){
+                        return $(this).text();
+                    });
+                    $.each(data.stores, function(index, store){
+                        var filteredstore = store.title;
+                        var flag = false;
+                        stores.each(function(){
+                            var existingstore = $(this).text().replace(/^\s+|\s+$/gm,'');
+                            if(existingstore == filteredstore){
+                                flag = true;
+                                var checkbox = $(this).find('input[type="checkbox"]');
+                                if(checkbox.prop("checked")){
+                                    html = html +
+                                    `<label class="checkbox-container store">`+filteredstore+
+                                        `<input type="checkbox" value="`+store.id+`" class="store-filter" checked>`+
+                                        `<span class="checkmark"></span>`+
+                                    `</label>`
+                                }
+                                else{
+                                    html = html +
+                                    `<label class="checkbox-container store">`+filteredstore+
+                                        `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
+                                        `<span class="checkmark"></span>`+
+                                    `</label>`
+                                }
+                                return false;
+                            }
+                        });
+                        if(!flag){
+                            html = html +
+                            `<label class="checkbox-container store">`+filteredstore+
+                                `<input type="checkbox" value="`+store.id+`" class="store-filter">`+
+                                `<span class="checkmark"></span>`+
+                            `</label>`
+                        }
+                    });
+                    $(`#fo-sb-store-container`).html(html);
                 }
             }).fail(function () {
                 alert(`something went wrong.`);
