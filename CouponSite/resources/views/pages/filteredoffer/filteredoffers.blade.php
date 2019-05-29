@@ -4,7 +4,8 @@
 
 @section('content')
 
-<!-- <div style="position: fixed; width: 100%; height: 100%; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(0,0,0,0.7); z-index: 2;"></div> -->
+<!-- overlay container while ajax request -->
+<div class="fo-overlay-container" id="fo-overlay-container"></div>
 <div class="fo-main-container">
     <div class="fo-sb">
         <div class="fo-sb-offers-availability" id="offers-availability">{{$filteredoffers->total()}} Offers Available</div>
@@ -130,7 +131,10 @@
                 $.ajax({
                     type:`GET`,
                     url:`/applymorefilters`,
-                    data: {stores_id: stores_id, categories_id: categories_id, filter: filter, filtertype: filtertype}
+                    data: {stores_id: stores_id, categories_id: categories_id, filter: filter, filtertype: filtertype},
+                    beforeSend: function (xhr) {
+                        $("#fo-overlay-container").css("display","block");
+                    },
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
                     //set offers count
@@ -317,6 +321,7 @@
                             $(`#fo-sb-category-container`).html(html);
                         }
                     }
+                    $("#fo-overlay-container").css("display","none");
                     $('html, body').animate({
                         scrollTop: $("div.fo-db-heading").offset().top
                     }, 500)
@@ -331,7 +336,10 @@
                 $.ajax({
                     type:`GET`,
                     url:`/applymorefilters`,
-                    data: {stores_id: 0, categories_id: 0, filter: filter, filtertype: 0}
+                    data: {stores_id: 0, categories_id: 0, filter: filter, filtertype: 0},
+                    beforeSend: function (xhr) {
+                        $("#fo-overlay-container").css("display","block");
+                    },
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
                     if(data.offerscount > 1){
@@ -367,6 +375,7 @@
                         });
                         $(`#fo-sb-category-container`).html(html);
                     }
+                    $("#fo-overlay-container").css("display","none");
                     $('html, body').animate({
                         scrollTop: $("div.fo-db-heading").offset().top
                     }, 500)
@@ -389,7 +398,10 @@
             $.ajax({
                 type:`GET`,
                 url:`/applymorefilters`,
-                data: {stores_id: 0, categories_id: categories_id, filter: filter, filtertype: filtertype}
+                data: {stores_id: 0, categories_id: categories_id, filter: filter, filtertype: filtertype},
+                beforeSend: function (xhr) {
+                    $("#fo-overlay-container").css("display","block");
+                },
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
                 // set filtered offers count
@@ -443,6 +455,7 @@
                     });
                     $(`#fo-sb-category-container`).html(html);
                 }
+                $("#fo-overlay-container").css("display","none");
                 $('html, body').animate({
                     scrollTop: $("div.fo-db-heading").offset().top
                 }, 500)
@@ -465,7 +478,10 @@
             $.ajax({
                 type:`GET`,
                 url:`/applymorefilters`,
-                data: {stores_id: stores_id, categories_id: 0, filter: filter, filtertype: filtertype}
+                data: {stores_id: stores_id, categories_id: 0, filter: filter, filtertype: filtertype},
+                beforeSend: function (xhr) {
+                    $("#fo-overlay-container").css("display","block");
+                },
             }).done(function (data) {
                 $(`#filtered-offers`).html(data.partialview);
                 // set filtered offers count
@@ -519,6 +535,7 @@
                     });
                     $(`#fo-sb-store-container`).html(html);
                 }
+                $("#fo-overlay-container").css("display","none");
                 $('html, body').animate({
                     scrollTop: $("div.fo-db-heading").offset().top
                 }, 500)
