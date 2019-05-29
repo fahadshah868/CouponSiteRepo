@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div style="position: fixed; width: 100%; height: 100%; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(0,0,0,0.7); z-index: 2;"></div>
+<!-- <div style="position: fixed; width: 100%; height: 100%; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(0,0,0,0.7); z-index: 2;"></div> -->
 <div class="fo-main-container">
     <div class="fo-sb">
         <div class="fo-sb-offers-availability" id="offers-availability">{{$filteredoffers->total()}} Offers Available</div>
@@ -152,36 +152,38 @@
                                 return $(this).text();
                             });
                             $.each(data.storecategories, function(index, storecategory){
-                                var filteredcategory = storecategory.category.title;
-                                var flag = false;
-                                categories.each(function(){
-                                    var existingcategory = $(this).text().replace(/^\s+|\s+$/gm,'');
-                                    if(existingcategory == filteredcategory){
-                                        flag = true;
-                                        var checkbox = $(this).find('input[type="checkbox"]');
-                                        if(checkbox.prop("checked")){
-                                            html = html +
-                                            `<label class="checkbox-container category">`+filteredcategory+
-                                                `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter" checked>`+
-                                                `<span class="checkmark"></span>`+
-                                            `</label>`
+                                if(storecategory.category != null){
+                                    var filteredcategory = storecategory.category.title;
+                                    var flag = false;
+                                    categories.each(function(){
+                                        var existingcategory = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                        if(existingcategory == filteredcategory){
+                                            flag = true;
+                                            var checkbox = $(this).find('input[type="checkbox"]');
+                                            if(checkbox.prop("checked")){
+                                                html = html +
+                                                `<label class="checkbox-container category">`+filteredcategory+
+                                                    `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter" checked>`+
+                                                    `<span class="checkmark"></span>`+
+                                                `</label>`
+                                            }
+                                            else{
+                                                html = html +
+                                                `<label class="checkbox-container category">`+filteredcategory+
+                                                    `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter">`+
+                                                    `<span class="checkmark"></span>`+
+                                                `</label>`
+                                            }
+                                            return false;
                                         }
-                                        else{
-                                            html = html +
-                                            `<label class="checkbox-container category">`+filteredcategory+
-                                                `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter">`+
-                                                `<span class="checkmark"></span>`+
-                                            `</label>`
-                                        }
-                                        return false;
+                                    });
+                                    if(!flag){
+                                        html = html +
+                                        `<label class="checkbox-container category">`+filteredcategory+
+                                            `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter">`+
+                                            `<span class="checkmark"></span>`+
+                                        `</label>`
                                     }
-                                });
-                                if(!flag){
-                                    html = html +
-                                    `<label class="checkbox-container category">`+filteredcategory+
-                                        `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter">`+
-                                        `<span class="checkmark"></span>`+
-                                    `</label>`
                                 }
                             });
                             $(`#fo-sb-category-container`).html(html);
@@ -193,36 +195,38 @@
                                 return $(this).text();
                             });
                             $.each(data.storecategories, function(index, storecategory){
-                                var filteredstore = storecategory.store.title;
-                                var flag = false;
-                                stores.each(function(){
-                                    var existingstore = $(this).text().replace(/^\s+|\s+$/gm,'');
-                                    if(existingstore == filteredstore){
-                                        flag = true;
-                                        var checkbox = $(this).find('input[type="checkbox"]');
-                                        if(checkbox.prop("checked")){
-                                            html = html +
-                                            `<label class="checkbox-container store">`+filteredstore+
-                                                `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter" checked>`+
-                                                `<span class="checkmark"></span>`+
-                                            `</label>`
+                                if(storecategory.store != null){
+                                    var filteredstore = storecategory.store.title;
+                                    var flag = false;
+                                    stores.each(function(){
+                                        var existingstore = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                        if(existingstore == filteredstore){
+                                            flag = true;
+                                            var checkbox = $(this).find('input[type="checkbox"]');
+                                            if(checkbox.prop("checked")){
+                                                html = html +
+                                                `<label class="checkbox-container store">`+filteredstore+
+                                                    `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter" checked>`+
+                                                    `<span class="checkmark"></span>`+
+                                                `</label>`
+                                            }
+                                            else{
+                                                html = html +
+                                                `<label class="checkbox-container store">`+filteredstore+
+                                                    `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter">`+
+                                                    `<span class="checkmark"></span>`+
+                                                `</label>`
+                                            }
+                                            return false;
                                         }
-                                        else{
-                                            html = html +
-                                            `<label class="checkbox-container store">`+filteredstore+
-                                                `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter">`+
-                                                `<span class="checkmark"></span>`+
-                                            `</label>`
-                                        }
-                                        return false;
+                                    });
+                                    if(!flag){
+                                        html = html +
+                                        `<label class="checkbox-container store">`+filteredstore+
+                                            `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter">`+
+                                            `<span class="checkmark"></span>`+
+                                        `</label>`
                                     }
-                                });
-                                if(!flag){
-                                    html = html +
-                                    `<label class="checkbox-container store">`+filteredstore+
-                                        `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter">`+
-                                        `<span class="checkmark"></span>`+
-                                    `</label>`
                                 }
                             });
                             $(`#fo-sb-store-container`).html(html);

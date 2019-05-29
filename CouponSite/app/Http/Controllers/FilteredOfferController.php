@@ -169,19 +169,17 @@ class FilteredOfferController extends Controller
                 return response()->json($data);
             }
             else{
-                $data['storecategories'] = StoreCategory::select('store_id')->where('category_id',$data['category']->id)
-                ->with(['store' => function($q){
-                    $q->select('id','title')
-                    ->withCount(['offers' => function($sq){
-                        $sq->where('status',1)
-                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                        ->where(function($sq){
-                            $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                            ->orWhere('expiry_date', null);
-                        });
-                    }]);
-                }])
-                ->get();
+                $data['relatedstores'] = Store::select('id','title')
+                    ->where('status',1)
+                    ->whereHas('offers',function($q) use($data){
+                    $q->where('category_id',$data['category']->id)
+                    ->where('status',1)
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                })->get();
                 $data['alltopcategories'] = Category::select('id','title','url')
                 ->whereNotIn('id',[$data['category']->id])
                 ->Where('is_popularcategory',1)
@@ -421,8 +419,42 @@ class FilteredOfferController extends Controller
                     }
                 })
                 ->groupBy('category_id')
-                ->with(['category'=>function($q){
-                    $q->select('id','title');
+                ->with(['category'=>function($q) use($request){
+                    $q->select('id','title')
+                    ->whereHas('offers', function($sq) use($request){
+                        // check online code offers
+                        if($request->filter == 2){
+                            $sq->where('status',1)
+                            ->where('type',1)
+                            ->whereIn('location',[1,3])
+                            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                            ->where(function($q){
+                                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                                ->orWhere('expiry_date', null);
+                            });
+                        }
+                        // check online sale offers
+                        else if($request->filter == 3){
+                            $sq->where('status',1)
+                            ->where('type',2)
+                            ->whereIn('location',[1,3])
+                            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                            ->where(function($q){
+                                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                                ->orWhere('expiry_date', null);
+                            });
+                        }
+                        // check free shipping offers
+                        else if($request->filter == 4){
+                            $sq->where('status',1)
+                            ->where('is_freeshipping',1)
+                            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                            ->where(function($q){
+                                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                                ->orWhere('expiry_date', null);
+                            });
+                        }
+                    });
                 }])
                 ->whereHas('category', function($q){
                     $q->select('id')->where('status',1);
@@ -431,7 +463,44 @@ class FilteredOfferController extends Controller
             //get all top OR popular categories
             else{
                 $data['categories'] = Category::select('id','title')
-                ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
+                ->whereHas('offers', function($sq) use($request){
+                    // check online code offers
+                    if($request->filter == 2){
+                        $sq->where('status',1)
+                        ->where('type',1)
+                        ->whereIn('location',[1,3])
+                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                        ->where(function($q){
+                            $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                            ->orWhere('expiry_date', null);
+                        });
+                    }
+                    // check online sale offers
+                    else if($request->filter == 3){
+                        $sq->where('status',1)
+                        ->where('type',2)
+                        ->whereIn('location',[1,3])
+                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                        ->where(function($q){
+                            $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                            ->orWhere('expiry_date', null);
+                        });
+                    }
+                    // check free shipping offers
+                    else if($request->filter == 4){
+                        $sq->where('status',1)
+                        ->where('is_freeshipping',1)
+                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                        ->where(function($q){
+                            $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                            ->orWhere('expiry_date', null);
+                        });
+                    }
+                })
+                ->where('status',1)
+                ->orderBy('is_topcategory','ASC')
+                ->orderBy('is_popularcategory','ASC')
+                ->get();
             }
         }
         //get related stores
@@ -450,8 +519,42 @@ class FilteredOfferController extends Controller
                     }
                 })
                 ->groupBy('store_id')
-                ->with(['store'=>function($q){
-                    $q->select('id','title');
+                ->with(['store'=>function($q) use($request){
+                    $q->select('id','title')
+                    ->whereHas('offers', function($sq) use($request){
+                        // check online code offers
+                        if($request->filter == 2){
+                            $sq->where('status',1)
+                            ->where('type',1)
+                            ->whereIn('location',[1,3])
+                            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                            ->where(function($q){
+                                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                                ->orWhere('expiry_date', null);
+                            });
+                        }
+                        // check online sale offers
+                        else if($request->filter == 3){
+                            $sq->where('status',1)
+                            ->where('type',2)
+                            ->whereIn('location',[1,3])
+                            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                            ->where(function($q){
+                                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                                ->orWhere('expiry_date', null);
+                            });
+                        }
+                        // check free shipping offers
+                        else if($request->filter == 4){
+                            $sq->where('status',1)
+                            ->where('is_freeshipping',1)
+                            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                            ->where(function($q){
+                                $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                                ->orWhere('expiry_date', null);
+                            });
+                        }
+                    });
                 }])
                 ->whereHas('store', function($q){
                     $q->select('id')->where('status',1);
@@ -460,15 +563,128 @@ class FilteredOfferController extends Controller
             //get all stores
             else{
                 $data['stores'] = Store::select('id','title')
-                ->where('status',1)->where('is_topstore',1)->orwhere('is_popularstore',1)->get();
+                ->whereHas('offers', function($sq) use($request){
+                    // check online code offers
+                    if($request->filter == 2){
+                        $sq->where('status',1)
+                        ->where('type',1)
+                        ->whereIn('location',[1,3])
+                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                        ->where(function($q){
+                            $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                            ->orWhere('expiry_date', null);
+                        });
+                    }
+                    // check online sale offers
+                    else if($request->filter == 3){
+                        $sq->where('status',1)
+                        ->where('type',2)
+                        ->whereIn('location',[1,3])
+                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                        ->where(function($q){
+                            $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                            ->orWhere('expiry_date', null);
+                        });
+                    }
+                    // check free shipping offers
+                    else if($request->filter == 4){
+                        $sq->where('status',1)
+                        ->where('is_freeshipping',1)
+                        ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                        ->where(function($q){
+                            $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                            ->orWhere('expiry_date', null);
+                        });
+                    }
+                })
+                ->where('status',1)
+                ->orderBy('is_topstore','ASC')
+                ->orderBy('is_popularstore','ASC')
+                ->get();
             }
         }
         //get all stores AND categories
         else if($request->filtertype == 0){
+            // get stores which has online code offers 
             $data['stores'] = Store::select('id','title')
-            ->where('status',1)->where('is_topstore',1)->orwhere('is_popularstore',1)->get();
+            ->whereHas('offers', function($sq) use($request){
+                // check online code offers
+                if($request->filter == 2){
+                    $sq->where('status',1)
+                    ->where('type',1)
+                    ->whereIn('location',[1,3])
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                }
+                // check online sale offers
+                else if($request->filter == 3){
+                    $sq->where('status',1)
+                    ->where('type',2)
+                    ->whereIn('location',[1,3])
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                }
+                // check free shipping offers
+                else if($request->filter == 4){
+                    $sq->where('status',1)
+                    ->where('is_freeshipping',1)
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                }
+            })
+            ->where('status',1)
+            ->orderBy('is_topstore','ASC')
+            ->orderBy('is_popularstore','ASC')
+            ->get();
+            // get categories which has online code offers
             $data['categories'] = Category::select('id','title')
-            ->where('status',1)->where('is_topcategory',1)->orwhere('is_popularcategory',1)->get();
+            ->whereHas('offers', function($sq) use($request){
+                // check online code offers
+                if($request->filter == 2){
+                    $sq->where('status',1)
+                    ->where('type',1)
+                    ->whereIn('location',[1,3])
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                }
+                // check online sale offers
+                else if($request->filter == 3){
+                    $sq->where('status',1)
+                    ->where('type',2)
+                    ->whereIn('location',[1,3])
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                }
+                // check free shipping offers
+                else if($request->filter == 4){
+                    $sq->where('status',1)
+                    ->where('is_freeshipping',1)
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                }
+            })
+            ->where('status',1)
+            ->orderBy('is_topcategory','ASC')
+            ->orderBy('is_popularcategory','ASC')
+            ->get();
         }
         return $data;
     }

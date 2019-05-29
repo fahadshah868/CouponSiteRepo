@@ -8,7 +8,7 @@
     <div class="fo-sb">
         <div class="fo-sb-offers-availability" id="offers-availability">{{$filteredoffers->total()}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
-        @if(count($storecategories) > 0)
+        @if(count($relatedstores) > 0)
             <div class="fo-sb-content-container">
                 <div class="fo-sb-content-heading">
                     <span>Filter By Store</span>
@@ -16,13 +16,11 @@
                 </div>
                 <div class="fo-sb-content-body">
                     <input type="hidden" id="category_id" value="{{$category->id}}">
-                    @foreach($storecategories as $storecategory)
-                    @if($storecategory->store->offers_count > 0)
-                    <label class="checkbox-container">{{$storecategory->store->title}}
-                        <input type="checkbox" value="{{$storecategory->store->id}}" class="store-filter">
-                        <span class="checkmark"></span>
-                    </label>
-                    @endif
+                    @foreach($relatedstores as $store)
+                        <label class="checkbox-container">{{$store->title}}
+                            <input type="checkbox" value="{{$store->id}}" class="store-filter">
+                            <span class="checkmark"></span>
+                        </label>
                     @endforeach
                 </div>
             </div>
