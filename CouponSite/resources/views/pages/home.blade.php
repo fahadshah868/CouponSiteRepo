@@ -131,7 +131,7 @@
       </div>
       @endforeach
     </div>
-    @if(count($offers) == 4)
+    @if($offers->hasMorePages())
     <span class="loadmore-button" id="loadmore-button"><img class="loading-circle" id="loading-circle" src="{{asset('/images/loading-circle.gif')}}">Load More</span>
     @endif
   </div>
@@ -177,7 +177,7 @@
 @section('js-section')
 <script>
     $(document).ready(function() {
-      var rowscount = 4;
+      var page = 2;
       // $("#slider").sliderResponsive({
       // Using default everything
         // slidePause: 5000,
@@ -196,17 +196,18 @@
       $("#loadmore-button").click(function(){
         $.ajax({
           type:'GET',
-          url:'/loadmoreoffers/'+rowscount+'',
-          data: '',
+          url:'/loadmoreoffers?page='+page,
           beforeSend: function(){
             $("#loading-circle").css('display','inline');
           },
           complete: function(){
             $("#loading-circle").css('display','none');
+            page += 1;
           },
           success: function(data){
             $("#offerid").remove();
-            $.each(data.offers, function (index, offer) {
+            console.log(data.offers);
+            $.each(data.offers.data, function (index, offer) {
               var html = 
               '<div class="hm-offer-container">'+
                 '<div class="hm-offer-store-logo">'+
@@ -243,8 +244,7 @@
               '</div>';
               $("#hm-offers-container").append(html);
             });
-            rowscount = rowscount + data.offers.length;
-            if(data.offers.length < 4){
+            if(!data.hasmorepage){
               $("#loadmore-button").css('display','none');
             }
           }

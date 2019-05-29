@@ -26,9 +26,7 @@ class HomeController extends Controller
                 ->orWhere('expiry_date', null);
             })
             ->orderBy('id','DESC')
-            ->skip(0)
-            ->limit(4)
-            ->get();
+            ->simplePaginate(4);
         $data['popularstores'] = Store::select('id','title','secondary_url')
             ->where('is_topstore',1)->orWhere('is_popularstore',1)->where('status',1)
             ->withCount(['offers' => function($q){
@@ -43,7 +41,7 @@ class HomeController extends Controller
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.home',$data);
     }
-    public function getLoadMoreOffers($rowscount){
+    public function getLoadMoreOffers(){
         $response['offers'] = Offer::select('id','title','details','location','type','code','expiry_date','store_id')
         ->with(['store' => function($q){
             $q->select('id','title','secondary_url','logo_url','network_url');
@@ -59,9 +57,8 @@ class HomeController extends Controller
             ->orWhere('expiry_date', null);
         })
         ->orderBy('id','DESC')
-        ->skip($rowscount)
-        ->limit(4)
-        ->get();
+        ->simplePaginate(4);
+        $response['hasmorepage'] = $response['offers']->hasMorePages();
         $response['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return response()->json($response);
     }

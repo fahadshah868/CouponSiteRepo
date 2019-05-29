@@ -23,7 +23,7 @@
         <div>
             @yield('content')
             <!--offer modal-->
-            @include('pages.modal.modal')
+            <!-- @include('pages.modal.modal') -->
         </div>
         <!--footer content-->
         @section('app-footer')
