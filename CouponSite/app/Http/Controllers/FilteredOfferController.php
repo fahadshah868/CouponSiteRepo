@@ -102,9 +102,36 @@ class FilteredOfferController extends Controller
                 return response()->json($data);
             }
             else{
-                $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
-                    return $item->store->id;
-                });
+                $data['stores'] = Store::select('id','title')
+                ->whereHas('offers', function($q){
+                    $q->where('status',1)
+                    ->where('type',2)
+                    ->whereIn('location',[1,3])
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                })
+                ->where('status',1)
+                ->orderBy('is_topstore','ASC')
+                ->orderBy('is_popularstore','ASC')
+                ->get();
+                $data['categories'] = Category::select('id','title')
+                ->whereHas('offers', function($q){
+                    $q->where('status',1)
+                    ->where('type',2)
+                    ->whereIn('location',[1,3])
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                })
+                ->where('status',1)
+                ->orderBy('is_topcategory','ASC')
+                ->orderBy('is_popularcategory','ASC')
+                ->get();
                 return view('pages.filteredoffer.filteredoffers',$data);
             }
         }
@@ -135,9 +162,34 @@ class FilteredOfferController extends Controller
                 return response()->json($data);
             }
             else{
-                $data['stores'] = $data['filteredoffers']->groupBy(function ($item, $key) {
-                    return $item->store->id;
-                });
+                $data['stores'] = Store::select('id','title')
+                ->whereHas('offers', function($q){
+                    $q->where('status',1)
+                    ->where('free_shipping',1)
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                })
+                ->where('status',1)
+                ->orderBy('is_topstore','ASC')
+                ->orderBy('is_popularstore','ASC')
+                ->get();
+                $data['categories'] = Category::select('id','title')
+                ->whereHas('offers', function($q){
+                    $q->where('status',1)
+                    ->where('free_shipping',1)
+                    ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                    ->where(function($q){
+                        $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                        ->orWhere('expiry_date', null);
+                    });
+                })
+                ->where('status',1)
+                ->orderBy('is_topcategory','ASC')
+                ->orderBy('is_popularcategory','ASC')
+                ->get();
                 return view('pages.filteredoffer.filteredoffers',$data);
             }
         }
@@ -392,11 +444,267 @@ class FilteredOfferController extends Controller
         }
         //fetch online sales------------------------------------------------------------------------
         else if($request->filter == 3){
-
+            if($request->filtertype != -1){
+                $data = $this->getRelatedAssets($request);
+            }
+            // stores_id = [] && categories_id = []
+            if($request->stores_id != 0 && $request->categories_id != 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($store = 0; $store < count($request->stores_id); $store++){
+                        for($category=0; $category< count($request->categories_id); $category++){
+                            if($store == 0 && $category == 0){
+                                $q->where(function($sq) use($request, $store, $category){
+                                    $sq->where('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                                });
+                            }
+                            else{
+                                $q->orWhere(function($sq) use($request, $store, $category){
+                                    $sq->orWhere('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                                });
+                            }
+                        }
+                    }
+                })
+                ->whereIn('location',[1,3])
+                ->where('type',2)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = [] && categories_id = 0
+            else if($request->stores_id != 0 && $request->categories_id == 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($store = 0; $store < count($request->stores_id); $store++){
+                        if($store == 0){
+                            $q->where('store_id',$request->stores_id[$store]);
+                        }
+                        else{
+                            $q->orWhere('store_id',$request->stores_id[$store]);
+                        }
+                    }
+                })
+                ->whereIn('location',[1,3])
+                ->where('type',2)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = 0 && categories_id = []
+            else if($request->stores_id == 0 && $request->categories_id != 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($category=0; $category< count($request->categories_id); $category++){
+                        if($category == 0){
+                            $q->where('category_id',$request->categories_id[$category]);
+                        }
+                        else{
+                            $q->orWhere('category_id',$request->categories_id[$category]);
+                        }
+                    }
+                })
+                ->whereIn('location',[1,3])
+                ->where('type',2)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = 0 && categories_id = 0
+            else if($request->stores_id == 0 && $request->categories_id == 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->whereIn('location',[1,3])
+                ->where('type',2)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
         }
         //fetch free shipping offers------------------------------------------------------------------------
         else if($request->filter == 4){
-
+            if($request->filtertype != -1){
+                $data = $this->getRelatedAssets($request);
+            }
+            // stores_id = [] && categories_id = []
+            if($request->stores_id != 0 && $request->categories_id != 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($store = 0; $store < count($request->stores_id); $store++){
+                        for($category=0; $category< count($request->categories_id); $category++){
+                            if($store == 0 && $category == 0){
+                                $q->where(function($sq) use($request, $store, $category){
+                                    $sq->where('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                                });
+                            }
+                            else{
+                                $q->orWhere(function($sq) use($request, $store, $category){
+                                    $sq->orWhere('store_id',$request->stores_id[$store])->where('category_id',$request->categories_id[$category]);
+                                });
+                            }
+                        }
+                    }
+                })
+                ->where('free_shipping',1)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = [] && categories_id = 0
+            else if($request->stores_id != 0 && $request->categories_id == 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($store = 0; $store < count($request->stores_id); $store++){
+                        if($store == 0){
+                            $q->where('store_id',$request->stores_id[$store]);
+                        }
+                        else{
+                            $q->orWhere('store_id',$request->stores_id[$store]);
+                        }
+                    }
+                })
+                ->where('free_shipping',1)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = 0 && categories_id = []
+            else if($request->stores_id == 0 && $request->categories_id != 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where(function($q) use($request){
+                    for($category=0; $category< count($request->categories_id); $category++){
+                        if($category == 0){
+                            $q->where('category_id',$request->categories_id[$category]);
+                        }
+                        else{
+                            $q->orWhere('category_id',$request->categories_id[$category]);
+                        }
+                    }
+                })
+                ->where('free_shipping',1)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
+            // stores_id = 0 && categories_id = 0
+            else if($request->stores_id == 0 && $request->categories_id == 0){
+                $data['filteredoffers'] = Offer::select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
+                ->with(['store' => function($sq){
+                    $sq->select('id','title','logo_url');
+                }])
+                ->where('free_shipping',1)
+                ->where('status',1)
+                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+                ->where(function($q) {
+                    $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                    ->orWhere('expiry_date', null);
+                })
+                ->orderBy('id','DESC')
+                ->orderBy('is_popular','ASC')
+                ->orderBy('anchor','DESC')
+                ->paginate(2);
+                $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
+                $data['offerscount'] = $data['filteredoffers']->total();
+                $data['partialview'] = (string)View::make('partialviews.filteredoffers',$data);
+                return response()->json($data);
+            }
         }
     }
     public function getRelatedAssets(Request $request){
@@ -447,7 +755,7 @@ class FilteredOfferController extends Controller
                         // check free shipping offers
                         else if($request->filter == 4){
                             $sq->where('status',1)
-                            ->where('is_freeshipping',1)
+                            ->where('free_shipping',1)
                             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                             ->where(function($q){
                                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -489,7 +797,7 @@ class FilteredOfferController extends Controller
                     // check free shipping offers
                     else if($request->filter == 4){
                         $sq->where('status',1)
-                        ->where('is_freeshipping',1)
+                        ->where('free_shipping',1)
                         ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                         ->where(function($q){
                             $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -547,7 +855,7 @@ class FilteredOfferController extends Controller
                         // check free shipping offers
                         else if($request->filter == 4){
                             $sq->where('status',1)
-                            ->where('is_freeshipping',1)
+                            ->where('free_shipping',1)
                             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                             ->where(function($q){
                                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -589,7 +897,7 @@ class FilteredOfferController extends Controller
                     // check free shipping offers
                     else if($request->filter == 4){
                         $sq->where('status',1)
-                        ->where('is_freeshipping',1)
+                        ->where('free_shipping',1)
                         ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                         ->where(function($q){
                             $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -633,7 +941,7 @@ class FilteredOfferController extends Controller
                 // check free shipping offers
                 else if($request->filter == 4){
                     $sq->where('status',1)
-                    ->where('is_freeshipping',1)
+                    ->where('free_shipping',1)
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                     ->where(function($q){
                         $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -673,7 +981,7 @@ class FilteredOfferController extends Controller
                 // check free shipping offers
                 else if($request->filter == 4){
                     $sq->where('status',1)
-                    ->where('is_freeshipping',1)
+                    ->where('free_shipping',1)
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                     ->where(function($q){
                         $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
