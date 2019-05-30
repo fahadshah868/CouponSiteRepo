@@ -15,7 +15,7 @@
         <div class="tc-list-container">
             @foreach($topcategories as $topcategory)
             <div class="tc-container">
-                <a href="/coupons/{{$topcategory->url}}" class="tc-link">
+                <a href="/category/{{$topcategory->url}}" class="tc-link">
                     <div class="tc-logo">
                         <img src="{{$panel_assets_url}}{{$topcategory->logo_url}}"/>
                     </div>
@@ -49,7 +49,7 @@
             <ul class="ac-list" id="ac-list">
                 @foreach($allcategories as $category)
                 <li>
-                    <a class="ac-list-item" href="/coupons/{{$category->url}}" title='{{$category->title}} Coupons'>
+                    <a class="ac-list-item" href="/category/{{$category->url}}" title='{{$category->title}} Coupons'>
                         <span class="category-title">{{$category->title}}</span>
                         @if($category->offers_count > 1)
                             <span class="coupons-count">{{$category->offers_count}} Coupons Available</span>

@@ -4,6 +4,8 @@
 
 @section('content')
 
+<!-- overlay container while ajax request -->
+<div class="fo-overlay-container" id="fo-overlay-container"></div>
 <div class="fo-main-container">
     <div class="fo-sb">
         <div class="fo-sb-offers-availability" id="offers-availability">{{$offers->total()}} Offers Available</div>
@@ -32,7 +34,7 @@
                     <ul>
                         @foreach($alltopcategories as $topcategory)
                             <li>
-                                <a class="fo-sb-list-item" href="/coupons/{{$topcategory->url}}" title="{{$topcategory->title}} Coupons">
+                                <a class="fo-sb-list-item" href="/category/{{$topcategory->url}}" title="{{$topcategory->title}} Coupons">
                                     <span class="item-title">{{$topcategory->title}}</span>
                                     <span class="coupons-count">{{$topcategory->offers_count}}</span>
                                 </a>
@@ -98,7 +100,10 @@
                 $.ajax({
                     type:`GET`,
                     url:`/filtercategoryoffers`,
-                    data: {stores_id: stores_id, category_id: category_id, filter: 1}
+                    data: {stores_id: stores_id, category_id: category_id, filter: 1},
+                    beforeSend: function (xhr) {
+                        $("#fo-overlay-container").css("display","block");
+                    },
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
                     if(data.offerscount > 1){
@@ -110,6 +115,10 @@
                     else if(data.offerscount < 1){
                         $(`#offers-availability`).html("No Offers Available");
                     }
+                    $("#fo-overlay-container").css("display","none");
+                    $('html, body').animate({
+                        scrollTop: $("div.fo-db-heading").offset().top
+                    }, 500)
                 }).fail(function () {
                     alert(`something went wrong.`);
                 });
@@ -120,7 +129,10 @@
                 $.ajax({
                     type:`GET`,
                     url:`/filtercategoryoffers`,
-                    data: {stores_id: 0, category_id: category_id, filter: 1}
+                    data: {stores_id: 0, category_id: category_id, filter: 1},
+                    beforeSend: function (xhr) {
+                        $("#fo-overlay-container").css("display","block");
+                    },
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
                     if(data.offerscount > 1){
@@ -132,6 +144,10 @@
                     else if(data.offerscount < 1){
                         $(`#offers-availability`).html("No Offers Available");
                     }
+                    $("#fo-overlay-container").css("display","none");
+                    $('html, body').animate({
+                        scrollTop: $("div.fo-db-heading").offset().top
+                    }, 500)
                 }).fail(function () {
                     alert(`something went wrong.`);
                 });
@@ -143,7 +159,10 @@
                 $.ajax({
                     type:`GET`,
                     url:`/filtercategoryoffers`,
-                    data: {stores_id: 0, category_id: category_id, filter: 1}
+                    data: {stores_id: 0, category_id: category_id, filter: 1},
+                    beforeSend: function (xhr) {
+                        $("#fo-overlay-container").css("display","block");
+                    },
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
                     if(data.offerscount > 1){
@@ -155,6 +174,10 @@
                     else if(data.offerscount < 1){
                         $(`#offers-availability`).html("No Offers Available");
                     }
+                    $("#fo-overlay-container").css("display","none");
+                    $('html, body').animate({
+                        scrollTop: $("div.fo-db-heading").offset().top
+                    }, 500)
                 }).fail(function () {
                     alert(`something went wrong.`);
                 });

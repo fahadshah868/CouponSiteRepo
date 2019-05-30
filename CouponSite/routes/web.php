@@ -25,7 +25,7 @@ Route::get('/store/{store}','StoreController@getStoreOffers');
 
 // routes for CategoryController
 Route::get('/allcategories','CategoryController@getAllCategoriesList');
-Route::get('/coupons/{category}','CategoryController@getCategoryOffers');
+Route::get('/category/{category}','CategoryController@getCategoryOffers');
 Route::get('/filtercategoryoffers','CategoryController@getFilteredCategoryOffers');
 
 // routes for OnlineCodeController
