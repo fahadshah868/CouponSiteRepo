@@ -26,6 +26,18 @@ Route::get('/store/{store}','StoreController@getStoreOffers');
 // routes for CategoryController
 Route::get('/allcategories','CategoryController@getAllCategoriesList');
 
+// routes for OnlineCodeController
+Route::get('/coupons/onlinecodes','OnlineCodeController@getAllOnlineCodeOffers');
+Route::get('/filteronlinecodes','OnlineCodeController@getFilteredOnlineCodeOffers');
+
+// routes for OnlineCodeController
+Route::get('/coupons/onlinesales','OnlineSaleController@getAllOnlineSaleOffers');
+Route::get('/filteronlinesales','OnlineSaleController@getFilteredOnlineSaleOffers');
+
+// routes for OnlineCodeController
+Route::get('/coupons/freeshipping','FreeShippingController@getAllFreeShippingOffers');
+Route::get('/filterfreeshippingoffers','FreeShippingController@getFilteredFreeShippingOffers');
+
 //routes for FilteredController
 Route::get('/coupons/{filter}','FilteredOfferController@getFilteredOffers');
 Route::get('/applymorefilters', 'FilteredOfferController@getMoreFilteredOffers');
