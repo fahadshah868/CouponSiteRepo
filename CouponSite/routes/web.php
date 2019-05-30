@@ -25,6 +25,8 @@ Route::get('/store/{store}','StoreController@getStoreOffers');
 
 // routes for CategoryController
 Route::get('/allcategories','CategoryController@getAllCategoriesList');
+Route::get('/coupons/{category}','CategoryController@getCategoryOffers');
+Route::get('/filtercategoryoffers','CategoryController@getFilteredCategoryOffers');
 
 // routes for OnlineCodeController
 Route::get('/coupons/onlinecodes','OnlineCodeController@getAllOnlineCodeOffers');
@@ -37,10 +39,6 @@ Route::get('/filteronlinesales','OnlineSaleController@getFilteredOnlineSaleOffer
 // routes for OnlineCodeController
 Route::get('/coupons/freeshipping','FreeShippingController@getAllFreeShippingOffers');
 Route::get('/filterfreeshippingoffers','FreeShippingController@getFilteredFreeShippingOffers');
-
-//routes for FilteredController
-Route::get('/coupons/{filter}','FilteredOfferController@getFilteredOffers');
-Route::get('/applymorefilters', 'FilteredOfferController@getMoreFilteredOffers');
 
 // routes for BlogController
 Route::get('/blog/','BlogController@getBlogsList');

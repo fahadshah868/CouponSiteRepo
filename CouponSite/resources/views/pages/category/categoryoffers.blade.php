@@ -6,7 +6,7 @@
 
 <div class="fo-main-container">
     <div class="fo-sb">
-        <div class="fo-sb-offers-availability" id="offers-availability">{{$filteredoffers->total()}} Offers Available</div>
+        <div class="fo-sb-offers-availability" id="offers-availability">{{$offers->total()}} Offers Available</div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         @if(count($relatedstores) > 0)
             <div class="fo-sb-content-container">
@@ -51,9 +51,9 @@
     </div>
     <div class="fo-db">
         <div class="fo-db-heading">{{$category->title}} Coupons & Promo Codes</div>
-        @if(count($filteredoffers) > 0)
+        @if(count($offers) > 0)
         <div id="filtered-offers">
-        @include('partialviews.filteredoffers')
+        @include('partialviews.offers')
         </div>
         @else
         <div class="no-coupons-alert">No Coupons Available For {{$category->title}}</div>
@@ -97,7 +97,7 @@
                 $(`#reset-store-filters`).css('display','block');
                 $.ajax({
                     type:`GET`,
-                    url:`/applymorefilters`,
+                    url:`/filtercategoryoffers`,
                     data: {stores_id: stores_id, category_id: category_id, filter: 1}
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
@@ -119,7 +119,7 @@
                 var category_id = $("#category_id").val();
                 $.ajax({
                     type:`GET`,
-                    url:`/applymorefilters`,
+                    url:`/filtercategoryoffers`,
                     data: {stores_id: 0, category_id: category_id, filter: 1}
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
@@ -142,7 +142,7 @@
                 $('.checkbox-container').find('input:checkbox').prop(`checked`, false);
                 $.ajax({
                     type:`GET`,
-                    url:`/applymorefilters`,
+                    url:`/filtercategoryoffers`,
                     data: {stores_id: 0, category_id: category_id, filter: 1}
                 }).done(function (data) {
                     $(`#filtered-offers`).html(data.partialview);
