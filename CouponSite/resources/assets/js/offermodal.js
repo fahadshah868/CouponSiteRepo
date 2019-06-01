@@ -11,22 +11,42 @@ $(document).ready(function(){
             setTimeout(navigateToUrl,1000);
         }
     }
-    $(".hm-offers-container").on('click','.hm-offer-button',function(){
+    $(".js-offer").on('click','.hm-offer-button',function(){
         second = 0;
-        var title = $(this).attr("data-offertitle");
-        var code = $(this).attr("data-offercode");
-        var expires = $(this).attr("data-offerexpires");
-        var storesitelink = $(this).attr("data-storesitelink");
+        var title = $(this).data('offertitle');
+        var location = $(this).data('offerlocation');
+        var type = $(this).data('offertype');
+        var code = $(this).data('offercode');
+        var details = $(this).data('offerdetails');
+        var expires = $(this).data("offerexpires");
+        var storetitle = $(this).data('storetitle');
+        var siteurl = $(this).data('siteurl');
+        var storelogo = $(this).data('storelogo');
+        var navurl = $(this).data("navurl");
         //copy text to clipboard
         var $temp = $("<input>");
         $("body").append($temp);
         $temp.val(code).select();
         document.execCommand("copy");
         $temp.remove();
-        $("#modal-body-offer-title").text(title);
-        $("#modal-body-offer-code").text(code);
-        $("#modal-footer-expires").text("Expires "+expires);
-        $("#modal-footer-offer-title").text(title);
+
+        if(type.toLowerCase() == "code"){
+            $("#modal-offer-code").text(code);
+            $("#modal-code-block-siteurl").text(siteurl);
+            $("#modal-code-block-siteurl").attr('href',navurl);
+            $("#modal-sale-block").css('display','none');
+            $("#modal-code-block").css('display','block');
+        }
+        else if(type.toLowerCase() == "sale"){
+            $("#modal-sale-block-siteurl").attr('href',navurl);
+            $("#modal-code-block").css('display','none');
+            $("#modal-sale-block").css('display','block');
+        }
+        $("#modal-store-logo img").attr('src',storelogo);
+        $("#modal-offer-title").text(title);
+        $("#modal-offer-details").text(details);
+        $("#modal-offer-expires").text("Expires "+expires);
+
         $('body').css('overflow','hidden');
         $("#modal-body-loading-container").css('display','block');
         $("#modal-overlay-container").css("display","block");

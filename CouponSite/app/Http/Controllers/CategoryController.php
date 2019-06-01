@@ -12,9 +12,9 @@ use View;
 class CategoryController extends Controller
 {
     public function getAllCategoriesList(){
-        $data['topcategories'] = Category::where('is_topcategory','yes')->where('status',1)->get();
-        $data['allcategories'] = Category::where('status',1)->orderBy('title','ASC')->withCount(['offers' => function($q){
-            $q->where('status',1)
+        $data['topcategories'] = Category::where('is_topcategory','yes')->where('is_active','y')->get();
+        $data['allcategories'] = Category::where('is_active','y')->orderBy('title','ASC')->withCount(['offers' => function($q){
+            $q->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($sq){
                 $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -34,16 +34,16 @@ class CategoryController extends Controller
         return view('pages.category.allcategories',$data);
     }
     public function getCategoryOffers(Request $request, $category){
-        $data['category'] = Category::select('id','title','description')->where('url',$category)->where('status',1)->first();
+        $data['category'] = Category::select('id','title','description')->where('url',$category)->where('is_active','y')->first();
         $data['offers'] = $data['category']->offers()
             ->select('id','store_id','category_id','title','details','expiry_date','location','type','is_verified')
             ->with(['store' => function($sq){
                 $sq->select('id','title','logo_url');
             }])
             ->whereHas('store', function($sq){
-                $sq->where('status',1);
+                $sq->where('is_active','y');
             })
-            ->where('status',1)
+            ->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q){
                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -60,10 +60,10 @@ class CategoryController extends Controller
         }
         else{
             $data['relatedstores'] = Store::select('id','title')
-                ->where('status',1)
+                ->where('is_active','y')
                 ->whereHas('offers',function($q) use($data){
                 $q->where('category_id',$data['category']->id)
-                ->where('status',1)
+                ->where('is_active','y')
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where(function($q){
                     $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -73,9 +73,9 @@ class CategoryController extends Controller
             $data['alltopcategories'] = Category::select('id','title','url')
             ->whereNotIn('id',[$data['category']->id])
             ->Where('is_popularcategory',1)
-            ->where('status',1)
+            ->where('is_active','y')
             ->withCount(['offers' => function($oq){
-                $oq->where('status',1)
+                $oq->where('is_active','y')
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where(function($sq){
                     $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -105,7 +105,7 @@ class CategoryController extends Controller
                     }
                 }
             })
-            ->where('status',1)
+            ->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -127,7 +127,7 @@ class CategoryController extends Controller
                 $sq->select('id','title','logo_url');
             }])
             ->where('category_id',$request->category_id)
-            ->where('status',1)
+            ->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))

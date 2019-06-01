@@ -17,9 +17,9 @@ class OnlineCodeController extends Controller
             $sq->select('id','title','logo_url');
         }])
         ->whereHas('store', function($sq){
-            $sq->where('status',1);
+            $sq->where('is_active','y');
         })
-        ->where('status',1)
+        ->where('is_active','y')
         ->where('type',1)
         ->whereIn('location',[1,3])
         ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -39,7 +39,7 @@ class OnlineCodeController extends Controller
         else{
             $data['stores'] = Store::select('id','title')
             ->whereHas('offers', function($q){
-                $q->where('status',1)
+                $q->where('is_active','y')
                 ->where('type',1)
                 ->whereIn('location',[1,3])
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -48,13 +48,13 @@ class OnlineCodeController extends Controller
                     ->orWhere('expiry_date', null);
                 });
             })
-            ->where('status',1)
+            ->where('is_active','y')
             ->orderBy('is_topstore','ASC')
             ->orderBy('is_popularstore','ASC')
             ->get();
             $data['categories'] = Category::select('id','title')
             ->whereHas('offers', function($q){
-                $q->where('status',1)
+                $q->where('is_active','y')
                 ->where('type',1)
                 ->whereIn('location',[1,3])
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -63,7 +63,7 @@ class OnlineCodeController extends Controller
                     ->orWhere('expiry_date', null);
                 });
             })
-            ->where('status',1)
+            ->where('is_active','y')
             ->orderBy('is_topcategory','ASC')
             ->orderBy('is_popularcategory','ASC')
             ->get();
@@ -98,7 +98,7 @@ class OnlineCodeController extends Controller
             })
             ->whereIn('location',[1,3])
             ->where('type',1)
-            ->where('status',1)
+            ->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -131,7 +131,7 @@ class OnlineCodeController extends Controller
             })
             ->whereIn('location',[1,3])
             ->where('type',1)
-            ->where('status',1)
+            ->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -164,7 +164,7 @@ class OnlineCodeController extends Controller
             })
             ->whereIn('location',[1,3])
             ->where('type',1)
-            ->where('status',1)
+            ->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -187,7 +187,7 @@ class OnlineCodeController extends Controller
             }])
             ->whereIn('location',[1,3])
             ->where('type',1)
-            ->where('status',1)
+            ->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($q) {
                 $q->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -226,7 +226,7 @@ class OnlineCodeController extends Controller
                 ->with(['category'=>function($q) use($request){
                     $q->select('id','title')
                     ->whereHas('offers', function($sq) use($request){
-                        $sq->where('status',1)
+                        $sq->where('is_active','y')
                         ->where('type',1)
                         ->whereIn('location',[1,3])
                         ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -237,14 +237,14 @@ class OnlineCodeController extends Controller
                     });
                 }])
                 ->whereHas('category', function($q){
-                    $q->select('id')->where('status',1);
+                    $q->select('id')->where('is_active','y');
                 })->get();
             }
             //get all top OR popular categories
             else{
                 $data['categories'] = Category::select('id','title')
                 ->whereHas('offers', function($sq) use($request){
-                    $sq->where('status',1)
+                    $sq->where('is_active','y')
                     ->where('type',1)
                     ->whereIn('location',[1,3])
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -253,7 +253,7 @@ class OnlineCodeController extends Controller
                         ->orWhere('expiry_date', null);
                     });
                 })
-                ->where('status',1)
+                ->where('is_active','y')
                 ->orderBy('is_topcategory','ASC')
                 ->orderBy('is_popularcategory','ASC')
                 ->get();
@@ -278,7 +278,7 @@ class OnlineCodeController extends Controller
                 ->with(['store'=>function($q) use($request){
                     $q->select('id','title')
                     ->whereHas('offers', function($sq) use($request){
-                        $sq->where('status',1)
+                        $sq->where('is_active','y')
                         ->where('type',1)
                         ->whereIn('location',[1,3])
                         ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -289,14 +289,14 @@ class OnlineCodeController extends Controller
                     });
                 }])
                 ->whereHas('store', function($q){
-                    $q->select('id')->where('status',1);
+                    $q->select('id')->where('is_active','y');
                 })->get();
             }
             //get all stores
             else{
                 $data['stores'] = Store::select('id','title')
                 ->whereHas('offers', function($sq) use($request){
-                    $sq->where('status',1)
+                    $sq->where('is_active','y')
                     ->where('type',1)
                     ->whereIn('location',[1,3])
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -305,7 +305,7 @@ class OnlineCodeController extends Controller
                         ->orWhere('expiry_date', null);
                     });
                 })
-                ->where('status',1)
+                ->where('is_active','y')
                 ->orderBy('is_topstore','ASC')
                 ->orderBy('is_popularstore','ASC')
                 ->get();
@@ -316,7 +316,7 @@ class OnlineCodeController extends Controller
             // get stores which has online code offers 
             $data['stores'] = Store::select('id','title')
             ->whereHas('offers', function($sq) use($request){
-                $sq->where('status',1)
+                $sq->where('is_active','y')
                 ->where('type',1)
                 ->whereIn('location',[1,3])
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -325,14 +325,14 @@ class OnlineCodeController extends Controller
                     ->orWhere('expiry_date', null);
                 });
             })
-            ->where('status',1)
+            ->where('is_active','y')
             ->orderBy('is_topstore','ASC')
             ->orderBy('is_popularstore','ASC')
             ->get();
             // get categories which has online code offers
             $data['categories'] = Category::select('id','title')
             ->whereHas('offers', function($sq) use($request){
-                $sq->where('status',1)
+                $sq->where('is_active','y')
                 ->where('type',1)
                 ->whereIn('location',[1,3])
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -341,7 +341,7 @@ class OnlineCodeController extends Controller
                     ->orWhere('expiry_date', null);
                 });
             })
-            ->where('status',1)
+            ->where('is_active','y')
             ->orderBy('is_topcategory','ASC')
             ->orderBy('is_popularcategory','ASC')
             ->get();

@@ -14141,7 +14141,7 @@ ul {
   padding: 30px 0;
 }
 
-.modal-content-container {
+.modal-container {
   position: relative;
   width: 800px;
   background-color: #fff;
@@ -14214,48 +14214,57 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.modal-body-store-logo {
-  width: 80px;
-  height: 80px;
+.modal-store-logo {
+  width: 100px;
+  height: 100px;
   margin-bottom: 30px;
 }
 
-.modal-body-store-logo img {
+.modal-store-logo img {
   width: 100%;
   height: 100%;
 }
 
-.modal-body-offer-title {
+.modal-offer-title {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 20px;
 }
 
-.modal-body-offer-action-taken {
+.modal-code-block {
+  text-align: center;
+}
+
+.modal-code-block .action-taken {
   font-size: 28px;
   color: #044D6E;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.modal-body-offer-action-taken .fa-check-circle {
+.modal-code-block .action-taken .fa-check-circle {
   font-weight: 1000;
   margin-right: 10px;
 }
 
-.modal-body-tip-container {
-  font-size: 10px;
+.modal-code-block .tip {
+  font-size: 11px;
   font-weight: 500;
   margin-bottom: 5px;
 }
 
-.modal-body-tip-container span {
+.modal-code-block .tip a {
   color: #0061ff;
 }
 
-.modal-body-offer-code {
+.modal-offer-code {
   padding: 15px 22px;
   font-size: 20px;
   font-weight: 500;
@@ -14268,6 +14277,38 @@ ul {
       -ms-user-select: all;
           user-select: all;
   margin-bottom: 10px;
+}
+
+.modal-sale-block {
+  text-align: center;
+}
+
+.modal-sale-block .tip {
+  font-size: 22px;
+  color: #044D6E;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.modal-sale-block .store-link {
+  display: block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  padding: 7px 65px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  background-color: #044D6E;
+  color: #fff;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+
+.modal-sale-block .store-link:hover {
+  background-color: #033349;
+  text-decoration: none;
 }
 
 .modal-footer-content {
@@ -14288,17 +14329,17 @@ ul {
   margin-bottom: 10px;
 }
 
-.modal-footer-expires {
+.modal-offer-expires {
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 7px;
 }
 
-.modal-footer-expires .fa-clock-o {
+.modal-offer-expires .fa-clock-o {
   margin-right: 5px;
 }
 
-.modal-footer-offer-title {
+.modal-offer-details {
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 7px;
@@ -14309,7 +14350,7 @@ ul {
     padding: 0 20px;
   }
 
-  .modal-content-container {
+  .modal-container {
     width: 100%;
   }
 }

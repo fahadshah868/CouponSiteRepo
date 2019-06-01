@@ -56,7 +56,7 @@
             @include('partialviews.offers')
         </section>
         @else
-        <div class="no-coupons-alert">No Coupons Available For </div>
+        <div class="no-coupons-alert">No Online Code Coupons Available</div>
         @endif
     </div>
 </div>

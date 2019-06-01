@@ -13,13 +13,13 @@ class AjaxController extends Controller
     public function getAjaxRequest($action){
         //get top and popular stores
         if($action == 1){
-            $data['topstores'] = Store::select('title','secondary_url','logo_url')->where('is_topstore','yes')->where('status',1)->limit(10)->get();
+            $data['topstores'] = Store::select('title','secondary_url','logo_url')->where('is_topstore','yes')->where('is_active','y')->limit(10)->get();
             $data['popularstores'] = Store::select('id','title','secondary_url')
                 ->where('is_popularstore','yes')
                 ->where('is_topstore','no')
-                ->where('status',1)->limit(30)
+                ->where('is_active','y')->limit(30)
                 ->withCount(['offers'=> function($q) {
-                    $q->where('status',1)
+                    $q->where('is_active','y')
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                     ->where(function($sq){
                         $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -31,13 +31,13 @@ class AjaxController extends Controller
         }
         //get top and popular categories
         else if($action == 2){
-            $data['topcategories'] = Category::select('title','url','logo_url')->where('is_topcategory','yes')->where('status',1)->limit(10)->get();
+            $data['topcategories'] = Category::select('title','url','logo_url')->where('is_topcategory','yes')->where('is_active','y')->limit(10)->get();
             $data['popularcategories'] = Category::select('id','title','url')
                 ->where('is_popularcategory','yes')
                 ->where('is_topcategory','no')
-                ->where('status',1)->limit(30)
+                ->where('is_active','y')->limit(30)
                 ->withCount(['offers'=> function($q) {
-                    $q->where('status',1)
+                    $q->where('is_active','y')
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                     ->where(function($sq){
                         $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -64,8 +64,8 @@ class AjaxController extends Controller
         }
     }
     public function getSearchedResults($title){
-        $response['stores'] = Store::select('title','secondary_url','logo_url')->where('title', 'like', '%' . $title . '%')->where('status',1)->limit(4)->get();
-        $response['categories'] = Category::select('title','url')->where('title', 'like', '%' . $title . '%')->where('status',1)->limit(4)->get();
+        $response['stores'] = Store::select('title','secondary_url','logo_url')->where('title', 'like', '%' . $title . '%')->where('is_active','y')->limit(4)->get();
+        $response['categories'] = Category::select('title','url')->where('title', 'like', '%' . $title . '%')->where('is_active','y')->limit(4)->get();
         $response['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return response()->json($response);
     }

@@ -21,14 +21,14 @@ class BlogController extends Controller
                 $url = str_replace(' ', '-', $request->title);
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('url','LIKE','%'.$url.'%')
-                ->where('status',1)
+                ->where('is_active','y')
                 ->simplePaginate(3);
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 return view('partialviews.blogs',$data);
             }
             else{
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
-                ->where('status',1)
+                ->where('is_active','y')
                 ->simplePaginate(3);
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 return view('partialviews.blogs',$data);
@@ -40,23 +40,23 @@ class BlogController extends Controller
                 $url = str_replace(' ', '-', $request->title);
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('url','LIKE','%'.$url.'%')
-                ->where('status',1)
+                ->where('is_active','y')
                 ->simplePaginate(3);
-                $data['blogcategories'] = BlogCategory::select('id','title','url')->where('status',1)->get();
-                $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
-                $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
+                $data['blogcategories'] = BlogCategory::select('id','title','url')->where('is_active','y')->get();
+                $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('is_active','y')->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
+                $data['topcategories'] = Category::select('id','title','url','logo_url')->where('is_active','y')->where('is_topcategory',1)->limit(9)->get();
                 $data['searched_blog_title'] = $request->title;
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 return view('pages.blog.searchedblogs',$data);
             }
             //get all blogs in http request
             else{
-                $data['blogcategories'] = BlogCategory::select('id','title','url')->where('status',1)->get();
+                $data['blogcategories'] = BlogCategory::select('id','title','url')->where('is_active','y')->get();
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
-                ->where('status',1)
+                ->where('is_active','y')
                 ->simplePaginate(3);
-                $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
-                $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
+                $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('is_active','y')->where('is_topstore',1)->orWhere('is_popularstore',1)->limit(9)->get();
+                $data['topcategories'] = Category::select('id','title','url','logo_url')->where('is_active','y')->where('is_topcategory',1)->limit(9)->get();
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 return view('pages.blog.allblogs',$data);
             }
@@ -66,7 +66,7 @@ class BlogController extends Controller
         if($request->ajax()){
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->where('blog_category_id', $request->blog_category_id)
-            ->where('status',1)
+            ->where('is_active','y')
             ->simplePaginate(3);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return view('partialviews.blogs',$data);
@@ -74,17 +74,17 @@ class BlogController extends Controller
         else{
             $data['allblogs'] = [];
             $data['blog_category_id'] = null;
-            $data['blogcategories'] = BlogCategory::select('id','title','url')->where('status',1)->get();
+            $data['blogcategories'] = BlogCategory::select('id','title','url')->where('is_active','y')->get();
             foreach($data['blogcategories'] as $blogcategory){
                 if(strcasecmp($blogcategory->url ,str_replace(' ', '-', $category)) == 0){
-                    $data['allblogs'] = $blogcategory->blogs()->select('id','title','url','image_url','author')->where('status',1)->simplePaginate(3);
+                    $data['allblogs'] = $blogcategory->blogs()->select('id','title','url','image_url','author')->where('is_active','y')->simplePaginate(3);
                     $data['blog_category_id'] = $blogcategory->id;
                     Session::flash('searched_category_title', $blogcategory->title);
                     break;
                 }
             }
-            $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->limit(9)->get();
-            $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
+            $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('is_active','y')->where('is_topstore',1)->limit(9)->get();
+            $data['topcategories'] = Category::select('id','title','url','logo_url')->where('is_active','y')->where('is_topcategory',1)->limit(9)->get();
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return view('pages.blog.categorywiseblogs',$data);
         }
@@ -93,7 +93,7 @@ class BlogController extends Controller
         if($request->ajax()){
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->whereNotIn('id',[$request->id])
-            ->where('status',1)
+            ->where('is_active','y')
             ->simplePaginate(3);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return view('partialviews.blogs',$data);
@@ -105,15 +105,15 @@ class BlogController extends Controller
                 ->where('status',2);
             }])
             ->where('url',$url)
-            ->where('status',1)
+            ->where('is_active','y')
             ->first();
-            $data['blogcategories'] = BlogCategory::select('id','title','url')->where('status',1)->get();
-            $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('status',1)->where('is_topstore',1)->limit(9)->get();
-            $data['topcategories'] = Category::select('id','title','url','logo_url')->where('status',1)->where('is_topcategory',1)->limit(9)->get();
+            $data['blogcategories'] = BlogCategory::select('id','title','url')->where('is_active','y')->get();
+            $data['topstores'] = Store::select('id','title','secondary_url','logo_url')->where('is_active','y')->where('is_topstore',1)->limit(9)->get();
+            $data['topcategories'] = Category::select('id','title','url','logo_url')->where('is_active','y')->where('is_topcategory',1)->limit(9)->get();
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->whereNotIn('id',[$data['blog']->id])
-            ->where('status',1)
+            ->where('is_active','y')
             ->simplePaginate(3);
             return view('pages.blog.readblog',$data);
         }

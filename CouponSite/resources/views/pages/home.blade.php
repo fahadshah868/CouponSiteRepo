@@ -97,7 +97,7 @@
     <!--Heading-->
     <div class="hm-offers-heading">Today's Offers, Deals & Coupon Codes</div>
     <!--Products-->
-    <div class="hm-offers-container" id="hm-offers-container">
+    <div class="hm-offers-container js-offer" id="hm-offers-container">
       @foreach($offers as $offer)
       <div class="hm-offer-container">
         <div class="hm-offer-store-logo">
@@ -112,15 +112,25 @@
         <div class="hm-offer-type">
           <span class="hm-offer-offertype-code">{{$offer->location}} {{$offer->type}}</span>
         </div>
-        @if(strcasecmp($offer->location,'Online & In-Store') == 0 && strcasecmp($offer->type, 'Code') == 0)
-          <span class="hm-offer-button" id="hm-offer-button">
-              USE ONLINE
-          </span>
-          <span class="hm-offer-button" id="hm-offer-button">
-              USE IN-STORE
-          </span>
+        @if(strcasecmp($offer->location,'Online & In-Store') == 0)
+        <span class="hm-offer-button js-offer-button"
+            data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" 
+            data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" 
+            data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" 
+            data-storetitle="{{$offer->store->title}}" data-storelogo="{{$panel_assets_url.$offer->store->logo_url}}" data-siteurl="{{$offer->store->secondary_url}}"
+            data-offerexpiry="{{$offer->expiry_date}}" data-navurl="{{$offer->store->network_url}}">
+            USE ONLINE
+        </span>
+        <span class="hm-offer-button js-offer-button" data-offerid="{{$offer->id}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}">
+            USE IN-STORE
+        </span>
         @else
-        <span class="hm-offer-button" id="hm-offer-button" data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" data-offerexpiry="{{$offer->expiry_date}}" data-storetitle="{{$offer->store->title}}" data-siteurl="{{$offer->store->network_url}}">
+        <span class="hm-offer-button js-offer-button" 
+            data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}"
+            data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}"
+            data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" 
+            data-storetitle="{{$offer->store->title}}" data-storelogo="{{$panel_assets_url.$offer->store->logo_url}}" data-siteurl="{{$offer->store->secondary_url}}"
+            data-offerexpiry="{{$offer->expiry_date}}" data-navurl="{{$offer->store->network_url}}">
           @if(strcasecmp($offer->type,"code") == 0)
               VIEW CODE
           @else
@@ -205,8 +215,6 @@
             page += 1;
           },
           success: function(data){
-            $("#offerid").remove();
-            console.log(data.offers);
             $.each(data.offers.data, function (index, offer) {
               var html = 
               '<div class="hm-offer-container">'+
@@ -222,16 +230,16 @@
               '</div>'
               if(offer.location.toLowerCase() == "online & in-store" && offer.type.toLowerCase() == "code"){
                 html = html +
-                '<span class="hm-offer-button" id="offer-button">'+
+                '<span class="hm-offer-button">'+
                     'USE ONLINE'+
                 '</span>'+
-                '<span class="hm-offer-button" id="offer-button">'+
+                '<span class="hm-offer-button">'+
                     'USE IN-STORE'+
                 '</span>'
               }
               else{
                 html = html +
-                '<span class="hm-offer-button" id="hm-offer-button" data-offerid="'+offer.id+'" data-offertitle="'+offer.title+'" data-offerlocation="'+offer.location+'" data-offertype="'+offer.type+'" data-offerdetails="'+offer.details+'" data-offercode="'+offer.code+'" data-offerexpiry="'+offer.expiry_date+'" data-storetitle="'+offer.store.title+'" data-siteurl="'+offer.store.network_url+'">'
+                '<span class="hm-offer-button" data-offerid="'+offer.id+'" data-offertitle="'+offer.title+'" data-offerlocation="'+offer.location+'" data-offertype="'+offer.type+'" data-offerdetails="'+offer.details+'" data-offercode="'+offer.code+'" data-offerexpiry="'+offer.expiry_date+'" data-storetitle="'+offer.store.title+'" data-siteurl="'+offer.store.network_url+'">'
                   if(offer.type.toLowerCase() == "code"){
                     html = html + 'VIEW CODE';
                   }
@@ -250,6 +258,9 @@
           }
         });
       });
+      // $(".js-offer-button").click(function(){
+      //   $(this).data('storelogo');
+      // });
     });
   </script>
   @endsection

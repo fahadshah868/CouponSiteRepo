@@ -11,9 +11,9 @@ use App\Offer;
 class StoreController extends Controller
 {
     public function getAllStoresList(){
-        $data['topstores'] = Store::select('title','logo_url','secondary_url')->where('is_topstore','yes')->where('status',1)->get();
+        $data['topstores'] = Store::select('title','logo_url','secondary_url')->where('is_topstore','yes')->where('is_active','y')->get();
         $data['allstores'] = Store::select('id','title','logo_url','secondary_url')
-        ->where('status',1)
+        ->where('is_active','y')
         ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
         ->withCount(['offers' => function($q){
             $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -35,7 +35,7 @@ class StoreController extends Controller
         ->with(['category' => function($q){
             $q->select('id','title');
         }])->whereHas('category' , function($q){
-            $q->select('title')->where('status',1);
+            $q->select('title')->where('is_active','y');
         })->get();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.store.allstores',$data);
@@ -43,10 +43,10 @@ class StoreController extends Controller
     public function getCategoryStores($category){
         if(strcasecmp($category,"allstores") == 0){
             $response['allstores'] = Store::select('id','title','logo_url','secondary_url')
-            ->where('status',1)
+            ->where('is_active','y')
             ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
             ->withCount(['offers'=> function($q){
-                $q->where('status',1)
+                $q->where('is_active','y')
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                 ->where(function($sq){
                     $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -71,7 +71,7 @@ class StoreController extends Controller
                 $q->select('id','title','logo_url','secondary_url')
                 ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
                 ->withCount(['offers' => function($oq) use($category){
-                    $oq->where('status',1)->where('category_id',$category)
+                    $oq->where('is_active','y')->where('category_id',$category)
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))
                     ->where(function($sq){
                         $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -80,7 +80,7 @@ class StoreController extends Controller
                 }]);
             }])
             ->whereHas('store',function($q){
-                $q->select('id')->where('status',1);
+                $q->select('id')->where('is_active','y');
             })->get();
             $response['filtered_letters'] = $response['storecategories']->groupBy(function ($item, $key) {
                 $letter = substr(strtoupper($item->store->title), 0, 1);
@@ -97,15 +97,15 @@ class StoreController extends Controller
         }
     }
     public function getstoreOffers($store){
-        $data['store'] = Store::select('id','title','description','logo_url','network_url')->where('secondary_url',$store)->where('status',1)->with(['offers' => function($q){
+        $data['store'] = Store::select('id','title','description','logo_url','network_url')->where('secondary_url',$store)->where('is_active','y')->with(['offers' => function($q){
             $q->select('id','store_id','category_id','anchor','title','details','expiry_date','location','type','is_verified')
             ->with(['category' => function($cq){
                 $cq->select('id','title');
             }])
             ->whereHas('category',function($cq){
-                $cq->where('status',1);
+                $cq->where('is_active','y');
             })
-            ->where('status',1)
+            ->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($sq){
                 $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
@@ -118,11 +118,11 @@ class StoreController extends Controller
             return $item->category->id;
         });
         $data['alltopstores'] = Store::select('id','title','secondary_url')
-        ->where('status',1)
+        ->where('is_active','y')
         ->where('is_popularstore',1)
         ->whereNotIn('id',[$data['store']->id])
         ->withCount(['offers' => function($q){
-            $q->where('status',1)
+            $q->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
             ->where(function($sq){
                 $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
