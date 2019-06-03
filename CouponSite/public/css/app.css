@@ -14285,8 +14285,8 @@ ul {
 
 .modal-sale-block .tip {
   font-size: 22px;
-  color: #044D6E;
-  font-weight: 700;
+  font-weight: 400;
+  color: #000;
   margin-bottom: 10px;
 }
 
@@ -14320,7 +14320,7 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .modal-footer-main-heading {
@@ -14329,13 +14329,13 @@ ul {
   margin-bottom: 10px;
 }
 
-.modal-offer-expires {
+.modal-offer-expiry {
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 7px;
 }
 
-.modal-offer-expires .fa-clock-o {
+.modal-offer-expiry .fa-clock-o {
   margin-right: 5px;
 }
 

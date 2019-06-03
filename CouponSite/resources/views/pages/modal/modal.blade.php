@@ -22,7 +22,7 @@
         <hr>
         <div class="modal-footer-content">
             <div class="modal-footer-main-heading">Details</div>
-            <div class="modal-offer-expires" id="modal-offer-expires"><i class='fa fa-clock-o'></i></div>
+            <div class="modal-offer-expiry" id="modal-offer-expiry"><i class='fa fa-clock-o'></i></div>
             <div class="modal-offer-details" id="modal-offer-details"></div>
         </div>
     </div>

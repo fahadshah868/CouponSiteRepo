@@ -115,14 +115,23 @@
         @if(strcasecmp($offer->location,'Online & In-Store') == 0)
         <span class="hm-offer-button js-offer-button"
             data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}" 
-            data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}" 
+            data-offerlocation="Online" data-offertype="{{$offer->type}}" 
             data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" 
             data-storetitle="{{$offer->store->title}}" data-storelogo="{{$panel_assets_url.$offer->store->logo_url}}" data-siteurl="{{$offer->store->secondary_url}}"
             data-offerexpiry="{{$offer->expiry_date}}" data-navurl="{{$offer->store->network_url}}">
             USE ONLINE
         </span>
-        <span class="hm-offer-button js-offer-button" data-offerid="{{$offer->id}}" data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}">
+        <span class="hm-offer-button js-offer-button" data-offerid="{{$offer->id}}" data-offerlocation="In-Store" data-offertype="{{$offer->type}}">
             USE IN-STORE
+        </span>
+        @elseif(strcasecmp($offer->location,'In-Store') == 0)
+        <span class="hm-offer-button js-offer-button" 
+            data-offerid="{{$offer->id}}" data-offertitle="{{$offer->title}}"
+            data-offerlocation="{{$offer->location}}" data-offertype="{{$offer->type}}"
+            data-offerdetails="{{$offer->details}}" data-offercode="{{$offer->code}}" 
+            data-storetitle="{{$offer->store->title}}" data-storelogo="{{$panel_assets_url.$offer->store->logo_url}}" data-siteurl="{{$offer->store->secondary_url}}"
+            data-offerexpiry="{{$offer->expiry_date}}" data-navurl="{{$offer->store->network_url}}">
+            Show Coupon
         </span>
         @else
         <span class="hm-offer-button js-offer-button" 
@@ -142,7 +151,7 @@
       @endforeach
     </div>
     @if($offers->hasMorePages())
-    <span class="loadmore-button" id="loadmore-button"><img class="loading-circle" id="loading-circle" src="{{asset('/images/loading-circle.gif')}}">Load More</span>
+    <button class="loadmore-button" id="loadmore-button"><img class="loading-circle" id="loading-circle" src="{{asset('/images/loading-circle.gif')}}">Load More</button>
     @endif
   </div>
   <!--popular stores container-->
@@ -208,10 +217,12 @@
           type:'GET',
           url:'/loadmoreoffers?page='+page,
           beforeSend: function(){
+            $("#loadmore-button").prop('disabled',true);
             $("#loading-circle").css('display','inline');
           },
           complete: function(){
             $("#loading-circle").css('display','none');
+            $("#loadmore-button").prop('disabled',false);
             page += 1;
           },
           success: function(data){
