@@ -40,6 +40,9 @@ Route::get('/filteronlinesales','OnlineSaleController@getFilteredOnlineSaleOffer
 Route::get('/coupons/freeshipping','FreeShippingController@getAllFreeShippingOffers');
 Route::get('/filterfreeshippingoffers','FreeShippingController@getFilteredFreeShippingOffers');
 
+// routes for EventController
+Route::get('/event/{event}','EventController@getEventOffers');
+
 // routes for BlogController
 Route::get('/blog/','BlogController@getBlogsList');
 Route::get('/blog/{blog}','BlogController@getReadblog');

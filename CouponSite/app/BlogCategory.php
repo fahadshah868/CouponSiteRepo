@@ -8,6 +8,7 @@ class BlogCategory extends Model
 {
     protected $table = "blog_categories";
     protected $primaryKey = "id";
+    public $timestamps = true;
 
     public function blogs(){
         return $this->hasMany('App\Blog');

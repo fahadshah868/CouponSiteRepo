@@ -8,6 +8,7 @@ class Blog extends Model
 {
     protected $table = "blogs";
     protected $primaryKey = "id";
+    public $timestamps = true;
 
     public function blogcategory(){
         return $this->belongsTo('App\BlogCategory','blog_category_id');

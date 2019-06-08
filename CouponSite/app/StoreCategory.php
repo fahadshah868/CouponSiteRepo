@@ -8,6 +8,7 @@ class StoreCategory extends Model
 {
     protected $table = "store_categories";
     protected $primaryKey = "id";
+    public $timestamps = true;
 
     //belongs to
     public function store(){
