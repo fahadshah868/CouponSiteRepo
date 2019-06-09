@@ -35972,8 +35972,8 @@ $(document).ready(function () {
                 beforeSend: function beforeSend() {
                     if (currentRequest != null) {
                         currentRequest.abort();
-                        $("#app-header-search-loading").css('display', 'flex');
                     }
+                    $("#app-header-search-loading").css('display', 'flex');
                 },
                 complete: function complete() {
                     $("#app-header-search-loading").css('display', 'none');

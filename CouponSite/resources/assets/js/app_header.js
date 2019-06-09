@@ -24,8 +24,8 @@ $(document).ready(function() {
                 beforeSend: function(){
                     if(currentRequest != null) {
                         currentRequest.abort();
-                        $("#app-header-search-loading").css('display','flex');
                     }
+                    $("#app-header-search-loading").css('display','flex');
                 },
                 complete: function(){
                     $("#app-header-search-loading").css('display','none');
