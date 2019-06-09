@@ -35995,7 +35995,7 @@ $(document).ready(function () {
                     if (data.categories.length > 0) {
                         html = html + '<div class="app-header-searchbar-heading">Categories</div>' + '<ul>';
                         $.each(data.categories, function (index, category) {
-                            html = html + '<li><a class="app-header-searched-item" href="/coupons/' + category.url + '">' + category.title + '</a></li>';
+                            html = html + '<li><a class="app-header-searched-item" href="/category/' + category.url + '">' + category.title + '</a></li>';
                         });
                         html = html + "</ul>";
                     }
@@ -36089,11 +36089,11 @@ $(document).ready(function () {
                         success: function success(data) {
                             var html = '<div class="app-header-nav-topitems-container">';
                             $.each(data.topcategories, function (index, topcategory) {
-                                html = html + '<a href="/coupons/' + topcategory.url + '" class="app-header-nav-topitem-container">' + '<div class="app-header-nav-topitem">' + '<img src="' + data.panel_assets_url + topcategory.logo_url + '">' + '<span class="app-header-nav-topitem-text">' + topcategory.title + '</span>' + '</div>' + '</a>';
+                                html = html + '<a href="/category/' + topcategory.url + '" class="app-header-nav-topitem-container">' + '<div class="app-header-nav-topitem">' + '<img src="' + data.panel_assets_url + topcategory.logo_url + '">' + '<span class="app-header-nav-topitem-text">' + topcategory.title + '</span>' + '</div>' + '</a>';
                             });
                             html = html + '</div>' + '<div class="app-header-nav-popularitems-container">' + '<div class="app-header-nav-popularitems-heading">' + '<span>Popular Categories</span>' + '<a href="/allcategories">See All Categories</a>' + '</div>' + '<div class="app-header-nav-popularitems">' + '<ul>';
                             $.each(data.popularcategories, function (index, popularcategory) {
-                                html = html + '<li>' + '<a href="/coupons/' + popularcategory.url + '">' + '<div style="display: flex; flex-direction: row; justify-content: space-between;">' + '<span>' + popularcategory.title + '</span>' + '<span style="white-space: nowrap;">';
+                                html = html + '<li>' + '<a href="/category/' + popularcategory.url + '">' + '<div style="display: flex; flex-direction: row; justify-content: space-between;">' + '<span>' + popularcategory.title + '</span>' + '<span style="white-space: nowrap;">';
                                 if (popularcategory.offers_count == 1) {
                                     html = html + popularcategory.offers_count + ' Coupon Available';
                                 } else if (popularcategory.offers_count > 1) {

@@ -173,6 +173,25 @@
       @endforeach
     </div>
   </div>
+  <!--popular categories container-->
+  <div class="hm-popular-categories-main-container">
+    <!--Heading-->
+    <div class="hm-popular-categories-heading">Popular Categories</div>
+    <div class="hm-popular-categories-container">
+      @foreach($popularcategories as $popularcategory)
+      <a href="/category/{{$popularcategory->url}}" class="hm-popular-category-container" title="{{$popularcategory->title}}">
+        <span class="category-title">{{$popularcategory->title}}</span>
+        @if($popularcategory->offers_count > 1)
+            <span class="coupons-count">{{$popularcategory->offers_count}} Coupons Available</span>
+        @elseif($popularcategory->offers_count == 1)
+            <span class="coupons-count">{{$popularcategory->offers_count}} Coupon Available</span>
+        @else
+            <span class="coupons-count">No Coupons Available</span>
+        @endif
+      </a>
+      @endforeach
+    </div>
+  </div>
   <!--blogs container-->
   <div class="hm-blog-main-container">
       <!--Heading-->

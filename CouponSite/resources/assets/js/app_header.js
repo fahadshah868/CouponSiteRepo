@@ -53,7 +53,7 @@ $(document).ready(function() {
                         html = html + `<div class="app-header-searchbar-heading">Categories</div>`+
                         `<ul>`;
                         $.each(data.categories, function (index, category) {
-                            html = html + `<li><a class="app-header-searched-item" href="/coupons/`+category.url+`">`+category.title+`</a></li>`;
+                            html = html + `<li><a class="app-header-searched-item" href="/category/`+category.url+`">`+category.title+`</a></li>`;
                         });
                         html = html + "</ul>";
                     }
@@ -183,7 +183,7 @@ $(document).ready(function() {
                                 `<div class="app-header-nav-topitems-container">`;
                                     $.each(data.topcategories, function (index, topcategory) {
                                         html = html + 
-                                        `<a href="/coupons/`+topcategory.url+`" class="app-header-nav-topitem-container">`+
+                                        `<a href="/category/`+topcategory.url+`" class="app-header-nav-topitem-container">`+
                                             `<div class="app-header-nav-topitem">`+
                                                 `<img src="`+data.panel_assets_url+topcategory.logo_url+`">`+
                                                 `<span class="app-header-nav-topitem-text">`+topcategory.title+`</span>`+
@@ -202,7 +202,7 @@ $(document).ready(function() {
                                             $.each(data.popularcategories, function (index, popularcategory) {
                                                 html = html +
                                                 `<li>`+
-                                                    `<a href="/coupons/`+popularcategory.url+`">`+
+                                                    `<a href="/category/`+popularcategory.url+`">`+
                                                         `<div style="display: flex; flex-direction: row; justify-content: space-between;">`+
                                                             `<span>`+popularcategory.title+`</span>`+
                                                             `<span style="white-space: nowrap;">`

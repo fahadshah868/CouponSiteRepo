@@ -1,0 +1,133 @@
+.hm-popular-categories-main-container{
+    width: 1150px;
+    margin: 50px auto;
+    text-align: center;
+}
+.hm-popular-categories-heading{
+    font-size:25px;
+    font-weight: 700;
+}
+.hm-popular-categories-container{
+    width: 100%;
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.hm-popular-category-container:nth-child(n){
+    width: 33%;
+    margin: 0 5px 5px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 5px 5px 10px;
+    background-color: #fff;
+    border: 1px solid $border-color-ongrey;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+}
+.hm-popular-category-container:nth-child(3n){
+    margin: 0 0 5px 0;
+}
+.hm-popular-category-container:hover{
+    color: #555;
+    box-shadow: 0 0 10px $boxshadow-color;
+}
+.hm-popular-category-container .category-title{
+    margin-right: 5px;
+}
+.hm-popular-category-container .coupons-count{
+    color: #fff;
+    font-size: 13px;
+    background-color: $theme-color;
+    padding: 0 3px;
+    border: 1px solid $theme-color;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+@media only screen and (max-width: 1167px){
+    .hm-popular-categories-main-container{
+        width: 100%;
+        padding: 0 30px;
+    }
+}
+@media only screen and (max-width: 1100px){
+    .hm-popular-category-container:nth-child(n){
+        width: calc(50% - 3px);
+        margin: 0 5px 5px 0;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        text-decoration: none !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px 5px 5px 10px;
+        background-color: #fff;
+        border: 1px solid $border-color-ongrey;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+    }
+    .hm-popular-category-container:nth-child(2n){
+        margin: 0 0 5px 0;
+    }
+}
+@media only screen and (max-width: 800px){
+    .hm-popular-category-container:nth-child(n){
+        width: calc(50% - 3px);
+        margin: 0 5px 5px 0;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        text-decoration: none !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px 5px 5px 10px;
+        background-color: #fff;
+        border: 1px solid $border-color-ongrey;
+        border-radius: 4px;
+        font-size: 13px;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+    }
+    .hm-popular-category-container:nth-child(2n){
+        margin: 0 0 5px 0;
+    }
+    .hm-popular-category-container .coupons-count{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 700px){
+    .hm-popular-category-container:nth-child(n){
+        width: 100%;
+        margin: 0 0 5px 0;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        text-decoration: none !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px 5px 5px 10px;
+        background-color: #fff;
+        border: 1px solid $border-color-ongrey;
+        border-radius: 4px;
+        font-size: 13px;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+    }
+}
+@media only screen and (max-width: 600px){
+    .hm-popular-categories-main-container{
+        width: 100%;
+        padding: 0 15px;
+    }
+}
