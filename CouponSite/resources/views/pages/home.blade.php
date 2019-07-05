@@ -5,76 +5,48 @@
 @section('content')
 
 <!-- carousel slider ---------------------------------------------------------->
+@if(count($carouseloffers) > 0)
   <div class="carousel-container">
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselIndicators" data-slide-to="3"></li>
-            <li data-target="#carouselIndicators" data-slide-to="4"></li>
+          @for($i=0; $i< count($carouseloffers); $i++)
+            @if($i == 0)
+            <li data-target="#carouselIndicators" data-slide-to="{{$i}}" class="active"></li>
+            @else
+            <li data-target="#carouselIndicators" data-slide-to="{{$i}}"></li>
+            @endif
+          @endfor
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <a href="http://www.google.com" target="_blank">
-                    <div class="carousel-material-container">
-                        <img class="carousel-img" src="{{asset('images/carousel/11.jpg')}}">
-                        <div class="carousel-offer-container">
-                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
-                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
-                            <span class="btn">Amazon Sale</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="http://www.google.com" target="_blank">
-                    <div class="carousel-material-container">
-                        <img class="carousel-img" src="{{asset('images/carousel/12.jpg')}}">
-                        <div class="carousel-offer-container">
-                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
-                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
-                            <span class="btn">Amazon Sale</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="http://www.google.com" target="_blank">
-                    <div class="carousel-material-container">
-                        <img class="carousel-img" src="{{asset('images/carousel/13.jpg')}}">
-                        <div class="carousel-offer-container">
-                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
-                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
-                            <span class="btn">Amazon Sale</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="http://www.google.com" target="_blank">
-                    <div class="carousel-material-container">
-                        <img class="carousel-img" src="{{asset('images/carousel/14.jpg')}}">
-                        <div class="carousel-offer-container">
-                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
-                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
-                            <span class="btn">Amazon Sale</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="http://www.google.com" target="_blank">
-                    <div class="carousel-material-container">
-                        <img class="carousel-img" src="{{asset('images/carousel/15.jpg')}}">
-                        <div class="carousel-offer-container">
-                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
-                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
-                            <span class="btn">Amazon Sale</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+          @foreach($carouseloffers as $index=>$carouseloffer)
+            @if($index == 0)
+              <div class="carousel-item active">
+                  <a href="{{$carouseloffer->store->network_url}}" target="_blank">
+                      <div class="carousel-material-container">
+                          <img class="carousel-img" src="{{$panel_assets_url.$carouseloffer->image_url}}">
+                          <div class="carousel-offer-container">
+                              <img class="carousel-store-logo" src="{{$panel_assets_url.$carouseloffer->store->logo_url}}">
+                              <h5>{{$carouseloffer->title}}</h5>
+                              <span class="btn">{{$carouseloffer->store->title.' '.$carouseloffer->location.' '.$carouseloffer->type}}</span>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+            @else
+              <div class="carousel-item">
+                  <a href="{{$carouseloffer->store->network_url}}" target="_blank">
+                      <div class="carousel-material-container">
+                          <img class="carousel-img" src="{{$panel_assets_url.$carouseloffer->image_url}}">
+                          <div class="carousel-offer-container">
+                              <img class="carousel-store-logo" src="{{$panel_assets_url.$carouseloffer->store->logo_url}}">
+                              <h5>{{$carouseloffer->title}}</h5>
+                              <span class="btn">{{$carouseloffer->store->title.' '.$carouseloffer->location.' '.$carouseloffer->type}}</span>
+                          </div>
+                      </div>
+                  </a>
+              </div>
+            @endif
+          @endforeach
         </div>
         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
             <span class="carousel-control-icon"><i class="fa fa-angle-double-left"></i></span>
@@ -84,6 +56,7 @@
         </a>
     </div>
   </div>
+  @endif
   <!--Top Stores------------------------------------------------------------------>
   <div class="hm-ts-main-container" id="hm-ts-main-container">
     <!--Heading-->

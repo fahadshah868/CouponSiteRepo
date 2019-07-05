@@ -7,10 +7,25 @@ use App\Store;
 use App\Category;
 use App\Offer;
 use App\Blog;
+use App\CarouselOffer;
 
 class HomeController extends Controller
 {
     public function home(){
+        $data['carouseloffers'] = CarouselOffer::select('id','title','location','type','code','starting_date','expiry_date','image_url','store_id')
+            ->with(['store' => function($q){
+                $q->select('id','title','secondary_url','logo_url','network_url');
+            }])
+            ->whereHas('store', function($q){
+                $q->where('is_active','y');
+            })
+            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
+            ->where(function($sq){
+                $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
+                ->orWhere('expiry_date', null);
+            })
+        ->orderBy('id','DESC')
+        ->get();
         $data['topstores'] = Store::select('id','secondary_url','logo_url')->where('is_topstore',1)->where('is_active','y')->get();
         $data['offers'] = Offer::select('id','title','details','location','type','code','expiry_date','store_id')
             ->with(['store' => function($q){

@@ -11966,7 +11966,7 @@ ul {
   font-size: 30px;
 }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1167px) {
   .carousel.slide {
     padding: 0 29px;
   }

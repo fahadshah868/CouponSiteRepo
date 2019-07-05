@@ -17,7 +17,7 @@ class Store extends Model
     public function storecategories(){
         return $this->hasMany('App\StoreCategory');
     }
-    // public function carouseloffers(){
-    //     return $this->hasMany('App\CarouselOffer');
-    // }
+    public function carouseloffers(){
+        return $this->hasMany('App\CarouselOffer');
+    }
 }
