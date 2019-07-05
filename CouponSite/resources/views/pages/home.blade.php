@@ -4,75 +4,87 @@
 
 @section('content')
 
-  <div class="cover-img" ></div>
-  <!--Main Image Slider-->
-  {{-- <div class="slider" id="slider">
-    <!--Slides-->
-    <div style="background-image:url(https://unsplash.it/1920/1200?image=839)"></div>
-    <div style="background-image:url(https://unsplash.it/1920/1200?image=838)"></div>
-    <div style="background-image:url(https://unsplash.it/1920/1200?image=836)"></div>
-    <div style="background-image:url(https://unsplash.it/1920/1200?image=826)"></div>
-    <div style="background-image:url(https://unsplash.it/1920/1200?image=822)"></div>
-    <!--The Arrows-->
-    <i class="left" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path></svg></i>
-    <i class="right" class="arrows" style="z-index:2; position:absolute;"><svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) "></path></svg></i>
-  </div> --}}
-  <!--Todays New Hot Deals-->
-  <div class="today-hot-deals-main-container">
-    <!--Heading-->
-    <div class="today-hot-deals-heading">Today's Hot Deals</div>
-    <!--Products-->
-    <div class="today-hot-deals-container">
-      <div class="today-hot-deals">
-          <!--Product (1)-->
-          <div class="today-hot-deal">
-            <a href="#" class="today-hot-deal-link">
-              <img class="today-hot-deal-img" src="https://i2.wp.com/www.deanesofcheddar.co.uk/wp-content/uploads/2016/06/deane_and_Sons-formal_hire-350x300.jpg" />
-              <div class="today-hot-deal-description-container">
-                <div class="today-hot-deal-description-brandlogo-container">
-                  <img class="today-hot-deal-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
-                </div>
-                <div class="today-hot-deal-detail">
-                  <div class="today-hot-deal-offer">Up to 40% Off</div>
-                  <p class="today-hot-deal-brand">Pacsun Sale</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <!--Product (2)-->
-          <div class="today-hot-deal">
-            <a href="#" class="today-hot-deal-link">
-              <img class="today-hot-deal-img" src="http://www.thedorchester.com.au/site/wp-content/uploads/2016/05/family-hols-350x300.jpg" />
-              <div class="today-hot-deal-description-container">
-                <div class="today-hot-deal-description-brandlogo-container">
-                  <img class="today-hot-deal-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg"/>
-                </div>
-                <div class="today-hot-deal-detail">
-                  <div class="today-hot-deal-offer">Up to 40% Off</div>
-                  <p class="today-hot-deal-brand">Pacsun Sale</p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <!--Product (3)-->
-          <div class="today-hot-deal">
-            <a href="#" class="today-hot-deal-link">
-              <img class="today-hot-deal-img" style="cursor:pointer;" src="https://www.centrasota.com/CTRA/media/Images/design/Country-Store-350-x-300.jpg?ext=.jpg" />
-              <div class="today-hot-deal-description-container">
-                <div class="today-hot-deal-description-brandlogo-container">
-                  <img class="today-hot-deal-description-brandlogo" src="https://i.pinimg.com/236x/e2/78/b5/e278b50089cdb17419256e4b2b99fd49--gymboree-promenade.jpg" />
-                </div>
-                <div class="today-hot-deal-detail">
-                  <div class="today-hot-deal-offer">Up to 40% Off</div>
-                  <p class="today-hot-deal-brand">Pacsun Sale</p>
-                </div>
-              </div>
-            </a>
-          </div>
-      </div>
+<!-- carousel slider ---------------------------------------------------------->
+  <div class="carousel-container">
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselIndicators" data-slide-to="3"></li>
+            <li data-target="#carouselIndicators" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="http://www.google.com" target="_blank">
+                    <div class="carousel-material-container">
+                        <img class="carousel-img" src="{{asset('images/carousel/11.jpg')}}">
+                        <div class="carousel-offer-container">
+                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
+                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
+                            <span class="btn">Amazon Sale</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="http://www.google.com" target="_blank">
+                    <div class="carousel-material-container">
+                        <img class="carousel-img" src="{{asset('images/carousel/12.jpg')}}">
+                        <div class="carousel-offer-container">
+                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
+                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
+                            <span class="btn">Amazon Sale</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="http://www.google.com" target="_blank">
+                    <div class="carousel-material-container">
+                        <img class="carousel-img" src="{{asset('images/carousel/13.jpg')}}">
+                        <div class="carousel-offer-container">
+                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
+                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
+                            <span class="btn">Amazon Sale</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="http://www.google.com" target="_blank">
+                    <div class="carousel-material-container">
+                        <img class="carousel-img" src="{{asset('images/carousel/14.jpg')}}">
+                        <div class="carousel-offer-container">
+                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
+                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
+                            <span class="btn">Amazon Sale</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="http://www.google.com" target="_blank">
+                    <div class="carousel-material-container">
+                        <img class="carousel-img" src="{{asset('images/carousel/15.jpg')}}">
+                        <div class="carousel-offer-container">
+                            <img class="carousel-store-logo" src="{{asset('images/carousel/targetlogo-6.jpeg')}}">
+                            <h5>20% Off 1 Item Instantly Online for New Subscribers</h5>
+                            <span class="btn">Amazon Sale</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-icon"><i class="fa fa-angle-double-left"></i></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+            <span class="carousel-control-icon"><i class="fa fa-angle-double-right"></i></span>
+        </a>
     </div>
   </div>
-  <!--Top Stores-->
+  <!--Top Stores------------------------------------------------------------------>
   <div class="hm-ts-main-container" id="hm-ts-main-container">
     <!--Heading-->
     <div class="hm-ts-heading">Top Stores</div>
@@ -92,7 +104,7 @@
       <button type="button" class="MS-right"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
     </div>
   </div>
-  <!-- Top Offers Deals Products-->
+  <!-- Top Offers Deals Products-------------------------------------------------------->
   <div class="hm-offers-main-container">
     <!--Heading-->
     <div class="hm-offers-heading">Today's Offers, Deals & Coupon Codes</div>
@@ -154,7 +166,7 @@
     <button class="loadmore-button" id="loadmore-button"><img class="loading-circle" id="loading-circle" src="{{asset('/images/loading-circle.gif')}}">Load More</button>
     @endif
   </div>
-  <!--popular stores container-->
+  <!--popular stores container-------------------------------------------------------->
   <div class="hm-popular-stores-main-container">
     <!--Heading-->
     <div class="hm-popular-stores-heading">Popular Stores</div>
@@ -173,7 +185,7 @@
       @endforeach
     </div>
   </div>
-  <!--popular categories container-->
+  <!--popular categories container---------------------------------------------------->
   <div class="hm-popular-categories-main-container">
     <!--Heading-->
     <div class="hm-popular-categories-heading">Popular Categories</div>
@@ -192,7 +204,7 @@
       @endforeach
     </div>
   </div>
-  <!--blogs container-->
+  <!--blogs container----------------------------------------------------------------->
   <div class="hm-blog-main-container">
       <!--Heading-->
       <div class="hm-blogs-heading">Latest Blogs</div>
@@ -216,16 +228,9 @@
 <script>
     $(document).ready(function() {
       var page = 2;
-      // $("#slider").sliderResponsive({
-      // Using default everything
-        // slidePause: 5000,
-        // fadeSpeed: 800,
-        // autoPlay: "on",
-        // showArrows: "off", 
-        // hideDots: "off", 
-        // hoverZoom: "on", 
-        // titleBarTop: "off"
-      // });
+      $('.carousel').carousel({
+        interval: 5000,
+      });
       $('#hm-ts-main-container').multislider({
           interval: 5000,
           slideAll: false,
