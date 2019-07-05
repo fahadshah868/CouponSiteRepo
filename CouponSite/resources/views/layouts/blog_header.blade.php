@@ -21,10 +21,11 @@
                 </div>
                 <div id="hamburger-overlay-container" class="hamburger-overlay-container">
                     <ul class="hamburger-menu-list">
-                        <li><a href="#">Shopping Articles<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Food Articles<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Clothing Articles<i class="fa fa-angle-right"></i></a></li>
-                        <li><a href="#">Go To CouponsCorner<i class="fa fa-angle-right"></i></a></li>
+                    @if(count($blogcategories) > 0)
+                        @foreach($blogcategories as $blogcategory)
+                            <li><a href="/blog/category/{{$blogcategory->url}}">{{$blogcategory->title}}<i class="fa fa-angle-right"></i></a></li>
+                        @endforeach
+                    @endif
                     </ul>
                 </div>
             </div>
@@ -39,9 +40,11 @@
     <div class="blog-nav-wrapper-container">
         <div class="blog-nav-container">
             <ul class="blog-nav-list">
-                @foreach($blogcategories as $blogcategory)
-                    <li><a class="blog-category-title" href="/blog/category/{{$blogcategory->url}}">{{$blogcategory->title}}</a></li>
-                @endforeach
+                @if(count($blogcategories) > 0)
+                    @foreach($blogcategories as $blogcategory)
+                        <li><a class="blog-category-title" href="/blog/category/{{$blogcategory->url}}">{{$blogcategory->title}}</a></li>
+                    @endforeach
+                @endif
             </ul>
             <a href="/" class="site-link">goto CouponsCorner<i class="fa fa-angle-double-right"></i></a>
         </div>

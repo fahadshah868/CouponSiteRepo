@@ -15,7 +15,14 @@
             </a>
         </div>
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
+        @if(count($store->offers) > 1)
         <div class="fo-sb-offers-availability">{{count($store->offers)}} Offers Available</div>
+        @elseif(count($store->offers) == 1)
+        <div class="fo-sb-offers-availability">{{count($store->offers)}} Offer Available</div>
+        @else
+        <div class="fo-sb-offers-availability">No Offers Available</div>
+        @endif
+
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         @if(count($categories) > 0)
             <div class="fo-sb-content-container">

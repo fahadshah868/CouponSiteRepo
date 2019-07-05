@@ -8,7 +8,13 @@
 <div class="fo-overlay-container" id="fo-overlay-container"></div>
 <div class="fo-main-container">
     <div class="fo-sb">
+        @if($offers->total() > 1)
         <div class="fo-sb-offers-availability" id="offers-availability">{{$offers->total()}} Offers Available</div>
+        @elseif($offers->total() == 1)
+        <div class="fo-sb-offers-availability" id="offers-availability">{{$offers->total()}} Offer Available</div>
+        @else
+        <div class="fo-sb-offers-availability" id="offers-availability">No Offers Available</div>
+        @endif
         <hr style="border-top: 1px solid #d1d1d1; width: 100%;">
         @if(count($relatedstores) > 0)
             <div class="fo-sb-content-container">

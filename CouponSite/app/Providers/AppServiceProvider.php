@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Event;
+use App\BlogCategory;
+use App\Store;
+use App\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +21,15 @@ class AppServiceProvider extends ServiceProvider
         View::composer('layouts.app_footer', function ($view) {
             $events = Event::select('id','title','url')->where('display_in_footer','y')->get();
             $view->with('events',$events);
+        });
+        View::composer('layouts.blog_header', function($view){
+            $blogcategories = BlogCategory::select('id','title','url')->where('is_active','y')->get();
+            $view->with('blogcategories',$blogcategories);
+        });
+        View::composer('layouts.blog_layout', function($view){
+            $topstores = Store::select('id','title','secondary_url','logo_url')->where('is_active','y')->where('is_topstore',1)->limit(9)->get();
+            $topcategories = Category::select('id','title','url','logo_url')->where('is_active','y')->where('is_topcategory',1)->limit(9)->get();
+            $view->with('topstores',$topstores)->with('topcategories',$topcategories);
         });
     }
 
