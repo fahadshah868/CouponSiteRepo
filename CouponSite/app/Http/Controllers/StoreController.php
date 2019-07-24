@@ -11,7 +11,7 @@ use App\Offer;
 class StoreController extends Controller
 {
     public function getAllStoresList(){
-        $data['topstores'] = Store::select('title','logo_url','secondary_url')->where('is_topstore','yes')->where('is_active','y')->get();
+        $data['topstores'] = Store::select('title','logo_url','secondary_url')->where('is_topstore','y')->where('is_active','y')->get();
         $data['allstores'] = Store::select('id','title','logo_url','secondary_url')
         ->where('is_active','y')
         ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
@@ -44,7 +44,6 @@ class StoreController extends Controller
         if(strcasecmp($category,"allstores") == 0){
             $response['allstores'] = Store::select('id','title','logo_url','secondary_url')
             ->where('is_active','y')
-            ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
             ->withCount(['offers'=> function($q){
                 $q->where('is_active','y')
                 ->where('starting_date', '<=', config('constants.TODAY_DATE'))
@@ -52,7 +51,9 @@ class StoreController extends Controller
                     $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
                     ->orWhere('expiry_date', null);
                 });
-            }])->get();
+            }])
+            ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
+            ->get();
             $response['filtered_letters'] = $response['allstores']->groupBy(function ($item, $key) {
                 $letter = substr(strtoupper($item->title), 0, 1);
                 if(is_numeric($letter)){
@@ -67,7 +68,9 @@ class StoreController extends Controller
             return response()->json($response);
         }
         else{
-            $response['storecategories'] = StoreCategory::select('store_id')->where('category_id',$category)->with(['store' => function($q) use($category){
+            $response['storecategories'] = StoreCategory::select('store_id')
+            ->where('category_id',$category)
+            ->with(['store' => function($q) use($category){
                 $q->select('id','title','logo_url','secondary_url')
                 ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
                 ->withCount(['offers' => function($oq) use($category){

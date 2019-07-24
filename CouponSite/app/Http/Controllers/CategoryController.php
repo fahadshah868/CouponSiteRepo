@@ -12,7 +12,7 @@ use View;
 class CategoryController extends Controller
 {
     public function getAllCategoriesList(){
-        $data['topcategories'] = Category::where('is_topcategory','yes')->where('is_active','y')->get();
+        $data['topcategories'] = Category::where('is_topcategory','y')->where('is_active','y')->get();
         $data['allcategories'] = Category::where('is_active','y')->orderBy('title','ASC')->withCount(['offers' => function($q){
             $q->where('is_active','y')
             ->where('starting_date', '<=', config('constants.TODAY_DATE'))
