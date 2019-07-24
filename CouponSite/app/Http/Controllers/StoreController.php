@@ -72,7 +72,6 @@ class StoreController extends Controller
             ->where('category_id',$category)
             ->with(['store' => function($q) use($category){
                 $q->select('id','title','logo_url','secondary_url')
-                ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
                 ->withCount(['offers' => function($oq) use($category){
                     $oq->where('is_active','y')->where('category_id',$category)
                     ->where('starting_date', '<=', config('constants.TODAY_DATE'))

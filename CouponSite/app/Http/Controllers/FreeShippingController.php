@@ -29,7 +29,7 @@ class FreeShippingController extends Controller
         ->orderBy('id','DESC')
         ->orderBy('is_popular','ASC')
         ->orderBy('anchor','DESC')
-        ->paginate(2);
+        ->paginate(15);
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         if($request->ajax()){
             $data['partialview'] = (string)View::make('partialviews.offers',$data);
@@ -103,7 +103,7 @@ class FreeShippingController extends Controller
             ->orderBy('id','DESC')
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC')
-            ->paginate(2);
+            ->paginate(15);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             $data['offerscount'] = $data['offers']->total();
             $data['partialview'] = (string)View::make('partialviews.offers',$data);
@@ -135,7 +135,7 @@ class FreeShippingController extends Controller
             ->orderBy('id','DESC')
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC')
-            ->paginate(2);
+            ->paginate(15);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             $data['offerscount'] = $data['offers']->total();
             $data['partialview'] = (string)View::make('partialviews.offers',$data);
@@ -167,7 +167,7 @@ class FreeShippingController extends Controller
             ->orderBy('id','DESC')
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC')
-            ->paginate(2);
+            ->paginate(15);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             $data['offerscount'] = $data['offers']->total();
             $data['partialview'] = (string)View::make('partialviews.offers',$data);
@@ -189,7 +189,7 @@ class FreeShippingController extends Controller
             ->orderBy('id','DESC')
             ->orderBy('is_popular','ASC')
             ->orderBy('anchor','DESC')
-            ->paginate(2);
+            ->paginate(15);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             $data['offerscount'] = $data['offers']->total();
             $data['partialview'] = (string)View::make('partialviews.offers',$data);

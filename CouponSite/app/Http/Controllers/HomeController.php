@@ -42,7 +42,7 @@ class HomeController extends Controller
                 ->orWhere('expiry_date', null);
             })
         ->orderBy('id','DESC')
-        ->simplePaginate(4);
+        ->simplePaginate(20);
         $data['popularstores'] = Store::select('id','title','secondary_url')
         ->where('is_popularstore',1)->where('is_active','y')
         ->withCount(['offers' => function($q){
@@ -83,7 +83,7 @@ class HomeController extends Controller
             ->orWhere('expiry_date', null);
         })
         ->orderBy('id','DESC')
-        ->simplePaginate(4);
+        ->simplePaginate(20);
         $response['hasmorepage'] = $response['offers']->hasMorePages();
         $response['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return response()->json($response);
