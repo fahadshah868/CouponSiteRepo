@@ -4,11 +4,11 @@
 use Carbon\Carbon;
 
 $date = Carbon::now();
-$date = $date->toDateString();
 
 return [
-    'TODAY_DATE' => $date,
+    'TODAY_DATE' => $date->toDateString(),
     'PANEL_ASSETS_URL' => 'http://localhost/',
+    'EXPIRES_AT' => $date->endOfDay(),
 ]
 
 ?>

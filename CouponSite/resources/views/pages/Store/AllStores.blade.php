@@ -39,8 +39,8 @@
                         </li>
                         @foreach($allcategories as $category)
                             <li>
-                            <div class="as-categories-list-item" id="{{$category->category->id}}" title='{{$category->category->title}} Stores & Coupons'>
-                                    <span>{{$category->category->title}}</span>
+                            <div class="as-categories-list-item" id="{{$category->id}}" title='{{$category->title}} Stores & Coupons'>
+                                    <span>{{$category->title}}</span>
                                     <i class="fa fa-angle-right"></i>
                                 </div>
                             </li>

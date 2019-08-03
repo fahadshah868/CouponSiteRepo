@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use App\Event;
+use Facades\App\Repository\AppHeaderRepo;
+use Facades\App\Repository\AppFooterRepo;
 use App\BlogCategory;
 use App\Store;
 use App\Category;
@@ -18,8 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer('layouts.app_header', function ($view) {
+            $events = AppHeaderRepo::getEvents();
+            $view->with('events',$events);
+        });
         View::composer('layouts.app_footer', function ($view) {
-            $events = Event::select('id','title','url')->where('display_in_footer','y')->get();
+            $events = AppFooterRepo::getEvents();
             $view->with('events',$events);
         });
         View::composer('layouts.blog_header', function($view){

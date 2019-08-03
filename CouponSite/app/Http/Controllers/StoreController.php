@@ -4,24 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Store;
-use App\Category;
 use App\StoreCategory;
-use App\Offer;
+use Facades\App\Repository\StoreRepo;
 
 class StoreController extends Controller
 {
     public function getAllStoresList(){
-        $data['topstores'] = Store::select('title','logo_url','secondary_url')->where('is_topstore','y')->where('is_active','y')->get();
-        $data['allstores'] = Store::select('id','title','logo_url','secondary_url')
-        ->where('is_active','y')
-        ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
-        ->withCount(['offers' => function($q){
-            $q->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where(function($sq){
-                $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orWhere('expiry_date', null);
-            });
-        }])->get();
+        $data['topstores'] = StoreRepo::getAllTopStores();
+        $data['allstores'] = StoreRepo::getAllStores();
         $data['filtered_letters'] = $data['allstores']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
             if(is_numeric($letter)){
@@ -31,29 +21,13 @@ class StoreController extends Controller
                 return $letter;
             }
         })->toArray();
-        $data['allcategories'] = StoreCategory::select('category_id')->groupBy('category_id')
-        ->with(['category' => function($q){
-            $q->select('id','title');
-        }])->whereHas('category' , function($q){
-            $q->select('title')->where('is_active','y');
-        })->get();
+        $data['allcategories'] = StoreRepo::getAllCategories();
         $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
         return view('pages.store.allstores',$data);
     }
     public function getCategoryStores($category){
         if(strcasecmp($category,"allstores") == 0){
-            $response['allstores'] = Store::select('id','title','logo_url','secondary_url')
-            ->where('is_active','y')
-            ->withCount(['offers'=> function($q){
-                $q->where('is_active','y')
-                ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-                ->where(function($sq){
-                    $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                    ->orWhere('expiry_date', null);
-                });
-            }])
-            ->orderByRaw('title + 0','ASC','title')->orderBy('title','ASC')
-            ->get();
+            $response['allstores'] = StoreRepo::getAllStores();
             $response['filtered_letters'] = $response['allstores']->groupBy(function ($item, $key) {
                 $letter = substr(strtoupper($item->title), 0, 1);
                 if(is_numeric($letter)){

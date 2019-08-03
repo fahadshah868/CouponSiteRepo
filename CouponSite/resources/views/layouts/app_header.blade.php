@@ -113,6 +113,13 @@
                 <li class="app-header-nav-item" id="app-header-nav-item">
                     <a href="/blog/" class="app-header-nav-item-text" id="app-header-nav-item-text">Blog</a>
                 </li>
+                @if(count($events) > 0)
+                    @foreach($events as $event)
+                        <li class="app-header-nav-item" id="app-header-nav-item">
+                            <a href="/event/{{$event->url}}" class="app-header-nav-item-text" id="app-header-nav-item-text">{{$event->title}}</a>
+                        </li>
+                    @endforeach
+                @endif
             </ul>
         </nav>
     </div>

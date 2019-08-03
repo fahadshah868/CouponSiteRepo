@@ -8,19 +8,13 @@ use App\Store;
 use App\Offer;
 use App\StoreCategory;
 use View;
+use Facades\App\Repository\CategoryRepo;
 
 class CategoryController extends Controller
 {
     public function getAllCategoriesList(){
-        $data['topcategories'] = Category::where('is_topcategory','y')->where('is_active','y')->get();
-        $data['allcategories'] = Category::where('is_active','y')->orderBy('title','ASC')->withCount(['offers' => function($q){
-            $q->where('is_active','y')
-            ->where('starting_date', '<=', config('constants.TODAY_DATE'))
-            ->where(function($sq){
-                $sq->where('expiry_date', '>=', config('constants.TODAY_DATE'))
-                ->orwhere('expiry_date', null);
-            });
-        }])->get();
+        $data['topcategories'] = CategoryRepo::getAllTopCategories();
+        $data['allcategories'] = CategoryRepo::getAllCategories();
         $data['filtered_letters'] = $data['allcategories']->groupBy(function ($item, $key) {
             $letter = substr(strtoupper($item->title), 0, 1);
             if(is_numeric($letter)){
