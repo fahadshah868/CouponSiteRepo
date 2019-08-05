@@ -95,7 +95,7 @@ class StoreController extends Controller
         });
         $data['alltopstores'] = Store::select('id','title','secondary_url')
         ->where('is_active','y')
-        ->where('is_popularstore',1)
+        ->where('is_popularstore','y')
         ->whereNotIn('id',[$data['store']->id])
         ->withCount(['offers' => function($q){
             $q->where('is_active','y')

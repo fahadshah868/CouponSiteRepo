@@ -53,16 +53,6 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="blog-sb-content-container">
-                            <div class="blog-sb-content-heading">Popular Categories</div>
-                            <div class="blog-sb-content-details">
-                                @foreach($topcategories as $category)
-                                <a class="blog-sb-content-img" href="/coupons/{{$category->url}}" title="{{$category->title}} Coupons">
-                                    <img src="{{$panel_assets_url.$category->logo_url}}">
-                                </a>
-                                @endforeach
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

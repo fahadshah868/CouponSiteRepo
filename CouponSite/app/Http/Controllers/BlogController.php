@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\BlogCategory;
 use App\Blog;
-use App\Store;
-use App\Category;
 use App\BlogComment;
 use Session;
 use Redirect;
@@ -17,19 +15,21 @@ class BlogController extends Controller
 {
     public function getBlogsList(Request $request){
         if($request->ajax()){
+            //search blogs by title using searchbar
             if($request->has('title')){
                 $url = str_replace(' ', '-', $request->title);
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('url','LIKE','%'.$url.'%')
                 ->where('is_active','y')
-                ->simplePaginate(3);
+                ->simplePaginate(20);
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 return view('partialviews.blogs',$data);
             }
+            //get all blogs
             else{
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('is_active','y')
-                ->simplePaginate(3);
+                ->simplePaginate(20);
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 return view('partialviews.blogs',$data);
             }
@@ -41,7 +41,7 @@ class BlogController extends Controller
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('url','LIKE','%'.$url.'%')
                 ->where('is_active','y')
-                ->simplePaginate(3);
+                ->simplePaginate(20);
                 $data['searched_blog_title'] = $request->title;
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 return view('pages.blog.searchedblogs',$data);
@@ -50,7 +50,7 @@ class BlogController extends Controller
             else{
                 $data['allblogs'] = Blog::select('id','title','url','image_url','author')
                 ->where('is_active','y')
-                ->simplePaginate(3);
+                ->simplePaginate(20);
                 $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
                 return view('pages.blog.allblogs',$data);
             }
@@ -61,13 +61,13 @@ class BlogController extends Controller
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->where('blog_category_id', $request->blog_category_id)
             ->where('is_active','y')
-            ->simplePaginate(3);
+            ->simplePaginate(20);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return view('partialviews.blogs',$data);
         }
         else{
             $blogcategory = BlogCategory::where('url',$category)->where('is_active','y')->first();
-            $data['allblogs'] = $blogcategory->blogs()->select('id','title','url','image_url','author')->where('is_active','y')->simplePaginate(3);
+            $data['allblogs'] = $blogcategory->blogs()->select('id','title','url','image_url','author')->where('is_active','y')->simplePaginate(20);
             $data['blog_category_id'] = $blogcategory->id;
             Session::flash('searched_category_title', $blogcategory->title);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
@@ -79,7 +79,7 @@ class BlogController extends Controller
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->whereNotIn('id',[$request->id])
             ->where('is_active','y')
-            ->simplePaginate(3);
+            ->simplePaginate(20);
             $data['panel_assets_url'] = config('constants.PANEL_ASSETS_URL');
             return view('partialviews.blogs',$data);
         }
@@ -96,7 +96,7 @@ class BlogController extends Controller
             $data['allblogs'] = Blog::select('id','title','url','image_url','author')
             ->whereNotIn('id',[$data['blog']->id])
             ->where('is_active','y')
-            ->simplePaginate(3);
+            ->simplePaginate(20);
             return view('pages.blog.readblog',$data);
         }
     }
