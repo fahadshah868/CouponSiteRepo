@@ -148,33 +148,49 @@
                         // when apply store filter
                         if(filtertype == 1){
                             var html = "";
-                            var categories = $('.checkbox-container.category').each(function(){
-                                return $(this).text();
-                            });
+                            var categories_arr = [];
                             $.each(data.storecategories, function(index, storecategory){
                                 if(storecategory.category != null){
                                     var filteredcategory = storecategory.category.title;
                                     var flag = false;
-                                    categories.each(function(){
+                                    $('.checkbox-container.category').each(function(){
                                         var existingcategory = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                        var existingcategory_checkbox = $(this).find('input[type="checkbox"]');
+                                        /*  there are two conditions
+                                            1- if existing and server-side filtered categories are equals to each other
+                                               so that it can not be duplicate on client side
+                                            2- if some categories are checked before selecting store, and store has not containing that category mapping
+                                               so that it can be tracable after de-selecting the same store
+                                        */
                                         if(existingcategory == filteredcategory){
                                             flag = true;
-                                            var checkbox = $(this).find('input[type="checkbox"]');
-                                            if(checkbox.prop("checked")){
+                                            // check if category already exists in categories_arr
+                                            if(categories_arr.indexOf(existingcategory) == -1){
+                                                categories_arr.push(existingcategory);
+                                            }
+                                            if(existingcategory_checkbox.prop("checked")){
                                                 html = html +
-                                                `<label class="checkbox-container category">`+filteredcategory+
-                                                    `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter" checked>`+
+                                                `<label class="checkbox-container category">`+existingcategory+
+                                                    `<input type="checkbox" value="`+existingcategory_checkbox.val()+`" class="category-filter" checked>`+
                                                     `<span class="checkmark"></span>`+
                                                 `</label>`
                                             }
                                             else{
                                                 html = html +
-                                                `<label class="checkbox-container category">`+filteredcategory+
-                                                    `<input type="checkbox" value="`+storecategory.category.id+`" class="category-filter">`+
+                                                `<label class="checkbox-container category">`+existingcategory+
+                                                    `<input type="checkbox" value="`+existingcategory_checkbox.val()+`" class="category-filter">`+
                                                     `<span class="checkmark"></span>`+
                                                 `</label>`
                                             }
                                             return false;
+                                        }
+                                        else if(existingcategory_checkbox.prop("checked") && categories_arr.indexOf(existingcategory) == -1){
+                                            categories_arr.push(existingcategory);
+                                            html = html +
+                                                `<label class="checkbox-container store">`+ existingcategory +
+                                                    `<input type="checkbox" value="`+existingcategory_checkbox.val()+`" class="store-filter" checked>`+
+                                                    `<span class="checkmark"></span>`+
+                                                `</label>`
                                         }
                                     });
                                     if(!flag){
@@ -186,38 +202,55 @@
                                     }
                                 }
                             });
+                            console.log(categories_arr);
                             $(`#fo-sb-category-container`).html(html);
                         }
                         // when apply category filter
                         else if(filtertype == 2){
                             var html = "";
-                            var stores = $('.checkbox-container.store').each(function(){
-                                return $(this).text();
-                            });
+                            var stores_arr = [];
                             $.each(data.storecategories, function(index, storecategory){
                                 if(storecategory.store != null){
                                     var filteredstore = storecategory.store.title;
                                     var flag = false;
-                                    stores.each(function(){
+                                    $('.checkbox-container.store').each(function(){
                                         var existingstore = $(this).text().replace(/^\s+|\s+$/gm,'');
+                                        var existingstore_checkbox = $(this).find('input[type="checkbox"]');
+                                        /*  there are two conditions
+                                            1- if existing and server-side filtered stores are equals to each other
+                                               so that it can not be duplicate on client side
+                                            2- if some stores are checked before selecting category, and store has not containing that category mapping
+                                               so that it can be tracable after de-selecting the same category
+                                        */
                                         if(existingstore == filteredstore){
                                             flag = true;
-                                            var checkbox = $(this).find('input[type="checkbox"]');
-                                            if(checkbox.prop("checked")){
+                                            // check if store already exists in stores_arr
+                                            if(stores_arr.indexOf(existingstore) == -1){
+                                                stores_arr.push(existingstore);
+                                            }
+                                            if(existingstore_checkbox.prop("checked")){
                                                 html = html +
-                                                `<label class="checkbox-container store">`+filteredstore+
-                                                    `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter" checked>`+
+                                                `<label class="checkbox-container store">`+ existingstore +
+                                                    `<input type="checkbox" value="`+existingstore_checkbox.val()+`" class="store-filter" checked>`+
                                                     `<span class="checkmark"></span>`+
                                                 `</label>`
                                             }
                                             else{
                                                 html = html +
-                                                `<label class="checkbox-container store">`+filteredstore+
-                                                    `<input type="checkbox" value="`+storecategory.store.id+`" class="store-filter">`+
+                                                `<label class="checkbox-container store">`+ existingstore +
+                                                    `<input type="checkbox" value="`+existingstore_checkbox.val()+`" class="store-filter">`+
                                                     `<span class="checkmark"></span>`+
                                                 `</label>`
                                             }
                                             return false;
+                                        }
+                                        else if(existingstore_checkbox.prop("checked") && stores_arr.indexOf(existingstore) == -1){
+                                            stores_arr.push(existingstore);
+                                            html = html +
+                                                `<label class="checkbox-container store">`+ existingstore +
+                                                    `<input type="checkbox" value="`+existingstore_checkbox.val()+`" class="store-filter" checked>`+
+                                                    `<span class="checkmark"></span>`+
+                                                `</label>`
                                         }
                                     });
                                     if(!flag){
@@ -229,6 +262,7 @@
                                     }
                                 }
                             });
+                            console.log(stores_arr);
                             $(`#fo-sb-store-container`).html(html);
                         }
                     }

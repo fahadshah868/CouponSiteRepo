@@ -20478,7 +20478,7 @@ ul {
 
 .blog-frame-container {
   width: 800px;
-  min-height: 200px;
+  min-height: 450px;
   padding: 30px;
   background-color: #fff;
   border: 1px solid #ced4da;
@@ -20504,14 +20504,9 @@ ul {
 .blog-sb-content-container {
   width: 100%;
   padding: 20px 30px;
-  margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid #ced4da;
   border-radius: 5px;
-}
-
-.blog-sb-content-container:nth-child(2n) {
-  margin: 0;
 }
 
 .blog-sb-content-heading {
